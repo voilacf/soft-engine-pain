@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'dhbw'
+version null
+
+repositories {
+    mavenCentral()
+}
+
+
+task build_jar(type: Jar) {
+    project.archivesBaseName = "gps"
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+
+    delete "jar"
+    mkdir "jar"
+
+    copy {
+        from 'build/libs/gps.jar'
+        into "jar"
+    }
+}
