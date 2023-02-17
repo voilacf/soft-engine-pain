@@ -5,7 +5,7 @@ import observer.IButtonPressedListener;
 import java.util.ArrayList;
 
 public class Button {
-    private ICommand command;
+    private final ICommand command;
     private final ArrayList<IButtonPressedListener> listeners = new ArrayList<>();
 
     public Button(ICommand command) {
