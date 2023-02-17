@@ -9,6 +9,6 @@ public class CommandEnable implements ICommand {
 
     @Override
     public void execute() {
-        // TODO: implement
+        receiver.enableVehicle();
     }
 }

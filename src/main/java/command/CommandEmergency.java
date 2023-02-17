@@ -11,6 +11,6 @@ public class CommandEmergency implements ICommand {
 
     @Override
     public void execute() {
-        // TODO: implement
+        serviceCenter.handleEmergency();
     }
 }
