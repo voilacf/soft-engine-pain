@@ -10,10 +10,10 @@ public class VehicleKeyReceiverModule {
     }
 
     public void enableVehicle() {
-        // TODO: implement
+        controlUnit.startup();
     }
 
     public void disableVehicle() {
-        // TODO: implement
+        controlUnit.shutdown();
     }
 }
