@@ -9,6 +9,6 @@ public class CommandDisable implements ICommand {
 
     @Override
     public void execute() {
-        // TODO: implement
+        receiver.disableVehicle();
     }
 }
