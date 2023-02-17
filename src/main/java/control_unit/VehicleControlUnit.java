@@ -1,5 +1,6 @@
 package control_unit;
 
+import command.ICommand;
 import events.EventBus;
 
 public class VehicleControlUnit {
@@ -40,6 +41,10 @@ public class VehicleControlUnit {
 
     public void shutdown(){
 
+    }
+
+    void executeCommand(ICommand cmd) {
+        cmd.execute();
     }
 
     /*public void batteryTemperatureChanged(BatteryCell battery, double temperature){

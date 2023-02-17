@@ -11,6 +11,6 @@ public class CommandToggleDoor implements ICommand {
 
     @Override
     public void execute() {
-        // TODO: implement
+        door.toggleDoorState();
     }
 }
