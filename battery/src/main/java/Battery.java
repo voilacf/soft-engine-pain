@@ -18,14 +18,14 @@ public class Battery {
 
     public void printBatterySummary() {
         System.out.println("Battery Summary:");
-        System.out.println("Engine count: " + port.getEngineCount());
+        System.out.println("Energy Count: " + energyCount);
     }
 
     public static class Port implements IBattery {
 
 
         @Override
-        public int getEngineCount() {
+        public int getEnergyCount() {
             return 0;
         }
 

@@ -1,6 +1,6 @@
 public interface IBattery {
 
-    int getEngineCount();
+    int getEnergyCount();
 
     boolean useEnergy(int count);
 
