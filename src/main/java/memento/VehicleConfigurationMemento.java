@@ -1,5 +1,6 @@
 package memento;
 
+
 public class VehicleConfigurationMemento {
     public boolean rejectDrunkenPassengers = true;
     public boolean stopByPoliceRequest = true;

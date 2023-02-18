@@ -1,5 +1,7 @@
-package door_button;
+package components;
 
+import builder.AutonomousVehicle;
+import builder.VehicleType;
 import control_unit.VehicleControlUnit;
 
 public class VehicleKeyReceiverModule {
@@ -9,11 +11,23 @@ public class VehicleKeyReceiverModule {
         this.controlUnit = controlUnit;
     }
 
-    public void enableVehicle() {
+    private void checkPassword(String encryptedPassword) {
+        VehicleType vehicleType = controlUnit.getVehicle().getType();
+        String password = vehicleType == VehicleType.AUTOX ? VehicleKeyAESEncryption.autoXPassword : VehicleKeyAESEncryption.zooxPassword;
+        String expectedPassword = VehicleKeyAESEncryption.encrypt(password);
+
+        if (!encryptedPassword.equals(expectedPassword)) {
+            throw new RuntimeException("Invalid vehicle key password");
+        }
+    }
+
+    public void enableVehicle(String encryptedPassword) {
+        checkPassword(encryptedPassword);
         controlUnit.startup();
     }
 
-    public void disableVehicle() {
+    public void disableVehicle(String encryptedPassword) {
+        checkPassword(encryptedPassword);
         controlUnit.shutdown();
     }
 }

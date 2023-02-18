@@ -18,6 +18,7 @@ public class AutonomousVehicle {
     private final Object[] cameras; //ICamera
     private final Object[] lidars; //ILidar
     private final UltraSonicSensor[] ultraSonics;
+    private final VehicleType type;
 
     private AutonomousVehicle(Builder builder) {
         chassis = builder.chassis;
@@ -34,6 +35,11 @@ public class AutonomousVehicle {
         cameras = builder.cameras;
         lidars = builder.lidars;
         ultraSonics = builder.ultraSonics;
+        type = builder.type;
+    }
+
+    public VehicleType getType() {
+        return type;
     }
 
     public class Builder {
@@ -51,6 +57,7 @@ public class AutonomousVehicle {
         private Object[] cameras; //ICamera
         private Object[] lidars; //ILidar
         private UltraSonicSensor[] ultraSonics;
+        private VehicleType type;
 
         public Builder chassis(Chassis chassis){
             return this;
@@ -106,6 +113,10 @@ public class AutonomousVehicle {
 
         public void ultraSonics (UltraSonicSensor[] us){
 
+        }
+
+        public void type (VehicleType type){
+            this.type = type;
         }
 
         public AutonomousVehicle build(){

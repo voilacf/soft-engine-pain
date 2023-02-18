@@ -1,6 +1,6 @@
 package observer;
 
-import command.ICommand;
+import door_button.ICommand;
 
 
 import java.util.ArrayList;
