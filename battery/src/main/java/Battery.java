@@ -1,8 +1,10 @@
 public class Battery {
     private static final Battery instance = new Battery();
-    public Port port = new Port();
+    public Port port;
 
-    private Battery() {}
+    private Battery() {
+        port = new Port();
+    }
 
     public static Battery getInstance() {
         return instance;
