@@ -1,19 +1,21 @@
+package factories;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class LidarFactory {
-    //TODO: add second factory for LidarNG?
+public class ElectricEngineFactory {
+    //TODO: add second factory for ElectricEngineX?
     public static Object build() {
         Object port = null;
 
         try {
-            URL[] urls = {new File(Configuration.INSTANCE.pathToLidarJavaArchive + "lidar.jar").toURI().toURL()};
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, LidarFactory.class.getClassLoader());
-            Class<?> lidarClass = Class.forName("LidarXT", true, urlClassLoader);
-            Object lidarInstance = lidarClass.getMethod("getInstance").invoke(null);
-            port = lidarClass.getDeclaredField("port").get(lidarInstance);
+            URL[] urls = {new File(Configuration.INSTANCE.pathToElectricEngineJavaArchive + "electric-engine.jar").toURI().toURL()};
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, ElectricEngineFactory.class.getClassLoader());
+            Class<?> electricEngineClass = Class.forName("ElectricEngineNG", true, urlClassLoader);
+            Object electricEngineInstance = electricEngineClass.getMethod("getInstance").invoke(null);
+            port = electricEngineClass.getDeclaredField("port").get(electricEngineInstance);
         } catch (Exception e) {
             e.printStackTrace();
         }

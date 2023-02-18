@@ -1,10 +1,25 @@
 package control_unit;
 
+//import com.google.common.eventbus.Subscribe;
+import factories.BatteryFactory;
+import java.lang.reflect.Method;
 
 public class BatteryControlUnit extends Subscriber{
-    //private IBattery battery;
+    private final Object batteryPort;
 
     public BatteryControlUnit(){
-        //TODO: Battery Factory
+        super(1);
+        batteryPort = BatteryFactory.build();
     }
+
+    private void invokeMethod(Object battery, String batteryMethod) {
+        try{
+            Method m = battery.getClass().getMethod(batteryMethod);
+            m.invoke(battery);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

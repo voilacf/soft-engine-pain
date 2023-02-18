@@ -19,7 +19,8 @@ public class VehicleKey {
         if (vehicleType == VehicleType.AUTOX) {
             this.encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.autoXPassword);
         } else {
-            this.encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.zooxPasswordi);
+
+            this.encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.zooxPassword);
         }
     }
 
