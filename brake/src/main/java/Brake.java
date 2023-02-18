@@ -1,8 +1,31 @@
-public class Brake implements IBrake{
+public class Brake{
+    // static instance
+    private static final Brake instance = new Brake();
+    // port
+    public Port port;
+    private String serialNumber;
+
     private double percentage;
 
-    public void setBrake(double percentage){
+    private Brake() {
+        port = new Port();
+    }
+
+    public void innerSetBrake(double percentage){
         this.percentage = percentage;
     }
-    //public void visit(IComponentVisitor visitor){}
+    //public void innerVisit(IComponentVisitor visitor){}
+
+    public class Port implements IBrake{
+
+        public void setBrake(double percentage) {
+            innerSetBrake(percentage);
+        }
+
+        /*public void visit(IComponentVisitor visitor){
+
+        }
+        * */
+
+    }
 }
