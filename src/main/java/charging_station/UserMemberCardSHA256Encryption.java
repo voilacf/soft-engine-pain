@@ -18,4 +18,17 @@ public class UserMemberCardSHA256Encryption implements IUserMemberCardEncryption
         }
         return null;
     }
+
+    //TODO check decrypt(String data) is right with bruteforce ?
+    @Override
+    public String decrypt(String encryptedData) {
+        String decrypedData = "";
+        int expectedInt = 0;
+        String expectedString;
+        while(!encryptedData.equals(decrypedData)){
+            expectedString = String.valueOf(expectedInt);
+            decrypedData = encrypt(expectedString);
+        }
+        return decrypedData;
+    }
 }
