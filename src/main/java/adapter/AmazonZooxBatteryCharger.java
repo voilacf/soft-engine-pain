@@ -1,8 +1,7 @@
 package adapter;
 
 public class AmazonZooxBatteryCharger extends AmazonZooxChargingAdapter{
-    @Override
-    public void plugIn2Pin() {
+    public void plugIn4Pin() {
         // TODO: implement
     }
 }

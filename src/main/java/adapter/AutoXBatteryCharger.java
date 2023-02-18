@@ -1,8 +1,7 @@
 package adapter;
 
 public class AutoXBatteryCharger extends AutoXChargingAdapter {
-    @Override
-    public void plugIn2Pin() {
+    public void plugIn3Pin() {
         // TODO: implement
     }
 }
