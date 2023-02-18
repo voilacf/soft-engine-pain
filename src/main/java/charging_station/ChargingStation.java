@@ -8,10 +8,23 @@ public class ChargingStation {
 
     //TODO implement plugInDevice(IChargable device)
     public void plugInDevice(IChargable device){
-
+        System.out.println("Device is plugged in");
     }
     //TODO implement finishChargingSession(int amount, UserMemberCard userMemberCard)
-    public void finishChargingSession(int amount, UserMemberCard userMemberCard){
-        userMemberCard.getLoyaltyState().promote();
+    public void finishChargingSession(int amountOfEnergy, UserMemberCard userMemberCard){
+        if((getEnergy()-amountOfEnergy) >= 0) {
+            setEnergy(getEnergy() - amountOfEnergy);
+            userMemberCard.getLoyaltyState().addCharging(amountOfEnergy);
+            userMemberCard.getLoyaltyState().promote();
+        }
+        else System.out.println("Charging station does not contain enough energy for this charging session");
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
     }
 }
