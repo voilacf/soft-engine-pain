@@ -1,4 +1,4 @@
-package command;
+package door_button;
 
 public class CommandEnable implements ICommand {
     private final VehicleKeyReceiverModule receiver;

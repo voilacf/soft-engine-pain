@@ -2,7 +2,7 @@ package control_unit;
 
 import builder.UltraSonicSensor;
 import com.google.common.eventbus.EventBus;
-import command.ICommand;
+import door_button.ICommand;
 import events.*;
 import observer.IBatteryCellTemperatureListener;
 import observer.IUltraSonicSensorListener;

@@ -1,4 +1,4 @@
-package command;
+package door_button;
 
 import service_center.ServiceCenter;
 

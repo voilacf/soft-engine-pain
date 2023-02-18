@@ -8,4 +8,8 @@ public class EventEngineDecreaseRPM {
         this.deltaRPM = deltaRPM;
         this.seconds = seconds;
     }
+
+    public String toString(){
+        return "event -> increasing engine RPM";
+    }
 }

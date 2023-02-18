@@ -1,10 +1,11 @@
 package components;
 
-import command.Button;
-import command.CommandEnable;
-import command.VehicleKeyReceiverModule;
+import door_button.Button;
+import door_button.CommandEnable;
+import door_button.VehicleKeyReceiverModule;
 
 public class VehicleKey {
+    // TODO: implement password check in receiver
     private final String encryptedPassword;
     private final Button enableButton;
     private final Button disableButton;
