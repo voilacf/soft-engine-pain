@@ -5,6 +5,7 @@ import command.CommandEnable;
 import command.VehicleKeyReceiverModule;
 
 public class VehicleKey {
+    // TODO: implement password check in receiver
     private final String encryptedPassword;
     private final Button enableButton;
     private final Button disableButton;

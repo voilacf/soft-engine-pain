@@ -2,3 +2,7 @@ build
 .gradle
 jar
 .idea
+
+# Visual Paradigm stuff
+*.vpp.bak*
+*.vpp.lck
