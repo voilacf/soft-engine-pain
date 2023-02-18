@@ -1,6 +1,6 @@
 package control_unit;
 
-//import com.google.common.eventbus.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import events.EventBrakeSet;
 import factories.BrakeFactory;
 
@@ -23,7 +23,7 @@ public class BrakeControlUnit extends Subscriber{
         }
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventBrakeSet event){
         try {
             Method onMethod = brakePort.getClass().getDeclaredMethod("open");

@@ -1,6 +1,6 @@
 package control_unit;
 
-//import com.google.common.eventbus.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import events.*;
 import factories.IndicatorFactory;
 import java.lang.reflect.Method;
@@ -22,32 +22,32 @@ public class IndicatorControlUnit extends Subscriber{
         }
     }
 
-    //@Subscribe
+    @Subscribe
     public void receive(EventLeftIndicatorOn event){
 
     }
 
-    //@Subscribe
+    @Subscribe
     public void receive(EventLeftIndicatorOff event){
 
     }
 
-    //@Subscribe
+    @Subscribe
     public void receive(EventRightIndicatorOn event){
 
     }
 
-    //@Subscribe
+    @Subscribe
     public void receive(EventRightIndicatorOff event){
 
     }
 
-    //@Subscribe
+    @Subscribe
     public void receive(EventHazardWarningOn event){
 
     }
 
-    //@Subscribe
+    @Subscribe
     public void receive(EventHazardWarningOff event){
 
     }

@@ -1,6 +1,6 @@
 package control_unit;
 
-//import com.google.common.eventbus.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import events.EventLEDOff;
 import events.EventLEDOn;
 import factories.LEDHeadLightFactroy;
@@ -24,12 +24,12 @@ public class LEDControlUnit extends Subscriber{
         }
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventLEDOn event){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventLEDOff event){
 
     }

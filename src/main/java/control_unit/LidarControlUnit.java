@@ -1,6 +1,6 @@
 package control_unit;
 
-//import com.google.common.eventbus.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import events.EventLidarOff;
 import events.EventLidarOn;
 import factories.LidarFactory;
@@ -25,12 +25,12 @@ public class LidarControlUnit extends Subscriber{
         }
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventLidarOn event){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventLidarOff event){
 
     }

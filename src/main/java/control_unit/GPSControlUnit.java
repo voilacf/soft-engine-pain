@@ -1,6 +1,6 @@
 package control_unit;
 
-//import com.google.common.eventbus.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import events.EventGPSConnectSatellite;
 import events.EventGPSOff;
 import events.EventGPSOn;
@@ -25,17 +25,17 @@ public class GPSControlUnit extends Subscriber{
         }
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventGPSOn event){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventGPSOff event){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventGPSConnectSatellite event){
 
     }

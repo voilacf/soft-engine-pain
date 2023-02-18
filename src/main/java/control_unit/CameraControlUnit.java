@@ -1,6 +1,6 @@
 package control_unit;
 
-//import com.google.common.eventbus.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import events.EventCameraOff;
 import events.EventCameraOn;
 import factories.CameraFactory;
@@ -25,12 +25,12 @@ public class CameraControlUnit extends Subscriber{
         }
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventCameraOn event){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventCameraOff event){
 
     }

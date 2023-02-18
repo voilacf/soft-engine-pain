@@ -1,6 +1,6 @@
 package control_unit;
 
-//import com.google.common.eventbus.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import events.EventEngineIncreaseRPM;
 import events.EventEngineDecreaseRPM;
 import events.EventEngineOff;
@@ -27,22 +27,22 @@ public class EngineControlUnit extends Subscriber{
         }
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventEngineOn engine){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventEngineOff engine){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventEngineIncreaseRPM engine){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventEngineDecreaseRPM engine){
 
     }

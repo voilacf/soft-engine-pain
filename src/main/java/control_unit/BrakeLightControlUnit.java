@@ -1,6 +1,6 @@
 package control_unit;
 
-//import com.google.common.eventbus.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import events.EventBrakeLightOff;
 import events.EventBrakeLightOn;
 import factories.BrakeLightFactory;
@@ -24,12 +24,12 @@ public class BrakeLightControlUnit extends Subscriber{
         }
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventBrakeLightOn event){
 
     }
 
-    //@Subscriber
+    @Subscribe
     public void receive(EventBrakeLightOff event){
 
     }
