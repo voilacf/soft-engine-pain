@@ -8,6 +8,7 @@ public class GPS{
 
     public GPS(){
         port = new Port();
+        frequency = new ArrayList<String>();
     }
 
     public void innerOn(){
@@ -19,7 +20,7 @@ public class GPS{
     }
 
     public void innerConnectSatellite(String frequency){
-
+        this.frequency.add(frequency);
     }
 
     //public void innerVisit(IComponentVisitor visitor){}

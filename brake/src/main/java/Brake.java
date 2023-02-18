@@ -1,9 +1,6 @@
 public class Brake{
-    // static instance
     private static final Brake instance = new Brake();
-    // port
     public Port port;
-
     private double percentage;
 
     private Brake() {
@@ -13,6 +10,7 @@ public class Brake{
     public void innerSetBrake(double percentage){
         this.percentage = percentage;
     }
+
     //public void innerVisit(IComponentVisitor visitor){}
 
     public class Port implements IBrake{
@@ -21,10 +19,10 @@ public class Brake{
             innerSetBrake(percentage);
         }
 
+        //TODO: add IComponentVisitor and logic
         /*public void visit(IComponentVisitor visitor){
             innerVisit(visitor);
         }
         * */
-
     }
 }

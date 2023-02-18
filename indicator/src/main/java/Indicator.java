@@ -9,11 +9,37 @@ public class Indicator{
     }
 
     public void innerOn(IndicatorSide side){
-
+        //TODO: good like this?
+        switch (side){
+            case LEFT :
+                state = IndicatorState.LEFT_ON;
+                break;
+            case RIGHT:
+                state = IndicatorState.RIGHT_ON;
+                break;
+            case HAZARD:
+                state = IndicatorState.ON;
+                break;
+            default:
+                throw new RuntimeException("Error");
+        }
     }
 
     public void innerOff(IndicatorSide side){
-
+        //TODO: good like this?
+        switch (side){
+            case LEFT :
+                state = IndicatorState.LEFT_OFF;
+                break;
+            case RIGHT:
+                state = IndicatorState.RIGHT_OFF;
+                break;
+            case HAZARD:
+                state = IndicatorState.OFF;
+                break;
+            default:
+                throw new RuntimeException("Error");
+        }
     }
 
     //public void innerVisit(IComponentVisitor visitor){}
