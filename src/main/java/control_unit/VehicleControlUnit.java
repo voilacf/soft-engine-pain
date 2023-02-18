@@ -1,5 +1,6 @@
 package control_unit;
 
+import builder.AutonomousVehicle;
 import builder.UltraSonicSensor;
 import com.google.common.eventbus.EventBus;
 import door_button.ICommand;
@@ -9,10 +10,12 @@ import observer.IUltraSonicSensorListener;
 import observer.BatteryCell;
 
 public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUltraSonicSensorListener {
-    private EventBus eventBus;
+    private final EventBus eventBus;
+    private final AutonomousVehicle vehicle;
 
-    public VehicleControlUnit() {
+    public VehicleControlUnit(AutonomousVehicle vehicle) {
         eventBus = new EventBus();
+        this.vehicle = vehicle;
     }
 
     public void addSubscriber(Subscriber subscriber) {
@@ -94,6 +97,7 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
     public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
     }
 
-
-
+    public AutonomousVehicle getVehicle() {
+        return vehicle;
+    }
 }

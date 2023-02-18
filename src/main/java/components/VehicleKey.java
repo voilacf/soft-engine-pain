@@ -1,5 +1,6 @@
 package components;
 
+import builder.VehicleType;
 import door_button.Button;
 import door_button.CommandEnable;
 
@@ -10,11 +11,16 @@ public class VehicleKey {
     private final Button enableButton;
     private final Button disableButton;
 
-    public VehicleKey(VehicleKeyReceiverModule receiver, String encryptedPassword) {
+    public VehicleKey(VehicleKeyReceiverModule receiver, VehicleType vehicleType) {
         this.receiver = receiver;
         enableButton = new Button(new CommandEnable(this));
         disableButton = new Button(new CommandEnable(this));
-        this.encryptedPassword = encryptedPassword;
+
+        if (vehicleType == VehicleType.AUTOX) {
+            this.encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.autoXPassword);
+        } else {
+            this.encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.zooxPasswordi);
+        }
     }
 
     public void enableVehicle() {
