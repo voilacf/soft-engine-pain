@@ -1,7 +1,8 @@
 package builder;
 
+import observer.IUltraSonicSensorListener;
 import java.util.ArrayList;
-//import IUltraSonicSensorListener.java;
+
 //TODO import class
 public class UltraSonicSensor {
     ArrayList<IUltraSonicSensorListener> listeners = new ArrayList<IUltraSonicSensorListener>();

@@ -6,17 +6,17 @@ import bridge.IElectricEngine;
 public class AutonomousVehicle {
     private final Chassis chassis;
     private final IElectricEngine engine;
-    private final IBattery battery;
-    private final ILED[] headlights;
-    private final IBrakeLight[] breakLights;
-    private final IIndicator[] indicators;
+    private final Object[] battery; //IBattery
+    private final Object[] headlights; //ILED
+    private final Object[] breakLights; //IBrakeLight
+    private final Object[] indicators; //IIndicator
     private final Door[] doors;
     private final ISittable[] seats;
     private final Wheel[] wheels;
-    private final IBrake[] brakes;
-    private final IGPS[] gps;
-    private final ICamera[] cameras;
-    private final ILidar[] lidars;
+    private final Object[] brakes; //IBrake
+    private final Object[] gps; //IGPS
+    private final Object[] cameras; //ICamera
+    private final Object[] lidars; //ILidar
     private final UltraSonicSensor[] ultraSonics;
 
     private AutonomousVehicle(Builder builder) {
@@ -39,17 +39,17 @@ public class AutonomousVehicle {
     public class Builder {
         private Chassis chassis;
         private IElectricEngine engine;
-        private IBattery battery;
-        private ILED[] headlights;
-        private IBrakeLight[] breakLights;
-        private IIndicator[] indicators;
+        private Object[] battery; //IBattery
+        private Object[] headlights; //ILED
+        private Object[] breakLights; //IBrakeLight
+        private Object[] indicators; //IIndicator
         private Door[] doors;
         private ISittable[] seats;
         private Wheel[] wheels;
-        private IBrake[] brakes;
-        private IGPS[] gps;
-        private ICamera[] cameras;
-        private ILidar[] lidars;
+        private Object[] brakes; //IBrake
+        private Object[] gps; //IGPS
+        private Object[] cameras; //ICamera
+        private Object[] lidars; //ILidar
         private UltraSonicSensor[] ultraSonics;
 
         public Builder chassis(Chassis chassis){
@@ -60,19 +60,19 @@ public class AutonomousVehicle {
 
         }
 
-        public void battery (IBattery battery){
+        public void battery (Object battery){ //IBattery
 
         }
 
-        public void headlights (ILED[] lights){
+        public void headlights (Object[] lights){ //ILED
 
         }
 
-        public void brakeLights (IBrakeLight[] brakeLights){
+        public void brakeLights (Object[] brakeLights){ //IBrakeLight
 
         }
 
-        public void indicators (IIndicator[] indicators){
+        public void indicators (Object[] indicators){ //IIndicator
 
         }
 
@@ -88,19 +88,19 @@ public class AutonomousVehicle {
 
         }
 
-        public void brakes (IBrake[] brakes){
+        public void brakes (Object[] brakes){ //IBrake
 
         }
 
-        public void gps (IGPS[] gps){
+        public void gps (Object[] gps){ //IGPS
 
         }
 
-        public void cameras (ICamera[] cameras){
+        public void cameras (Object[] cameras){ //ICamera
 
         }
 
-        public void lidars (ILidar[] lidars){
+        public void lidars (Object[] lidars){ //ILidar
 
         }
 
@@ -113,4 +113,3 @@ public class AutonomousVehicle {
         }
     }
 }
-
