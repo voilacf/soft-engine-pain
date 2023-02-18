@@ -1,14 +1,11 @@
 public class Battery {
     private static final Battery instance = new Battery();
+    public Port port = new Port();
 
     private Battery() {}
 
     public static Battery getInstance() {
         return instance;
-    }
-
-    public Port createBattery() {
-        return new Port();
     }
 
     public static class Port extends BatteryUnit {
