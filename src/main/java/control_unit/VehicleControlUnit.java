@@ -1,7 +1,6 @@
 package control_unit;
 
-import com.google.common.eventbus.Subscribe;
-import command.ICommand;
+import door_button.ICommand;
 import events.*;
 
 public class VehicleControlUnit {
