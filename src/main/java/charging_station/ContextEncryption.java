@@ -10,6 +10,10 @@ public class ContextEncryption {
     public String executeEncryptionStrategy(String data){
         return getStrategy().encrypt(data);
     }
+    //TODO methode in vpp hinzufügen
+    public String executeDecryptionStrategy(String encryptedData){
+        return getStrategy().decrypt(encryptedData);
+    }
 
     public IUserMemberCardEncryptionStrategy getStrategy() {
         return strategy;
