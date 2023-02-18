@@ -3,7 +3,6 @@ public class Brake{
     private static final Brake instance = new Brake();
     // port
     public Port port;
-    private String serialNumber;
 
     private double percentage;
 
@@ -23,7 +22,7 @@ public class Brake{
         }
 
         /*public void visit(IComponentVisitor visitor){
-
+            innerVisit(visitor);
         }
         * */
 
