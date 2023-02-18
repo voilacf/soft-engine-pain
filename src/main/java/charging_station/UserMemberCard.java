@@ -27,10 +27,8 @@ public class UserMemberCard {
         return loyaltyState;
     }
 
-    //TODO check setLoyaltyState(...)
     public void setLoyaltyState(LoyaltyState loyaltyState) {
         this.loyaltyState = loyaltyState;
-        setChargingSessionsWithPlatin(0);
     }
 
     public String getEncryptedLoyaltyPoints() {

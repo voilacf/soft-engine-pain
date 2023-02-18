@@ -5,7 +5,6 @@ public class Gold extends LoyaltyState {
         super(userMemberCard);
     }
 
-    //TODO check promote()
     @Override
     public void promote() {
         int loyaltyPoints = decryptLoyaltyPoints();

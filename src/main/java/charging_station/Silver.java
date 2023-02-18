@@ -4,8 +4,6 @@ public class Silver extends LoyaltyState {
     public Silver(UserMemberCard userMemberCard) {
         super(userMemberCard);
     }
-
-    //TODO check promote()
     @Override
     public void promote() {
         int loyaltyPoints = decryptLoyaltyPoints();

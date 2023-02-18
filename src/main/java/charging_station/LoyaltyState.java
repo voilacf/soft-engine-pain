@@ -1,6 +1,5 @@
 package charging_station;
 
-//TODO change ILoyaltyState in vpp from interface to abstract
 public abstract class LoyaltyState {
     protected static final int MINIMUM_FOR_SILVER = 500;
     protected static final int MINIMUM_FOR_GOLD = 2000;
@@ -20,7 +19,7 @@ public abstract class LoyaltyState {
         return Integer.parseInt(loyaltyPoints);
     }
 
-    //TODO decryptCredits in right class?
+    //TODO decryptCredits in right class ?
     protected double decryptCredits(){
         ContextEncryption contextEncryption = new ContextEncryption(userMemberCard.getEncryptionStrategy());
         String credits = userMemberCard.getEncryptedCredits();
