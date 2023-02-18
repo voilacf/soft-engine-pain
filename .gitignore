@@ -1,7 +1,10 @@
+bin
 build
-.gradle
 jar
+.gradle
 .idea
+.vim
+
 
 # Visual Paradigm stuff
 *.vpp.bak*
