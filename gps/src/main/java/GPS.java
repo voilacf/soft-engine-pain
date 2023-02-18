@@ -1,24 +1,46 @@
 import java.util.ArrayList;
 
-public class GPS implements IGPS{
+public class GPS{
+    private static final GPS instance = new GPS();
+    public Port port;
     private GPSState state;
     private ArrayList<String> frequency;
 
     public GPS(){
-        state = GPSState.OFF;
+        port = new Port();
     }
 
-    public void on(){
+    public void innerOn(){
         state = GPSState.ON;
     }
 
-    public void off(){
+    public void innerOff(){
         state = GPSState.OFF;
     }
 
-    public void connectSatellite(String frequency){
+    public void innerConnectSatellite(String frequency){
 
     }
 
-    //void visit(IComponentVisitor visitor);
+    //public void innerVisit(IComponentVisitor visitor){}
+
+    public class Port implements IGPS{
+
+        public void on(){
+            innerOn();
+        }
+
+        public void off(){
+            innerOff();
+        }
+
+        public void connectSatellite(String frequency){
+            innerConnectSatellite(frequency);
+        }
+
+        /*public void visit(IComponentVisitor visitor){
+            innerVisit(visitor);
+        }
+        * */
+    }
 }
