@@ -1,39 +1,30 @@
-import javax.sound.sampled.Port;
-
 public class Battery {
-
     private static final Battery instance = new Battery();
 
-    private static int energyCount;
-
-    public Port port;
-
-    private Battery() {
-        port = new Port();
-    }
+    private Battery() {}
 
     public static Battery getInstance() {
         return instance;
     }
 
-    public void printBatterySummary() {
-        System.out.println("Battery Summary:");
-        System.out.println("Energy Count: " + energyCount);
+    public Port createBattery() {
+        return new Port();
     }
 
-    public static class Port implements IBattery {
+    public static class Port extends BatteryUnit {
+        public Port() {
+            super(null);
 
-
-        @Override
-        public int getEnergyCount() {
-            return 0;
+            for (int i = 0; i < 500; i++) {
+                addSubUnit(new BatteryMainCell(this));
+            }
         }
 
         @Override
-        public boolean useEnergy(int count) {
-            return false;
+        public void printBatterySummary() {
+            System.out.println("Battery port with 500 main cells and " + getEnergyCount() + " energy stored");
+            super.printSubBatterySummary();
+            System.out.println();
         }
     }
-
-
 }
