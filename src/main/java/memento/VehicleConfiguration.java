@@ -32,6 +32,8 @@ public class VehicleConfiguration {
         this.allowDriveByNight = memento.allowDriveByNight;
         this.behaviorWithNaggingPassengers = memento.behaviorWithNaggingPassengers;
         this.musicDuringDrive = memento.musicDuringDrive;
+
+        System.out.println("Configuration restored");
     }
 
     public void print() {
