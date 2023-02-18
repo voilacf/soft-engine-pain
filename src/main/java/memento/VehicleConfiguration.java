@@ -36,7 +36,7 @@ public class VehicleConfiguration {
         System.out.println("Configuration restored");
     }
 
-    public void print() {
+    private void print() {
         System.out.println("Current configuration:");
         System.out.println("    rejectDrunkenPassengers: " + rejectDrunkenPassengers);
         System.out.println("    stopByPoliceRequest: " + stopByPoliceRequest);
@@ -45,7 +45,7 @@ public class VehicleConfiguration {
         System.out.println("    musicDuringDrive: " + musicDuringDrive);
     }
 
-    public void setParameter(String key, int value) {
+    private void setParameter(String key, int value) {
         if (value != 0 && value != 1) {
             System.out.println("Invalid value");
             enterConfigurationMode();
@@ -64,7 +64,7 @@ public class VehicleConfiguration {
         }
     }
 
-    public void setParameterPrompt() {
+    private void setParameterPrompt() {
         this.print();
         System.out.println("Possible keys: 0=rejectDrunkenPassengers, 1=stopByPoliceRequest, 2=allowDriveByNight, 3=behaviorWithNaggingPassengers, 4=musicDuringDrive");
         int key = 0;
@@ -121,7 +121,7 @@ public class VehicleConfiguration {
     //Todo In Hauptconfig bei exit schreiben
     public void enterConfigurationMode() {
         VehicleConfigurationMemento memento = this.save();
-        System.out.println("Possible commands: print, set parameter, restore, exit");
+        System.out.println("Possible commands: print, set parameter, undo, exit");
 
         while (true) {
             System.out.print("-> ");
@@ -137,13 +137,8 @@ public class VehicleConfiguration {
 
             switch (input.trim()) {
                 case "print" -> this.print();
-
-                case "set parameter" -> {
-                    setParameterPrompt();
-                }
-
+                case "set parameter" -> setParameterPrompt();
                 case "undo" -> this.restore(memento);
-
                 case "exit" -> {
                     memento = this.save();
                     System.exit(0);
