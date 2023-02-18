@@ -3,8 +3,8 @@ package bridge;
 //import battery/src/main/java/IBattery.java;
 
 public class EnginePowerProvider {
-    private IElectricEngine engine;
-    //private IBattery battery;
+    private Object engine;
+    private Object battery;
 
     void simulateEnergyUsageSecond() {
 

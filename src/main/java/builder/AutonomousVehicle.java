@@ -1,11 +1,9 @@
 package builder;
 
-import bridge.IElectricEngine;
-
 //TODO import classes
 public class AutonomousVehicle {
     private final Chassis chassis;
-    private final IElectricEngine engine;
+    private final Object engine;
     private final Object[] battery; //IBattery
     private final Object[] headlights; //ILED
     private final Object[] breakLights; //IBrakeLight
@@ -44,7 +42,7 @@ public class AutonomousVehicle {
 
     public class Builder {
         private Chassis chassis;
-        private IElectricEngine engine;
+        private Object engine;
         private Object[] battery; //IBattery
         private Object[] headlights; //ILED
         private Object[] breakLights; //IBrakeLight
@@ -63,7 +61,7 @@ public class AutonomousVehicle {
             return this;
         }
 
-        public void engine(IElectricEngine engine) {
+        public void engine(Object engine) {
 
         }
 

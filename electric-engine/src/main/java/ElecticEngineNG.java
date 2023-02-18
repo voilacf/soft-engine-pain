@@ -4,44 +4,59 @@ public class ElecticEngineNG {
     private ElectricEngineState state;
     private int rpm;
 
-    public ElecticEngineNG() {
+    private ElecticEngineNG() {
         port = new Port();
     }
 
+    public static ElecticEngineNG getInstance() {
+        return instance;
+    }
 
-    public void innerOn() {
+    private void innerOn() {
         state = ElectricEngineState.ON;
     }
 
-    public void innerOff() {
+    private void innerOff() {
         state = ElectricEngineState.OFF;
     }
 
-    public void innerIncreaseRPM(int deltaRPM, int seconds) {
+    private void innerIncreaseRPM(int deltaRPM, int seconds) {
         rpm = (int) (2 * Math.PI * deltaRPM) / (seconds / 60);
         //TODO: change rpm to double? + check if calculation is correct
     }
 
-    public void innerDecreaseRPM(int deltaRPM, int seconds) {
+    private void innerDecreaseRPM(int deltaRPM, int seconds) {
         rpm = (int) (2 * Math.PI * deltaRPM) / (seconds / 60);
     }
 
-    public class Port implements IElectricEngine {
+    private int innerComputePowerDrawPerSecond() {
+        return 3 * rpm;
+    }
 
+    public class Port implements IElectricEngine {
+        @Override
         public void on() {
             innerOn();
         }
 
+        @Override
         public void off() {
             innerOff();
         }
 
+        @Override
         public void increaseRPM(int deltaRPM, int seconds) {
             innerIncreaseRPM(deltaRPM, seconds);
         }
 
+        @Override
         public void decreaseRPM(int deltaRPM, int seconds) {
             innerDecreaseRPM(deltaRPM, seconds);
+        }
+
+        @Override
+        public int computePowerDrawPerSecond() {
+            return innerComputePowerDrawPerSecond();
         }
     }
 }
