@@ -1,4 +1,4 @@
-package s04.memento;
+package memento;
 
 public enum DriveMusic {
     AC_DC, HELENE_FISCHER

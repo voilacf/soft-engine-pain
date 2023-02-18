@@ -2,15 +2,22 @@ package components;
 
 import observer.IButtonPressedListener;
 
-public class Door implements IButtonPressedListener {
-    // TODO: attributes
+import java.awt.*;
 
+public class Door implements IButtonPressedListener {
+    private Button emergencyButton;
+    private Button toggleButton;
+
+    private IDoorState state;
+
+    //Todo
     public void toggleDoorState() {
-        // TODO: implement
+
     }
 
-    @Override
+    //Todo
     public void buttonPressed() {
         toggleDoorState();
+
     }
 }

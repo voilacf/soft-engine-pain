@@ -1,4 +1,4 @@
-package s04.memento;
+package memento;
 
 public class MementoCareTaker {
     private VehicleConfigurationMemento memento;

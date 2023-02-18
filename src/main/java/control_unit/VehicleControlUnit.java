@@ -1,10 +1,14 @@
 package control_unit;
 
+import builder.UltraSonicSensor;
 import com.google.common.eventbus.EventBus;
 import door_button.ICommand;
 import events.*;
+import observer.IBatteryCellTemperatureListener;
+import observer.IUltraSonicSensorListener;
+import observer.BatteryCell;
 
-public class VehicleControlUnit {
+public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUltraSonicSensorListener {
     private EventBus eventBus;
 
     public VehicleControlUnit() {
@@ -79,11 +83,17 @@ public class VehicleControlUnit {
         cmd.execute();
     }
 
-    /*public void batteryTemperatureChanged(BatteryCell battery, double temperature){
 
+//Todo
+    @Override
+    public void batterytemperatureChanged(double temperature, BatteryCell battery) {
     }
 
-    public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance){
+//Todo
+    @Override
+    public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
+    }
 
-    }*/
+
+
 }

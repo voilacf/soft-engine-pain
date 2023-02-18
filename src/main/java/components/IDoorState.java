@@ -1,4 +1,6 @@
-package s04.state;
+package components;
+
+import components.Door;
 
 public interface IDoorState {
     void toogle(Door door);
