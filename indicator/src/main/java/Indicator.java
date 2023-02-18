@@ -9,32 +9,36 @@ public class Indicator{
     }
 
     public void innerOn(IndicatorSide side){
-        //TODO: this doesn't make as much sense yet, does it?
+        //TODO: good like this?
         switch (side){
             case LEFT :
-                state = IndicatorState.ON;
+                state = IndicatorState.LEFT_ON;
                 break;
             case RIGHT:
-                state = IndicatorState.ON;
+                state = IndicatorState.RIGHT_ON;
                 break;
             case HAZARD:
                 state = IndicatorState.ON;
                 break;
+            default:
+                throw new RuntimeException("Error");
         }
     }
 
     public void innerOff(IndicatorSide side){
-        //TODO: this doesn't make as much sense yet, does it?
+        //TODO: good like this?
         switch (side){
             case LEFT :
-                state = IndicatorState.OFF;
+                state = IndicatorState.LEFT_OFF;
                 break;
             case RIGHT:
-                state = IndicatorState.OFF;
+                state = IndicatorState.RIGHT_OFF;
                 break;
             case HAZARD:
                 state = IndicatorState.OFF;
                 break;
+            default:
+                throw new RuntimeException("Error");
         }
     }
 
