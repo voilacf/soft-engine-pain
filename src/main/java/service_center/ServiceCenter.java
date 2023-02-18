@@ -1,7 +1,7 @@
 package service_center;
 
 public class ServiceCenter {
-    public void handleEmergency() {
+    private CompanyServiceTeam[] teams;
 
-    }
+    public void handleEmergency() {};
 }
