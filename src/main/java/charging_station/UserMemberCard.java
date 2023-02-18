@@ -29,16 +29,18 @@ public class UserMemberCard {
         return encryptedLoyaltyPoints;
     }
 
-    public void setEncryptedLoyaltyPoints(String encryptedLoyaltyPoints) {
-        this.encryptedLoyaltyPoints = encryptedLoyaltyPoints;
+    public void setEncryptedLoyaltyPoints(int loyaltyPoints) {
+        ContextEncryption contextEncryption = new ContextEncryption(getEncryptionStrategy());
+        this.encryptedLoyaltyPoints = contextEncryption.getStrategy().encrypt(String.valueOf(loyaltyPoints));
     }
 
     public String getEncryptedCredits() {
         return encryptedCredits;
     }
 
-    public void setEncryptedCredits(String encryptedCredits) {
-        this.encryptedCredits = encryptedCredits;
+    public void setEncryptedCredits(int credits) {
+        ContextEncryption contextEncryption = new ContextEncryption(getEncryptionStrategy());
+        this.encryptedCredits = contextEncryption.getStrategy().encrypt(String.valueOf(credits));
     }
 
     public int getChargingSessionSinceLastFreebie() {
