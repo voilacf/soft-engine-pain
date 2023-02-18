@@ -9,11 +9,33 @@ public class Indicator{
     }
 
     public void innerOn(IndicatorSide side){
-
+        //TODO: this doesn't make as much sense yet, does it?
+        switch (side){
+            case LEFT :
+                state = IndicatorState.ON;
+                break;
+            case RIGHT:
+                state = IndicatorState.ON;
+                break;
+            case HAZARD:
+                state = IndicatorState.ON;
+                break;
+        }
     }
 
     public void innerOff(IndicatorSide side){
-
+        //TODO: this doesn't make as much sense yet, does it?
+        switch (side){
+            case LEFT :
+                state = IndicatorState.OFF;
+                break;
+            case RIGHT:
+                state = IndicatorState.OFF;
+                break;
+            case HAZARD:
+                state = IndicatorState.OFF;
+                break;
+        }
     }
 
     //public void innerVisit(IComponentVisitor visitor){}
