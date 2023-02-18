@@ -10,17 +10,7 @@ public class Battery {
         return instance;
     }
 
-    public int innerGetEnergyCount(){
-        //TODO: making this a bit more useful
-        return 0;
-    }
-
-    public int innerUseEnergyCount(int count){
-        //TODO: making this a bit more useful
-        return count;
-    }
-
-    public static class Port extends BatteryUnit implements IBattery{
+    public static class Port extends BatteryUnit {
         public Port() {
             super(null);
 
@@ -29,13 +19,7 @@ public class Battery {
             }
         }
 
-        public int getEnergyCount(){
-            return getInstance().innerGetEnergyCount();
-        }
-
-        public int useEnergyCount(int count){
-            return getInstance().innerUseEnergyCount(count);
-        }
+        // getEnergyCount and useEnergyCount are implemented in BatteryUnit which also implements IBattery
 
         @Override
         public void printBatterySummary() {
