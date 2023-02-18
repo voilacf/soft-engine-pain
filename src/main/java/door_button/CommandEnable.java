@@ -1,14 +1,16 @@
 package door_button;
 
-public class CommandEnable implements ICommand {
-    private final VehicleKeyReceiverModule receiver;
+import components.VehicleKey;
 
-    public CommandEnable(VehicleKeyReceiverModule receiver) {
-        this.receiver = receiver;
+public class CommandEnable implements ICommand {
+    private final VehicleKey key;
+
+    public CommandEnable(VehicleKey key) {
+        this.key = key;
     }
 
     @Override
     public void execute() {
-        receiver.enableVehicle();
+        key.enableVehicle();
     }
 }

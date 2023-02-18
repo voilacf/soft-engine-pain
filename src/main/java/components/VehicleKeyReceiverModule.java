@@ -1,4 +1,4 @@
-package door_button;
+package components;
 
 import control_unit.VehicleControlUnit;
 
@@ -9,11 +9,13 @@ public class VehicleKeyReceiverModule {
         this.controlUnit = controlUnit;
     }
 
-    public void enableVehicle() {
+    public void enableVehicle(String encryptedPassword) {
+        // TODO: check password
         controlUnit.startup();
     }
 
-    public void disableVehicle() {
+    public void disableVehicle(String encryptedPassword) {
+        // TODO: check password
         controlUnit.shutdown();
     }
 }
