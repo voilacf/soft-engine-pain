@@ -1,18 +1,21 @@
+package factories;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class BatteryFactory {
+public class CameraFactory {
+    //TODO: add second camera factory -> V1 and V2
     public static Object build() {
         Object port = null;
 
         try {
-            URL[] urls = {new File(Configuration.INSTANCE.pathToBatteryJavaArchive + "battery.jar").toURI().toURL()};
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, BatteryFactory.class.getClassLoader());
-            Class<?> batteryClass = Class.forName("Battery", true, urlClassLoader);
-            Object batteryInstance = batteryClass.getMethod("getInstance").invoke(null);
-            port = batteryClass.getDeclaredField("port").get(batteryInstance);
+            URL[] urls = {new File(Configuration.INSTANCE.pathToCameraJavaArchive + "camera.jar").toURI().toURL()};
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, CameraFactory.class.getClassLoader());
+            Class<?> cameraClass = Class.forName("CameraV1", true, urlClassLoader);
+            Object cameraInstance = cameraClass.getMethod("getInstance").invoke(null);
+            port = cameraClass.getDeclaredField("port").get(cameraInstance);
         } catch (Exception e) {
             e.printStackTrace();
         }

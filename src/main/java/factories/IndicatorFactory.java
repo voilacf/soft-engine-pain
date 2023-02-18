@@ -1,19 +1,20 @@
+package factories;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class CameraFactory {
-    //TODO: add second camera factory -> V1 and V2
+public class IndicatorFactory {
     public static Object build() {
         Object port = null;
 
         try {
-            URL[] urls = {new File(Configuration.INSTANCE.pathToCameraJavaArchive + "camera.jar").toURI().toURL()};
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, CameraFactory.class.getClassLoader());
-            Class<?> cameraClass = Class.forName("CameraV1", true, urlClassLoader);
-            Object cameraInstance = cameraClass.getMethod("getInstance").invoke(null);
-            port = cameraClass.getDeclaredField("port").get(cameraInstance);
+            URL[] urls = {new File(Configuration.INSTANCE.pathToIndicatorJavaArchive + "indicator.jar").toURI().toURL()};
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, IndicatorFactory.class.getClassLoader());
+            Class<?> indicatorClass = Class.forName("Indicator", true, urlClassLoader);
+            Object indicatorInstance = indicatorClass.getMethod("getInstance").invoke(null);
+            port = indicatorClass.getDeclaredField("port").get(indicatorInstance);
         } catch (Exception e) {
             e.printStackTrace();
         }

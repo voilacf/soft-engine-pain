@@ -1,18 +1,20 @@
+package factories;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class IndicatorFactory {
+public class BatteryFactory {
     public static Object build() {
         Object port = null;
 
         try {
-            URL[] urls = {new File(Configuration.INSTANCE.pathToIndicatorJavaArchive + "indicator.jar").toURI().toURL()};
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, IndicatorFactory.class.getClassLoader());
-            Class<?> indicatorClass = Class.forName("Indicator", true, urlClassLoader);
-            Object indicatorInstance = indicatorClass.getMethod("getInstance").invoke(null);
-            port = indicatorClass.getDeclaredField("port").get(indicatorInstance);
+            URL[] urls = {new File(Configuration.INSTANCE.pathToBatteryJavaArchive + "battery.jar").toURI().toURL()};
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, BatteryFactory.class.getClassLoader());
+            Class<?> batteryClass = Class.forName("Battery", true, urlClassLoader);
+            Object batteryInstance = batteryClass.getMethod("getInstance").invoke(null);
+            port = batteryClass.getDeclaredField("port").get(batteryInstance);
         } catch (Exception e) {
             e.printStackTrace();
         }

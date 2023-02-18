@@ -1,19 +1,20 @@
+package factories;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class ElectricEngineFactory {
-    //TODO: add second factory for ElectricEngineX?
+public class GPSFactory {
     public static Object build() {
         Object port = null;
 
         try {
-            URL[] urls = {new File(Configuration.INSTANCE.pathToElectricEngineJavaArchive + "electric-engine.jar").toURI().toURL()};
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, ElectricEngineFactory.class.getClassLoader());
-            Class<?> electricEngineClass = Class.forName("ElectricEngineNG", true, urlClassLoader);
-            Object electricEngineInstance = electricEngineClass.getMethod("getInstance").invoke(null);
-            port = electricEngineClass.getDeclaredField("port").get(electricEngineInstance);
+            URL[] urls = {new File(Configuration.INSTANCE.pathToGPSJavaArchive + "gps.jar").toURI().toURL()};
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, GPSFactory.class.getClassLoader());
+            Class<?> gpsClass = Class.forName("GPS", true, urlClassLoader);
+            Object gpsInstance = gpsClass.getMethod("getInstance").invoke(null);
+            port = gpsClass.getDeclaredField("port").get(gpsInstance);
         } catch (Exception e) {
             e.printStackTrace();
         }
