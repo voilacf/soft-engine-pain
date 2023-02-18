@@ -1,9 +1,12 @@
 package charging_station;
 
-public class Gold implements ILoyaltyState{
-    //TODO check promote(UserMemberCard userMemberCard)
-    @Override
-    public void promote(UserMemberCard userMemberCard) {
+public class Gold extends LoyaltyState {
+    public Gold(UserMemberCard userMemberCard) {
+        super(userMemberCard);
+    }
+
+    //TODO check promote()
+    public void promote() {
         int minPointsForChange = 10000;
 
         ContextEncryption contextEncryption = new ContextEncryption(userMemberCard.getEncryptionStrategy());
@@ -12,7 +15,7 @@ public class Gold implements ILoyaltyState{
         int points = Integer.parseInt(loyaltyPoints);
 
         if(points >= minPointsForChange){
-            userMemberCard.setLoyaltyState(new Platin());
+            userMemberCard.setLoyaltyState(new Platin(userMemberCard));
             System.out.println("LoyaltyState changed: \tGOLD -> PLATIN");
         }
 

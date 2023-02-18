@@ -2,7 +2,7 @@ package charging_station;
 
 public class UserMemberCard {
     private IUserMemberCardEncryptionStrategy encryptionStrategy;
-    private ILoyaltyState loyaltyState;
+    private LoyaltyState loyaltyState;
     private String encryptedLoyaltyPoints;
     private String encryptedCredits;
     //TODO maybe add integer for charging sessions since loyaltyState change ?
@@ -10,9 +10,9 @@ public class UserMemberCard {
 
     public UserMemberCard(IUserMemberCardEncryptionStrategy encryptionStrategy){
         setEncryptionStrategy(encryptionStrategy);
-        setLoyaltyState(new Blue());
+        setLoyaltyState(new Blue(this));
         setEncryptedLoyaltyPoints(0);
-        setEncryptedCredits(0);
+        setEncryptedCredits(5000);
         setChargingSessionSinceLastFreebie(0);
     }
 
@@ -24,12 +24,12 @@ public class UserMemberCard {
         this.encryptionStrategy = encryptionStrategy;
     }
 
-    public ILoyaltyState getLoyaltyState() {
+    public LoyaltyState getLoyaltyState() {
         return loyaltyState;
     }
 
     //TODO check setLoyaltyState(...)
-    public void setLoyaltyState(ILoyaltyState loyaltyState) {
+    public void setLoyaltyState(LoyaltyState loyaltyState) {
         this.loyaltyState = loyaltyState;
         setChargingSessionSinceLastFreebie(0);
     }

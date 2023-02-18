@@ -12,6 +12,6 @@ public class ChargingStation {
     }
     //TODO implement finishChargingSession(int amount, UserMemberCard userMemberCard)
     public void finishChargingSession(int amount, UserMemberCard userMemberCard){
-
+        userMemberCard.getLoyaltyState().promote();
     }
 }

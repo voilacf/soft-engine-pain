@@ -1,9 +1,12 @@
 package charging_station;
 
-public class Platin implements ILoyaltyState{
+public class Platin extends LoyaltyState {
+    public Platin(UserMemberCard userMemberCard) {
+        super(userMemberCard);
+    }
+
     //TODO check promote(UserMemberCard userMemberCard)
-    @Override
-    public void promote(UserMemberCard userMemberCard) {
+    public void promote() {
         //TODO check if promote could stay empty
     }
 }
