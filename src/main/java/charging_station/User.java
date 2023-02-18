@@ -4,7 +4,7 @@ public class User {
     private String name;
     private UserMemberCard userMemberCard;
 
-    public User(String name, IUserMemberCardEncryptionStrategy encryptionStrategy){
+    public User(String name, IUserMemberCardEncryptionStrategy encryptionStrategy) {
         setName(name);
         setUserMemberCard(new UserMemberCard(encryptionStrategy));
     }

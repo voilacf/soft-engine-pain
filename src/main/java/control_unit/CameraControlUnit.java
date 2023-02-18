@@ -7,17 +7,17 @@ import factories.CameraFactory;
 
 import java.lang.reflect.Method;
 
-public class CameraControlUnit extends Subscriber{
+public class CameraControlUnit extends Subscriber {
     private final Object cameraPort;
 
     //TODO: add parameters to constructor to decide which Camera version is to be build
-    public CameraControlUnit(){
+    public CameraControlUnit() {
         super(1);
         cameraPort = CameraFactory.build();
     }
 
     private void invokeMethod(Object brakelight, String brakelightMethod) {
-        try{
+        try {
             Method m = brakelight.getClass().getMethod(brakelightMethod);
             m.invoke(brakelight);
         } catch (Exception e) {
@@ -26,12 +26,12 @@ public class CameraControlUnit extends Subscriber{
     }
 
     @Subscribe
-    public void receive(EventCameraOn event){
+    public void receive(EventCameraOn event) {
 
     }
 
     @Subscribe
-    public void receive(EventCameraOff event){
+    public void receive(EventCameraOff event) {
 
     }
 

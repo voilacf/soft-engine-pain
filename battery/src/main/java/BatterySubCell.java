@@ -2,7 +2,7 @@ public class BatterySubCell extends BatteryUnit {
     public BatterySubCell(BatteryUnit parentUnit) {
         super(parentUnit);
 
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             addSubUnit(new BatteryCell(this));
         }
     }

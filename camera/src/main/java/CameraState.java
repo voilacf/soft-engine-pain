@@ -1,3 +1,3 @@
 public enum CameraState {
-    ON,OFF
+    ON, OFF
 }

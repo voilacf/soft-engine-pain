@@ -1,17 +1,17 @@
-public class Indicator{
+public class Indicator {
     private static final Indicator instance = new Indicator();
     public Port port;
     private IndicatorState state;
     private IndicatorSide side;
 
-    public Indicator(){
+    public Indicator() {
         port = new Port();
     }
 
-    public void innerOn(IndicatorSide side){
+    public void innerOn(IndicatorSide side) {
         //TODO: good like this?
-        switch (side){
-            case LEFT :
+        switch (side) {
+            case LEFT:
                 state = IndicatorState.LEFT_ON;
                 break;
             case RIGHT:
@@ -25,10 +25,10 @@ public class Indicator{
         }
     }
 
-    public void innerOff(IndicatorSide side){
+    public void innerOff(IndicatorSide side) {
         //TODO: good like this?
-        switch (side){
-            case LEFT :
+        switch (side) {
+            case LEFT:
                 state = IndicatorState.LEFT_OFF;
                 break;
             case RIGHT:
@@ -44,13 +44,13 @@ public class Indicator{
 
     //public void innerVisit(IComponentVisitor visitor){}
 
-    public class Port implements IIndicator{
+    public class Port implements IIndicator {
 
-        public void on(IndicatorSide side){
+        public void on(IndicatorSide side) {
             innerOn(side);
         }
 
-        public void off(IndicatorSide side){
+        public void off(IndicatorSide side) {
             innerOff(side);
         }
 

@@ -1,3 +1,3 @@
 public enum GPSState {
-    ON,OFF
+    ON, OFF
 }

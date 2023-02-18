@@ -6,16 +6,16 @@ import factories.BrakeFactory;
 
 import java.lang.reflect.Method;
 
-public class BrakeControlUnit extends Subscriber{
+public class BrakeControlUnit extends Subscriber {
     private final Object brakePort;
 
-    public BrakeControlUnit(){
+    public BrakeControlUnit() {
         super(1);
         brakePort = BrakeFactory.build();
     }
 
     private void invokeMethod(Object brake, String brakeMethod) {
-        try{
+        try {
             Method m = brake.getClass().getMethod(brakeMethod);
             m.invoke(brake);
         } catch (Exception e) {
@@ -24,7 +24,7 @@ public class BrakeControlUnit extends Subscriber{
     }
 
     @Subscribe
-    public void receive(EventBrakeSet event){
+    public void receive(EventBrakeSet event) {
         try {
             Method onMethod = brakePort.getClass().getDeclaredMethod("open");
             //DoorState result = (DoorState) onMethod.invoke(brakePort);

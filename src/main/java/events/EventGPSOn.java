@@ -1,7 +1,7 @@
 package events;
 
 public class EventGPSOn {
-    public String toString(){
+    public String toString() {
         return "event -> GPS on";
     }
 }

@@ -6,7 +6,7 @@ public class EnginePowerProvider {
     private IElectricEngine engine;
     //private IBattery battery;
 
-    void simulateEnergyUsageSecond(){
+    void simulateEnergyUsageSecond() {
 
     }
 }

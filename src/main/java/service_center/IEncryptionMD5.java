@@ -1,6 +1,6 @@
 package service_center;
 
-public class IEncryptionMD5 implements IEncryptionStrategy{
+public class IEncryptionMD5 implements IEncryptionStrategy {
 
     @Override
     public char[][] encrypt(char[][] data) {

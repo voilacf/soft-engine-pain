@@ -9,7 +9,7 @@ public class EventEngineDecreaseRPM {
         this.seconds = seconds;
     }
 
-    public String toString(){
+    public String toString() {
         return "event -> increasing engine RPM";
     }
 }

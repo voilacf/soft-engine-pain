@@ -3,27 +3,27 @@ public class LidarXT {
     public Port port;
     private LidarState state;
 
-    public LidarXT(){
+    public LidarXT() {
         port = new Port();
     }
 
-    public void innerOn(){
+    public void innerOn() {
         state = LidarState.ON;
     }
 
-    public void innerOff(){
+    public void innerOff() {
         state = LidarState.OFF;
     }
 
     //public void innerVisit(IComponentVisitor visitor){}
 
-    public class Port implements ILidar{
+    public class Port implements ILidar {
 
-        public void on(){
+        public void on() {
             innerOn();
         }
 
-        public void off(){
+        public void off() {
             innerOff();
         }
 

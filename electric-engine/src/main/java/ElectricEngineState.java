@@ -1,3 +1,3 @@
 public enum ElectricEngineState {
-    ON,OFF
+    ON, OFF
 }

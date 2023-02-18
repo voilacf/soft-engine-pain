@@ -1,3 +1,3 @@
 public enum BrakeLightState {
-    ON,OFF
+    ON, OFF
 }

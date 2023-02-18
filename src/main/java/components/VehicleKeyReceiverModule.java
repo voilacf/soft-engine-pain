@@ -1,6 +1,5 @@
 package components;
 
-import builder.AutonomousVehicle;
 import builder.VehicleType;
 import control_unit.VehicleControlUnit;
 

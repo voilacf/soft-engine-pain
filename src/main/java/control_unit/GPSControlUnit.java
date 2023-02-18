@@ -8,16 +8,16 @@ import factories.GPSFactory;
 
 import java.lang.reflect.Method;
 
-public class GPSControlUnit extends Subscriber{
+public class GPSControlUnit extends Subscriber {
     private final Object gpsPort;
 
-    public GPSControlUnit(){
+    public GPSControlUnit() {
         super(1);
         gpsPort = GPSFactory.build();
     }
 
     private void invokeMethod(Object gps, String gpsMethod) {
-        try{
+        try {
             Method m = gps.getClass().getMethod(gpsMethod);
             m.invoke(gps);
         } catch (Exception e) {
@@ -26,17 +26,17 @@ public class GPSControlUnit extends Subscriber{
     }
 
     @Subscribe
-    public void receive(EventGPSOn event){
+    public void receive(EventGPSOn event) {
 
     }
 
     @Subscribe
-    public void receive(EventGPSOff event){
+    public void receive(EventGPSOff event) {
 
     }
 
     @Subscribe
-    public void receive(EventGPSConnectSatellite event){
+    public void receive(EventGPSConnectSatellite event) {
 
     }
 }

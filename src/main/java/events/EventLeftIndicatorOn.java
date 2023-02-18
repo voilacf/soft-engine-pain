@@ -1,7 +1,7 @@
 package events;
 
 public class EventLeftIndicatorOn {
-    public String toString(){
+    public String toString() {
         return "event -> left indicator on";
     }
 }

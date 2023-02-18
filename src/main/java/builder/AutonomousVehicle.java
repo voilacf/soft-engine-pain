@@ -59,67 +59,67 @@ public class AutonomousVehicle {
         private UltraSonicSensor[] ultraSonics;
         private VehicleType type;
 
-        public Builder chassis(Chassis chassis){
+        public Builder chassis(Chassis chassis) {
             return this;
         }
 
-        public void engine (IElectricEngine engine){
+        public void engine(IElectricEngine engine) {
 
         }
 
-        public void battery (Object battery){ //IBattery
+        public void battery(Object battery) { //IBattery
 
         }
 
-        public void headlights (Object[] lights){ //ILED
+        public void headlights(Object[] lights) { //ILED
 
         }
 
-        public void brakeLights (Object[] brakeLights){ //IBrakeLight
+        public void brakeLights(Object[] brakeLights) { //IBrakeLight
 
         }
 
-        public void indicators (Object[] indicators){ //IIndicator
+        public void indicators(Object[] indicators) { //IIndicator
 
         }
 
-        public void doors (Door[] doors){
+        public void doors(Door[] doors) {
 
         }
 
-        public void seats (ISittable[] seats){
+        public void seats(ISittable[] seats) {
 
         }
 
-        public void wheels (Wheel wheels){
+        public void wheels(Wheel wheels) {
 
         }
 
-        public void brakes (Object[] brakes){ //IBrake
+        public void brakes(Object[] brakes) { //IBrake
 
         }
 
-        public void gps (Object[] gps){ //IGPS
+        public void gps(Object[] gps) { //IGPS
 
         }
 
-        public void cameras (Object[] cameras){ //ICamera
+        public void cameras(Object[] cameras) { //ICamera
 
         }
 
-        public void lidars (Object[] lidars){ //ILidar
+        public void lidars(Object[] lidars) { //ILidar
 
         }
 
-        public void ultraSonics (UltraSonicSensor[] us){
+        public void ultraSonics(UltraSonicSensor[] us) {
 
         }
 
-        public void type (VehicleType type){
+        public void type(VehicleType type) {
             this.type = type;
         }
 
-        public AutonomousVehicle build(){
+        public AutonomousVehicle build() {
             return new AutonomousVehicle(this);
         }
     }

@@ -8,11 +8,12 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-public class UserMemberCardAESEncryption implements IUserMemberCardEncryptionStrategy{
+public class UserMemberCardAESEncryption implements IUserMemberCardEncryptionStrategy {
 
     private final String secretKey = "dhbw2022!";
     private final String salt = "sweet";
     private final byte[] iv = {0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1};
+
     //TODO check encrypt(String data)
     @Override
     public String encrypt(String data) {

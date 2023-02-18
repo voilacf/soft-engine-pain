@@ -1,29 +1,29 @@
-public class LidarNG{
+public class LidarNG {
     private static final LidarNG instance = new LidarNG();
     public Port port;
     private LidarState state;
 
-    public LidarNG(){
+    public LidarNG() {
         port = new Port();
     }
 
-    public void innerOn(){
+    public void innerOn() {
         state = LidarState.ON;
     }
 
-    public void innerOff(){
+    public void innerOff() {
         state = LidarState.OFF;
     }
 
     //public void innerVisit(IComponentVisitor visitor){}
 
-    public class Port implements ILidar{
+    public class Port implements ILidar {
 
-        public void on(){
+        public void on() {
             innerOn();
         }
 
-        public void off(){
+        public void off() {
             innerOff();
         }
 

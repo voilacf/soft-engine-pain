@@ -7,16 +7,16 @@ import factories.BrakeLightFactory;
 
 import java.lang.reflect.Method;
 
-public class BrakeLightControlUnit extends Subscriber{
+public class BrakeLightControlUnit extends Subscriber {
     private final Object brakeLightPort;
 
-    public BrakeLightControlUnit(){
+    public BrakeLightControlUnit() {
         super(1);
         brakeLightPort = BrakeLightFactory.build();
     }
 
     private void invokeMethod(Object brakelight, String brakelightMethod) {
-        try{
+        try {
             Method m = brakelight.getClass().getMethod(brakelightMethod);
             m.invoke(brakelight);
         } catch (Exception e) {
@@ -25,12 +25,12 @@ public class BrakeLightControlUnit extends Subscriber{
     }
 
     @Subscribe
-    public void receive(EventBrakeLightOn event){
+    public void receive(EventBrakeLightOn event) {
 
     }
 
     @Subscribe
-    public void receive(EventBrakeLightOff event){
+    public void receive(EventBrakeLightOff event) {
 
     }
 }

@@ -1,15 +1,14 @@
 package service_center;
 
-public class ServiceEmployee extends ServiceUnit{
+public class ServiceEmployee extends ServiceUnit {
 
+    private final EmployeeMagnetCard employeeMagnetCard;
     private EmployeeResponsibility responsibility;
     private EmployeeState state;
 
-    private final EmployeeMagnetCard employeeMagnetCard;
+    public ServiceEmployee() {
 
-    public ServiceEmployee(){
-
-        employeeMagnetCard  = new EmployeeMagnetCard();
+        employeeMagnetCard = new EmployeeMagnetCard();
 
     }
 

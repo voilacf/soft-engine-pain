@@ -3,11 +3,11 @@ public class ComponentConfiguration {
     private CameraComponentType camera;
     private LidarComponentType lidar;
 
-    public ComponentConfiguration(){
+    public ComponentConfiguration() {
 
     }
 
-    public ComponentConfiguration loadFromjsonConfig(){
+    public ComponentConfiguration loadFromjsonConfig() {
         return this;
     }
 }

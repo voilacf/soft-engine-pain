@@ -1,7 +1,7 @@
 package events;
 
 public class EventLedHighBeam {
-    public String toString(){
+    public String toString() {
         return "event -> LED high beam";
     }
 }

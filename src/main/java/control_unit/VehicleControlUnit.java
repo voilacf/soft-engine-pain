@@ -5,9 +5,9 @@ import builder.UltraSonicSensor;
 import com.google.common.eventbus.EventBus;
 import door_button.ICommand;
 import events.*;
+import observer.BatteryCell;
 import observer.IBatteryCellTemperatureListener;
 import observer.IUltraSonicSensorListener;
-import observer.BatteryCell;
 
 public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUltraSonicSensorListener {
     private final EventBus eventBus;
@@ -87,12 +87,12 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
     }
 
 
-//Todo
+    //Todo
     @Override
     public void batterytemperatureChanged(double temperature, BatteryCell battery) {
     }
 
-//Todo
+    //Todo
     @Override
     public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
     }

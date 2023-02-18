@@ -2,32 +2,32 @@ package bridge;
 
 //import
 
-public class ElectricEngineX implements IElectricEngine{
-   // new ElectricEngineState state;
+public class ElectricEngineX implements IElectricEngine {
+    // new ElectricEngineState state;
     int rpm;
 
     @Override
-    public void on(){
+    public void on() {
 
     }
 
     @Override
-    public void off(){
+    public void off() {
 
     }
 
     @Override
-    public void increaseRPM(int deltaRPM, int seconds){
+    public void increaseRPM(int deltaRPM, int seconds) {
 
     }
 
     @Override
-    public void decreaseRPM(int deltaRPM, int seconds){
+    public void decreaseRPM(int deltaRPM, int seconds) {
 
     }
 
     @Override
-    public int computePowerDrawPerSecond(){
+    public int computePowerDrawPerSecond() {
         return 4; //TODO implement right
     }
 }

@@ -5,7 +5,7 @@ public class ComponentConfiguration {
     //private CameraComponentType camera; //TODO: import class
     //private LidarComponentType lidar; //TODO: import class
 
-    public ComponentConfiguration loadFromJsonConfig(){
+    public ComponentConfiguration loadFromJsonConfig() {
         return this; //TODO: implement right
     }
 }

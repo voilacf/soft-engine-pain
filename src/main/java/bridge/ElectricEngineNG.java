@@ -5,27 +5,27 @@ public class ElectricEngineNG implements IElectricEngine {
     int rpm;
 
     @Override
-    public void on(){
+    public void on() {
 
     }
 
     @Override
-    public void off(){
+    public void off() {
 
     }
 
     @Override
-    public void increaseRPM(int deltaRPM, int seconds){
+    public void increaseRPM(int deltaRPM, int seconds) {
 
     }
 
     @Override
-    public void decreaseRPM(int deltaRPM, int seconds){
+    public void decreaseRPM(int deltaRPM, int seconds) {
 
     }
 
     @Override
-    public int computePowerDrawPerSecond(){
+    public int computePowerDrawPerSecond() {
         return 4; //TODO implement right
     }
 

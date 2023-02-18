@@ -7,7 +7,7 @@ public class EventGPSConnectSatellite {
         this.frequency = frequency;
     }
 
-    public String toString(){
+    public String toString() {
         return "event -> Connecting Satellite to GPS";
     }
 }

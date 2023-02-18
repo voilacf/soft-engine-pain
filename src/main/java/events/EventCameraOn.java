@@ -1,7 +1,7 @@
 package events;
 
 public class EventCameraOn {
-    public String toString(){
+    public String toString() {
         return "event -> camera on";
     }
 }

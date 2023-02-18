@@ -1,7 +1,5 @@
 package observer;
 
-import observer.IBatteryCellTemperatureListener;
-
 import java.util.ArrayList;
 
 public class BatteryCell {

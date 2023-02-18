@@ -5,6 +5,13 @@ public class EmployeeGate {
     private IEmployeeGateMediator gateMediator;
     private EmployeePresenceDetector detector;
 
-    public void open(){};
-    public void close (){};
+    public void open() {
+    }
+
+    ;
+
+    public void close() {
+    }
+
+    ;
 }

@@ -1,3 +1,3 @@
 public enum CameraComponentType {
-    CAMERA_V1,CAMERA_V2
+    CAMERA_V1, CAMERA_V2
 }

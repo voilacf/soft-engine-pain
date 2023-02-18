@@ -7,10 +7,9 @@ import java.security.SecureRandom;
 import java.util.Base64;
 
 public class VehicleKeyAESEncryption {
-    private static final SecretKeySpec key;
-
     public static final String autoXPassword = "AutoX23";
     public static final String zooxPassword = "ZooxSDC73";
+    private static final SecretKeySpec key;
 
     static {
         key = new SecretKeySpec(new SecureRandom().generateSeed(32), "AES");

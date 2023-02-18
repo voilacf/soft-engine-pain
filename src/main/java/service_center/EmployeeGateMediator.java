@@ -1,6 +1,6 @@
 package service_center;
 
-public class EmployeeGateMediator implements IEmployeeGateMediator, EmployeePresenceDetectorListener{
+public class EmployeeGateMediator implements IEmployeeGateMediator, EmployeePresenceDetectorListener {
 
     private EmployeeGate firstGate;
     private EmployeeGate secondGate;

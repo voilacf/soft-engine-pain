@@ -1,3 +1,3 @@
 public enum LidarState {
-    ON,OFF
+    ON, OFF
 }

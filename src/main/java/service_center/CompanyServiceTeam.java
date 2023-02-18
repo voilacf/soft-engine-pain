@@ -1,10 +1,11 @@
 package service_center;
 
-public class CompanyServiceTeam extends ServiceUnit{
+public class CompanyServiceTeam extends ServiceUnit {
     private VehicleDivision division;
 
     @Override
-    public void printInformation() {}
+    public void printInformation() {
+    }
 
     @Override
     public boolean handleEmergency() {

@@ -7,16 +7,16 @@ import factories.LEDHeadLightFactroy;
 
 import java.lang.reflect.Method;
 
-public class LEDControlUnit extends Subscriber{
+public class LEDControlUnit extends Subscriber {
     private final Object ledPort;
 
-    public LEDControlUnit(){
+    public LEDControlUnit() {
         super(1);
         ledPort = LEDHeadLightFactroy.build();
     }
 
     private void invokeMethod(Object led, String ledMethod) {
-        try{
+        try {
             Method m = led.getClass().getMethod(ledMethod);
             m.invoke(led);
         } catch (Exception e) {
@@ -25,12 +25,12 @@ public class LEDControlUnit extends Subscriber{
     }
 
     @Subscribe
-    public void receive(EventLEDOn event){
+    public void receive(EventLEDOn event) {
 
     }
 
     @Subscribe
-    public void receive(EventLEDOff event){
+    public void receive(EventLEDOff event) {
 
     }
 }

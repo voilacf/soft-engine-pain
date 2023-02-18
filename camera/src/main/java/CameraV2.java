@@ -1,28 +1,28 @@
-public class CameraV2{
+public class CameraV2 {
     private static final CameraV1 instance = new CameraV1();
     public Port port;
     private CameraState state;
 
-    public CameraV2(){
+    public CameraV2() {
         port = new Port();
     }
 
-    public void innerOn(){
+    public void innerOn() {
         state = CameraState.ON;
     }
 
-    public void innerOff(){
+    public void innerOff() {
         state = CameraState.OFF;
     }
 
     //public void innerVisit(IComponentVisitor visitor){}
 
-    public class Port implements ICamera{
-        public void on(){
+    public class Port implements ICamera {
+        public void on() {
             innerOn();
         }
 
-        public void off(){
+        public void off() {
             innerOff();
         }
 

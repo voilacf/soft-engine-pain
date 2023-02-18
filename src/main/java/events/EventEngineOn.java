@@ -1,7 +1,7 @@
 package events;
 
 public class EventEngineOn {
-    public String toString(){
+    public String toString() {
         return "event -> engine on";
     }
 }

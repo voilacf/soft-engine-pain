@@ -1,15 +1,15 @@
 package bridge;
 
 public class Battery {
-    void printBatterySummary(){
+    void printBatterySummary() {
 
     }
 
-    public boolean useEnergy(int count){
+    public boolean useEnergy(int count) {
         return true; //TODO: implement right
     }
 
-    public int getEnergyCount(){
+    public int getEnergyCount() {
         return 4; //TODO: implement right
     }
 }

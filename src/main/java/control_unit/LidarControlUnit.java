@@ -7,17 +7,17 @@ import factories.LidarFactory;
 
 import java.lang.reflect.Method;
 
-public class LidarControlUnit extends Subscriber{
+public class LidarControlUnit extends Subscriber {
     private final Object lidarPort;
 
     //TODO: add parameters to constructor to decide which Lidar version is to be build
-    public LidarControlUnit(){
+    public LidarControlUnit() {
         super(1);
         lidarPort = LidarFactory.build();
     }
 
     private void invokeMethod(Object lidar, String lidarMethod) {
-        try{
+        try {
             Method m = lidar.getClass().getMethod(lidarMethod);
             m.invoke(lidar);
         } catch (Exception e) {
@@ -26,12 +26,12 @@ public class LidarControlUnit extends Subscriber{
     }
 
     @Subscribe
-    public void receive(EventLidarOn event){
+    public void receive(EventLidarOn event) {
 
     }
 
     @Subscribe
-    public void receive(EventLidarOff event){
+    public void receive(EventLidarOff event) {
 
     }
 }

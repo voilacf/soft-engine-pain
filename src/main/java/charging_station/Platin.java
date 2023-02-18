@@ -15,18 +15,16 @@ public class Platin extends LoyaltyState {
     public void addCharging(int amountOfEnergy) {
         int loyaltyPoints = decryptLoyaltyPoints();
         double credits = decryptCredits();
-        if(userMemberCard.getChargingSessionsWithPlatin() == 0){
+        if (userMemberCard.getChargingSessionsWithPlatin() == 0) {
             userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy);
-            System.out.println("Bill: \tcosts: 0,0 Euro \tcollected loyaltyPoints: "+amountOfEnergy+" Points");
-        }
-        else if((userMemberCard.getChargingSessionsWithPlatin()%5) == 0){
+            System.out.println("Bill: \tcosts: 0,0 Euro \tcollected loyaltyPoints: " + amountOfEnergy + " Points");
+        } else if ((userMemberCard.getChargingSessionsWithPlatin() % 5) == 0) {
             System.out.println("Bill: \tcosts: 0,0 Euro \tcollected loyaltyPoints: 0");
+        } else {
+            userMemberCard.setEncryptedCredits(credits - (amountOfEnergy * 0.35));
+            userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy * 2);
+            System.out.println("Bill: \tcosts: " + amountOfEnergy * 0.35 + " Euro \tcollected loyaltyPoints: " + amountOfEnergy * 2 + " Points");
         }
-        else{
-            userMemberCard.setEncryptedCredits(credits-(amountOfEnergy * 0.35));
-            userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy*2);
-            System.out.println("Bill: \tcosts: "+ amountOfEnergy*0.35+" Euro \tcollected loyaltyPoints: "+amountOfEnergy*2+" Points");
-        }
-        userMemberCard.setChargingSessionsWithPlatin(userMemberCard.getChargingSessionsWithPlatin()+1);
+        userMemberCard.setChargingSessionsWithPlatin(userMemberCard.getChargingSessionsWithPlatin() + 1);
     }
 }

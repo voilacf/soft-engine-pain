@@ -1,6 +1,6 @@
 package adapter;
 
-public class AutoXChargingAdapter implements IChargable{
+public class AutoXChargingAdapter implements IChargable {
     @Override
     public void plugIn2Pin() {
         // TODO: implement

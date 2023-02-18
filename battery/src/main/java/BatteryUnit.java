@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public abstract class BatteryUnit implements IBattery {
-    private final BatteryUnit parentUnit;
     protected final ArrayList<BatteryUnit> subUnits = new ArrayList<>();
+    private final BatteryUnit parentUnit;
 
     public BatteryUnit(BatteryUnit parentUnit) {
         this.parentUnit = parentUnit;
@@ -23,13 +23,13 @@ public abstract class BatteryUnit implements IBattery {
     }
 
     public int getEnergyCount() {
-        if(!isComposite())
+        if (!isComposite())
             throw new RuntimeException("This isn't a composite in the battery. It must implement getEnergyCount() from BatteryUnit.");
         return subUnits.stream().mapToInt(BatteryUnit::getEnergyCount).sum();
     }
 
     public int useEnergyCount(int count) {
-        if(!isComposite())
+        if (!isComposite())
             throw new RuntimeException("This isn't a composite in the battery. It must implement useEnergyCount() from BatteryUnit.");
 
         int usedEnergy = 0;

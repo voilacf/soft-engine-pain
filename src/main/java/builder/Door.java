@@ -5,5 +5,6 @@ public class Door {
     //private Button toggleButton; //TODO: Import class
     //private IDoorState state; //TODO: Import class
 
-    public void buttonPressed(){}
+    public void buttonPressed() {
+    }
 }

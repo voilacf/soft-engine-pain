@@ -3,18 +3,19 @@ package control_unit;
 import com.google.common.eventbus.Subscribe;
 import events.*;
 import factories.IndicatorFactory;
+
 import java.lang.reflect.Method;
 
-public class IndicatorControlUnit extends Subscriber{
+public class IndicatorControlUnit extends Subscriber {
     private final Object indicatorPort;
 
-    public IndicatorControlUnit(){
+    public IndicatorControlUnit() {
         super(1);
         indicatorPort = IndicatorFactory.build();
     }
 
     private void invokeMethod(Object indicator, String indicatorMethod) {
-        try{
+        try {
             Method m = indicator.getClass().getMethod(indicatorMethod);
             m.invoke(indicator);
         } catch (Exception e) {
@@ -23,32 +24,32 @@ public class IndicatorControlUnit extends Subscriber{
     }
 
     @Subscribe
-    public void receive(EventLeftIndicatorOn event){
+    public void receive(EventLeftIndicatorOn event) {
 
     }
 
     @Subscribe
-    public void receive(EventLeftIndicatorOff event){
+    public void receive(EventLeftIndicatorOff event) {
 
     }
 
     @Subscribe
-    public void receive(EventRightIndicatorOn event){
+    public void receive(EventRightIndicatorOn event) {
 
     }
 
     @Subscribe
-    public void receive(EventRightIndicatorOff event){
+    public void receive(EventRightIndicatorOff event) {
 
     }
 
     @Subscribe
-    public void receive(EventHazardWarningOn event){
+    public void receive(EventHazardWarningOn event) {
 
     }
 
     @Subscribe
-    public void receive(EventHazardWarningOff event){
+    public void receive(EventHazardWarningOff event) {
 
     }
 }

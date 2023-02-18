@@ -2,7 +2,6 @@ package observer;
 
 import door_button.ICommand;
 
-
 import java.util.ArrayList;
 
 public class Button {

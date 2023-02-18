@@ -1,7 +1,7 @@
 package events;
 
 public class EventLidarOn {
-    public String toString(){
+    public String toString() {
         return "event -> lidar on";
     }
 }

@@ -1,43 +1,43 @@
-public class LED{
+public class LED {
     private static final LED instance = new LED();
     public Port port;
     private LEDState state;
 
-    public LED(){
+    public LED() {
         port = new Port();
     }
 
-    public void innerOn(){
+    public void innerOn() {
         state = LEDState.ON;
     }
 
-    public void innerOff(){
+    public void innerOff() {
         state = LEDState.OFF;
     }
 
-    public void innerDimm(){
+    public void innerDimm() {
         state = LEDState.DIMMED;
     }
 
-    public void innerBeam(){
+    public void innerBeam() {
         state = LEDState.HIGHBEAM;
     }
 
-    public class Port implements ILED{
+    public class Port implements ILED {
 
-        public void on(){
+        public void on() {
             innerOn();
         }
 
-        public void off(){
+        public void off() {
             innerOff();
         }
 
-        public void dimm(){
+        public void dimm() {
             innerDimm();
         }
 
-        public void beam(){
+        public void beam() {
             innerBeam();
         }
     }

@@ -3,13 +3,15 @@ package charging_station;
 public class ContextEncryption {
     private IUserMemberCardEncryptionStrategy strategy;
 
-    public ContextEncryption(IUserMemberCardEncryptionStrategy strategy){
+    public ContextEncryption(IUserMemberCardEncryptionStrategy strategy) {
         setStrategy(strategy);
     }
-    public String executeEncryptionStrategy(String data){
+
+    public String executeEncryptionStrategy(String data) {
         return getStrategy().encrypt(data);
     }
-    public String executeDecryptionStrategy(String encryptedData){
+
+    public String executeDecryptionStrategy(String encryptedData) {
         return getStrategy().decrypt(encryptedData);
     }
 

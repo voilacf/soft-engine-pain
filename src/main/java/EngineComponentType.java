@@ -1,3 +1,3 @@
 public enum EngineComponentType {
-    ENGINE_X,ENGINE_NG
+    ENGINE_X, ENGINE_NG
 }

@@ -1,29 +1,29 @@
-public class BrakeLight{
+public class BrakeLight {
     private static final BrakeLight instance = new BrakeLight();
     public Port port;
     private BrakeLightState state;
 
-    public BrakeLight(){
+    public BrakeLight() {
         port = new Port();
     }
 
-    public void innerOn(){
+    public void innerOn() {
         state = BrakeLightState.ON;
     }
 
-    public void innerOff(){
+    public void innerOff() {
         state = BrakeLightState.OFF;
     }
 
     //public void visit(IComponentVisitor visitor){}
 
-    public class Port implements IBrakeLight{
+    public class Port implements IBrakeLight {
 
-        public void on(){
+        public void on() {
             innerOn();
         }
 
-        public void off(){
+        public void off() {
             innerOff();
         }
 

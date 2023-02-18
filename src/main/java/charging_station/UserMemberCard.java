@@ -7,7 +7,7 @@ public class UserMemberCard {
     private String encryptedCredits;
     private int chargingSessionsWithPlatin;
 
-    public UserMemberCard(IUserMemberCardEncryptionStrategy encryptionStrategy){
+    public UserMemberCard(IUserMemberCardEncryptionStrategy encryptionStrategy) {
         setEncryptionStrategy(encryptionStrategy);
         setLoyaltyState(new Blue(this));
         setEncryptedLoyaltyPoints(0);
