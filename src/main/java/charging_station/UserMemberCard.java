@@ -5,6 +5,7 @@ public class UserMemberCard {
     private ILoyaltyState loyaltyState;
     private String encryptedLoyaltyPoints;
     private String encryptedCredits;
+    //TODO maybe add integer for charging sessions since loyalteState change ?
     private int chargingSessionSinceLastFreebie;
 
     public IUserMemberCardEncryptionStrategy getEncryptionStrategy() {
@@ -21,22 +22,25 @@ public class UserMemberCard {
 
     public void setLoyaltyState(ILoyaltyState loyaltyState) {
         this.loyaltyState = loyaltyState;
+        setChargingSessionSinceLastFreebie(0);
     }
 
     public String getEncryptedLoyaltyPoints() {
         return encryptedLoyaltyPoints;
     }
 
-    public void setEncryptedLoyaltyPoints(String encryptedLoyaltyPoints) {
-        this.encryptedLoyaltyPoints = encryptedLoyaltyPoints;
+    public void setEncryptedLoyaltyPoints(int loyaltyPoints) {
+        ContextEncryption contextEncryption = new ContextEncryption(getEncryptionStrategy());
+        this.encryptedLoyaltyPoints = contextEncryption.getStrategy().encrypt(String.valueOf(loyaltyPoints));
     }
 
     public String getEncryptedCredits() {
         return encryptedCredits;
     }
 
-    public void setEncryptedCredits(String encryptedCredits) {
-        this.encryptedCredits = encryptedCredits;
+    public void setEncryptedCredits(int credits) {
+        ContextEncryption contextEncryption = new ContextEncryption(getEncryptionStrategy());
+        this.encryptedCredits = contextEncryption.getStrategy().encrypt(String.valueOf(credits));
     }
 
     public int getChargingSessionSinceLastFreebie() {
