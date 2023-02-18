@@ -1,3 +1,5 @@
+package factories;
+
 public enum Configuration {
     INSTANCE;
 

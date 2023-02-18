@@ -1,18 +1,21 @@
+package factories;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class BrakeLightFactory {
+public class LidarFactory {
+    //TODO: add second factory for LidarNG?
     public static Object build() {
         Object port = null;
 
         try {
-            URL[] urls = {new File(Configuration.INSTANCE.pathToBrakeLightJavaArchive + "brakelight.jar").toURI().toURL()};
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, BrakeLightFactory.class.getClassLoader());
-            Class<?> brakelightClass = Class.forName("BrakeLight", true, urlClassLoader);
-            Object brakelightInstance = brakelightClass.getMethod("getInstance").invoke(null);
-            port = brakelightClass.getDeclaredField("port").get(brakelightInstance);
+            URL[] urls = {new File(Configuration.INSTANCE.pathToLidarJavaArchive + "lidar.jar").toURI().toURL()};
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, LidarFactory.class.getClassLoader());
+            Class<?> lidarClass = Class.forName("LidarXT", true, urlClassLoader);
+            Object lidarInstance = lidarClass.getMethod("getInstance").invoke(null);
+            port = lidarClass.getDeclaredField("port").get(lidarInstance);
         } catch (Exception e) {
             e.printStackTrace();
         }

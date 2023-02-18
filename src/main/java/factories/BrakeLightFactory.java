@@ -1,18 +1,20 @@
+package factories;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class GPSFactory {
+public class BrakeLightFactory {
     public static Object build() {
         Object port = null;
 
         try {
-            URL[] urls = {new File(Configuration.INSTANCE.pathToGPSJavaArchive + "gps.jar").toURI().toURL()};
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, GPSFactory.class.getClassLoader());
-            Class<?> gpsClass = Class.forName("GPS", true, urlClassLoader);
-            Object gpsInstance = gpsClass.getMethod("getInstance").invoke(null);
-            port = gpsClass.getDeclaredField("port").get(gpsInstance);
+            URL[] urls = {new File(Configuration.INSTANCE.pathToBrakeLightJavaArchive + "brakelight.jar").toURI().toURL()};
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, BrakeLightFactory.class.getClassLoader());
+            Class<?> brakelightClass = Class.forName("BrakeLight", true, urlClassLoader);
+            Object brakelightInstance = brakelightClass.getMethod("getInstance").invoke(null);
+            port = brakelightClass.getDeclaredField("port").get(brakelightInstance);
         } catch (Exception e) {
             e.printStackTrace();
         }

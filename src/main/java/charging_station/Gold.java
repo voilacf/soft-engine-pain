@@ -5,19 +5,23 @@ public class Gold extends LoyaltyState {
         super(userMemberCard);
     }
 
-    //TODO check promote()
+    @Override
     public void promote() {
-        int minPointsForChange = 10000;
+        int loyaltyPoints = decryptLoyaltyPoints();
 
-        ContextEncryption contextEncryption = new ContextEncryption(userMemberCard.getEncryptionStrategy());
-        String loyaltyPoints = userMemberCard.getEncryptedLoyaltyPoints();
-        loyaltyPoints = contextEncryption.executeDecryptionStrategy(loyaltyPoints);
-        int points = Integer.parseInt(loyaltyPoints);
-
-        if(points >= minPointsForChange){
+        if(loyaltyPoints >= MINIMUM_FOR_PLATIN){
             userMemberCard.setLoyaltyState(new Platin(userMemberCard));
             System.out.println("LoyaltyState changed: \tGOLD -> PLATIN");
         }
+    }
 
+    //TODO check addCharging(...)
+    @Override
+    public void addCharging(int amountOfEnergy) {
+        int loyaltyPoints = decryptLoyaltyPoints();
+        double credits = decryptCredits();
+        userMemberCard.setEncryptedCredits(credits-(amountOfEnergy * 0.35));
+        userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy*2);
+        System.out.println("Bill: \tcosts: "+ amountOfEnergy*0.35+" Euro \tcollected loyaltyPoints: "+amountOfEnergy*2+" Points");
     }
 }
