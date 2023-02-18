@@ -1,7 +1,5 @@
 public class CameraV2{
-    // static instance
     private static final CameraV1 instance = new CameraV1();
-    // port
     public Port port;
     private CameraState state;
 
@@ -20,7 +18,6 @@ public class CameraV2{
     //public void innerVisit(IComponentVisitor visitor){}
 
     public class Port implements ICamera{
-
         public void on(){
             innerOn();
         }
@@ -29,10 +26,10 @@ public class CameraV2{
             innerOff();
         }
 
+        //TODO: add IComponentVisitor and logic
         /*public void visit(IComponentVisitor visitor){
             innerVisit(visitor);
         }
         * */
-
     }
 }
