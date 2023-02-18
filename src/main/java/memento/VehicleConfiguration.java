@@ -67,5 +67,8 @@ public class VehicleConfiguration {
     //Todo
     public void enterConfigurationMode() {
         System.out.println("Entering configuration mode...");
+        //main
+          //global config
+
     }
 }
