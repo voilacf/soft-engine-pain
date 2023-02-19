@@ -4,7 +4,6 @@ import builder.AutonomousVehicle;
 import com.google.common.eventbus.EventBus;
 import door_button.ICommand;
 import events.*;
-import observer.BatteryCell;
 import observer.IBatteryCellTemperatureListener;
 import observer.IUltraSonicSensorListener;
 import observer.UltraSonicSensor;
@@ -88,13 +87,13 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
 
 
     @Override
-    public void batterytemperatureChanged(double temperature, BatteryCell battery) {
+    public void batterytemperatureChanged(double temperature, Object battery) {
         System.out.println("Battery temperature changed to " + temperature + "°C");
     }
 
     @Override
     public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
-        System.out.println("UltraSonicSensor "+sensor.getId()+" distance changed to " + distance + "m");
+        System.out.println("UltraSonicSensor " + sensor.getId() + " distance changed to " + distance + "m");
     }
 
     public AutonomousVehicle getVehicle() {

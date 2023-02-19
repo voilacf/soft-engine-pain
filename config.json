@@ -1,0 +1,7 @@
+{
+    "stopByPoliceRequest": true,
+    "allowDriveByNight": false,
+    "musicDuringDrive": "AC_DC",
+    "rejectDrunkenPassengers": true,
+    "behaviorWithNaggingPassengers": "STOP_AND_WAIT_FOR_EXCUSE"
+}

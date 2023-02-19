@@ -2,11 +2,9 @@ package observer;
 import java.util.ArrayList;
 
 public class UltraSonicSensor {
-    private double distance = 0.0;
     private final int id;
 
     private final ArrayList<IUltraSonicSensorListener> listeners = new ArrayList<>();
-
 
     public UltraSonicSensor(int id) {
         this.id = id;
@@ -29,7 +27,6 @@ public class UltraSonicSensor {
 
 
     public void setDistance(double distance) {
-        this.distance = distance;
         distanceChanged(distance);
     }
 

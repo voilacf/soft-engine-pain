@@ -32,4 +32,12 @@ public class Door implements IButtonPressedListener {
     public void setState(IDoorState state) {
         this.state = state;
     }
+
+    public Button getEmergencyButton() {
+        return emergencyButton;
+    }
+
+    public Button getToggleButton() {
+        return toggleButton;
+    }
 }

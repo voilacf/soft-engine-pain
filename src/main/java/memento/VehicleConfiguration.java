@@ -2,19 +2,16 @@ package memento;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import application.ApplicationConfiguration;
 
 public class VehicleConfiguration {
-    private boolean rejectDrunkenPassengers = true;
-    private boolean stopByPoliceRequest = true;
-    private boolean allowDriveByNight = true;
+    private boolean rejectDrunkenPassengers;
+    private boolean stopByPoliceRequest;
+    private boolean allowDriveByNight;
+    private NaggingPassengersBehavior behaviorWithNaggingPassengers;
+    private DriveMusic musicDuringDrive;
 
-    private NaggingPassengersBehavior behaviorWithNaggingPassengers = NaggingPassengersBehavior.STOP_AND_WAIT_FOR_EXCUSE;
-
-    private DriveMusic musicDuringDrive = DriveMusic.AC_DC;
-
-    //Todo Hauptconfig laden
     public VehicleConfiguration() {
-
     }
 
     public VehicleConfigurationMemento save() {
@@ -33,7 +30,6 @@ public class VehicleConfiguration {
         this.allowDriveByNight = memento.allowDriveByNight;
         this.behaviorWithNaggingPassengers = memento.behaviorWithNaggingPassengers;
         this.musicDuringDrive = memento.musicDuringDrive;
-
         System.out.println("Configuration restored");
     }
 
@@ -75,9 +71,7 @@ public class VehicleConfiguration {
             System.out.flush();
             try {
                 key = new Scanner(System.in).nextInt();
-            } catch (NoSuchElementException e) {
-                System.exit(0);
-                break;
+            } catch (NoSuchElementException ignored) {
             }
         } while (key < 0 || key > 4);
         switch (key) {
@@ -110,9 +104,7 @@ public class VehicleConfiguration {
             System.out.flush();
             try {
                 value = new Scanner(System.in).nextInt();
-            } catch (NoSuchElementException e) {
-                System.exit(0);
-                break;
+            } catch (NoSuchElementException ignored) {
             }
         } while (value < 0 || value > 1);
         this.setParameter(keyString, value);
@@ -121,7 +113,9 @@ public class VehicleConfiguration {
 
     //Todo In Hauptconfig bei exit schreiben
     public void enterConfigurationMode() {
-        VehicleConfigurationMemento memento = this.save();
+        ApplicationConfiguration applicationConfiguration = ApplicationConfiguration.loadJSONConfig();
+        this.restore(applicationConfiguration.getVehicleConfigurationMemento());
+
         System.out.println("Possible commands: print, set parameter, undo, exit");
 
         while (true) {
@@ -139,9 +133,10 @@ public class VehicleConfiguration {
             switch (input.trim()) {
                 case "print" -> this.print();
                 case "set parameter" -> setParameterPrompt();
-                case "undo" -> this.restore(memento);
+                case "undo" -> this.restore(applicationConfiguration.getVehicleConfigurationMemento());
                 case "exit" -> {
-                    memento = this.save();
+                    applicationConfiguration.setVehicleConfigurationMemento(this.save());
+                    applicationConfiguration.saveJSONConfig();
                     System.exit(0);
                 }
             }
