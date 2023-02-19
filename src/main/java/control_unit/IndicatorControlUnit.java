@@ -1,7 +1,6 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
-import control_unit.states.BrakeLightState;
 import control_unit.states.IndicatorState;
 import events.*;
 import factories.IndicatorFactory;
