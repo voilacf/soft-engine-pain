@@ -1,6 +1,6 @@
 package control_unit;
 
-import factories.BatteryFactory;
+import factories.Factory;
 
 import java.lang.reflect.Method;
 
@@ -9,7 +9,7 @@ public class BatteryControlUnit extends Subscriber {
 
     public BatteryControlUnit() {
         super(1);
-        batteryPort = BatteryFactory.build();
+        batteryPort = Factory.buildBattery();
     }
 
     private void invokeMethod(Object battery, String batteryMethod) {

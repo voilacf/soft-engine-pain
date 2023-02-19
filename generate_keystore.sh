@@ -1,0 +1,1 @@
+"keytool" -genkey -alias server -keyalg RSA -keysize 2048 -keystore keystore.jks
