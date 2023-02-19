@@ -7,6 +7,10 @@ public class LidarXT {
         port = new Port();
     }
 
+    public static LidarXT getInstance() {
+        return instance;
+    }
+
     public void innerOn() {
         state = LidarState.ON;
     }

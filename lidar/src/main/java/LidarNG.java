@@ -7,6 +7,10 @@ public class LidarNG {
         port = new Port();
     }
 
+    public static LidarNG getInstance() {
+        return instance;
+    }
+
     public void innerOn() {
         state = LidarState.ON;
     }

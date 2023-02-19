@@ -8,8 +8,11 @@ public class Indicator {
         port = new Port();
     }
 
+    public static Indicator getInstance() {
+        return instance;
+    }
+
     public void innerOn(IndicatorSide side) {
-        //TODO: good like this?
         switch (side) {
             case LEFT:
                 state = IndicatorState.LEFT_ON;
@@ -26,7 +29,6 @@ public class Indicator {
     }
 
     public void innerOff(IndicatorSide side) {
-        //TODO: good like this?
         switch (side) {
             case LEFT:
                 state = IndicatorState.LEFT_OFF;

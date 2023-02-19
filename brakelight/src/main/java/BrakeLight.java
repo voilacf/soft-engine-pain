@@ -7,6 +7,10 @@ public class BrakeLight {
         port = new Port();
     }
 
+    public static BrakeLight getInstance() {
+        return instance;
+    }
+
     public void innerOn() {
         state = BrakeLightState.ON;
     }
