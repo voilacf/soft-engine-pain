@@ -111,7 +111,6 @@ public class VehicleConfiguration {
     }
 
 
-    //Todo In Hauptconfig bei exit schreiben
     public void enterConfigurationMode() {
         ApplicationConfiguration applicationConfiguration = ApplicationConfiguration.loadJSONConfig();
         this.restore(applicationConfiguration.getVehicleConfigurationMemento());

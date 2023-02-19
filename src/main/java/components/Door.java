@@ -21,7 +21,7 @@ public class Door implements IButtonPressedListener {
 
 
     public void toggleDoorState() {
-        state.toogle(this);
+        state.toggle(this);
     }
 
 

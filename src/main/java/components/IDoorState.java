@@ -1,5 +1,5 @@
 package components;
 
 public interface IDoorState {
-    void toogle(Door door);
+    void toggle(Door door);
 }

@@ -87,7 +87,7 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
 
 
     @Override
-    public void batterytemperatureChanged(double temperature, Object battery) {
+    public void batteryTemperatureChanged(double temperature, Object battery) {
         System.out.println("Battery temperature changed to " + temperature + "°C");
     }
 
