@@ -92,10 +92,9 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         System.out.println("Battery temperature changed to " + temperature + "°C");
     }
 
-    //Todo
     @Override
     public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
-
+        System.out.println("UltraSonicSensor "+sensor.getId()+" distance changed to " + distance + "m");
     }
 
     public AutonomousVehicle getVehicle() {

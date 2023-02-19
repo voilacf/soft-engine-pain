@@ -40,15 +40,14 @@ public class BatteryCell extends BatteryUnit {
         listeners.remove(listener);
     }
 
-
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
+    public void temperatureChanged(double temperature) {
         for (IBatteryCellTemperatureListener listener : listeners) {
-            listener.batterytemperatureChanged(temperature, this);
+            listener.batteryTemperatureChanged(temperature, this);
         }
     }
 
-    public double getTemperature() {
-        return temperature;
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+        temperatureChanged(temperature);
     }
 }

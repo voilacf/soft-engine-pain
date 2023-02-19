@@ -1,3 +1,3 @@
 public interface IBatteryCellTemperatureListener {
-    void batterytemperatureChanged(double temperature, BatteryCell battery);
+    void batteryTemperatureChanged(double temperature, BatteryCell battery);
 }
