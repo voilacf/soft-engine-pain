@@ -1,5 +1,10 @@
+import java.util.ArrayList;
+
 public class BatteryCell extends BatteryUnit {
     private boolean energy = true;
+    private double temperature = 0.0;
+
+    private final ArrayList<IBatteryCellTemperatureListener> listeners = new ArrayList<>();
 
     public BatteryCell(BatteryUnit parentUnit) {
         super(parentUnit);
@@ -25,5 +30,25 @@ public class BatteryCell extends BatteryUnit {
             // No energy available that could be used
             return 0;
         }
+    }
+
+    public void addListener(IBatteryCellTemperatureListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeListener(IBatteryCellTemperatureListener listener) {
+        listeners.remove(listener);
+    }
+
+
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+        for (IBatteryCellTemperatureListener listener : listeners) {
+            listener.batterytemperatureChanged(temperature, this);
+        }
+    }
+
+    public double getTemperature() {
+        return temperature;
     }
 }
