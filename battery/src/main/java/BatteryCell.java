@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class BatteryCell extends BatteryUnit {
     private boolean energy = true;
-    private double temperature = 0.0;
 
     private final ArrayList<IBatteryCellTemperatureListener> listeners = new ArrayList<>();
 
@@ -47,7 +46,6 @@ public class BatteryCell extends BatteryUnit {
     }
 
     public void setTemperature(double temperature) {
-        this.temperature = temperature;
         temperatureChanged(temperature);
     }
 }
