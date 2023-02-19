@@ -13,6 +13,7 @@ public class UserMemberCard {
         setEncryptedLoyaltyPoints(0);
         setEncryptedCredits(5000);
         setChargingSessionsWithPlatin(0);
+        System.out.println(this);
     }
 
     public IUserMemberCardEncryptionStrategy getEncryptionStrategy() {
@@ -55,5 +56,16 @@ public class UserMemberCard {
 
     public void setChargingSessionsWithPlatin(int chargingSessionsWithPlatin) {
         this.chargingSessionsWithPlatin = chargingSessionsWithPlatin;
+    }
+
+    @Override
+    public String toString() {
+        return "UserMemberCard{" +
+                "encryptionStrategy=" + encryptionStrategy +
+                ", loyaltyState=" + loyaltyState +
+                ", encryptedLoyaltyPoints='" + encryptedLoyaltyPoints + '\'' +
+                ", encryptedCredits='" + encryptedCredits + '\'' +
+                ", chargingSessionsWithPlatin=" + chargingSessionsWithPlatin +
+                '}';
     }
 }

@@ -7,7 +7,6 @@ public class Platin extends LoyaltyState {
 
     @Override
     public void promote() {
-        //TODO check if promote(UserMemberCard userMemberCard) could stay empty
     }
 
     @Override

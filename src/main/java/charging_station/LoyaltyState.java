@@ -14,16 +14,12 @@ public abstract class LoyaltyState {
     public abstract void promote();
 
     public abstract boolean addCharging(int amountOfEnergy);
-
-    //TODO decryptLoyaltyPoints in right class ?
     protected int decryptLoyaltyPoints() {
         ContextEncryption contextEncryption = new ContextEncryption(userMemberCard.getEncryptionStrategy());
         String loyaltyPoints = userMemberCard.getEncryptedLoyaltyPoints();
         loyaltyPoints = contextEncryption.executeDecryptionStrategy(loyaltyPoints);
         return Integer.parseInt(loyaltyPoints);
     }
-
-    //TODO decryptCredits in right class ?
     protected double decryptCredits() {
         ContextEncryption contextEncryption = new ContextEncryption(userMemberCard.getEncryptionStrategy());
         String credits = userMemberCard.getEncryptedCredits();

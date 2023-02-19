@@ -6,13 +6,11 @@ public class ChargingStation {
     //TODO check if energy has to be own class with attribute cost
     private int energy = 500000;
 
-    //TODO implement plugInDevice(IChargable device) whats task of method????
     public void plugInDevice(IChargable device) {
         device.plugIn2Pin();
         System.out.println("Device is plugged in");
     }
 
-    //TODO check finishChargingSession(int amount, UserMemberCard userMemberCard)
     public void finishChargingSession(int amountOfEnergy, UserMemberCard userMemberCard) {
         boolean enoughCreditsForChargingSuccess;
         if ((getEnergy() - amountOfEnergy) >= 0) {
