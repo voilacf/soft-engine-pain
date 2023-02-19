@@ -1,6 +1,8 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
+import control_unit.states.BrakeLightState;
+import control_unit.states.GPSState;
 import events.EventGPSConnectSatellite;
 import events.EventGPSOff;
 import events.EventGPSOn;
@@ -27,16 +29,34 @@ public class GPSControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventGPSOn event) {
-
+        try {
+            Method onMethod = gpsPort.getClass().getDeclaredMethod("on");
+            GPSState result = (GPSState) onMethod.invoke(gpsPort);
+            System.out.println("receive -> gps | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventGPSOff event) {
-
+        try {
+            Method onMethod = gpsPort.getClass().getDeclaredMethod("off");
+            GPSState result = (GPSState) onMethod.invoke(gpsPort);
+            System.out.println("receive -> gps | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventGPSConnectSatellite event) {
-
+        try {
+            Method onMethod = gpsPort.getClass().getDeclaredMethod("connectSatellite");
+            String result = (String) onMethod.invoke(gpsPort);
+            System.out.println("receive -> gps | frequency : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

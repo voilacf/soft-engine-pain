@@ -1,6 +1,8 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
+import control_unit.states.BrakeLightState;
+import control_unit.states.IndicatorState;
 import events.*;
 import factories.IndicatorFactory;
 
@@ -23,14 +25,27 @@ public class IndicatorControlUnit extends Subscriber {
         }
     }
 
+    //TODO: distinguishing between left, right and hazard
     @Subscribe
     public void receive(EventLeftIndicatorOn event) {
-
+        try {
+            Method onMethod = indicatorPort.getClass().getDeclaredMethod("on");
+            IndicatorState result = (IndicatorState) onMethod.invoke(indicatorPort);
+            System.out.println("receive -> indicator | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventLeftIndicatorOff event) {
-
+        try {
+            Method onMethod = indicatorPort.getClass().getDeclaredMethod("on");
+            IndicatorState result = (IndicatorState) onMethod.invoke(indicatorPort);
+            System.out.println("receive -> indicator | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe

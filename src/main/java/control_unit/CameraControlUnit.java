@@ -1,6 +1,7 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
+import control_unit.states.CameraState;
 import events.EventCameraOff;
 import events.EventCameraOn;
 import factories.CameraFactory;
@@ -27,12 +28,24 @@ public class CameraControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventCameraOn event) {
-
+        try {
+            Method onMethod = cameraPort.getClass().getDeclaredMethod("on");
+            CameraState result = (CameraState) onMethod.invoke(cameraPort);
+            System.out.println("receive -> camera | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventCameraOff event) {
-
+        try {
+            Method onMethod = cameraPort.getClass().getDeclaredMethod("off");
+            CameraState result = (CameraState) onMethod.invoke(cameraPort);
+            System.out.println("receive -> camera | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

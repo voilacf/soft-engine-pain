@@ -1,6 +1,8 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
+import control_unit.states.CameraState;
+import control_unit.states.ElectricEngineState;
 import events.EventEngineDecreaseRPM;
 import events.EventEngineIncreaseRPM;
 import events.EventEngineOff;
@@ -29,21 +31,45 @@ public class EngineControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventEngineOn engine) {
-
+        try {
+            Method onMethod = enginePort.getClass().getDeclaredMethod("on");
+            ElectricEngineState result = (ElectricEngineState) onMethod.invoke(enginePort);
+            System.out.println("receive -> electric-engine | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventEngineOff engine) {
-
+        try {
+            Method onMethod = enginePort.getClass().getDeclaredMethod("off");
+            ElectricEngineState result = (ElectricEngineState) onMethod.invoke(enginePort);
+            System.out.println("receive -> electric-engine | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventEngineIncreaseRPM engine) {
-
+        try {
+            Method onMethod = enginePort.getClass().getDeclaredMethod("increaseRPM");
+            int result = (int) onMethod.invoke(enginePort);
+            System.out.println("receive -> electric-engine | rpm : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventEngineDecreaseRPM engine) {
-
+        try {
+            Method onMethod = enginePort.getClass().getDeclaredMethod("decreaseRPM");
+            int result = (int) onMethod.invoke(enginePort);
+            System.out.println("receive -> electric-engine | rpm : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

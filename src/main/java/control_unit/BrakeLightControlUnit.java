@@ -1,6 +1,7 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
+import control_unit.states.BrakeLightState;
 import events.EventBrakeLightOff;
 import events.EventBrakeLightOn;
 import factories.BrakeLightFactory;
@@ -26,11 +27,23 @@ public class BrakeLightControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventBrakeLightOn event) {
-
+        try {
+            Method onMethod = brakeLightPort.getClass().getDeclaredMethod("on");
+            BrakeLightState result = (BrakeLightState) onMethod.invoke(brakeLightPort);
+            System.out.println("receive -> brake light | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventBrakeLightOff event) {
-
+        try {
+            Method onMethod = brakeLightPort.getClass().getDeclaredMethod("off");
+            BrakeLightState result = (BrakeLightState) onMethod.invoke(brakeLightPort);
+            System.out.println("receive -> brake light  | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

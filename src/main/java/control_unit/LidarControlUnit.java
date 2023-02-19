@@ -1,6 +1,8 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
+import control_unit.states.BrakeLightState;
+import control_unit.states.LidarState;
 import events.EventLidarOff;
 import events.EventLidarOn;
 import factories.LidarFactory;
@@ -27,11 +29,23 @@ public class LidarControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLidarOn event) {
-
+        try {
+            Method onMethod = lidarPort.getClass().getDeclaredMethod("on");
+            LidarState result = (LidarState) onMethod.invoke(lidarPort);
+            System.out.println("receive -> lidar | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventLidarOff event) {
-
+        try {
+            Method onMethod = lidarPort.getClass().getDeclaredMethod("off");
+            LidarState result = (LidarState) onMethod.invoke(lidarPort);
+            System.out.println("receive -> lidar | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

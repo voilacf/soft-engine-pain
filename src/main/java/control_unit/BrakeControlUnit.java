@@ -26,9 +26,9 @@ public class BrakeControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventBrakeSet event) {
         try {
-            Method onMethod = brakePort.getClass().getDeclaredMethod("open");
-            //DoorState result = (DoorState) onMethod.invoke(brakePort);
-            //System.out.println("receive -> doorOpen  | state : " + result);
+            Method onMethod = brakePort.getClass().getDeclaredMethod("setBrake");
+            double result = (double) onMethod.invoke(brakePort);
+            System.out.println("receive -> setBrake  | percentage : " + result);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

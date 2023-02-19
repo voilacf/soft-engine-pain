@@ -1,6 +1,8 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
+import control_unit.states.BrakeLightState;
+import control_unit.states.LEDState;
 import events.EventLEDOff;
 import events.EventLEDOn;
 import factories.LEDHeadLightFactroy;
@@ -26,11 +28,23 @@ public class LEDControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLEDOn event) {
-
+        try {
+            Method onMethod = ledPort.getClass().getDeclaredMethod("on");
+            LEDState result = (LEDState) onMethod.invoke(ledPort);
+            System.out.println("receive -> led | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventLEDOff event) {
-
+        try {
+            Method onMethod = ledPort.getClass().getDeclaredMethod("off");
+            LEDState result = (LEDState) onMethod.invoke(ledPort);
+            System.out.println("receive -> led | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
