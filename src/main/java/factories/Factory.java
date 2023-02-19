@@ -36,11 +36,13 @@ public class Factory {
         }
     }
 
-    //TODO: verfiy component
     private static Object build(String classname) {
         Object port = null;
         try {
             URL url = jarPaths.get(classname);
+            if(!verify(url.getPath())){
+                throw new RuntimeException("Jar not verified");
+            }
             URL[] urls = {url};
             URLClassLoader urlClassLoader = new URLClassLoader(urls, Factory.class.getClassLoader());
             Class<?> brakeClass = Class.forName(classname, true, urlClassLoader);
@@ -52,7 +54,7 @@ public class Factory {
         return port;
     }
 
-    public static boolean verify(String pathToJar){
+    private static boolean verify(String pathToJar){
         String curOs = System.getProperty("os.name");
         boolean isVerified = false;
         ProcessBuilder pb = null;

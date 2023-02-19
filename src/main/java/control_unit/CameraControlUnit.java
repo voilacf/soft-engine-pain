@@ -1,20 +1,20 @@
 package control_unit;
 
+import application.CameraComponentType;
 import com.google.common.eventbus.Subscribe;
 import control_unit.states.CameraState;
 import events.EventCameraOff;
 import events.EventCameraOn;
-import factories.CameraFactory;
+import factories.Factory;
 
 import java.lang.reflect.Method;
 
 public class CameraControlUnit extends Subscriber {
     private final Object cameraPort;
 
-    //TODO: add parameters to constructor to decide which Camera version is to be build
-    public CameraControlUnit() {
+    public CameraControlUnit(CameraComponentType type) {
         super(1);
-        cameraPort = CameraFactory.build();
+        cameraPort = Factory.buildCamera(type);
     }
 
     private void invokeMethod(Object brakelight, String brakelightMethod) {

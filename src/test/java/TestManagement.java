@@ -15,15 +15,15 @@ public class TestManagement {
 
     @BeforeEach
     public void setup() {
-        batteryPort = BatteryFactory.build();
-        brakePort = BrakeFactory.build();
-        brakeLightPort = BrakeLightFactory.build();
-        cameraPort = CameraFactory.build();
-        enginePort = BatteryFactory.build();
-        gpsPort = GPSFactory.build();
-        indicatorPort = IndicatorFactory.build();
-        ledPort = LEDHeadLightFactroy.build();
-        lidarPort = LidarFactory.build();
+        batteryPort = Factory.buildBattery();
+        brakePort = Factory.buildBrake();
+        brakeLightPort = Factory.buildBrakeLight();
+        //cameraPort = Factory.buildCamera();
+        //enginePort = Factory.buildEngine();
+        gpsPort = Factory.buildGPS();
+        indicatorPort = Factory.buildIndicator();
+        ledPort = Factory.buildLED();
+        //lidarPort = Factory.buildLidar();
     }
 
     @Test
