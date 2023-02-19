@@ -1,5 +1,8 @@
 package builder;
 
+import components.Door;
+import observer.UltraSonicSensor;
+
 //TODO import classes
 public class AutonomousVehicle {
     private final Chassis chassis;

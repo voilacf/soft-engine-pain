@@ -1,13 +1,13 @@
 package control_unit;
 
 import builder.AutonomousVehicle;
-import builder.UltraSonicSensor;
 import com.google.common.eventbus.EventBus;
 import door_button.ICommand;
 import events.*;
 import observer.BatteryCell;
 import observer.IBatteryCellTemperatureListener;
 import observer.IUltraSonicSensorListener;
+import observer.UltraSonicSensor;
 
 public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUltraSonicSensorListener {
     private final EventBus eventBus;
