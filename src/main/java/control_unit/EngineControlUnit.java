@@ -9,67 +9,36 @@ import events.EventEngineOff;
 import events.EventEngineOn;
 import factories.Factory;
 
-import java.lang.reflect.Method;
-
 public class EngineControlUnit extends Subscriber {
     private final Object enginePort;
 
-    //TODO: add parameters to constructor to decide which Engine version is to be build
     public EngineControlUnit(EngineComponentType type) {
         super(1);
         enginePort = Factory.buildEngine(type);
     }
 
-    private void invokeMethod(Object engine, String engineMethod) {
-        try {
-            Method m = engine.getClass().getMethod(engineMethod);
-            m.invoke(engine);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    //TODO: remove event as parameter from first two methods, or add getState to events?
+    @Subscribe
+    public void receive(EventEngineOn event) {
+        ElectricEngineState result = (ElectricEngineState) ControlUnitUtils.invokeMethod(enginePort,"on");
+        System.out.println("receive -> electric-engine | state : " + result);
     }
 
     @Subscribe
-    public void receive(EventEngineOn engine) {
-        try {
-            Method onMethod = enginePort.getClass().getDeclaredMethod("on");
-            ElectricEngineState result = (ElectricEngineState) onMethod.invoke(enginePort);
-            System.out.println("receive -> electric-engine | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void receive(EventEngineOff event) {
+        ElectricEngineState result = (ElectricEngineState) ControlUnitUtils.invokeMethod(enginePort, "off");
+        System.out.println("receive -> electric-engine | state : " + result);
     }
 
     @Subscribe
-    public void receive(EventEngineOff engine) {
-        try {
-            Method onMethod = enginePort.getClass().getDeclaredMethod("off");
-            ElectricEngineState result = (ElectricEngineState) onMethod.invoke(enginePort);
-            System.out.println("receive -> electric-engine | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void receive(EventEngineIncreaseRPM event) {
+        Integer result = (Integer) ControlUnitUtils.invokeMethod(enginePort, "increaseRPM",new Class[]{Integer.class}, event.getDeltaRPM());
+        System.out.println("receive -> electric-engine | rpm : " + result);
     }
 
     @Subscribe
-    public void receive(EventEngineIncreaseRPM engine) {
-        try {
-            Method onMethod = enginePort.getClass().getDeclaredMethod("increaseRPM");
-            int result = (int) onMethod.invoke(enginePort);
-            System.out.println("receive -> electric-engine | rpm : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    @Subscribe
-    public void receive(EventEngineDecreaseRPM engine) {
-        try {
-            Method onMethod = enginePort.getClass().getDeclaredMethod("decreaseRPM");
-            int result = (int) onMethod.invoke(enginePort);
-            System.out.println("receive -> electric-engine | rpm : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void receive(EventEngineDecreaseRPM event) {
+        Integer result = (Integer) ControlUnitUtils.invokeMethod(enginePort, "decreaseRPM",new Class[]{Integer.class}, event.getDeltaRPM());
+        System.out.println("receive -> electric-engine | rpm : " + result);
     }
 }

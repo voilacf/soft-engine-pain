@@ -12,14 +12,4 @@ public class BatteryControlUnit extends Subscriber {
         batteryPort = Factory.buildBattery();
     }
 
-    private void invokeMethod(Object battery, String batteryMethod) {
-        try {
-            Method m = battery.getClass().getMethod(batteryMethod);
-            m.invoke(battery);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }

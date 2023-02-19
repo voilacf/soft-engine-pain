@@ -1,10 +1,14 @@
 public class CameraV2 {
-    private static final CameraV1 instance = new CameraV1();
+    private static final CameraV2 instance = new CameraV2();
     public Port port;
     private CameraState state;
 
     public CameraV2() {
         port = new Port();
+    }
+
+    public static CameraV2 getInstance() {
+        return instance;
     }
 
     public void innerOn() {

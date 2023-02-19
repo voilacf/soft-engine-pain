@@ -4,11 +4,14 @@ public class GPS {
     private static final GPS instance = new GPS();
     public Port port;
     private GPSState state;
-    private ArrayList<String> frequency;
+    private String frequency;
 
     public GPS() {
         port = new Port();
-        frequency = new ArrayList<String>();
+    }
+
+    public static GPS getInstance() {
+        return instance;
     }
 
     public void innerOn() {
@@ -20,9 +23,10 @@ public class GPS {
     }
 
     public void innerConnectSatellite(String frequency) {
-        this.frequency.add(frequency);
+        this.frequency = frequency;
     }
 
+    //TODO: add visitor
     //public void innerVisit(IComponentVisitor visitor){}
 
     public class Port implements IGPS {

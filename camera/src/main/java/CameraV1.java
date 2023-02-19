@@ -7,6 +7,10 @@ public class CameraV1 {
         port = new Port();
     }
 
+    public static CameraV1 getInstance() {
+        return instance;
+    }
+
     public void innerOn() {
         state = CameraState.ON;
     }

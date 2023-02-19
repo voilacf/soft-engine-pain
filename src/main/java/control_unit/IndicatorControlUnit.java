@@ -5,8 +5,6 @@ import control_unit.states.IndicatorState;
 import events.*;
 import factories.Factory;
 
-import java.lang.reflect.Method;
-
 public class IndicatorControlUnit extends Subscriber {
     private final Object indicatorPort;
 
@@ -15,55 +13,40 @@ public class IndicatorControlUnit extends Subscriber {
         indicatorPort = Factory.buildIndicator();
     }
 
-    private void invokeMethod(Object indicator, String indicatorMethod) {
-        try {
-            Method m = indicator.getClass().getMethod(indicatorMethod);
-            m.invoke(indicator);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    //TODO: distinguishing between left, right and hazard
+    //TODO: reduce code redundancy?
     @Subscribe
     public void receive(EventLeftIndicatorOn event) {
-        try {
-            Method onMethod = indicatorPort.getClass().getDeclaredMethod("on");
-            IndicatorState result = (IndicatorState) onMethod.invoke(indicatorPort);
-            System.out.println("receive -> indicator | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        IndicatorState result = (IndicatorState) ControlUnitUtils.invokeMethod(indicatorPort,"on",new Class[]{IndicatorState.class},event.getState());
+        System.out.println("receive -> indicator | state : " + result);
     }
 
     @Subscribe
     public void receive(EventLeftIndicatorOff event) {
-        try {
-            Method onMethod = indicatorPort.getClass().getDeclaredMethod("on");
-            IndicatorState result = (IndicatorState) onMethod.invoke(indicatorPort);
-            System.out.println("receive -> indicator | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        IndicatorState result = (IndicatorState) ControlUnitUtils.invokeMethod(indicatorPort,"off",new Class[]{IndicatorState.class},event.getState());
+        System.out.println("receive -> indicator | state : " + result);
     }
 
     @Subscribe
     public void receive(EventRightIndicatorOn event) {
-
+        IndicatorState result = (IndicatorState) ControlUnitUtils.invokeMethod(indicatorPort,"on",new Class[]{IndicatorState.class},event.getState());
+        System.out.println("receive -> indicator | state : " + result);
     }
 
     @Subscribe
     public void receive(EventRightIndicatorOff event) {
-
+        IndicatorState result = (IndicatorState) ControlUnitUtils.invokeMethod(indicatorPort,"off",new Class[]{IndicatorState.class},event.getState());
+        System.out.println("receive -> indicator | state : " + result);
     }
 
     @Subscribe
     public void receive(EventHazardWarningOn event) {
-
+        IndicatorState result = (IndicatorState) ControlUnitUtils.invokeMethod(indicatorPort,"on",new Class[]{IndicatorState.class},event.getState());
+        System.out.println("receive -> indicator | state : " + result);
     }
 
     @Subscribe
     public void receive(EventHazardWarningOff event) {
-
+        IndicatorState result = (IndicatorState) ControlUnitUtils.invokeMethod(indicatorPort,"off",new Class[]{IndicatorState.class},event.getState());
+        System.out.println("receive -> indicator | state : " + result);
     }
 }

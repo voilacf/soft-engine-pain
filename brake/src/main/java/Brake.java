@@ -7,6 +7,10 @@ public class Brake {
         port = new Port();
     }
 
+    public static Brake getInstance() {
+        return instance;
+    }
+
     public void innerSetBrake(double percentage) {
         this.percentage = percentage;
     }

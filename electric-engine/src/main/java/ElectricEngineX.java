@@ -21,12 +21,12 @@ public class ElectricEngineX {
     }
 
     private void innerIncreaseRPM(int deltaRPM, int seconds) {
-        rpm = (int) (2 * Math.PI * deltaRPM) / (seconds / 60);
-        //TODO: change rpm to double? + check if calculation is correct
+        rpm += deltaRPM;
+        //TODO: implement seconds
     }
 
     private void innerDecreaseRPM(int deltaRPM, int seconds) {
-        rpm = (int) (2 * Math.PI * deltaRPM) / (seconds / 60);
+        rpm -= deltaRPM;
     }
 
     private int innerComputePowerDrawPerSecond() {

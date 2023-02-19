@@ -6,8 +6,6 @@ import events.EventLEDOff;
 import events.EventLEDOn;
 import factories.Factory;
 
-import java.lang.reflect.Method;
-
 public class LEDControlUnit extends Subscriber {
     private final Object ledPort;
 
@@ -16,34 +14,16 @@ public class LEDControlUnit extends Subscriber {
         ledPort = Factory.buildLED();
     }
 
-    private void invokeMethod(Object led, String ledMethod) {
-        try {
-            Method m = led.getClass().getMethod(ledMethod);
-            m.invoke(led);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventLEDOn event) {
-        try {
-            Method onMethod = ledPort.getClass().getDeclaredMethod("on");
-            LEDState result = (LEDState) onMethod.invoke(ledPort);
-            System.out.println("receive -> led | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        LEDState result = (LEDState) ControlUnitUtils.invokeMethod(ledPort,"on");
+        System.out.println("receive -> led | state : " + result);
     }
 
     @Subscribe
     public void receive(EventLEDOff event) {
-        try {
-            Method onMethod = ledPort.getClass().getDeclaredMethod("off");
-            LEDState result = (LEDState) onMethod.invoke(ledPort);
-            System.out.println("receive -> led | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        LEDState result = (LEDState) ControlUnitUtils.invokeMethod(ledPort, "off");
+        System.out.println("receive -> led | state : " + result);
     }
 }

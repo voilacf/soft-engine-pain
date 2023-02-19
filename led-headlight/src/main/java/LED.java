@@ -7,6 +7,10 @@ public class LED {
         port = new Port();
     }
 
+    public static LED getInstance() {
+        return instance;
+    }
+
     public void innerOn() {
         state = LEDState.ON;
     }

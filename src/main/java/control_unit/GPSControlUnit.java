@@ -7,8 +7,6 @@ import events.EventGPSOff;
 import events.EventGPSOn;
 import factories.Factory;
 
-import java.lang.reflect.Method;
-
 public class GPSControlUnit extends Subscriber {
     private final Object gpsPort;
 
@@ -17,45 +15,22 @@ public class GPSControlUnit extends Subscriber {
         gpsPort = Factory.buildGPS();
     }
 
-    private void invokeMethod(Object gps, String gpsMethod) {
-        try {
-            Method m = gps.getClass().getMethod(gpsMethod);
-            m.invoke(gps);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventGPSOn event) {
-        try {
-            Method onMethod = gpsPort.getClass().getDeclaredMethod("on");
-            GPSState result = (GPSState) onMethod.invoke(gpsPort);
-            System.out.println("receive -> gps | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        GPSState result = (GPSState) ControlUnitUtils.invokeMethod(gpsPort,"on");
+        System.out.println("receive -> gps | state : " + result);
     }
 
     @Subscribe
     public void receive(EventGPSOff event) {
-        try {
-            Method onMethod = gpsPort.getClass().getDeclaredMethod("off");
-            GPSState result = (GPSState) onMethod.invoke(gpsPort);
-            System.out.println("receive -> gps | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        GPSState result = (GPSState) ControlUnitUtils.invokeMethod(gpsPort, "off");
+        System.out.println("receive -> gps | state : " + result);
     }
 
     @Subscribe
     public void receive(EventGPSConnectSatellite event) {
-        try {
-            Method onMethod = gpsPort.getClass().getDeclaredMethod("connectSatellite");
-            String result = (String) onMethod.invoke(gpsPort);
-            System.out.println("receive -> gps | frequency : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        String result = (String) ControlUnitUtils.invokeMethod(gpsPort, "connectSatellite",new Class[]{String.class},event.getFrequency());
+        System.out.println("receive -> gps | frequency : " + result);
     }
 }
