@@ -10,9 +10,9 @@ public class BatteryCell {
 
     private final ArrayList<IBatteryCellTemperatureListener> listeners = new ArrayList<>();
 
-        //Todo hier muss doch noch funktion vom T&emperatursensor rein oder?
+    // TODO: hier muss doch noch funktion vom T&emperatursensor rein oder?
+    // TODO: merge with version of battery component
 
-    //Todo was soll da geprinted werden???
     public void printBatterySummary() {
         System.out.println("Battery summary:");
         System.out.println("Energy: " + energy);
