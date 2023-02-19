@@ -3,7 +3,7 @@ package control_unit;
 import com.google.common.eventbus.Subscribe;
 import control_unit.states.IndicatorState;
 import events.*;
-import factories.IndicatorFactory;
+import factories.Factory;
 
 import java.lang.reflect.Method;
 
@@ -12,7 +12,7 @@ public class IndicatorControlUnit extends Subscriber {
 
     public IndicatorControlUnit() {
         super(1);
-        indicatorPort = IndicatorFactory.build();
+        indicatorPort = Factory.buildIndicator();
     }
 
     private void invokeMethod(Object indicator, String indicatorMethod) {

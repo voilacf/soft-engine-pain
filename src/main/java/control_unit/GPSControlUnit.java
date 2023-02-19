@@ -1,12 +1,11 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
-import control_unit.states.BrakeLightState;
 import control_unit.states.GPSState;
 import events.EventGPSConnectSatellite;
 import events.EventGPSOff;
 import events.EventGPSOn;
-import factories.GPSFactory;
+import factories.Factory;
 
 import java.lang.reflect.Method;
 
@@ -15,7 +14,7 @@ public class GPSControlUnit extends Subscriber {
 
     public GPSControlUnit() {
         super(1);
-        gpsPort = GPSFactory.build();
+        gpsPort = Factory.buildGPS();
     }
 
     private void invokeMethod(Object gps, String gpsMethod) {

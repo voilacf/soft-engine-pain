@@ -2,7 +2,7 @@ package control_unit;
 
 import com.google.common.eventbus.Subscribe;
 import events.EventBrakeSet;
-import factories.BrakeFactory;
+import factories.Factory;
 
 import java.lang.reflect.Method;
 
@@ -11,7 +11,7 @@ public class BrakeControlUnit extends Subscriber {
 
     public BrakeControlUnit() {
         super(1);
-        brakePort = BrakeFactory.build();
+        brakePort = Factory.buildBrake();
     }
 
     private void invokeMethod(Object brake, String brakeMethod) {

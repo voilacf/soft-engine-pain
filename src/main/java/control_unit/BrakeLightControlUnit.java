@@ -4,7 +4,7 @@ import com.google.common.eventbus.Subscribe;
 import control_unit.states.BrakeLightState;
 import events.EventBrakeLightOff;
 import events.EventBrakeLightOn;
-import factories.BrakeLightFactory;
+import factories.Factory;
 
 import java.lang.reflect.Method;
 
@@ -13,7 +13,7 @@ public class BrakeLightControlUnit extends Subscriber {
 
     public BrakeLightControlUnit() {
         super(1);
-        brakeLightPort = BrakeLightFactory.build();
+        brakeLightPort = Factory.buildBrakeLight();
     }
 
     private void invokeMethod(Object brakelight, String brakelightMethod) {

@@ -1,13 +1,13 @@
 package control_unit;
 
+import application.EngineComponentType;
 import com.google.common.eventbus.Subscribe;
-import control_unit.states.CameraState;
 import control_unit.states.ElectricEngineState;
 import events.EventEngineDecreaseRPM;
 import events.EventEngineIncreaseRPM;
 import events.EventEngineOff;
 import events.EventEngineOn;
-import factories.ElectricEngineFactory;
+import factories.Factory;
 
 import java.lang.reflect.Method;
 
@@ -15,9 +15,9 @@ public class EngineControlUnit extends Subscriber {
     private final Object enginePort;
 
     //TODO: add parameters to constructor to decide which Engine version is to be build
-    public EngineControlUnit() {
+    public EngineControlUnit(EngineComponentType type) {
         super(1);
-        enginePort = ElectricEngineFactory.build();
+        enginePort = Factory.buildEngine(type);
     }
 
     private void invokeMethod(Object engine, String engineMethod) {
