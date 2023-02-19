@@ -15,13 +15,17 @@ public class Gold extends LoyaltyState {
         }
     }
 
-    //TODO check addCharging(...)
     @Override
-    public void addCharging(int amountOfEnergy) {
+    public boolean addCharging(int amountOfEnergy) {
         int loyaltyPoints = decryptLoyaltyPoints();
         double credits = decryptCredits();
-        userMemberCard.setEncryptedCredits(credits - (amountOfEnergy * 0.35));
-        userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy * 2);
-        System.out.println("Bill: \tcosts: " + amountOfEnergy * 0.35 + " Euro \tcollected loyaltyPoints: " + amountOfEnergy * 2 + " Points");
+        double costs = credits - (amountOfEnergy * 0.35);
+        if(costs >= 0) {
+            userMemberCard.setEncryptedCredits(costs);
+            userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy * 2);
+            System.out.println("Bill: \tcosts: " + amountOfEnergy * 0.35 + " Euro \tcollected loyaltyPoints: " + amountOfEnergy * 2 + " Points");
+            return true;
+        }
+        return false;
     }
 }

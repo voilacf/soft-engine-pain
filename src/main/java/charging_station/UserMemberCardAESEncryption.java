@@ -14,7 +14,6 @@ public class UserMemberCardAESEncryption implements IUserMemberCardEncryptionStr
     private final String salt = "sweet";
     private final byte[] iv = {0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1};
 
-    //TODO check encrypt(String data)
     @Override
     public String encrypt(String data) {
         try {
@@ -34,7 +33,6 @@ public class UserMemberCardAESEncryption implements IUserMemberCardEncryptionStr
         }
     }
 
-    //TODO check decrypt(String data)
     @Override
     public String decrypt(String encryptedData) {
         try {

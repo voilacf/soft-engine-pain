@@ -15,13 +15,17 @@ public class Silver extends LoyaltyState {
         }
     }
 
-    //TODO check addCharging(...)
     @Override
-    public void addCharging(int amountOfEnergy) {
+    public boolean addCharging(int amountOfEnergy) {
         int loyaltyPoints = decryptLoyaltyPoints();
         double credits = decryptCredits();
-        userMemberCard.setEncryptedCredits(credits - (amountOfEnergy * 0.35));
-        userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy + 150);
-        System.out.println("Bill: \tcosts: " + amountOfEnergy * 0.35 + " Euro \tcollected loyaltyPoints: " + amountOfEnergy + 150 + " Points");
+        double costs = credits - (amountOfEnergy * 0.35);
+        if(costs >= 0) {
+            userMemberCard.setEncryptedCredits(costs);
+            userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy + 150);
+            System.out.println("Bill: \tcosts: " + amountOfEnergy * 0.35 + " Euro \tcollected loyaltyPoints: " + amountOfEnergy + 150 + " Points");
+            return true;
+        }
+        return false;
     }
 }

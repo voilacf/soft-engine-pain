@@ -35,7 +35,6 @@ public class UserMemberCard {
         return encryptedLoyaltyPoints;
     }
 
-    //TODO check setEncryptedLoyaltyPoints(...)
     public void setEncryptedLoyaltyPoints(int loyaltyPoints) {
         ContextEncryption contextEncryption = new ContextEncryption(getEncryptionStrategy());
         this.encryptedLoyaltyPoints = contextEncryption.getStrategy().encrypt(String.valueOf(loyaltyPoints));
@@ -45,7 +44,6 @@ public class UserMemberCard {
         return encryptedCredits;
     }
 
-    //TODO check setEncryptedCredits(...)
     public void setEncryptedCredits(double credits) {
         ContextEncryption contextEncryption = new ContextEncryption(getEncryptionStrategy());
         this.encryptedCredits = contextEncryption.getStrategy().encrypt(String.valueOf(credits));

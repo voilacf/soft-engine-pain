@@ -14,10 +14,13 @@ public class ChargingStation {
 
     //TODO check finishChargingSession(int amount, UserMemberCard userMemberCard)
     public void finishChargingSession(int amountOfEnergy, UserMemberCard userMemberCard) {
+        boolean enoughCreditsForChargingSuccess;
         if ((getEnergy() - amountOfEnergy) >= 0) {
-            setEnergy(getEnergy() - amountOfEnergy);
-            userMemberCard.getLoyaltyState().addCharging(amountOfEnergy);
-            userMemberCard.getLoyaltyState().promote();
+            enoughCreditsForChargingSuccess = userMemberCard.getLoyaltyState().addCharging(amountOfEnergy);
+            if(enoughCreditsForChargingSuccess) {
+                setEnergy(getEnergy() - amountOfEnergy);
+                userMemberCard.getLoyaltyState().promote();
+            } else System.out.println("Cancelled charging because card has not enough credits");
         } else System.out.println("Charging station does not contain enough energy for this charging session");
     }
 

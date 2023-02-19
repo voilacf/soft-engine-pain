@@ -13,7 +13,7 @@ public abstract class LoyaltyState {
 
     public abstract void promote();
 
-    public abstract void addCharging(int amountOfEnergy);
+    public abstract boolean addCharging(int amountOfEnergy);
 
     //TODO decryptLoyaltyPoints in right class ?
     protected int decryptLoyaltyPoints() {
