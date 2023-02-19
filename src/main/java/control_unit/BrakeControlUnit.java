@@ -4,8 +4,6 @@ import com.google.common.eventbus.Subscribe;
 import events.EventBrakeSet;
 import factories.Factory;
 
-import java.lang.reflect.Method;
-
 public class BrakeControlUnit extends Subscriber {
     private final Object brakePort;
 
@@ -14,23 +12,9 @@ public class BrakeControlUnit extends Subscriber {
         brakePort = Factory.buildBrake();
     }
 
-    private void invokeMethod(Object brake, String brakeMethod) {
-        try {
-            Method m = brake.getClass().getMethod(brakeMethod);
-            m.invoke(brake);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @Subscribe
     public void receive(EventBrakeSet event) {
-        try {
-            Method onMethod = brakePort.getClass().getDeclaredMethod("setBrake");
-            double result = (double) onMethod.invoke(brakePort);
-            System.out.println("receive -> setBrake  | percentage : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        Double result = (Double) ControlUnitUtils.invokeMethod(brakePort,"setBrake", new Class[]{Double.class}, event.getPercentage());
+        System.out.println("receive -> setBrake  | percentage : " + result);
     }
 }

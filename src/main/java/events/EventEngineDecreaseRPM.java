@@ -9,6 +9,10 @@ public class EventEngineDecreaseRPM {
         this.seconds = seconds;
     }
 
+    public int getDeltaRPM(){
+        return deltaRPM;
+    }
+
     public String toString() {
         return "event -> increasing engine RPM";
     }

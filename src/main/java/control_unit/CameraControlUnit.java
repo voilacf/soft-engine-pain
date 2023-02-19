@@ -7,8 +7,6 @@ import events.EventCameraOff;
 import events.EventCameraOn;
 import factories.Factory;
 
-import java.lang.reflect.Method;
-
 public class CameraControlUnit extends Subscriber {
     private final Object cameraPort;
 
@@ -17,35 +15,17 @@ public class CameraControlUnit extends Subscriber {
         cameraPort = Factory.buildCamera(type);
     }
 
-    private void invokeMethod(Object brakelight, String brakelightMethod) {
-        try {
-            Method m = brakelight.getClass().getMethod(brakelightMethod);
-            m.invoke(brakelight);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    //TODO: remove event as parameter, or add getState to events?
     @Subscribe
     public void receive(EventCameraOn event) {
-        try {
-            Method onMethod = cameraPort.getClass().getDeclaredMethod("on");
-            CameraState result = (CameraState) onMethod.invoke(cameraPort);
-            System.out.println("receive -> camera | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        CameraState result = (CameraState) ControlUnitUtils.invokeMethod(cameraPort,"on");
+        System.out.println("receive -> camera | state : " + result);
     }
 
     @Subscribe
     public void receive(EventCameraOff event) {
-        try {
-            Method onMethod = cameraPort.getClass().getDeclaredMethod("off");
-            CameraState result = (CameraState) onMethod.invoke(cameraPort);
-            System.out.println("receive -> camera | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        CameraState result = (CameraState) ControlUnitUtils.invokeMethod(cameraPort,"off");
+        System.out.println("receive -> camera | state : " + result);
     }
 
 }

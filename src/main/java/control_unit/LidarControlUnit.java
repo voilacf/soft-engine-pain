@@ -7,8 +7,6 @@ import events.EventLidarOff;
 import events.EventLidarOn;
 import factories.Factory;
 
-import java.lang.reflect.Method;
-
 public class LidarControlUnit extends Subscriber {
     private final Object lidarPort;
 
@@ -17,34 +15,16 @@ public class LidarControlUnit extends Subscriber {
         lidarPort = Factory.buildLidar(type);
     }
 
-    private void invokeMethod(Object lidar, String lidarMethod) {
-        try {
-            Method m = lidar.getClass().getMethod(lidarMethod);
-            m.invoke(lidar);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventLidarOn event) {
-        try {
-            Method onMethod = lidarPort.getClass().getDeclaredMethod("on");
-            LidarState result = (LidarState) onMethod.invoke(lidarPort);
-            System.out.println("receive -> lidar | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        LidarState result = (LidarState) ControlUnitUtils.invokeMethod(lidarPort, "on");
+        System.out.println("receive -> lidar | state : " + result);
     }
 
     @Subscribe
     public void receive(EventLidarOff event) {
-        try {
-            Method onMethod = lidarPort.getClass().getDeclaredMethod("off");
-            LidarState result = (LidarState) onMethod.invoke(lidarPort);
-            System.out.println("receive -> lidar | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        LidarState result = (LidarState) ControlUnitUtils.invokeMethod(lidarPort,"off");
+        System.out.println("receive -> lidar | state : " + result);
     }
 }

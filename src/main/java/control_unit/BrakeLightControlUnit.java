@@ -16,34 +16,17 @@ public class BrakeLightControlUnit extends Subscriber {
         brakeLightPort = Factory.buildBrakeLight();
     }
 
-    private void invokeMethod(Object brakelight, String brakelightMethod) {
-        try {
-            Method m = brakelight.getClass().getMethod(brakelightMethod);
-            m.invoke(brakelight);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    //TODO: remove event as parameter, or add getState to events?
     @Subscribe
     public void receive(EventBrakeLightOn event) {
-        try {
-            Method onMethod = brakeLightPort.getClass().getDeclaredMethod("on");
-            BrakeLightState result = (BrakeLightState) onMethod.invoke(brakeLightPort);
-            System.out.println("receive -> brake light | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        BrakeLightState result = (BrakeLightState) ControlUnitUtils.invokeMethod(brakeLightPort, "on");
+        System.out.println("receive -> brake light | state : " + result);
     }
 
     @Subscribe
     public void receive(EventBrakeLightOff event) {
-        try {
-            Method onMethod = brakeLightPort.getClass().getDeclaredMethod("off");
-            BrakeLightState result = (BrakeLightState) onMethod.invoke(brakeLightPort);
-            System.out.println("receive -> brake light  | state : " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        BrakeLightState result = (BrakeLightState) ControlUnitUtils.invokeMethod(brakeLightPort, "off");
+        System.out.println("receive -> brake light  | state : " + result);
+
     }
 }

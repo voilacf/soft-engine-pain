@@ -2,6 +2,7 @@ package control_unit;
 
 import builder.AutonomousVehicle;
 import com.google.common.eventbus.EventBus;
+import control_unit.states.IndicatorState;
 import door_button.ICommand;
 import events.*;
 import observer.BatteryCell;
@@ -29,13 +30,13 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         eventBus.post(new EventGPSConnectSatellite("118.75"));
         eventBus.post(new EventCameraOn());
         eventBus.post(new EventLidarOn());
-        eventBus.post(new EventLeftIndicatorOff());
-        eventBus.post(new EventRightIndicatorOff());
+        eventBus.post(new EventLeftIndicatorOff(IndicatorState.LEFT_OFF));
+        eventBus.post(new EventRightIndicatorOff(IndicatorState.RIGHT_OFF));
     }
 
     public void move(int deltaRPM, int seconds) {
-        eventBus.post(new EventLeftIndicatorOff());
-        eventBus.post(new EventRightIndicatorOff());
+        eventBus.post(new EventLeftIndicatorOff(IndicatorState.LEFT_OFF));
+        eventBus.post(new EventRightIndicatorOff(IndicatorState.RIGHT_OFF));
         eventBus.post(new EventLEDDimmed());
         eventBus.post(new EventEngineIncreaseRPM(deltaRPM, seconds));
         eventBus.post(new EventBrakeSet(0));
@@ -43,14 +44,14 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
     }
 
     public void leftTurn(int deltaRPM, int seconds) {
-        eventBus.post(new EventLeftIndicatorOn());
+        eventBus.post(new EventLeftIndicatorOn(IndicatorState.LEFT_ON));
         eventBus.post(new EventEngineDecreaseRPM(deltaRPM, seconds));
         eventBus.post(new EventBrakeSet(70));
         eventBus.post(new EventBrakeLightOn());
     }
 
     public void rightTurn(int deltaRPM, int seconds) {
-        eventBus.post(new EventRightIndicatorOn());
+        eventBus.post(new EventRightIndicatorOn(IndicatorState.RIGHT_ON));
         eventBus.post(new EventEngineDecreaseRPM(deltaRPM, seconds));
         eventBus.post(new EventBrakeSet(70));
         eventBus.post(new EventBrakeLightOn());
@@ -64,7 +65,7 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
     public void emergencyStop() {
         eventBus.post(new EventBrakeSet(100));
         eventBus.post(new EventBrakeLightOn());
-        eventBus.post(new EventHazardWarningOn());
+        eventBus.post(new EventHazardWarningOn(IndicatorState.ON));
         eventBus.post(new EventEngineOff());
         eventBus.post(new EventLedHighBeam());
         eventBus.post(new EventCameraOff());
@@ -76,7 +77,7 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         eventBus.post(new EventEngineOff());
         eventBus.post(new EventBrakeLightOff());
         eventBus.post(new EventLEDOff());
-        eventBus.post(new EventHazardWarningOff());
+        eventBus.post(new EventHazardWarningOff(IndicatorState.OFF));
         eventBus.post(new EventGPSOff());
         eventBus.post(new EventCameraOff());
         eventBus.post(new EventLidarOff());
