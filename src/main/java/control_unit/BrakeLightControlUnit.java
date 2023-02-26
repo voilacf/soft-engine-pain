@@ -7,24 +7,27 @@ import events.EventBrakeLightOn;
 import factories.ComponentFactory;
 
 public class BrakeLightControlUnit extends Subscriber {
-    private final Object brakeLightPort;
+    private final Object[] brakeLights;
 
-    public BrakeLightControlUnit() {
+    public BrakeLightControlUnit(Object[] brakeLights) {
         super(1);
-        brakeLightPort = ComponentFactory.buildBrakeLight();
+        this.brakeLights = brakeLights;
     }
 
     //TODO: remove event as parameter, or add getState to events?
     @Subscribe
     public void receive(EventBrakeLightOn event) {
-        BrakeLightState result = (BrakeLightState) ControlUnitUtils.invokeMethod(brakeLightPort, "on");
-        System.out.println("receive -> brake light | state : " + result);
+        for (Object brakeLight : brakeLights) {
+            BrakeLightState result = (BrakeLightState) ControlUnitUtils.invokeMethod(brakeLight, "on");
+            System.out.println("receive -> brake light | state : " + result);
+        }
     }
 
     @Subscribe
     public void receive(EventBrakeLightOff event) {
-        BrakeLightState result = (BrakeLightState) ControlUnitUtils.invokeMethod(brakeLightPort, "off");
-        System.out.println("receive -> brake light  | state : " + result);
-
+        for (Object brakeLight : brakeLights) {
+            BrakeLightState result = (BrakeLightState) ControlUnitUtils.invokeMethod(brakeLight, "off");
+            System.out.println("receive -> brake light | state : " + result);
+        }
     }
 }

@@ -5,16 +5,18 @@ import events.EventBrakeSet;
 import factories.ComponentFactory;
 
 public class BrakeControlUnit extends Subscriber {
-    private final Object brakePort;
+    private final Object[] brakes;
 
-    public BrakeControlUnit() {
+    public BrakeControlUnit(Object[] brakes) {
         super(1);
-        brakePort = ComponentFactory.buildBrake();
+        this.brakes = brakes;
     }
 
     @Subscribe
     public void receive(EventBrakeSet event) {
-        Double result = (Double) ControlUnitUtils.invokeMethod(brakePort,"setBrake", new Class[]{Double.class}, event.getPercentage());
-        System.out.println("receive -> setBrake  | percentage : " + result);
+        for (Object brake : brakes) {
+            Double result = (Double) ControlUnitUtils.invokeMethod(brake,"setBrake", new Class[]{Double.class}, event.getPercentage());
+            System.out.println("receive -> setBrake  | percentage : " + result);
+        }
     }
 }

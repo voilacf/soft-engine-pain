@@ -8,24 +8,28 @@ import events.EventCameraOn;
 import factories.ComponentFactory;
 
 public class CameraControlUnit extends Subscriber {
-    private final Object cameraPort;
+    private final Object[] cameras;
 
-    public CameraControlUnit(CameraComponentType type) {
+    public CameraControlUnit(Object[] cameras) {
         super(1);
-        cameraPort = ComponentFactory.buildCamera(type);
+        this.cameras = cameras;
     }
 
     //TODO: remove event as parameter, or add getState to events?
     @Subscribe
     public void receive(EventCameraOn event) {
-        CameraState result = (CameraState) ControlUnitUtils.invokeMethod(cameraPort,"on");
-        System.out.println("receive -> camera | state : " + result);
+        for (Object camera : cameras) {
+            CameraState result = (CameraState) ControlUnitUtils.invokeMethod(camera, "on");
+            System.out.println("receive -> camera | state : " + result);
+        }
     }
 
     @Subscribe
     public void receive(EventCameraOff event) {
-        CameraState result = (CameraState) ControlUnitUtils.invokeMethod(cameraPort,"off");
-        System.out.println("receive -> camera | state : " + result);
+        for (Object camera : cameras) {
+            CameraState result = (CameraState) ControlUnitUtils.invokeMethod(camera, "off");
+            System.out.println("receive -> camera | state : " + result);
+        }
     }
 
 }
