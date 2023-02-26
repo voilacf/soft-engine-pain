@@ -15,12 +15,12 @@ public class BatteryCell extends BatteryUnit {
     }
 
     @Override
-    public int getEnergyCount() {
+    public int getEnergy() {
         return energy ? 1 : 0;
     }
 
     @Override
-    public int useEnergyCount(int count) {
+    public int useEnergy(int count) {
         if (energy) {
             // Energy is available, use it
             energy = false;

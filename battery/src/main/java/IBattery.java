@@ -1,5 +1,7 @@
 public interface IBattery {
-    int getEnergyCount();
+    int getEnergy();
 
-    int useEnergyCount(int count);
+    int useEnergy(int count);
+    
+    int storeEnergy(int count);
 }

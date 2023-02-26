@@ -13,7 +13,6 @@ public class Battery {
     public static class Port extends BatteryUnit {
         public Port() {
             super(null);
-
             for (int i = 0; i < 500; i++) {
                 addSubUnit(new BatteryMainCell(this));
             }
@@ -23,7 +22,7 @@ public class Battery {
 
         @Override
         public void printBatterySummary() {
-            System.out.println("Battery port with 500 main cells and " + getEnergyCount() + " energy stored");
+            System.out.println("Battery port with 500 main cells and " + getEnergy() + " energy stored");
             super.printSubBatterySummary();
             System.out.println();
         }
