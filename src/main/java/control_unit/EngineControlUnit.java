@@ -7,14 +7,14 @@ import events.EventEngineDecreaseRPM;
 import events.EventEngineIncreaseRPM;
 import events.EventEngineOff;
 import events.EventEngineOn;
-import factories.Factory;
+import factories.ComponentFactory;
 
 public class EngineControlUnit extends Subscriber {
     private final Object enginePort;
 
     public EngineControlUnit(EngineComponentType type) {
         super(1);
-        enginePort = Factory.buildEngine(type);
+        enginePort = ComponentFactory.buildEngine(type);
     }
 
     //TODO: remove event as parameter from first two methods, or add getState to events?

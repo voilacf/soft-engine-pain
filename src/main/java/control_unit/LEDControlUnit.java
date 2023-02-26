@@ -4,14 +4,14 @@ import com.google.common.eventbus.Subscribe;
 import control_unit.states.LEDState;
 import events.EventLEDOff;
 import events.EventLEDOn;
-import factories.Factory;
+import factories.ComponentFactory;
 
 public class LEDControlUnit extends Subscriber {
     private final Object ledPort;
 
     public LEDControlUnit() {
         super(1);
-        ledPort = Factory.buildLED();
+        ledPort = ComponentFactory.buildLED();
     }
 
     //TODO: remove event as parameter from first two methods, or add getState to events?

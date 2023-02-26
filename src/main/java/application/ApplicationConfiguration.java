@@ -10,13 +10,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class ApplicationConfiguration {
+    // TODO: load engine, camera and lidar from config file.
     private EngineComponentType engine;
     private CameraComponentType camera;
     private LidarComponentType lidar;
 
     private VehicleConfigurationMemento vehicleConfigurationMemento = new VehicleConfigurationMemento();
 
-    private static final String pathToConfigFile = "config.json";
+    private static final String pathToConfigFile = "config.json"; // TODO: needs to come from program arguments
 
     public ApplicationConfiguration() {
     }
@@ -67,7 +68,7 @@ public class ApplicationConfiguration {
 
     //For Config application.Application
     public void saveJSONConfig() {
-JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = new JSONObject();
         jsonObject.put("rejectDrunkenPassengers", vehicleConfigurationMemento.rejectDrunkenPassengers);
         jsonObject.put("stopByPoliceRequest", vehicleConfigurationMemento.stopByPoliceRequest);
         jsonObject.put("allowDriveByNight", vehicleConfigurationMemento.allowDriveByNight);
@@ -90,5 +91,17 @@ JSONObject jsonObject = new JSONObject();
 
     public void setVehicleConfigurationMemento(VehicleConfigurationMemento vehicleConfigurationMemento) {
         this.vehicleConfigurationMemento = vehicleConfigurationMemento;
+    }
+
+    public EngineComponentType getEngine() {
+        return engine;
+    }
+
+    public CameraComponentType getCamera() {
+        return camera;
+    }
+
+    public LidarComponentType getLidar() {
+        return lidar;
     }
 }

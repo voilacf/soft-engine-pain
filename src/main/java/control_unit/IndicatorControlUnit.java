@@ -3,14 +3,14 @@ package control_unit;
 import com.google.common.eventbus.Subscribe;
 import control_unit.states.IndicatorState;
 import events.*;
-import factories.Factory;
+import factories.ComponentFactory;
 
 public class IndicatorControlUnit extends Subscriber {
     private final Object indicatorPort;
 
     public IndicatorControlUnit() {
         super(1);
-        indicatorPort = Factory.buildIndicator();
+        indicatorPort = ComponentFactory.buildIndicator();
     }
 
     //TODO: reduce code redundancy?

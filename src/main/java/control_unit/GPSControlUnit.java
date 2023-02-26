@@ -5,14 +5,14 @@ import control_unit.states.GPSState;
 import events.EventGPSConnectSatellite;
 import events.EventGPSOff;
 import events.EventGPSOn;
-import factories.Factory;
+import factories.ComponentFactory;
 
 public class GPSControlUnit extends Subscriber {
     private final Object gpsPort;
 
     public GPSControlUnit() {
         super(1);
-        gpsPort = Factory.buildGPS();
+        gpsPort = ComponentFactory.buildGPS();
     }
 
     //TODO: remove event as parameter from first two methods, or add getState to events?

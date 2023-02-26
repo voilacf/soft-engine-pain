@@ -43,7 +43,7 @@ public class AutonomousVehicle {
         return type;
     }
 
-    public class Builder {
+    public static class Builder {
         private Chassis chassis;
         private Object engine;
         private Object battery; //IBattery

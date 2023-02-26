@@ -2,14 +2,14 @@ package control_unit;
 
 import com.google.common.eventbus.Subscribe;
 import events.EventBrakeSet;
-import factories.Factory;
+import factories.ComponentFactory;
 
 public class BrakeControlUnit extends Subscriber {
     private final Object brakePort;
 
     public BrakeControlUnit() {
         super(1);
-        brakePort = Factory.buildBrake();
+        brakePort = ComponentFactory.buildBrake();
     }
 
     @Subscribe

@@ -5,14 +5,14 @@ import com.google.common.eventbus.Subscribe;
 import control_unit.states.CameraState;
 import events.EventCameraOff;
 import events.EventCameraOn;
-import factories.Factory;
+import factories.ComponentFactory;
 
 public class CameraControlUnit extends Subscriber {
     private final Object cameraPort;
 
     public CameraControlUnit(CameraComponentType type) {
         super(1);
-        cameraPort = Factory.buildCamera(type);
+        cameraPort = ComponentFactory.buildCamera(type);
     }
 
     //TODO: remove event as parameter, or add getState to events?

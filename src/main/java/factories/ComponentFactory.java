@@ -13,7 +13,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
 
-public class Factory {
+public class ComponentFactory {
     private static HashMap<String, URL> jarPaths;
 
     static{
@@ -44,7 +44,7 @@ public class Factory {
                 throw new RuntimeException("Jar not verified");
             }
             URL[] urls = {url};
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, Factory.class.getClassLoader());
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, ComponentFactory.class.getClassLoader());
             Class<?> brakeClass = Class.forName(classname, true, urlClassLoader);
             Object brakeInstance = brakeClass.getMethod("getInstance").invoke(null);
             port = brakeClass.getDeclaredField("port").get(brakeInstance);
