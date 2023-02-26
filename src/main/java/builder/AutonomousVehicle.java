@@ -7,7 +7,7 @@ import observer.UltraSonicSensor;
 public class AutonomousVehicle {
     private final Chassis chassis;
     private final Object engine;
-    private final Object[] battery; //IBattery
+    private final Object battery; //IBattery
     private final Object[] headlights; //ILED
     private final Object[] breakLights; //IBrakeLight
     private final Object[] indicators; //IIndicator
@@ -46,7 +46,7 @@ public class AutonomousVehicle {
     public class Builder {
         private Chassis chassis;
         private Object engine;
-        private Object[] battery; //IBattery
+        private Object battery; //IBattery
         private Object[] headlights; //ILED
         private Object[] breakLights; //IBrakeLight
         private Object[] indicators; //IIndicator
@@ -61,63 +61,78 @@ public class AutonomousVehicle {
         private VehicleType type;
 
         public Builder chassis(Chassis chassis) {
+            this.chassis = chassis;
             return this;
         }
 
-        public void engine(Object engine) {
-
+        public Builder engine(Object engine) {
+            this.engine = engine;
+            return this;
         }
 
-        public void battery(Object battery) { //IBattery
-
+        public Builder battery(Object battery) { //IBattery
+            this.battery = battery;
+            return this;
         }
 
-        public void headlights(Object[] lights) { //ILED
-
+        public Builder headlights(Object[] lights) { //ILED
+            this.headlights = lights;
+            return this;
         }
 
-        public void brakeLights(Object[] brakeLights) { //IBrakeLight
-
+        public Builder brakeLights(Object[] brakeLights) { //IBrakeLight
+            this.breakLights = brakeLights;
+            return this;
         }
 
-        public void indicators(Object[] indicators) { //IIndicator
-
+        public Builder indicators(Object[] indicators) { //IIndicator
+            this.indicators = indicators;
+            return this;
         }
 
-        public void doors(Door[] doors) {
-
+        public Builder doors(Door[] doors) {
+            this.doors = doors;
+            return this;
         }
 
-        public void seats(ISittable[] seats) {
-
+        public Builder seats(ISittable[] seats) {
+            this.seats = seats;
+            return this;
         }
 
-        public void wheels(Wheel wheels) {
-
+        public Builder wheels(Wheel[] wheels) {
+            this.wheels = wheels;
+            return this;
         }
 
-        public void brakes(Object[] brakes) { //IBrake
-
+        public Builder brakes(Object[] brakes) { //IBrake
+            this.brakes = brakes;
+            return this;
         }
 
-        public void gps(Object[] gps) { //IGPS
-
+        public Builder gps(Object[] gps) { //IGPS
+            this.gps = gps;
+            return this;
         }
 
-        public void cameras(Object[] cameras) { //ICamera
-
+        public Builder cameras(Object[] cameras) { //ICamera
+            this.cameras = cameras;
+            return this;
         }
 
-        public void lidars(Object[] lidars) { //ILidar
-
+        public Builder lidars(Object[] lidars) { //ILidar
+            this.lidars = lidars;
+            return this;
         }
 
-        public void ultraSonics(UltraSonicSensor[] us) {
-
+        public Builder ultraSonics(UltraSonicSensor[] us) {
+            this.ultraSonics = us;
+            return this;
         }
 
-        public void type(VehicleType type) {
+        public Builder type(VehicleType type) {
             this.type = type;
+            return this;
         }
 
         public AutonomousVehicle build() {
