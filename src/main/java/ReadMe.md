@@ -10,6 +10,6 @@ S01:
 - finish off job 
 
 S02:
-- construct Amazon Zoox or AutoX vehicle in application.Application.main() Method. Use builder to construct it and get components from factories.
+~~- construct Amazon Zoox or AutoX vehicle in application.Application.main() Method. Use builder to construct it and get components from factories.~~
 
     
