@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class ChargingStation {
-    //TODO check if energy has to be own class with attribute cost
     private Stack<Integer> energyStack;
 
     public ChargingStation(){
