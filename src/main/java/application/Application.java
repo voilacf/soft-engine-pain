@@ -6,6 +6,7 @@ import components.VehicleKey;
 import components.VehicleKeyReceiverModule;
 import control_unit.VehicleControlUnit;
 import factories.AutonomousVehicleFactory;
+import memento.VehicleConfigurationMemento;
 import observer.UltraSonicSensor;
 import service_center.ServiceCenter;
 
@@ -39,8 +40,13 @@ public class Application {
             door.getEmergencyButton().pressButton();
         }
 
-        // TODO(1adri1) print VehicleConfiguration here
-
+        VehicleConfigurationMemento config = ApplicationConfiguration.loadJSONConfig().getVehicleConfigurationMemento();
+        System.out.println("Current configuration:");
+        System.out.println("    rejectDrunkenPassengers: " + config.rejectDrunkenPassengers);
+        System.out.println("    stopByPoliceRequest: " + config.stopByPoliceRequest);
+        System.out.println("    allowDriveByNight: " + config.allowDriveByNight);
+        System.out.println("    behaviorWithNaggingPassengers: " + config.behaviorWithNaggingPassengers);
+        System.out.println("    musicDuringDrive: " + config.musicDuringDrive);
 
         for (UltraSonicSensor us : vehicle.getUltraSonics()) {
             us.distanceChanged(Math.round(Math.random() * 10) + 5);
