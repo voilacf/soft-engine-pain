@@ -5,7 +5,8 @@
 S01:
 - ~~Sign all components~~
 - ~~Reduce code redundancy in all factories/Configuration~~
-- ~~going over control unit~~ 
+- ~~going over control unit~~
+- Fix NoSuchMethodExceptions caused by method invocations to Indicator.off() etc.
 - revisit increase-/decreaseRPM in engine
 - finish off job 
 

@@ -3,12 +3,12 @@ package factories;
 import application.ApplicationConfiguration;
 import builder.*;
 import components.Door;
+import observer.UltraSonicSensor;
 import service_center.ServiceCenter;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class AutonomousVehicleFactory {
     private static <T> T[] arr(Class<?> clazz, Supplier<T> sup, int count) {
@@ -20,6 +20,7 @@ public class AutonomousVehicleFactory {
     }
 
     public static AutonomousVehicle buildAmazonZoox(ServiceCenter serviceCenter, ApplicationConfiguration config) {
+        AtomicInteger ultraSonicId = new AtomicInteger(1);
         return new AutonomousVehicle.Builder()
                 .chassis(new Chassis())
                 .engine(ComponentFactory.buildEngine(config.getEngine()))
@@ -36,11 +37,13 @@ public class AutonomousVehicleFactory {
                 .gps(arr(Object.class, ComponentFactory::buildGPS, 2))
                 .cameras(arr(Object.class, () -> ComponentFactory.buildCamera(config.getCamera()), 4))
                 .lidars(arr(Object.class, () -> ComponentFactory.buildLidar(config.getLidar()), 4))
+                .ultraSonics(arr(UltraSonicSensor.class, () -> new UltraSonicSensor(ultraSonicId.getAndIncrement()), 8))
                 .type(VehicleType.AMAZON_ZOOX)
                 .build();
     }
 
     public static AutonomousVehicle buildAutoX(ServiceCenter serviceCenter, ApplicationConfiguration config) {
+        AtomicInteger ultraSonicId = new AtomicInteger(1);
         return new AutonomousVehicle.Builder()
                 .chassis(new Chassis())
                 .engine(ComponentFactory.buildEngine(config.getEngine()))
@@ -57,6 +60,7 @@ public class AutonomousVehicleFactory {
                 .gps(arr(Object.class, ComponentFactory::buildGPS, 2))
                 .cameras(arr(Object.class, () -> ComponentFactory.buildCamera(config.getCamera()), 2))
                 .lidars(arr(Object.class, () -> ComponentFactory.buildLidar(config.getLidar()), 4))
+                .ultraSonics(arr(UltraSonicSensor.class, () -> new UltraSonicSensor(ultraSonicId.getAndIncrement()), 8))
                 .type(VehicleType.AUTOX)
                 .build();
     }

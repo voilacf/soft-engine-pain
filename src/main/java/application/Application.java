@@ -1,6 +1,8 @@
 package application;
 
 import builder.AutonomousVehicle;
+import components.VehicleKey;
+import components.VehicleKeyReceiverModule;
 import control_unit.VehicleControlUnit;
 import factories.AutonomousVehicleFactory;
 import service_center.ServiceCenter;
@@ -18,12 +20,16 @@ public class Application {
     }
 
     private static void testVehicle(VehicleControlUnit controlUnit) {
+        VehicleKey key = new VehicleKey(new VehicleKeyReceiverModule(controlUnit), controlUnit.getVehicle().getType());
+        key.enableVehicle();
+
         controlUnit.startup();
         controlUnit.move(100, 5);
         controlUnit.leftTurn(100, 5);
         controlUnit.rightTurn(100, 5);
         controlUnit.stop();
         controlUnit.emergencyStop();
-        controlUnit.shutdown();
+
+        key.disableVehicle();
     }
 }

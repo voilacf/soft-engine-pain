@@ -1,16 +1,18 @@
 package door_button;
 
-import components.VehicleKey;
+import components.VehicleKeyReceiverModule;
 
 public class CommandDisable implements ICommand {
-    private final VehicleKey key;
+    private final VehicleKeyReceiverModule receiver;
+    private final String encryptedPassword;
 
-    public CommandDisable(VehicleKey key) {
-        this.key = key;
+    public CommandDisable(VehicleKeyReceiverModule receiver, String encryptedPassword) {
+        this.receiver = receiver;
+        this.encryptedPassword = encryptedPassword;
     }
 
     @Override
     public void execute() {
-        key.disableVehicle();
+        receiver.disableVehicle(encryptedPassword);
     }
 }
