@@ -1,6 +1,7 @@
 # TODOS:
 
 * rename packages according to S01, S02, etc.
+* Matrikelnummern zu Readme.txt im Hauptverzeichnis hinzufügen
 
 S01:
 - ~~Sign all components~~
