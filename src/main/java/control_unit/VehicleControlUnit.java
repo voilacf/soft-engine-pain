@@ -1,6 +1,7 @@
 package control_unit;
 
 import builder.AutonomousVehicle;
+import charging_station.EventCharging;
 import com.google.common.eventbus.EventBus;
 import control_unit.states.IndicatorState;
 import door_button.ICommand;
@@ -80,6 +81,10 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         eventBus.post(new EventGPSOff());
         eventBus.post(new EventCameraOff());
         eventBus.post(new EventLidarOff());
+    }
+
+    public void charging(int amountOfEnergy){
+        eventBus.post(new EventCharging(amountOfEnergy));
     }
 
     void executeCommand(ICommand cmd) {
