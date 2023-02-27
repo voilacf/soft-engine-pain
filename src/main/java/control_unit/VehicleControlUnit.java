@@ -10,6 +10,8 @@ import observer.IBatteryCellTemperatureListener;
 import observer.IUltraSonicSensorListener;
 import observer.UltraSonicSensor;
 
+import java.util.Arrays;
+
 public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUltraSonicSensorListener {
     private final EventBus eventBus;
     private final AutonomousVehicle vehicle;
@@ -17,6 +19,9 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
     public VehicleControlUnit(AutonomousVehicle vehicle) {
         eventBus = new EventBus();
         this.vehicle = vehicle;
+
+        // Add as listener
+        Arrays.stream(vehicle.getUltraSonics()).forEach(ultraSonic -> ultraSonic.addListener(this));
     }
 
     public void addSubscriber(Subscriber subscriber) {
@@ -94,6 +99,7 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
 
     @Override
     public void batteryTemperatureChanged(double temperature, Object battery) {
+        // TODO: should this be here or in the BatteryControlUnit class? Also needs to be added as a handler
         System.out.println("Battery temperature changed to " + temperature + "°C");
     }
 

@@ -76,6 +76,10 @@ public class AutonomousVehicle {
         return type;
     }
 
+    public UltraSonicSensor[] getUltraSonics() {
+        return ultraSonics;
+    }
+
     public VehicleControlUnit getControlUnit() {
         return controlUnit;
     }
