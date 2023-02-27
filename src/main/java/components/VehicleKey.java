@@ -22,10 +22,12 @@ public class VehicleKey {
     }
 
     public void enableVehicle() {
+        System.out.println("Enable key on vehicle key was pressed.");
         enableButton.pressButton();
     }
 
     public void disableVehicle() {
+        System.out.println("Disable key on vehicle key was pressed.");
         disableButton.pressButton();
     }
 }

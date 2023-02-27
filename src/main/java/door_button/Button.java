@@ -14,6 +14,7 @@ public class Button {
 
     public void pressButton() {
         if (command != null) {
+            System.out.println("Button pressed. Executing command " + command.getClass().getSimpleName());
             command.execute();
         }
 

@@ -92,11 +92,6 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         eventBus.post(new EventCharging(amountOfEnergy));
     }
 
-    void executeCommand(ICommand cmd) {
-        cmd.execute();
-    }
-
-
     @Override
     public void batteryTemperatureChanged(double temperature, Object battery) {
         // TODO: should this be here or in the BatteryControlUnit class? Also needs to be added as a handler
