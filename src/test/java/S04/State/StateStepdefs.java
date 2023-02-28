@@ -21,19 +21,31 @@ public class StateStepdefs {
         door = new Door(serviceCenter);
     }
 
-    @Then("The door should be closed")
-    public void theDoorShouldBeClosed() {
-    assertTrue(door.getState() instanceof DoorStateClosed);
+    @When("I toggle the door state door currently {string}")
+    public void iToggleTheDoorStateDoor(String state) {
+        if (state.equals("opened")) {
+            assertTrue(door.getState() instanceof DoorStateOpened);
+            door.toggleDoorState();
+        }
+        else if (state.equals("closed")) {
+            assertTrue(door.getState() instanceof DoorStateClosed);
+            door.toggleDoorState();
+        }
+        else {
+            throw new IllegalArgumentException("Invalid state");
+        }
     }
 
-
-    @When("I toggle the door state")
-    public void iOpenTheDoor() {
-        door.toggleDoorState();
-    }
-
-    @Then("The door should be open")
-    public void theDoorShouldBeOpen() {
-        assertTrue(door.getState() instanceof DoorStateOpened);
+    @Then("The door should be {string}")
+    public void theDoorShouldBe(String state) {
+        if (state.equals("opened")) {
+            assertTrue(door.getState() instanceof DoorStateOpened);
+        }
+        else if (state.equals("closed")) {
+            assertTrue(door.getState() instanceof DoorStateClosed);
+        }
+        else {
+            throw new IllegalArgumentException("Invalid state");
+        }
     }
 }
