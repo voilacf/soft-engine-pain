@@ -13,6 +13,11 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
     implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre', 'org.json:json:20220924', 'commons-io:commons-io:2.11.0'
+    testImplementation 'org.junit.vintage:junit-vintage-engine'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.11.1'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.11.1'
+
 }
 
 test {

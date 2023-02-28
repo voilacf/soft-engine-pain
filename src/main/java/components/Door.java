@@ -40,4 +40,8 @@ public class Door implements IButtonPressedListener {
     public Button getToggleButton() {
         return toggleButton;
     }
+
+    public IDoorState getState() {
+        return state;
+    }
 }
