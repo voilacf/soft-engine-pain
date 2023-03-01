@@ -24,10 +24,24 @@ public class BatteryCell extends BatteryUnit {
         if (energy) {
             // Energy is available, use it
             energy = false;
+            temperatureChanged();
             return 1;
         } else {
             // No energy available that could be used
             return 0;
+        }
+    }
+
+    @Override
+    public int storeEnergy(int count) {
+        if(energy) {
+            // Already one energy stored, cannot store any more
+            return 0;
+        } else {
+            // No energy stored, store one
+            energy = true;
+            temperatureChanged();
+            return 1;
         }
     }
 
@@ -39,13 +53,12 @@ public class BatteryCell extends BatteryUnit {
         listeners.remove(listener);
     }
 
-    public void temperatureChanged(double temperature) {
+    private void temperatureChanged() {
+        // Random temp between 25 and 55
+        double temperature = 25 + Math.random() * 30;
+
         for (IBatteryCellTemperatureListener listener : listeners) {
             listener.batteryTemperatureChanged(temperature, this);
         }
-    }
-
-    public void setTemperature(double temperature) {
-        temperatureChanged(temperature);
     }
 }
