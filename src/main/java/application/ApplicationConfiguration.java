@@ -10,14 +10,12 @@ import java.io.File;
 import java.io.IOException;
 
 public class ApplicationConfiguration {
+    private static final String pathToConfigFile = "config.json"; // TODO: needs to come from program arguments
     // TODO: load engine, camera and lidar from config file.
     private EngineComponentType engine;
     private CameraComponentType camera;
     private LidarComponentType lidar;
-
     private VehicleConfigurationMemento vehicleConfigurationMemento = new VehicleConfigurationMemento();
-
-    private static final String pathToConfigFile = "config.json"; // TODO: needs to come from program arguments
 
     public ApplicationConfiguration() {
     }

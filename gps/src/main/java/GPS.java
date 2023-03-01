@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class GPS {
     private static final GPS instance = new GPS();
     public Port port;

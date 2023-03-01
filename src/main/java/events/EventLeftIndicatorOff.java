@@ -5,11 +5,11 @@ import control_unit.states.IndicatorState;
 public class EventLeftIndicatorOff {
     private IndicatorState state;
 
-    public EventLeftIndicatorOff(IndicatorState state){
+    public EventLeftIndicatorOff(IndicatorState state) {
         this.state = state;
     }
 
-    public IndicatorState getState(){
+    public IndicatorState getState() {
         return state;
     }
 

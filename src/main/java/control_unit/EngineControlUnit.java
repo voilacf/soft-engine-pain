@@ -18,7 +18,7 @@ public class EngineControlUnit extends Subscriber {
     //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventEngineOn event) {
-        ElectricEngineState result = (ElectricEngineState) ComponentUtils.invokeMethod(engine,"on");
+        ElectricEngineState result = (ElectricEngineState) ComponentUtils.invokeMethod(engine, "on");
         System.out.println("receive -> electric-engine | state : " + result);
     }
 
@@ -30,13 +30,13 @@ public class EngineControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventEngineIncreaseRPM event) {
-        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "increaseRPM",new Class[]{Integer.class}, event.getDeltaRPM());
+        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "increaseRPM", new Class[]{Integer.class}, event.getDeltaRPM());
         System.out.println("receive -> electric-engine | rpm : " + result);
     }
 
     @Subscribe
     public void receive(EventEngineDecreaseRPM event) {
-        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "decreaseRPM",new Class[]{Integer.class}, event.getDeltaRPM());
+        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "decreaseRPM", new Class[]{Integer.class}, event.getDeltaRPM());
         System.out.println("receive -> electric-engine | rpm : " + result);
     }
 }

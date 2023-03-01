@@ -12,7 +12,7 @@ public class BatteryCellTemperatureListenerProxy implements IBatteryCellTemperat
         try {
             Method changedMethod = listener.getClass().getMethod("batteryTemperatureChanged", double.class, Object.class);
             changedMethod.invoke(listener, temperature, battery);
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

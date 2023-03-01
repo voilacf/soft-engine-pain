@@ -1,8 +1,9 @@
 package memento;
 
+import application.ApplicationConfiguration;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-import application.ApplicationConfiguration;
 
 public class VehicleConfiguration {
     private boolean rejectDrunkenPassengers;
@@ -14,6 +15,7 @@ public class VehicleConfiguration {
     public VehicleConfiguration() {
     }
 
+    //Save the current configuration
     public VehicleConfigurationMemento save() {
         VehicleConfigurationMemento memento = new VehicleConfigurationMemento();
         memento.rejectDrunkenPassengers = this.rejectDrunkenPassengers;
@@ -24,6 +26,7 @@ public class VehicleConfiguration {
         return memento;
     }
 
+    //Restore the configuration from the memento
     public void restore(VehicleConfigurationMemento memento) {
         this.rejectDrunkenPassengers = memento.rejectDrunkenPassengers;
         this.stopByPoliceRequest = memento.stopByPoliceRequest;
@@ -33,6 +36,7 @@ public class VehicleConfiguration {
         System.out.println("Configuration restored");
     }
 
+    //Print the current configuration
     public void print() {
         System.out.println("Current configuration:");
         System.out.println("    rejectDrunkenPassengers: " + rejectDrunkenPassengers);
@@ -42,6 +46,7 @@ public class VehicleConfiguration {
         System.out.println("    musicDuringDrive: " + musicDuringDrive);
     }
 
+    //Change a parameter
     public void setParameter(String key, int value) {
         if (value != 0 && value != 1) {
             System.out.println("Invalid value");
@@ -61,6 +66,7 @@ public class VehicleConfiguration {
         }
     }
 
+    //Show the parameter change prompts in the console
     private void setParameterPrompt() {
         this.print();
         System.out.println("Possible keys: 0=rejectDrunkenPassengers, 1=stopByPoliceRequest, 2=allowDriveByNight, 3=behaviorWithNaggingPassengers, 4=musicDuringDrive");
@@ -110,7 +116,7 @@ public class VehicleConfiguration {
         this.setParameter(keyString, value);
     }
 
-
+    //Enter the configuration mode
     public void enterConfigurationMode() {
         ApplicationConfiguration applicationConfiguration = ApplicationConfiguration.loadJSONConfig();
         this.restore(applicationConfiguration.getVehicleConfigurationMemento());

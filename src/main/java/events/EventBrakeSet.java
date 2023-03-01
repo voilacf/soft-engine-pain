@@ -7,7 +7,7 @@ public class EventBrakeSet {
         this.percentage = percentage;
     }
 
-    public double getPercentage(){
+    public double getPercentage() {
         return percentage;
     }
 

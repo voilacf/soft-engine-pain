@@ -4,13 +4,11 @@ import builder.AutonomousVehicle;
 import charging_station.EventCharging;
 import com.google.common.eventbus.EventBus;
 import control_unit.states.IndicatorState;
-import door_button.ICommand;
 import events.*;
 import observer.IBatteryCellTemperatureListener;
 import observer.IUltraSonicSensorListener;
 import observer.UltraSonicSensor;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,10 +25,10 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         addBatteryListeners(vehicle.getBattery());
     }
 
-    private void addBatteryListeners(Object batteryUnit){
-        Boolean isComposite =(Boolean) ComponentUtils.invokeMethod(batteryUnit, "isComposite");
+    private void addBatteryListeners(Object batteryUnit) {
+        Boolean isComposite = (Boolean) ComponentUtils.invokeMethod(batteryUnit, "isComposite");
         assert isComposite != null;
-        if(isComposite) {
+        if (isComposite) {
             List<Object> subUnits = (List<Object>) ComponentUtils.invokeMethod(batteryUnit, "getSubUnits");
             assert subUnits != null;
             subUnits.forEach(this::addBatteryListeners);
@@ -103,15 +101,17 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         eventBus.post(new EventLidarOff());
     }
 
-    public void charging(int amountOfEnergy){
+    public void charging(int amountOfEnergy) {
         eventBus.post(new EventCharging(amountOfEnergy));
     }
 
+    //Temperature of battery cell changed
     @Override
     public void batteryTemperatureChanged(double temperature, Object battery) {
         System.out.println("Battery temperature changed to " + temperature + "°C");
     }
 
+    //Distance of ultrasonic sensor changed
     @Override
     public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
         System.out.println("UltraSonicSensor " + sensor.getId() + " distance changed to " + distance + "m");

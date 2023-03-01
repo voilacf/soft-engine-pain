@@ -26,12 +26,10 @@ public class StateStepdefs {
         if (state.equals("opened")) {
             assertTrue(door.getState() instanceof DoorStateOpened);
             door.toggleDoorState();
-        }
-        else if (state.equals("closed")) {
+        } else if (state.equals("closed")) {
             assertTrue(door.getState() instanceof DoorStateClosed);
             door.toggleDoorState();
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Invalid state");
         }
     }
@@ -40,11 +38,9 @@ public class StateStepdefs {
     public void theDoorShouldBe(String state) {
         if (state.equals("opened")) {
             assertTrue(door.getState() instanceof DoorStateOpened);
-        }
-        else if (state.equals("closed")) {
+        } else if (state.equals("closed")) {
             assertTrue(door.getState() instanceof DoorStateClosed);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Invalid state");
         }
     }

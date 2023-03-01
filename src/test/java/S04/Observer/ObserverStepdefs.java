@@ -14,7 +14,8 @@ import service_center.ServiceCenter;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ObserverStepdefs {
     Object batteryCell;
@@ -24,74 +25,40 @@ public class ObserverStepdefs {
     Door door;
     TestDoorButtonSensorListener listenerDoorButtonSensor;
 
-
-    public static class TestBatteryListener implements IBatteryCellTemperatureListener {
-        public double lastTemperature = -1;
-        public boolean temperatureUpdateReceived = false;
-
-        @Override
-        public void batteryTemperatureChanged(double temperature, Object battery) {
-            lastTemperature = temperature;
-            temperatureUpdateReceived = true;
-        }
-    }
-
-        public static class TestUltrasonicListener implements IUltraSonicSensorListener {
-        public double lastDistance = -1;
-        public boolean distanceUpdateReceived = false;
-            @Override
-            public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
-                lastDistance = distance;
-            distanceUpdateReceived = true;
-
-            }
-        }
-
-        public static class TestDoorButtonSensorListener implements IButtonPressedListener {
-
-            public boolean buttonPressReceived = false;
-
-            @Override
-            public void buttonPressed() {
-                buttonPressReceived = true;
-            }
-        }
-
     @Given("I have a battery cell")
     public void iHaveABatteryCell() {
         Object battery = ComponentFactory.buildBattery();
-        List<Object> batteryMainCells = (List<Object>)ComponentUtils.invokeMethod(battery, "getSubUnits");
+        List<Object> batteryMainCells = (List<Object>) ComponentUtils.invokeMethod(battery, "getSubUnits");
         assert batteryMainCells != null;
-        List<Object> batterySubCells = (List<Object>)ComponentUtils.invokeMethod(batteryMainCells.get(0), "getSubUnits");
+        List<Object> batterySubCells = (List<Object>) ComponentUtils.invokeMethod(batteryMainCells.get(0), "getSubUnits");
         assert batterySubCells != null;
-        List<Object> batteryCells = (List<Object>)ComponentUtils.invokeMethod(batterySubCells.get(0), "getSubUnits");
+        List<Object> batteryCells = (List<Object>) ComponentUtils.invokeMethod(batterySubCells.get(0), "getSubUnits");
         assert batteryCells != null;
         batteryCell = batteryCells.get(0);
     }
 
-        @Given("I have a battery listener")
+    @Given("I have a battery listener")
     public void iHaveAListener() {
         listenerBattery = new TestBatteryListener();
     }
 
     @When("I add the listener to the battery cell")
     public void iAddTheListenerToTheBatteryCell() {
-        ComponentUtils.invokeMethod(batteryCell, "addListener", new Class[] {Object.class}, listenerBattery);
+        ComponentUtils.invokeMethod(batteryCell, "addListener", new Class[]{Object.class}, listenerBattery);
     }
 
     @When("I discharge the battery")
     public void iDischargeTheBattery() {
-        ComponentUtils.invokeMethod(batteryCell, "useEnergy", new Class[] {int.class}, 1);
+        ComponentUtils.invokeMethod(batteryCell, "useEnergy", new Class[]{int.class}, 1);
     }
 
-
-        @Then("The listener should receive a temperature change")
+    @Then("The listener should receive a temperature change")
     public void theListenerShouldReceiveATemperatureChange() {
-                assertTrue(listenerBattery.temperatureUpdateReceived);
+        assertTrue(listenerBattery.temperatureUpdateReceived);
         assertNotEquals(-1, listenerBattery.lastTemperature);
     }
 
-        @Given("I have an ultrasonic sensor")
+    @Given("I have an ultrasonic sensor")
     public void iHaveAnUltrasonicSensor() {
         ultraSonicSensor = new UltraSonicSensor(0);
 
@@ -144,5 +111,38 @@ public class ObserverStepdefs {
     @Then("The listener should receive a button press")
     public void theListenerShouldReceiveAButtonPress() {
         assertTrue(listenerDoorButtonSensor.buttonPressReceived);
+    }
+
+    public static class TestBatteryListener implements IBatteryCellTemperatureListener {
+        public double lastTemperature = -1;
+        public boolean temperatureUpdateReceived = false;
+
+        @Override
+        public void batteryTemperatureChanged(double temperature, Object battery) {
+            lastTemperature = temperature;
+            temperatureUpdateReceived = true;
+        }
+    }
+
+    public static class TestUltrasonicListener implements IUltraSonicSensorListener {
+        public double lastDistance = -1;
+        public boolean distanceUpdateReceived = false;
+
+        @Override
+        public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
+            lastDistance = distance;
+            distanceUpdateReceived = true;
+
+        }
+    }
+
+    public static class TestDoorButtonSensorListener implements IButtonPressedListener {
+
+        public boolean buttonPressReceived = false;
+
+        @Override
+        public void buttonPressed() {
+            buttonPressReceived = true;
+        }
     }
 }

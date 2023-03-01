@@ -21,7 +21,7 @@ public class Blue extends LoyaltyState {
         int loyaltyPoints = decryptLoyaltyPoints();
         double credits = decryptCredits();
         double costs = credits - (amountOfEnergy * 0.35);
-        if(costs >= 0) {
+        if (costs >= 0) {
             userMemberCard.setEncryptedCredits(costs);
             userMemberCard.setEncryptedLoyaltyPoints(loyaltyPoints + amountOfEnergy);
             System.out.println("Bill: \tcosts: " + amountOfEnergy * 0.35 + " Euro \tcollected loyaltyPoints: " + amountOfEnergy + " Points");

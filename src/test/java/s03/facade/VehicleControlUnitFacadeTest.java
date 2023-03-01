@@ -8,7 +8,7 @@ import testutils.GivenAutonomousVehicle;
 public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVehicle, WhenVehicleControlUnit, ThenVehicleControlUnit> {
 
     @Test
-    public void startup()  {
+    public void startup() {
         given().a_amazon_zoox().with().a_control_bus_listener();
         when().startup_is_called();
         then().control_bus_has_received_events(new Class[]{
@@ -18,13 +18,13 @@ public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVe
                 EventGPSConnectSatellite.class,
                 EventCameraOn.class,
                 EventLidarOn.class,
-EventLeftIndicatorOff.class,
+                EventLeftIndicatorOff.class,
                 EventRightIndicatorOff.class
         });
     }
 
     @Test
-    public void move()  {
+    public void move() {
         given().a_amazon_zoox().with().a_control_bus_listener();
         when().move_is_called(100, 10);
         then().control_bus_has_received_events(new Class[]{
@@ -38,7 +38,7 @@ EventLeftIndicatorOff.class,
     }
 
     @Test
-    public void leftTurn()  {
+    public void leftTurn() {
         given().a_amazon_zoox().with().a_control_bus_listener();
         when().left_turn_is_called(100, 10);
         then().control_bus_has_received_events(new Class[]{
@@ -50,7 +50,7 @@ EventLeftIndicatorOff.class,
     }
 
     @Test
-    public void rightTurn()  {
+    public void rightTurn() {
         given().a_amazon_zoox().with().a_control_bus_listener();
         when().right_turn_is_called(100, 10);
         then().control_bus_has_received_events(new Class[]{
@@ -62,7 +62,7 @@ EventLeftIndicatorOff.class,
     }
 
     @Test
-    public void stop()  {
+    public void stop() {
         given().a_amazon_zoox().with().a_control_bus_listener();
         when().stop_is_called();
         then().control_bus_has_received_events(new Class[]{
@@ -72,7 +72,7 @@ EventLeftIndicatorOff.class,
     }
 
     @Test
-    public void emergencyStop()  {
+    public void emergencyStop() {
         given().a_amazon_zoox().with().a_control_bus_listener();
         when().emergency_stop_is_called();
         then().control_bus_has_received_events(new Class[]{
@@ -87,7 +87,7 @@ EventLeftIndicatorOff.class,
     }
 
     @Test
-    public void shutdown()  {
+    public void shutdown() {
         given().a_amazon_zoox().with().a_control_bus_listener();
         when().shutdown_is_called();
         then().control_bus_has_received_events(new Class[]{

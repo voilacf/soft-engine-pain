@@ -1,4 +1,5 @@
 package observer;
+
 import java.util.ArrayList;
 
 public class UltraSonicSensor {
@@ -10,7 +11,7 @@ public class UltraSonicSensor {
         this.id = id;
     }
 
-
+    //Notify listeners about distance change
     public void distanceChanged(double distance) {
         for (IUltraSonicSensorListener listener : listeners) {
             listener.ultraSonicMeasurement(this, distance);

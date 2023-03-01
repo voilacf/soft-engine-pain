@@ -3,6 +3,7 @@ package door_button;
 import observer.IButtonPressedListener;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Button {
     private final ICommand command;
@@ -12,14 +13,20 @@ public class Button {
         this.command = command;
     }
 
+    //Simulate button press and execute command or notify listeners
     public void pressButton() {
-        if (command != null) {
-            System.out.println("Button pressed. Executing command " + command.getClass().getSimpleName());
-            command.execute();
-        }
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(2);
 
-        for (IButtonPressedListener listener : listeners) {
-            listener.buttonPressed();
+        if (randomNumber == 0) {
+            if (command != null) {
+                System.out.println("Button pressed. Executing command " + command.getClass().getSimpleName());
+                command.execute();
+            }
+        } else {
+            for (IButtonPressedListener listener : listeners) {
+                listener.buttonPressed();
+            }
         }
     }
 
