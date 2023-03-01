@@ -21,11 +21,12 @@ public class UserMemberCardSHA256Encryption implements IUserMemberCardEncryption
     public String decrypt(String encryptedData) {
         String decrypedData = "";
         int expectedInt = 0;
-        String expectedString;
+        String expectedString = "";
         while (!encryptedData.equals(decrypedData)) {
             expectedString = String.valueOf(expectedInt);
             decrypedData = encrypt(expectedString);
+            expectedInt++;
         }
-        return decrypedData;
+        return expectedString;
     }
 }
