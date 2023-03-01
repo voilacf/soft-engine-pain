@@ -76,6 +76,7 @@ public class chargingStationJUnit {
     public void checkIfChargingWorks(){
         int amountOfEnergyBeforeCharging = chargingStation.getEnergyStack().size();
         int amountOfCharging = 50;
+        //TODO fix test at the moment error at building AutonomousVehicle
         chargingStation.charging(autox,userAES,amountOfCharging);
         assertEquals(amountOfEnergyBeforeCharging-amountOfCharging,chargingStation.getEnergyStack().size());
     }
