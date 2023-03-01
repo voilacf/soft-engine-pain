@@ -18,7 +18,7 @@ public class MementoStepdefs {
     ApplicationConfiguration applicationConfiguration;
         
         
-        @Given("I have a configuration memento")
+    @Given("I have a configuration memento")
     public void iHaveAConfigurationMemento() {
         memento = new VehicleConfigurationMemento();
     }

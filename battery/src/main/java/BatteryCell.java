@@ -45,12 +45,8 @@ public class BatteryCell extends BatteryUnit {
         }
     }
 
-    public void addListener(IBatteryCellTemperatureListener listener) {
-        listeners.add(listener);
-    }
-
-    public void removeListener(IBatteryCellTemperatureListener listener) {
-        listeners.remove(listener);
+    public void addListener(Object listener) {
+        listeners.add(new BatteryCellTemperatureListenerProxy(listener));
     }
 
     private void temperatureChanged() {
