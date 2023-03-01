@@ -37,7 +37,7 @@ public class ApplicationConfiguration {
 
     //For Config application.Application
     public static ApplicationConfiguration loadJSONConfig(String pathToConfigFile) {
-        if(!Objects.equals(pathToConfigFile, "")) {
+        if (!Objects.equals(pathToConfigFile, "")) {
             ApplicationConfiguration.pathToConfigFile = pathToConfigFile;
         }
         File file = new File(pathToConfigFile);
@@ -107,7 +107,7 @@ public class ApplicationConfiguration {
         return lidar;
     }
 
-        public String getPathToConfigFile() {
+    public String getPathToConfigFile() {
         return pathToConfigFile;
     }
 
