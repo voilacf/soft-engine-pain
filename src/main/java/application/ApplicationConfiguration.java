@@ -8,9 +8,10 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class ApplicationConfiguration {
-    private static final String pathToConfigFile = "config.json"; // TODO: needs to come from program arguments
+    private static String pathToConfigFile = "config.json";
     // TODO: load engine, camera and lidar from config file.
     private EngineComponentType engine;
     private CameraComponentType camera;
@@ -35,7 +36,10 @@ public class ApplicationConfiguration {
 
 
     //For Config application.Application
-    public static ApplicationConfiguration loadJSONConfig() {
+    public static ApplicationConfiguration loadJSONConfig(String pathToConfigFile) {
+        if(!Objects.equals(pathToConfigFile, "")) {
+            ApplicationConfiguration.pathToConfigFile = pathToConfigFile;
+        }
         File file = new File(pathToConfigFile);
         JSONObject jsonObject = new JSONObject();
         if (file.exists()) {
@@ -101,5 +105,13 @@ public class ApplicationConfiguration {
 
     public LidarComponentType getLidar() {
         return lidar;
+    }
+
+        public String getPathToConfigFile() {
+        return pathToConfigFile;
+    }
+
+    public void setPathToConfigFile(String pathToConfigFile) {
+        ApplicationConfiguration.pathToConfigFile = pathToConfigFile;
     }
 }

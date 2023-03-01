@@ -118,7 +118,7 @@ public class VehicleConfiguration {
 
     //Enter the configuration mode
     public void enterConfigurationMode() {
-        ApplicationConfiguration applicationConfiguration = ApplicationConfiguration.loadJSONConfig();
+        ApplicationConfiguration applicationConfiguration = ApplicationConfiguration.loadJSONConfig("config.json");
         this.restore(applicationConfiguration.getVehicleConfigurationMemento());
 
         System.out.println("Possible commands: print, set parameter, undo, exit");

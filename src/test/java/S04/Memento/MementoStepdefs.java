@@ -14,17 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MementoStepdefs {
     VehicleConfigurationMemento memento;
     VehicleConfiguration configuration;
-
     ApplicationConfiguration applicationConfiguration;
-
-
     @Given("I have a configuration memento")
     public void iHaveAConfigurationMemento() {
         memento = new VehicleConfigurationMemento();
     }
 
     @Then("The memento should have the default settings")
-    public void theMementtoShouldHaveTheDefaultSettings() {
+    public void theMementoShouldHaveTheDefaultSettings() {
         assertTrue(memento.rejectDrunkenPassengers);
         assertTrue(memento.stopByPoliceRequest);
         assertTrue(memento.allowDriveByNight);
@@ -40,7 +37,7 @@ public class MementoStepdefs {
 
     @When("I load the settings from the json file")
     public void iLoadTheSettingsFromTheJsonFile() {
-        applicationConfiguration = ApplicationConfiguration.loadJSONConfig();
+        applicationConfiguration = ApplicationConfiguration.loadJSONConfig("test_config.json");
     }
 
     @When("I restore the settings from the memento")
@@ -83,5 +80,6 @@ public class MementoStepdefs {
     @When("I save the settings")
     public void iSaveTheSettingsToTheJsonFile() {
         applicationConfiguration.setVehicleConfigurationMemento(configuration.save());
+        applicationConfiguration.saveJSONConfig();
     }
 }

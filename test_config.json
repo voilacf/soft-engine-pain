@@ -1,0 +1,7 @@
+{
+    "stopByPoliceRequest": false,
+    "allowDriveByNight": false,
+    "musicDuringDrive": "HELENE_FISCHER",
+    "rejectDrunkenPassengers": false,
+    "behaviorWithNaggingPassengers": "DO_NOTHING"
+}

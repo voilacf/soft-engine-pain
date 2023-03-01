@@ -27,14 +27,14 @@ public class GivenAutonomousVehicle extends Stage<GivenAutonomousVehicle> {
 
     public GivenAutonomousVehicle a_amazon_zoox() {
         serviceCenter = new ServiceCenter();
-        autonomousVehicle = AutonomousVehicleFactory.buildAmazonZoox(serviceCenter, ApplicationConfiguration.loadJSONConfig());
+        autonomousVehicle = AutonomousVehicleFactory.buildAmazonZoox(serviceCenter, ApplicationConfiguration.loadJSONConfig("config.json"));
         vehicleControlUnit = new VehicleControlUnit(autonomousVehicle);
         return self();
     }
 
     public GivenAutonomousVehicle a_autox() {
         serviceCenter = new ServiceCenter();
-        autonomousVehicle = AutonomousVehicleFactory.buildAutoX(serviceCenter, ApplicationConfiguration.loadJSONConfig());
+        autonomousVehicle = AutonomousVehicleFactory.buildAutoX(serviceCenter, ApplicationConfiguration.loadJSONConfig("config.json"));
         vehicleControlUnit = new VehicleControlUnit(autonomousVehicle);
         return self();
     }

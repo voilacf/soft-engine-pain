@@ -40,7 +40,7 @@ public class Application {
             door.getEmergencyButton().pressButton();
         }
 
-        VehicleConfigurationMemento config = ApplicationConfiguration.loadJSONConfig().getVehicleConfigurationMemento();
+        VehicleConfigurationMemento config = ApplicationConfiguration.loadJSONConfig("config.json").getVehicleConfigurationMemento();
         System.out.println("Current configuration:");
         System.out.println("    rejectDrunkenPassengers: " + config.rejectDrunkenPassengers);
         System.out.println("    stopByPoliceRequest: " + config.stopByPoliceRequest);
