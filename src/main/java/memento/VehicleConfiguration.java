@@ -33,7 +33,7 @@ public class VehicleConfiguration {
         System.out.println("Configuration restored");
     }
 
-    private void print() {
+    public void print() {
         System.out.println("Current configuration:");
         System.out.println("    rejectDrunkenPassengers: " + rejectDrunkenPassengers);
         System.out.println("    stopByPoliceRequest: " + stopByPoliceRequest);
@@ -42,7 +42,7 @@ public class VehicleConfiguration {
         System.out.println("    musicDuringDrive: " + musicDuringDrive);
     }
 
-    private void setParameter(String key, int value) {
+    public void setParameter(String key, int value) {
         if (value != 0 && value != 1) {
             System.out.println("Invalid value");
             enterConfigurationMode();
@@ -140,5 +140,25 @@ public class VehicleConfiguration {
                 }
             }
         }
+    }
+
+    public boolean isRejectDrunkenPassengers() {
+        return rejectDrunkenPassengers;
+    }
+
+    public boolean isStopByPoliceRequest() {
+        return stopByPoliceRequest;
+    }
+
+    public boolean isAllowDriveByNight() {
+        return allowDriveByNight;
+    }
+
+    public NaggingPassengersBehavior getBehaviorWithNaggingPassengers() {
+        return behaviorWithNaggingPassengers;
+    }
+
+    public DriveMusic getMusicDuringDrive() {
+        return musicDuringDrive;
     }
 }
