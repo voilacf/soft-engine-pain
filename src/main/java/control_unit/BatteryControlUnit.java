@@ -13,8 +13,8 @@ public class BatteryControlUnit extends Subscriber {
     }
 
     @Subscribe
-    public void receive(EventCharging event){
-        ComponentUtils.invokeMethod(batteryPort,"storeEnergy", new Class[]{Integer.class}, event.getAmountOfEnergy());
+    public void receive(EventCharging event) {
+        ComponentUtils.invokeMethod(batteryPort, "storeEnergy", new Class[]{Integer.class}, event.getAmountOfEnergy());
     }
 
 }

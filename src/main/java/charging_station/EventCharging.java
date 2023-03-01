@@ -2,7 +2,8 @@ package charging_station;
 
 public class EventCharging {
     private final int amountOfEnergy;
-    public EventCharging(int amountOfEnergy){
+
+    public EventCharging(int amountOfEnergy) {
         this.amountOfEnergy = amountOfEnergy;
     }
 

@@ -17,7 +17,7 @@ public class HeadlightControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventLEDOn event) {
         for (Object ledPort : leds) {
-            LEDState result = (LEDState) ComponentUtils.invokeMethod(ledPort,"on");
+            LEDState result = (LEDState) ComponentUtils.invokeMethod(ledPort, "on");
             System.out.println("receive -> led | state : " + result);
         }
     }

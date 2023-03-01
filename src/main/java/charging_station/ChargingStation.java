@@ -7,26 +7,26 @@ import builder.AutonomousVehicle;
 import builder.VehicleType;
 import control_unit.VehicleControlUnit;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
 public class ChargingStation {
     private Stack<Integer> energyStack;
 
-    public ChargingStation(){
+    public ChargingStation() {
         energyStack = new Stack<>();
-        for(int i = 0; i < 500000; i++){
+        for (int i = 0; i < 500000; i++) {
             energyStack.push(1);
         }
-        System.out.println("Created ChargingStation with "+energyStack.size()+" amount of energy");
+        System.out.println("Created ChargingStation with " + energyStack.size() + " amount of energy");
     }
-    public void charging(AutonomousVehicle autonomousVehicle, User user, int amountOfEnergy){
-        if(autonomousVehicle.getType() == VehicleType.AUTOX){
+
+    public void charging(AutonomousVehicle autonomousVehicle, User user, int amountOfEnergy) {
+        if (autonomousVehicle.getType() == VehicleType.AUTOX) {
             plugInDevice(new AutoXChargingAdapter());
         } else if (autonomousVehicle.getType() == VehicleType.AMAZON_ZOOX) {
             plugInDevice(new AmazonZooxChargingAdapter());
         }
-        finishChargingSession(autonomousVehicle.getControlUnit(),amountOfEnergy, user.getUserMemberCard());
+        finishChargingSession(autonomousVehicle.getControlUnit(), amountOfEnergy, user.getUserMemberCard());
 
     }
 
@@ -39,8 +39,8 @@ public class ChargingStation {
         boolean enoughCreditsForChargingSuccess;
         if ((getEnergyStack().size() - amountOfEnergy) >= 0) {
             enoughCreditsForChargingSuccess = userMemberCard.getLoyaltyState().addCharging(amountOfEnergy);
-            if(enoughCreditsForChargingSuccess) {
-                for(int i = 0 ; i < amountOfEnergy; i++){
+            if (enoughCreditsForChargingSuccess) {
+                for (int i = 0; i < amountOfEnergy; i++) {
                     energyStack.pop();
                 }
                 vehicleControlUnit.charging(amountOfEnergy);

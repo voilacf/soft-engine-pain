@@ -21,7 +21,7 @@ public class ThenVehicleControlUnit extends Stage<ThenVehicleControlUnit> {
     public ThenVehicleControlUnit control_bus_has_received_events(Class<?>[] eventClasses) {
         assertEquals(eventClasses.length, controlBusSubscriber.getReceivedEvents().size());
 
-        for(int i = 0; i < eventClasses.length; i++) {
+        for (int i = 0; i < eventClasses.length; i++) {
             Class<?> receivedEventClass = controlBusSubscriber.getReceivedEvents().get(i).getClass();
             assertEquals(eventClasses[i], receivedEventClass);
         }

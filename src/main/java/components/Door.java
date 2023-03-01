@@ -12,13 +12,12 @@ public class Door implements IButtonPressedListener {
     private final Button toggleButton;
     private IDoorState state;
 
-
+    //Create a new door and add buttons and the default state
     public Door(ServiceCenter serviceCenter) {
         emergencyButton = new Button(new CommandEmergency(serviceCenter));
         toggleButton = new Button(new CommandToggleDoor(this));
         state = new DoorStateClosed();
     }
-
 
     public void toggleDoorState() {
         state.toggle(this);
@@ -27,10 +26,6 @@ public class Door implements IButtonPressedListener {
 
     public void buttonPressed() {
         toggleDoorState();
-    }
-
-    public void setState(IDoorState state) {
-        this.state = state;
     }
 
     public Button getEmergencyButton() {
@@ -43,5 +38,9 @@ public class Door implements IButtonPressedListener {
 
     public IDoorState getState() {
         return state;
+    }
+
+    public void setState(IDoorState state) {
+        this.state = state;
     }
 }

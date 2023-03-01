@@ -1,4 +1,4 @@
-import factories.*;
+import factories.ComponentFactory;
 import org.junit.jupiter.api.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

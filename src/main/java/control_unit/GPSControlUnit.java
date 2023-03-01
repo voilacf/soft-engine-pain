@@ -18,7 +18,7 @@ public class GPSControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventGPSOn event) {
         for (Object gpsPort : gps) {
-            GPSState result = (GPSState) ComponentUtils.invokeMethod(gpsPort,"on");
+            GPSState result = (GPSState) ComponentUtils.invokeMethod(gpsPort, "on");
             System.out.println("receive -> gps | state : " + result);
         }
     }
@@ -34,7 +34,7 @@ public class GPSControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventGPSConnectSatellite event) {
         for (Object gpsPort : gps) {
-            String result = (String) ComponentUtils.invokeMethod(gpsPort, "connectSatellite",new Class[]{String.class},event.getFrequency());
+            String result = (String) ComponentUtils.invokeMethod(gpsPort, "connectSatellite", new Class[]{String.class}, event.getFrequency());
             System.out.println("receive -> gps | frequency : " + result);
         }
     }

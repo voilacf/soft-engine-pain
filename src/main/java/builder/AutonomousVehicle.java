@@ -4,7 +4,6 @@ import components.Door;
 import control_unit.*;
 import observer.UltraSonicSensor;
 
-//TODO import classes
 public class AutonomousVehicle {
     private final Chassis chassis;
     private final Object engine;
@@ -86,6 +85,10 @@ public class AutonomousVehicle {
 
     public VehicleControlUnit getControlUnit() {
         return controlUnit;
+    }
+
+    public Object getBattery() {
+        return battery;
     }
 
     public static class Builder {

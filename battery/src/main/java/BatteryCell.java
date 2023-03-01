@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
 public class BatteryCell extends BatteryUnit {
-    private boolean energy = true;
-
     private final ArrayList<IBatteryCellTemperatureListener> listeners = new ArrayList<>();
+    private boolean energy = true;
 
     public BatteryCell(BatteryUnit parentUnit) {
         super(parentUnit);
@@ -34,7 +33,7 @@ public class BatteryCell extends BatteryUnit {
 
     @Override
     public int storeEnergy(int count) {
-        if(energy) {
+        if (energy) {
             // Already one energy stored, cannot store any more
             return 0;
         } else {
@@ -45,14 +44,13 @@ public class BatteryCell extends BatteryUnit {
         }
     }
 
-    public void addListener(IBatteryCellTemperatureListener listener) {
-        listeners.add(listener);
+    //Add a listener to the battery cell temperature sensor
+    public void addListener(Object listener) {
+        listeners.add(new BatteryCellTemperatureListenerProxy(listener));
     }
 
-    public void removeListener(IBatteryCellTemperatureListener listener) {
-        listeners.remove(listener);
-    }
 
+    //Set a random temperature when the energy is used or stored
     private void temperatureChanged() {
         // Random temp between 25 and 55
         double temperature = 25 + Math.random() * 30;

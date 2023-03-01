@@ -10,7 +10,7 @@ repositories {
 }
 
 
-task build_jar(type: Jar, dependsOn: 'jar') {
+task build_jar(type: Jar) {
     project.archivesBaseName = "battery"
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar

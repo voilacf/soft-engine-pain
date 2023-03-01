@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BatteryUnit implements IBattery {
     protected final ArrayList<BatteryUnit> subUnits = new ArrayList<>();
@@ -16,6 +17,11 @@ public abstract class BatteryUnit implements IBattery {
 
     protected void addSubUnit(BatteryUnit subUnit) {
         subUnits.add(subUnit);
+    }
+
+    public List<BatteryUnit> getSubUnits() {
+        // Create a copy of the list to prevent modification of the original list
+        return subUnits.stream().toList();
     }
 
     public boolean isComposite() {
