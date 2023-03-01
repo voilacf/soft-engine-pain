@@ -43,7 +43,7 @@ public class MementoStepdefs {
             applicationConfiguration = ApplicationConfiguration.loadJSONConfig();
     }
 
-    @When("I restore the settings from the json file")
+    @When("I restore the settings from the memento")
     public void iRestoreTheSettingsFromTheJsonFile() {
             configuration.restore(applicationConfiguration.getVehicleConfigurationMemento());
     }
