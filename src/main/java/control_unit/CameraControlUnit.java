@@ -11,7 +11,7 @@ public class CameraControlUnit extends Subscriber {
     private final Object[] cameras;
 
     public CameraControlUnit(Object[] cameras) {
-        super(1);
+        super(4);
         this.cameras = cameras;
     }
 

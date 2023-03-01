@@ -10,14 +10,28 @@ repositories {
 }
 
 dependencies {
+    // Application dependencies
+    implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre', 'org.json:json:20220924', 'commons-io:commons-io:2.11.0'
+
+    // Test dependencies
+    // JUnit 5
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
-    implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre', 'org.json:json:20220924', 'commons-io:commons-io:2.11.0'
+    // JUnit 4 TODO: Do we even need JUnit 4? For what?
     testImplementation 'org.junit.vintage:junit-vintage-engine'
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
+    // Mockito
+    testImplementation 'org.mockito:mockito-core:4.7.0'
+
+    // BDD test suites
+    // Cucumber
     testImplementation group: 'io.cucumber', name: 'cucumber-java', version: '7.11.1'
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.11.1'
 
+    // JGiven
+    testImplementation 'com.tngtech.jgiven:jgiven-core:1.2.4'
+    testImplementation 'com.tngtech.jgiven:jgiven-junit5:1.2.4'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.6' // logger for JGiven
 }
 
 test {

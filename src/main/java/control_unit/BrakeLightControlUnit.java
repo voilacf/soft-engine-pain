@@ -10,7 +10,7 @@ public class BrakeLightControlUnit extends Subscriber {
     private final Object[] brakeLights;
 
     public BrakeLightControlUnit(Object[] brakeLights) {
-        super(1);
+        super(3);
         this.brakeLights = brakeLights;
     }
 

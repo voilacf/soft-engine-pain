@@ -9,7 +9,7 @@ public class IndicatorControlUnit extends Subscriber {
     private final Object[] indicators;
 
     public IndicatorControlUnit(Object[] indicators) {
-        super(1);
+        super(8);
         this.indicators = indicators;
     }
 

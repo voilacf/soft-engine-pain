@@ -11,7 +11,7 @@ public class LidarControlUnit extends Subscriber {
     private final Object[] lidars;
 
     public LidarControlUnit(Object[] lidars) {
-        super(1);
+        super(9);
         this.lidars = lidars;
     }
 

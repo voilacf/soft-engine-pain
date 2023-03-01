@@ -11,7 +11,7 @@ public class GPSControlUnit extends Subscriber {
     private final Object[] gps;
 
     public GPSControlUnit(Object[] gps) {
-        super(1);
+        super(6);
         this.gps = gps;
     }
 

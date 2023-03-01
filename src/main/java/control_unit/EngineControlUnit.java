@@ -13,7 +13,7 @@ public class EngineControlUnit extends Subscriber {
     private final Object engine;
 
     public EngineControlUnit(Object engine) {
-        super(1);
+        super(5);
         this.engine = engine;
     }
 

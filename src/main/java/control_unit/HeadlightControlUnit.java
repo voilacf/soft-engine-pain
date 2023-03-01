@@ -9,7 +9,7 @@ public class HeadlightControlUnit extends Subscriber {
     private final Object[] leds;
 
     public HeadlightControlUnit(Object[] leds) {
-        super(1);
+        super(7);
         this.leds = leds;
     }
 

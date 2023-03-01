@@ -8,7 +8,7 @@ public class BrakeControlUnit extends Subscriber {
     private final Object[] brakes;
 
     public BrakeControlUnit(Object[] brakes) {
-        super(1);
+        super(2);
         this.brakes = brakes;
     }
 
