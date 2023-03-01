@@ -1,11 +1,9 @@
 package control_unit;
 
-import application.LidarComponentType;
 import com.google.common.eventbus.Subscribe;
 import control_unit.states.LidarState;
 import events.EventLidarOff;
 import events.EventLidarOn;
-import factories.ComponentFactory;
 
 public class LidarControlUnit extends Subscriber {
     private final Object[] lidars;
@@ -19,7 +17,7 @@ public class LidarControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventLidarOn event) {
         for (Object lidar : lidars) {
-            LidarState result = (LidarState) ControlUnitUtils.invokeMethod(lidar, "on");
+            LidarState result = (LidarState) ComponentUtils.invokeMethod(lidar, "on");
             System.out.println("receive -> lidar | state : " + result);
         }
     }
@@ -27,7 +25,7 @@ public class LidarControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventLidarOff event) {
         for (Object lidar : lidars) {
-            LidarState result = (LidarState) ControlUnitUtils.invokeMethod(lidar, "off");
+            LidarState result = (LidarState) ComponentUtils.invokeMethod(lidar, "off");
             System.out.println("receive -> lidar | state : " + result);
         }
     }

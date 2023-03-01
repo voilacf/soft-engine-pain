@@ -4,7 +4,6 @@ import com.google.common.eventbus.Subscribe;
 import control_unit.states.BrakeLightState;
 import events.EventBrakeLightOff;
 import events.EventBrakeLightOn;
-import factories.ComponentFactory;
 
 public class BrakeLightControlUnit extends Subscriber {
     private final Object[] brakeLights;
@@ -18,7 +17,7 @@ public class BrakeLightControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventBrakeLightOn event) {
         for (Object brakeLight : brakeLights) {
-            BrakeLightState result = (BrakeLightState) ControlUnitUtils.invokeMethod(brakeLight, "on");
+            BrakeLightState result = (BrakeLightState) ComponentUtils.invokeMethod(brakeLight, "on");
             System.out.println("receive -> brake light | state : " + result);
         }
     }
@@ -26,7 +25,7 @@ public class BrakeLightControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventBrakeLightOff event) {
         for (Object brakeLight : brakeLights) {
-            BrakeLightState result = (BrakeLightState) ControlUnitUtils.invokeMethod(brakeLight, "off");
+            BrakeLightState result = (BrakeLightState) ComponentUtils.invokeMethod(brakeLight, "off");
             System.out.println("receive -> brake light | state : " + result);
         }
     }

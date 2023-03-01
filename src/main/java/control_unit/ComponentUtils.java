@@ -2,7 +2,7 @@ package control_unit;
 
 import java.lang.reflect.Method;
 
-public class ControlUnitUtils {
+public class ComponentUtils {
 
     public static Object invokeMethod(Object component, String componentMethod, Class<?>[] parameters, Object... parameterValues) {
         try {
