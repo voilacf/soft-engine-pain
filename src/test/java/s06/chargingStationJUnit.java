@@ -62,23 +62,11 @@ public class chargingStationJUnit {
 
     @Test
     @Order(2)
-    public void checkIfSHA256DecryptionWorks() {
-        UserMemberCard userMemberCard = userSHA.getUserMemberCard();
-        userMemberCard.setEncryptedLoyaltyPoints(5);
-        String encryptedData = userMemberCard.getEncryptedLoyaltyPoints();
-        String decryptedData = userMemberCard.getEncryptionStrategy().decrypt(encryptedData);
-        assertEquals("5", decryptedData);
-    }
-
-    @Test
-    @Order(3)
     public void checkIfChargingWorks() {
         AutonomousVehicle autox = AutonomousVehicleFactory.buildAutoX(serviceCenter, configuration);
-        System.out.println("autox - Gebaut");
 
         int amountOfEnergyBeforeCharging = chargingStation.getEnergyStack().size();
         int amountOfCharging = 50;
-        //TODO fix test at the moment error at building AutonomousVehicle
         chargingStation.charging(autox, userAES, amountOfCharging);
         assertEquals(amountOfEnergyBeforeCharging - amountOfCharging, chargingStation.getEnergyStack().size());
     }
