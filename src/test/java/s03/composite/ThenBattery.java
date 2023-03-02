@@ -6,7 +6,8 @@ import control_unit.ComponentUtils;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ThenBattery extends Stage<ThenBattery> {
     @ExpectedScenarioState

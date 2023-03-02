@@ -2,8 +2,8 @@ package factories;
 
 import application.ApplicationConfiguration;
 import builder.*;
-import components.Door;
-import observer.UltraSonicSensor;
+import observer_S04.Door;
+import observer_S04.UltraSonicSensor;
 import service_center.ServiceCenter;
 
 import java.lang.reflect.Array;

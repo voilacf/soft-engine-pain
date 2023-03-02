@@ -1,13 +1,12 @@
-package control_unit;
+package observer_S04;
 
 import builder.AutonomousVehicle;
 import charging_station.EventCharging;
 import com.google.common.eventbus.EventBus;
+import control_unit.ComponentUtils;
+import control_unit.Subscriber;
 import control_unit.states.IndicatorState;
 import events.*;
-import observer.IBatteryCellTemperatureListener;
-import observer.IUltraSonicSensorListener;
-import observer.UltraSonicSensor;
 
 import java.util.Arrays;
 import java.util.List;

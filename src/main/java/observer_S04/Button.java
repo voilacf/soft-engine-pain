@@ -1,6 +1,6 @@
-package door_button;
+package observer_S04;
 
-import observer.IButtonPressedListener;
+import door_button.ICommand;
 
 import java.util.ArrayList;
 import java.util.Random;

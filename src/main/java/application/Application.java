@@ -1,13 +1,13 @@
 package application;
 
 import builder.AutonomousVehicle;
-import components.Door;
 import components.VehicleKey;
 import components.VehicleKeyReceiverModule;
-import control_unit.VehicleControlUnit;
 import factories.AutonomousVehicleFactory;
-import memento.VehicleConfigurationMemento;
-import observer.UltraSonicSensor;
+import memento_S04.VehicleConfigurationMemento;
+import observer_S04.Door;
+import observer_S04.UltraSonicSensor;
+import observer_S04.VehicleControlUnit;
 import service_center.ServiceCenter;
 
 public class Application {

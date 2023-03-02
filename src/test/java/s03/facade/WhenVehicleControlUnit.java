@@ -2,7 +2,7 @@ package s03.facade;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import control_unit.VehicleControlUnit;
+import observer_S04.VehicleControlUnit;
 
 public class WhenVehicleControlUnit extends Stage<WhenVehicleControlUnit> {
     @ExpectedScenarioState

@@ -4,10 +4,10 @@ import application.ApplicationConfiguration;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import memento.DriveMusic;
-import memento.NaggingPassengersBehavior;
-import memento.VehicleConfiguration;
-import memento.VehicleConfigurationMemento;
+import memento_S04.DriveMusic;
+import memento_S04.NaggingPassengersBehavior;
+import memento_S04.VehicleConfiguration;
+import memento_S04.VehicleConfigurationMemento;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package memento;
+package memento_S04;
 
 
 public class VehicleConfigurationMemento {

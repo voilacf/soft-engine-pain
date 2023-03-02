@@ -6,8 +6,8 @@ import com.google.common.eventbus.Subscribe;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import control_unit.Subscriber;
-import control_unit.VehicleControlUnit;
 import factories.AutonomousVehicleFactory;
+import observer_S04.VehicleControlUnit;
 import service_center.ServiceCenter;
 
 import java.util.ArrayList;

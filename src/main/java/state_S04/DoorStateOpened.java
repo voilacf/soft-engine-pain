@@ -1,7 +1,6 @@
-package state;
+package state_S04;
 
-import components.Door;
-import components.IDoorState;
+import observer_S04.Door;
 
 public class DoorStateOpened implements IDoorState {
     @Override

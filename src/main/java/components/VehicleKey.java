@@ -1,9 +1,9 @@
 package components;
 
 import builder.VehicleType;
-import door_button.Button;
 import door_button.CommandDisable;
 import door_button.CommandEnable;
+import observer_S04.Button;
 
 public class VehicleKey {
     private final Button enableButton;

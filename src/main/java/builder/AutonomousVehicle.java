@@ -1,8 +1,9 @@
 package builder;
 
-import components.Door;
 import control_unit.*;
-import observer.UltraSonicSensor;
+import observer_S04.Door;
+import observer_S04.UltraSonicSensor;
+import observer_S04.VehicleControlUnit;
 
 public class AutonomousVehicle {
     private final Chassis chassis;

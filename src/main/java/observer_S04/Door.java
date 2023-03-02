@@ -1,11 +1,10 @@
-package components;
+package observer_S04;
 
-import door_button.Button;
 import door_button.CommandEmergency;
 import door_button.CommandToggleDoor;
-import observer.IButtonPressedListener;
 import service_center.ServiceCenter;
-import state.DoorStateClosed;
+import state_S04.DoorStateClosed;
+import state_S04.IDoorState;
 
 public class Door implements IButtonPressedListener {
     private final Button emergencyButton;

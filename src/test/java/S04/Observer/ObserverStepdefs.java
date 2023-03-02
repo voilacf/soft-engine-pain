@@ -1,15 +1,11 @@
 package S04.Observer;
 
-import components.Door;
 import control_unit.ComponentUtils;
 import factories.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import observer.IBatteryCellTemperatureListener;
-import observer.IButtonPressedListener;
-import observer.IUltraSonicSensorListener;
-import observer.UltraSonicSensor;
+import observer_S04.*;
 import service_center.ServiceCenter;
 
 import java.util.List;

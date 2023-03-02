@@ -1,12 +1,12 @@
 package S04.State;
 
-import components.Door;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import observer_S04.Door;
 import service_center.ServiceCenter;
-import state.DoorStateClosed;
-import state.DoorStateOpened;
+import state_S04.DoorStateClosed;
+import state_S04.DoorStateOpened;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

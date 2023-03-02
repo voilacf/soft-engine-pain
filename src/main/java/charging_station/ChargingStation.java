@@ -5,7 +5,7 @@ import adapter.AutoXChargingAdapter;
 import adapter.IChargable;
 import builder.AutonomousVehicle;
 import builder.VehicleType;
-import control_unit.VehicleControlUnit;
+import observer_S04.VehicleControlUnit;
 
 import java.util.Stack;
 

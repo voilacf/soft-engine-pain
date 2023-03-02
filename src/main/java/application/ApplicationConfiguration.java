@@ -1,8 +1,8 @@
 package application;
 
-import memento.DriveMusic;
-import memento.NaggingPassengersBehavior;
-import memento.VehicleConfigurationMemento;
+import memento_S04.DriveMusic;
+import memento_S04.NaggingPassengersBehavior;
+import memento_S04.VehicleConfigurationMemento;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 
