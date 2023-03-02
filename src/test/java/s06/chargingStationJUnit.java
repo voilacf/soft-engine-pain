@@ -17,8 +17,6 @@ public class chargingStationJUnit {
     protected static final int MINIMUM_FOR_SILVER = 500;
     protected static final int MINIMUM_FOR_GOLD = 2000;
     protected static final int MINIMUM_FOR_PLATIN = 10000;
-    AutonomousVehicle zoox;
-    AutonomousVehicle autox;
     private User userAES;
     private User userSHA;
     private ChargingStation chargingStation;
@@ -29,8 +27,6 @@ public class chargingStationJUnit {
     public void setup() {
         this.serviceCenter = new ServiceCenter();
         this.configuration = new ApplicationConfiguration();
-        //this.zoox = AutonomousVehicleFactory.buildAmazonZoox(serviceCenter, configuration);
-        this.autox = AutonomousVehicleFactory.buildAutoX(serviceCenter, configuration);
 
         this.chargingStation = new ChargingStation();
         this.userAES = new User(UUID.randomUUID().toString(), new UserMemberCardAESEncryption());
@@ -77,6 +73,9 @@ public class chargingStationJUnit {
     @Test
     @Order(3)
     public void checkIfChargingWorks() {
+        AutonomousVehicle autox = AutonomousVehicleFactory.buildAutoX(serviceCenter, configuration);
+        System.out.println("autox - Gebaut");
+
         int amountOfEnergyBeforeCharging = chargingStation.getEnergyStack().size();
         int amountOfCharging = 50;
         //TODO fix test at the moment error at building AutonomousVehicle
