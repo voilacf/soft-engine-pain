@@ -1,4 +1,4 @@
-package testutils;
+package s03.facade;
 
 import application.ApplicationConfiguration;
 import builder.AutonomousVehicle;
@@ -25,21 +25,21 @@ public class GivenAutonomousVehicle extends Stage<GivenAutonomousVehicle> {
     @ProvidedScenarioState
     public ControlBusSubscriber controlBusSubscriber;
 
-    public GivenAutonomousVehicle a_amazon_zoox() {
+    public GivenAutonomousVehicle aAmazonZoox() {
         serviceCenter = new ServiceCenter();
         autonomousVehicle = AutonomousVehicleFactory.buildAmazonZoox(serviceCenter, ApplicationConfiguration.loadJSONConfig("config.json"));
         vehicleControlUnit = new VehicleControlUnit(autonomousVehicle);
         return self();
     }
 
-    public GivenAutonomousVehicle a_autox() {
+    public GivenAutonomousVehicle aAutoX() {
         serviceCenter = new ServiceCenter();
         autonomousVehicle = AutonomousVehicleFactory.buildAutoX(serviceCenter, ApplicationConfiguration.loadJSONConfig("config.json"));
         vehicleControlUnit = new VehicleControlUnit(autonomousVehicle);
         return self();
     }
 
-    public GivenAutonomousVehicle a_control_bus_listener() {
+    public GivenAutonomousVehicle aControlBusListener() {
         controlBusSubscriber = new ControlBusSubscriber();
         vehicleControlUnit.addSubscriber(controlBusSubscriber);
         return self();

@@ -3,15 +3,14 @@ package s03.facade;
 import com.tngtech.jgiven.junit5.ScenarioTest;
 import events.*;
 import org.junit.jupiter.api.Test;
-import testutils.GivenAutonomousVehicle;
 
-public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVehicle, WhenVehicleControlUnit, ThenVehicleControlUnit> {
+public class TestVehicleControlUnitFacade extends ScenarioTest<GivenAutonomousVehicle, WhenVehicleControlUnit, ThenVehicleControlUnit> {
 
     @Test
     public void startup() {
-        given().a_amazon_zoox().with().a_control_bus_listener();
-        when().startup_is_called();
-        then().control_bus_has_received_events(new Class[]{
+        given().aAmazonZoox().with().aControlBusListener();
+        when().startupIsCalled();
+        then().controlBusHasReceivedEvents(new Class[]{
                 EventEngineOn.class,
                 EventLEDOn.class,
                 EventGPSOn.class,
@@ -25,9 +24,9 @@ public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVe
 
     @Test
     public void move() {
-        given().a_amazon_zoox().with().a_control_bus_listener();
-        when().move_is_called(100, 10);
-        then().control_bus_has_received_events(new Class[]{
+        given().aAmazonZoox().with().aControlBusListener();
+        when().moveIsCalled(100, 10);
+        then().controlBusHasReceivedEvents(new Class[]{
                 EventLeftIndicatorOff.class,
                 EventRightIndicatorOff.class,
                 EventLEDDimmed.class,
@@ -39,9 +38,9 @@ public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVe
 
     @Test
     public void leftTurn() {
-        given().a_amazon_zoox().with().a_control_bus_listener();
-        when().left_turn_is_called(100, 10);
-        then().control_bus_has_received_events(new Class[]{
+        given().aAmazonZoox().with().aControlBusListener();
+        when().leftTurnIsCalled(100, 10);
+        then().controlBusHasReceivedEvents(new Class[]{
                 EventLeftIndicatorOn.class,
                 EventEngineDecreaseRPM.class,
                 EventBrakeSet.class,
@@ -51,9 +50,9 @@ public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVe
 
     @Test
     public void rightTurn() {
-        given().a_amazon_zoox().with().a_control_bus_listener();
+        given().aAmazonZoox().with().aControlBusListener();
         when().right_turn_is_called(100, 10);
-        then().control_bus_has_received_events(new Class[]{
+        then().controlBusHasReceivedEvents(new Class[]{
                 EventRightIndicatorOn.class,
                 EventEngineDecreaseRPM.class,
                 EventBrakeSet.class,
@@ -63,9 +62,9 @@ public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVe
 
     @Test
     public void stop() {
-        given().a_amazon_zoox().with().a_control_bus_listener();
-        when().stop_is_called();
-        then().control_bus_has_received_events(new Class[]{
+        given().aAmazonZoox().with().aControlBusListener();
+        when().stopIsCalled();
+        then().controlBusHasReceivedEvents(new Class[]{
                 EventBrakeSet.class,
                 EventBrakeLightOn.class
         });
@@ -73,9 +72,9 @@ public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVe
 
     @Test
     public void emergencyStop() {
-        given().a_amazon_zoox().with().a_control_bus_listener();
-        when().emergency_stop_is_called();
-        then().control_bus_has_received_events(new Class[]{
+        given().aAmazonZoox().with().aControlBusListener();
+        when().emergencyStopIsCalled();
+        then().controlBusHasReceivedEvents(new Class[]{
                 EventBrakeSet.class,
                 EventBrakeLightOn.class,
                 EventHazardWarningOn.class,
@@ -88,9 +87,9 @@ public class VehicleControlUnitFacadeTest extends ScenarioTest<GivenAutonomousVe
 
     @Test
     public void shutdown() {
-        given().a_amazon_zoox().with().a_control_bus_listener();
-        when().shutdown_is_called();
-        then().control_bus_has_received_events(new Class[]{
+        given().aAmazonZoox().with().aControlBusListener();
+        when().shutdownIsCalled();
+        then().controlBusHasReceivedEvents(new Class[]{
                 EventBrakeSet.class,
                 EventEngineOff.class,
                 EventBrakeLightOff.class,
