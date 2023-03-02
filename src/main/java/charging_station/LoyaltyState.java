@@ -26,6 +26,6 @@ public abstract class LoyaltyState {
         ContextEncryption contextEncryption = new ContextEncryption(userMemberCard.getEncryptionStrategy());
         String credits = userMemberCard.getEncryptedCredits();
         credits = contextEncryption.executeDecryptionStrategy(credits);
-        return Integer.parseInt(credits);
+        return Double.parseDouble(credits);
     }
 }
