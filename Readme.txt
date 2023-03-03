@@ -1,0 +1,9 @@
+Zuordnung Aufgaben zu Matrikelnummern:
+
+S01:
+S02:
+S03: 6424019
+S04: 3344271
+S05:
+S06: 3083733
+S07:

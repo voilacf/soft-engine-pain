@@ -9,7 +9,7 @@ public class BatterySubCell extends BatteryUnit {
 
     @Override
     public void printBatterySummary() {
-        System.out.println("Battery sub cell with 5 cells and " + getEnergyCount() + " energy stored");
+        System.out.println("Battery sub cell with 5 cells and " + getEnergy() + " energy stored");
         super.printSubBatterySummary();
     }
 }

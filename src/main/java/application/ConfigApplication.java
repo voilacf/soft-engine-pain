@@ -1,6 +1,6 @@
 package application;
 
-import memento.VehicleConfiguration;
+import memento_S04.VehicleConfiguration;
 
 public class ConfigApplication {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package door_button;
 
-import components.Door;
+import observer_S04.Door;
 
 public class CommandToggleDoor implements ICommand {
     private final Door door;

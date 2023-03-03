@@ -9,7 +9,7 @@ public class EventEngineDecreaseRPM {
         this.seconds = seconds;
     }
 
-    public int getDeltaRPM(){
+    public int getDeltaRPM() {
         return deltaRPM;
     }
 

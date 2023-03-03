@@ -1,4 +1,4 @@
-import factories.*;
+import factories.ComponentFactory;
 import org.junit.jupiter.api.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -15,14 +15,14 @@ public class TestManagement {
 
     @BeforeEach
     public void setup() {
-        batteryPort = Factory.buildBattery();
-        brakePort = Factory.buildBrake();
-        brakeLightPort = Factory.buildBrakeLight();
+        batteryPort = ComponentFactory.buildBattery();
+        brakePort = ComponentFactory.buildBrake();
+        brakeLightPort = ComponentFactory.buildBrakeLight();
         //cameraPort = Factory.buildCamera();
         //enginePort = Factory.buildEngine();
-        gpsPort = Factory.buildGPS();
-        indicatorPort = Factory.buildIndicator();
-        ledPort = Factory.buildLED();
+        gpsPort = ComponentFactory.buildGPS();
+        indicatorPort = ComponentFactory.buildIndicator();
+        ledPort = ComponentFactory.buildLED();
         //lidarPort = Factory.buildLidar();
     }
 

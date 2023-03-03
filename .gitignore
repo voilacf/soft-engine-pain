@@ -4,7 +4,7 @@ jar
 .gradle
 .idea
 .vim
-
+jgiven-reports
 
 # Visual Paradigm stuff
 *.vpp.bak*

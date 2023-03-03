@@ -14,16 +14,18 @@ public abstract class LoyaltyState {
     public abstract void promote();
 
     public abstract boolean addCharging(int amountOfEnergy);
+
     protected int decryptLoyaltyPoints() {
         ContextEncryption contextEncryption = new ContextEncryption(userMemberCard.getEncryptionStrategy());
         String loyaltyPoints = userMemberCard.getEncryptedLoyaltyPoints();
-        loyaltyPoints = contextEncryption.executeDecryptionStrategy(loyaltyPoints);
+        loyaltyPoints = contextEncryption.executeDecryptionStrategyLoyaltyPoints(loyaltyPoints);
         return Integer.parseInt(loyaltyPoints);
     }
+
     protected double decryptCredits() {
         ContextEncryption contextEncryption = new ContextEncryption(userMemberCard.getEncryptionStrategy());
         String credits = userMemberCard.getEncryptedCredits();
-        credits = contextEncryption.executeDecryptionStrategy(credits);
-        return Integer.parseInt(credits);
+        credits = contextEncryption.executeDecryptionStrategyCredits(credits);
+        return Double.parseDouble(credits);
     }
 }

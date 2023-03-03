@@ -1,15 +1,16 @@
 package builder;
 
-import components.Door;
-import observer.UltraSonicSensor;
+import control_unit.*;
+import observer_S04.Door;
+import observer_S04.UltraSonicSensor;
+import observer_S04.VehicleControlUnit;
 
-//TODO import classes
 public class AutonomousVehicle {
     private final Chassis chassis;
     private final Object engine;
-    private final Object[] battery; //IBattery
+    private final Object battery; //IBattery
     private final Object[] headlights; //ILED
-    private final Object[] breakLights; //IBrakeLight
+    private final Object[] brakeLights; //IBrakeLight
     private final Object[] indicators; //IIndicator
     private final Door[] doors;
     private final ISittable[] seats;
@@ -21,12 +22,23 @@ public class AutonomousVehicle {
     private final UltraSonicSensor[] ultraSonics;
     private final VehicleType type;
 
+    private final VehicleControlUnit controlUnit;
+    private final BatteryControlUnit batteryControlUnit;
+    private final BrakeControlUnit brakeControlUnit;
+    private final BrakeLightControlUnit brakeLightControlUnit;
+    private final CameraControlUnit cameraControlUnit;
+    private final EngineControlUnit engineControlUnit;
+    private final GPSControlUnit gpsControlUnit;
+    private final IndicatorControlUnit indicatorControlUnit;
+    private final HeadlightControlUnit headlightControlUnit;
+    private final LidarControlUnit lidarControlUnit;
+
     private AutonomousVehicle(Builder builder) {
         chassis = builder.chassis;
         engine = builder.engine;
         battery = builder.battery;
         headlights = builder.headlights;
-        breakLights = builder.breakLights;
+        brakeLights = builder.brakeLights;
         indicators = builder.indicators;
         doors = builder.doors;
         seats = builder.seats;
@@ -37,18 +49,55 @@ public class AutonomousVehicle {
         lidars = builder.lidars;
         ultraSonics = builder.ultraSonics;
         type = builder.type;
+
+        controlUnit = new VehicleControlUnit(this);
+        batteryControlUnit = new BatteryControlUnit();
+        brakeControlUnit = new BrakeControlUnit(brakes);
+        brakeLightControlUnit = new BrakeLightControlUnit(brakeLights);
+        cameraControlUnit = new CameraControlUnit(cameras);
+        engineControlUnit = new EngineControlUnit(engine);
+        gpsControlUnit = new GPSControlUnit(gps);
+        indicatorControlUnit = new IndicatorControlUnit(indicators);
+        headlightControlUnit = new HeadlightControlUnit(headlights);
+        lidarControlUnit = new LidarControlUnit(lidars);
+
+        controlUnit.addSubscriber(batteryControlUnit);
+        controlUnit.addSubscriber(brakeControlUnit);
+        controlUnit.addSubscriber(brakeLightControlUnit);
+        controlUnit.addSubscriber(cameraControlUnit);
+        controlUnit.addSubscriber(engineControlUnit);
+        controlUnit.addSubscriber(gpsControlUnit);
+        controlUnit.addSubscriber(indicatorControlUnit);
+        controlUnit.addSubscriber(headlightControlUnit);
+        controlUnit.addSubscriber(lidarControlUnit);
     }
 
     public VehicleType getType() {
         return type;
     }
 
-    public class Builder {
+    public Door[] getDoors() {
+        return doors;
+    }
+
+    public UltraSonicSensor[] getUltraSonics() {
+        return ultraSonics;
+    }
+
+    public VehicleControlUnit getControlUnit() {
+        return controlUnit;
+    }
+
+    public Object getBattery() {
+        return battery;
+    }
+
+    public static class Builder {
         private Chassis chassis;
         private Object engine;
-        private Object[] battery; //IBattery
+        private Object battery; //IBattery
         private Object[] headlights; //ILED
-        private Object[] breakLights; //IBrakeLight
+        private Object[] brakeLights; //IBrakeLight
         private Object[] indicators; //IIndicator
         private Door[] doors;
         private ISittable[] seats;
@@ -61,63 +110,78 @@ public class AutonomousVehicle {
         private VehicleType type;
 
         public Builder chassis(Chassis chassis) {
+            this.chassis = chassis;
             return this;
         }
 
-        public void engine(Object engine) {
-
+        public Builder engine(Object engine) {
+            this.engine = engine;
+            return this;
         }
 
-        public void battery(Object battery) { //IBattery
-
+        public Builder battery(Object battery) { //IBattery
+            this.battery = battery;
+            return this;
         }
 
-        public void headlights(Object[] lights) { //ILED
-
+        public Builder headlights(Object[] lights) { //ILED
+            this.headlights = lights;
+            return this;
         }
 
-        public void brakeLights(Object[] brakeLights) { //IBrakeLight
-
+        public Builder brakeLights(Object[] brakeLights) { //IBrakeLight
+            this.brakeLights = brakeLights;
+            return this;
         }
 
-        public void indicators(Object[] indicators) { //IIndicator
-
+        public Builder indicators(Object[] indicators) { //IIndicator
+            this.indicators = indicators;
+            return this;
         }
 
-        public void doors(Door[] doors) {
-
+        public Builder doors(Door[] doors) {
+            this.doors = doors;
+            return this;
         }
 
-        public void seats(ISittable[] seats) {
-
+        public Builder seats(ISittable[] seats) {
+            this.seats = seats;
+            return this;
         }
 
-        public void wheels(Wheel wheels) {
-
+        public Builder wheels(Wheel[] wheels) {
+            this.wheels = wheels;
+            return this;
         }
 
-        public void brakes(Object[] brakes) { //IBrake
-
+        public Builder brakes(Object[] brakes) { //IBrake
+            this.brakes = brakes;
+            return this;
         }
 
-        public void gps(Object[] gps) { //IGPS
-
+        public Builder gps(Object[] gps) { //IGPS
+            this.gps = gps;
+            return this;
         }
 
-        public void cameras(Object[] cameras) { //ICamera
-
+        public Builder cameras(Object[] cameras) { //ICamera
+            this.cameras = cameras;
+            return this;
         }
 
-        public void lidars(Object[] lidars) { //ILidar
-
+        public Builder lidars(Object[] lidars) { //ILidar
+            this.lidars = lidars;
+            return this;
         }
 
-        public void ultraSonics(UltraSonicSensor[] us) {
-
+        public Builder ultraSonics(UltraSonicSensor[] us) {
+            this.ultraSonics = us;
+            return this;
         }
 
-        public void type(VehicleType type) {
+        public Builder type(VehicleType type) {
             this.type = type;
+            return this;
         }
 
         public AutonomousVehicle build() {

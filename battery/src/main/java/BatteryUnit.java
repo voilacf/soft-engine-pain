@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BatteryUnit implements IBattery {
     protected final ArrayList<BatteryUnit> subUnits = new ArrayList<>();
@@ -18,28 +19,47 @@ public abstract class BatteryUnit implements IBattery {
         subUnits.add(subUnit);
     }
 
+    public List<BatteryUnit> getSubUnits() {
+        // Create a copy of the list to prevent modification of the original list
+        return subUnits.stream().toList();
+    }
+
     public boolean isComposite() {
         return subUnits.size() > 0;
     }
 
-    public int getEnergyCount() {
+    public int getEnergy() {
         if (!isComposite())
             throw new RuntimeException("This isn't a composite in the battery. It must implement getEnergyCount() from BatteryUnit.");
-        return subUnits.stream().mapToInt(BatteryUnit::getEnergyCount).sum();
+        return subUnits.stream().mapToInt(BatteryUnit::getEnergy).sum();
     }
 
-    public int useEnergyCount(int count) {
+    public int useEnergy(int count) {
         if (!isComposite())
             throw new RuntimeException("This isn't a composite in the battery. It must implement useEnergyCount() from BatteryUnit.");
 
         int usedEnergy = 0;
         for (BatteryUnit subUnit : subUnits) {
-            usedEnergy += subUnit.useEnergyCount(count - usedEnergy);
+            usedEnergy += subUnit.useEnergy(count - usedEnergy);
             if (usedEnergy == count) {
                 break;
             }
         }
 
         return usedEnergy;
+    }
+
+    public int storeEnergy(int count) {
+        if (!isComposite())
+            throw new RuntimeException("This isn't a composite in the battery. It must implement storeEnergyCount() from BatteryUnit.");
+
+        int storedEnergy = 0;
+        for (BatteryUnit subUnit : subUnits) {
+            storedEnergy += subUnit.storeEnergy(count - storedEnergy);
+            if (storedEnergy == count) {
+                break;
+            }
+        }
+        return storedEnergy;
     }
 }

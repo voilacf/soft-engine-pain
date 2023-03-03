@@ -5,11 +5,11 @@ import control_unit.states.IndicatorState;
 public class EventHazardWarningOff {
     private IndicatorState state;
 
-    public EventHazardWarningOff(IndicatorState state){
+    public EventHazardWarningOff(IndicatorState state) {
         this.state = state;
     }
 
-    public IndicatorState getState(){
+    public IndicatorState getState() {
         return state;
     }
 

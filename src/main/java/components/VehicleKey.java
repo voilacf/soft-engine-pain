@@ -1,34 +1,33 @@
 package components;
 
 import builder.VehicleType;
-import door_button.Button;
+import door_button.CommandDisable;
 import door_button.CommandEnable;
+import observer_S04.Button;
 
 public class VehicleKey {
-    // TODO: implement password check in receiver
-    private final VehicleKeyReceiverModule receiver;
-    private final String encryptedPassword;
     private final Button enableButton;
     private final Button disableButton;
 
     public VehicleKey(VehicleKeyReceiverModule receiver, VehicleType vehicleType) {
-        this.receiver = receiver;
-        enableButton = new Button(new CommandEnable(this));
-        disableButton = new Button(new CommandEnable(this));
-
+        String encryptedPassword;
         if (vehicleType == VehicleType.AUTOX) {
-            this.encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.autoXPassword);
+            encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.autoXPassword);
         } else {
-
-            this.encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.zooxPassword);
+            encryptedPassword = VehicleKeyAESEncryption.encrypt(VehicleKeyAESEncryption.zooxPassword);
         }
+
+        enableButton = new Button(new CommandEnable(receiver, encryptedPassword));
+        disableButton = new Button(new CommandDisable(receiver, encryptedPassword));
     }
 
     public void enableVehicle() {
-        receiver.enableVehicle(encryptedPassword);
+        System.out.println("Enable key on vehicle key was pressed.");
+        enableButton.pressButton();
     }
 
     public void disableVehicle() {
-        receiver.disableVehicle(encryptedPassword);
+        System.out.println("Disable key on vehicle key was pressed.");
+        disableButton.pressButton();
     }
 }

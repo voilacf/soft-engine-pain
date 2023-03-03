@@ -1,22 +1,22 @@
 package application;
 
-import memento.DriveMusic;
-import memento.NaggingPassengersBehavior;
-import memento.VehicleConfigurationMemento;
+import memento_S04.DriveMusic;
+import memento_S04.NaggingPassengersBehavior;
+import memento_S04.VehicleConfigurationMemento;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class ApplicationConfiguration {
+    private static String pathToConfigFile = "config.json";
+    // TODO: load engine, camera and lidar from config file.
     private EngineComponentType engine;
     private CameraComponentType camera;
     private LidarComponentType lidar;
-
     private VehicleConfigurationMemento vehicleConfigurationMemento = new VehicleConfigurationMemento();
-
-    private static final String pathToConfigFile = "config.json";
 
     public ApplicationConfiguration() {
     }
@@ -36,7 +36,10 @@ public class ApplicationConfiguration {
 
 
     //For Config application.Application
-    public static ApplicationConfiguration loadJSONConfig() {
+    public static ApplicationConfiguration loadJSONConfig(String pathToConfigFile) {
+        if (!Objects.equals(pathToConfigFile, "")) {
+            ApplicationConfiguration.pathToConfigFile = pathToConfigFile;
+        }
         File file = new File(pathToConfigFile);
         JSONObject jsonObject = new JSONObject();
         if (file.exists()) {
@@ -67,7 +70,7 @@ public class ApplicationConfiguration {
 
     //For Config application.Application
     public void saveJSONConfig() {
-JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = new JSONObject();
         jsonObject.put("rejectDrunkenPassengers", vehicleConfigurationMemento.rejectDrunkenPassengers);
         jsonObject.put("stopByPoliceRequest", vehicleConfigurationMemento.stopByPoliceRequest);
         jsonObject.put("allowDriveByNight", vehicleConfigurationMemento.allowDriveByNight);
@@ -90,5 +93,25 @@ JSONObject jsonObject = new JSONObject();
 
     public void setVehicleConfigurationMemento(VehicleConfigurationMemento vehicleConfigurationMemento) {
         this.vehicleConfigurationMemento = vehicleConfigurationMemento;
+    }
+
+    public EngineComponentType getEngine() {
+        return engine;
+    }
+
+    public CameraComponentType getCamera() {
+        return camera;
+    }
+
+    public LidarComponentType getLidar() {
+        return lidar;
+    }
+
+    public String getPathToConfigFile() {
+        return pathToConfigFile;
+    }
+
+    public void setPathToConfigFile(String pathToConfigFile) {
+        ApplicationConfiguration.pathToConfigFile = pathToConfigFile;
     }
 }
