@@ -1,14 +1,14 @@
-public class ElecticEngineNG {
-    private static final ElecticEngineNG instance = new ElecticEngineNG();
+public class ElectricEngineNG {
+    private static final ElectricEngineNG instance = new ElectricEngineNG();
     public Port port;
     private ElectricEngineState state;
     private int rpm;
 
-    private ElecticEngineNG() {
+    private ElectricEngineNG() {
         port = new Port();
     }
 
-    public static ElecticEngineNG getInstance() {
+    public static ElectricEngineNG getInstance() {
         return instance;
     }
 

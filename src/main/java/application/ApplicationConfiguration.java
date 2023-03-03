@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ApplicationConfiguration {
-    private static String pathToConfigFile = "config.json";
-    // TODO: load engine, camera and lidar from config file.
     private EngineComponentType engine;
     private CameraComponentType camera;
     private LidarComponentType lidar;
@@ -22,6 +20,10 @@ public class ApplicationConfiguration {
     }
 
     public ApplicationConfiguration(JSONObject jsonObject) {
+        engine = EngineComponentType.valueOf(jsonObject.getString("engineType"));
+        camera = CameraComponentType.valueOf(jsonObject.getString("cameraType"));
+        lidar = LidarComponentType.valueOf(jsonObject.getString("lidarType"));
+
         vehicleConfigurationMemento.rejectDrunkenPassengers = jsonObject.getBoolean("rejectDrunkenPassengers");
         vehicleConfigurationMemento.stopByPoliceRequest = jsonObject.getBoolean("stopByPoliceRequest");
         vehicleConfigurationMemento.allowDriveByNight = jsonObject.getBoolean("allowDriveByNight");
@@ -29,17 +31,8 @@ public class ApplicationConfiguration {
         vehicleConfigurationMemento.musicDuringDrive = DriveMusic.valueOf(jsonObject.getString("musicDuringDrive"));
     }
 
-   /* public ApplicationConfiguration loadFromjsonConfig() {
-        return this;
-    }
-    */
-
-
     //For Config application.Application
     public static ApplicationConfiguration loadJSONConfig(String pathToConfigFile) {
-        if (!Objects.equals(pathToConfigFile, "")) {
-            ApplicationConfiguration.pathToConfigFile = pathToConfigFile;
-        }
         File file = new File(pathToConfigFile);
         JSONObject jsonObject = new JSONObject();
         if (file.exists()) {
@@ -58,18 +51,23 @@ public class ApplicationConfiguration {
         } else {
             System.out.println("Config file not found!");
             System.out.println("Creating new config file...");
+            // Config memento
             jsonObject.put("rejectDrunkenPassengers", true);
             jsonObject.put("stopByPoliceRequest", true);
             jsonObject.put("allowDriveByNight", true);
             jsonObject.put("behaviorWithNaggingPassengers", "STOP_AND_WAIT_FOR_EXCUSE");
             jsonObject.put("musicDuringDrive", "AC_DC");
 
+
+            jsonObject.put("engineType", "ENGINE_X");
+            jsonObject.put("cameraType", "CAMERA_V1");
+            jsonObject.put("lidarType", "LIDAR_NG");
         }
         return new ApplicationConfiguration(jsonObject);
     }
 
     //For Config application.Application
-    public void saveJSONConfig() {
+    public void saveJSONConfig(String pathToConfigFile) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("rejectDrunkenPassengers", vehicleConfigurationMemento.rejectDrunkenPassengers);
         jsonObject.put("stopByPoliceRequest", vehicleConfigurationMemento.stopByPoliceRequest);
@@ -105,13 +103,5 @@ public class ApplicationConfiguration {
 
     public LidarComponentType getLidar() {
         return lidar;
-    }
-
-    public String getPathToConfigFile() {
-        return pathToConfigFile;
-    }
-
-    public void setPathToConfigFile(String pathToConfigFile) {
-        ApplicationConfiguration.pathToConfigFile = pathToConfigFile;
     }
 }

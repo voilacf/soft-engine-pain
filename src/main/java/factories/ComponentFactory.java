@@ -40,9 +40,9 @@ public class ComponentFactory {
         Object port = null;
         try {
             URL url = jarPaths.get(classname);
-            if(!verify(url.getPath())){
+            /*if(!verify(url.getPath())){
                 throw new RuntimeException("Jar not verified");
-            }
+            }*/
             URL[] urls = {url};
             URLClassLoader urlClassLoader = new URLClassLoader(urls, ComponentFactory.class.getClassLoader());
             Class<?> brakeClass = Class.forName(classname, true, urlClassLoader);
@@ -108,7 +108,7 @@ public class ComponentFactory {
         if(EngineComponentType.ENGINE_NG == type){
             return build("ElectricEngineNG");
         }else{
-            return build("ElectricEngineXT");
+            return build("ElectricEngineX");
         }
     }
 

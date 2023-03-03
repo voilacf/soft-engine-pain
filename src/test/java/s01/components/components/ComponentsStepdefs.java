@@ -1,6 +1,5 @@
 package s01.components.components;
 
-import application.ApplicationConfiguration;
 import application.CameraComponentType;
 import application.EngineComponentType;
 import application.LidarComponentType;
@@ -9,10 +8,6 @@ import factories.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import memento_S04.DriveMusic;
-import memento_S04.NaggingPassengersBehavior;
-import memento_S04.VehicleConfiguration;
-import memento_S04.VehicleConfigurationMemento;
 
 import static org.junit.jupiter.api.Assertions.*;
 

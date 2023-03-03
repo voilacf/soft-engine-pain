@@ -1,3 +1,5 @@
+import javax.naming.InitialContext;
+
 public class Indicator {
     private static final Indicator instance = new Indicator();
     public Port port;
@@ -47,6 +49,14 @@ public class Indicator {
     //public void innerVisit(IComponentVisitor visitor){}
 
     public class Port implements IIndicator {
+
+        public void on(int sideEnumValue) {
+            on(IndicatorSide.values()[sideEnumValue]);
+        }
+
+        public void off(int sideEnumValue) {
+            off(IndicatorSide.values()[sideEnumValue]);
+        }
 
         public void on(IndicatorSide side) {
             innerOn(side);

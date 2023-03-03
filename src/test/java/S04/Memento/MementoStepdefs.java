@@ -81,6 +81,6 @@ public class MementoStepdefs {
     @When("I save the settings")
     public void iSaveTheSettingsToTheJsonFile() {
         applicationConfiguration.setVehicleConfigurationMemento(configuration.save());
-        applicationConfiguration.saveJSONConfig();
+        applicationConfiguration.saveJSONConfig("test_config2.json");
     }
 }

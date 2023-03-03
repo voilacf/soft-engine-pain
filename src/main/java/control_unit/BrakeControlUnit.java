@@ -14,8 +14,8 @@ public class BrakeControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventBrakeSet event) {
         for (Object brake : brakes) {
-            Double result = (Double) ComponentUtils.invokeMethod(brake, "setBrake", new Class[]{Double.class}, event.getPercentage());
-            System.out.println("receive -> setBrake  | percentage : " + result);
+            Double result = (Double) ComponentUtils.invokeMethod(brake, "setBrake", new Class[]{double.class}, event.getPercentage());
+            System.out.println("receive -> setBrake  | percentage : " + event.getPercentage());
         }
     }
 }

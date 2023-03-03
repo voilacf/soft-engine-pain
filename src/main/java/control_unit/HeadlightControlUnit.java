@@ -1,7 +1,6 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
-import control_unit.states.LEDState;
 import events.EventLEDOff;
 import events.EventLEDOn;
 
@@ -17,16 +16,16 @@ public class HeadlightControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventLEDOn event) {
         for (Object ledPort : leds) {
-            LEDState result = (LEDState) ComponentUtils.invokeMethod(ledPort, "on");
-            System.out.println("receive -> led | state : " + result);
+            Object result = ComponentUtils.invokeMethod(ledPort, "on");
+            System.out.println("receive -> led | state : on");
         }
     }
 
     @Subscribe
     public void receive(EventLEDOff event) {
         for (Object ledPort : leds) {
-            LEDState result = (LEDState) ComponentUtils.invokeMethod(ledPort, "off");
-            System.out.println("receive -> led | state : " + result);
+            Object result = ComponentUtils.invokeMethod(ledPort, "off");
+            System.out.println("receive -> led | state : off");
         }
     }
 }

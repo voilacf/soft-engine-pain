@@ -3,5 +3,9 @@
   "allowDriveByNight": false,
   "musicDuringDrive": "AC_DC",
   "rejectDrunkenPassengers": true,
-  "behaviorWithNaggingPassengers": "STOP_AND_WAIT_FOR_EXCUSE"
+  "behaviorWithNaggingPassengers": "STOP_AND_WAIT_FOR_EXCUSE",
+
+  "engineType": "ENGINE_X",
+  "lidarType": "LIDAR_NG",
+  "cameraType": "CAMERA_V2"
 }

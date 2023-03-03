@@ -12,8 +12,16 @@ import service_center.ServiceCenter;
 
 public class Application {
     public static void main(String[] args) {
+        String configPath;
+        if(args.length >= 2 && args[0].equals("-config")) {
+            configPath = args[1];
+        } else {
+            System.out.println("Using default configuration file: config.json");
+            configPath = "config.json";
+        }
+
         ServiceCenter serviceCenter = new ServiceCenter();
-        ApplicationConfiguration configuration = new ApplicationConfiguration();
+        ApplicationConfiguration configuration = ApplicationConfiguration.loadJSONConfig(configPath);
 
         AutonomousVehicle zoox = AutonomousVehicleFactory.buildAmazonZoox(serviceCenter, configuration);
         AutonomousVehicle autox = AutonomousVehicleFactory.buildAutoX(serviceCenter, configuration);

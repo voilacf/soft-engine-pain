@@ -118,7 +118,8 @@ public class VehicleConfiguration {
 
     //Enter the configuration mode
     public void enterConfigurationMode() {
-        ApplicationConfiguration applicationConfiguration = ApplicationConfiguration.loadJSONConfig("config.json");
+        String configPath = "config.json";
+        ApplicationConfiguration applicationConfiguration = ApplicationConfiguration.loadJSONConfig(configPath);
         this.restore(applicationConfiguration.getVehicleConfigurationMemento());
 
         System.out.println("Possible commands: print, set parameter, undo, exit");
@@ -141,7 +142,7 @@ public class VehicleConfiguration {
                 case "undo" -> this.restore(applicationConfiguration.getVehicleConfigurationMemento());
                 case "exit" -> {
                     applicationConfiguration.setVehicleConfigurationMemento(this.save());
-                    applicationConfiguration.saveJSONConfig();
+                    applicationConfiguration.saveJSONConfig(configPath);
                     System.exit(0);
                 }
             }

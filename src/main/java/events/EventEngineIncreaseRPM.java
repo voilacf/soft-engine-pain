@@ -16,4 +16,8 @@ public class EventEngineIncreaseRPM {
     public String toString() {
         return "event -> decreasing engine RPM";
     }
+
+    public int getSeconds() {
+        return seconds;
+    }
 }

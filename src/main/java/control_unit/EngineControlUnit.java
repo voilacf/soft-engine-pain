@@ -1,7 +1,6 @@
 package control_unit;
 
 import com.google.common.eventbus.Subscribe;
-import control_unit.states.ElectricEngineState;
 import events.EventEngineDecreaseRPM;
 import events.EventEngineIncreaseRPM;
 import events.EventEngineOff;
@@ -18,25 +17,25 @@ public class EngineControlUnit extends Subscriber {
     //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventEngineOn event) {
-        ElectricEngineState result = (ElectricEngineState) ComponentUtils.invokeMethod(engine, "on");
-        System.out.println("receive -> electric-engine | state : " + result);
+        Object result = ComponentUtils.invokeMethod(engine, "on");
+        System.out.println("receive -> electric-engine | state : on");
     }
 
     @Subscribe
     public void receive(EventEngineOff event) {
-        ElectricEngineState result = (ElectricEngineState) ComponentUtils.invokeMethod(engine, "off");
-        System.out.println("receive -> electric-engine | state : " + result);
+        Object result = ComponentUtils.invokeMethod(engine, "off");
+        System.out.println("receive -> electric-engine | state : off");
     }
 
     @Subscribe
     public void receive(EventEngineIncreaseRPM event) {
-        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "increaseRPM", new Class[]{Integer.class}, event.getDeltaRPM());
-        System.out.println("receive -> electric-engine | rpm : " + result);
+        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "increaseRPM", new Class[]{int.class,int.class}, event.getDeltaRPM(),event.getSeconds());
+        System.out.println("receive -> electric-engine | rpm : " + event.getDeltaRPM());
     }
 
     @Subscribe
     public void receive(EventEngineDecreaseRPM event) {
-        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "decreaseRPM", new Class[]{Integer.class}, event.getDeltaRPM());
-        System.out.println("receive -> electric-engine | rpm : " + result);
+        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "decreaseRPM", new Class[]{int.class,int.class}, event.getDeltaRPM(),event.getSeconds());
+        System.out.println("receive -> electric-engine | rpm : " + event.getDeltaRPM());
     }
 }
