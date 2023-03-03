@@ -12,7 +12,6 @@ public class BrakeLightControlUnit extends Subscriber {
         this.brakeLights = brakeLights;
     }
 
-    //TODO: remove event as parameter, or add getState to events?
     @Subscribe
     public void receive(EventBrakeLightOn event) {
         for (Object brakeLight : brakeLights) {

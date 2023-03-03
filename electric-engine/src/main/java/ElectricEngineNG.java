@@ -22,11 +22,12 @@ public class ElectricEngineNG {
 
     private void innerIncreaseRPM(int deltaRPM, int seconds) {
         rpm += deltaRPM;
-        //TODO: implements seconds
+        //TODO: implement seconds (s02)
     }
 
     private void innerDecreaseRPM(int deltaRPM, int seconds) {
         rpm -= deltaRPM;
+        //TODO: implement seconds (s02)
     }
 
     private int innerComputePowerDrawPerSecond() {

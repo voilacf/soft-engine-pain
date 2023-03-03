@@ -13,7 +13,6 @@ public class GPSControlUnit extends Subscriber {
         this.gps = gps;
     }
 
-    //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventGPSOn event) {
         for (Object gpsPort : gps) {

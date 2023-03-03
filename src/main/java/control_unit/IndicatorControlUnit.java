@@ -11,7 +11,6 @@ public class IndicatorControlUnit extends Subscriber {
         this.indicators = indicators;
     }
 
-    //TODO: reduce code redundancy?
     @Subscribe
     public void receive(EventLeftIndicatorOn event) {
         for (Object indicator : indicators) {

@@ -12,7 +12,6 @@ public class LidarControlUnit extends Subscriber {
         this.lidars = lidars;
     }
 
-    //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventLidarOn event) {
         for (Object lidar : lidars) {
