@@ -14,6 +14,7 @@ import java.util.List;
 public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUltraSonicSensorListener {
     private final EventBus eventBus;
     private final AutonomousVehicle vehicle;
+    private boolean isStarted = false;
 
     public VehicleControlUnit(AutonomousVehicle vehicle) {
         eventBus = new EventBus();
@@ -49,6 +50,7 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         eventBus.post(new EventLidarOn());
         eventBus.post(new EventLeftIndicatorOff(IndicatorState.LEFT_OFF));
         eventBus.post(new EventRightIndicatorOff(IndicatorState.RIGHT_OFF));
+        isStarted = true;
     }
 
     public void move(int deltaRPM, int seconds) {
@@ -98,25 +100,30 @@ public class VehicleControlUnit implements IBatteryCellTemperatureListener, IUlt
         eventBus.post(new EventGPSOff());
         eventBus.post(new EventCameraOff());
         eventBus.post(new EventLidarOff());
+        isStarted = false;
     }
 
     public void charging(int amountOfEnergy) {
         eventBus.post(new EventCharging(amountOfEnergy));
     }
 
-    //Temperature of battery cell changed
     @Override
     public void batteryTemperatureChanged(double temperature, Object battery) {
+        // Temperature of battery cell changed
         System.out.println("Battery temperature changed to " + temperature + "°C");
     }
 
-    //Distance of ultrasonic sensor changed
     @Override
     public void ultraSonicMeasurement(UltraSonicSensor sensor, double distance) {
+        // Distance of ultrasonic sensor changed
         System.out.println("UltraSonicSensor " + sensor.getId() + " distance changed to " + distance + "m");
     }
 
     public AutonomousVehicle getVehicle() {
         return vehicle;
+    }
+
+    public boolean isStarted() {
+        return isStarted;
     }
 }
