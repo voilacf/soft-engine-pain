@@ -18,14 +18,28 @@ public class UserMemberCardSHA256Encryption implements IUserMemberCardEncryption
     }
 
     @Override
-    public String decrypt(String encryptedData) {
+    public String decryptLoyaltyPoints(String encryptedData) {
         String decrypedData = "";
-        int expectedInt = 0;
+        int expectedDouble = 0;
         String expectedString = "";
         while (!encryptedData.equals(decrypedData)) {
-            expectedString = String.valueOf(expectedInt);
+            expectedString = String.valueOf(expectedDouble);
             decrypedData = encrypt(expectedString);
-            expectedInt++;
+            expectedDouble++;
+        }
+        System.out.println("finished decrypt loyalty Points");
+        return expectedString;
+    }
+
+    @Override
+    public String decryptCredits(String encryptedData) {
+        String decrypedData = "";
+        double expectedDouble = Math.round(5000*100.0)/100.0;
+        String expectedString = "";
+        while (!encryptedData.equals(decrypedData)) {
+            expectedString = String.valueOf(expectedDouble);
+            decrypedData = encrypt(expectedString);
+            expectedDouble =Math.round((expectedDouble-0.01)*100.0)/100.0;
         }
         return expectedString;
     }

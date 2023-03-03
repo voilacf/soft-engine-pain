@@ -34,7 +34,7 @@ public class UserMemberCardAESEncryption implements IUserMemberCardEncryptionStr
     }
 
     @Override
-    public String decrypt(String encryptedData) {
+    public String decryptLoyaltyPoints(String encryptedData) {
         try {
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
             SecretKeySpec secretKeySpecification = new SecretKeySpec(factory.generateSecret(new PBEKeySpec(secretKey.toCharArray(),
@@ -49,5 +49,10 @@ public class UserMemberCardAESEncryption implements IUserMemberCardEncryptionStr
             ex.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public String decryptCredits(String encryptedData) {
+        return decryptLoyaltyPoints(encryptedData);
     }
 }

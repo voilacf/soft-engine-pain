@@ -14,7 +14,7 @@ public class ThenUserMemberCard extends Stage<ThenUserMemberCard> {
         String expected = String.valueOf(expectedPoints);
 
         String encryptedData = user.getUserMemberCard().getEncryptedLoyaltyPoints();
-        String decryptedData = user.getUserMemberCard().getEncryptionStrategy().decrypt(encryptedData);
+        String decryptedData = user.getUserMemberCard().getEncryptionStrategy().decryptLoyaltyPoints(encryptedData);
 
         assertEquals(expected, decryptedData);
         return self();
