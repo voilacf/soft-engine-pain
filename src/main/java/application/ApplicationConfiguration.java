@@ -75,6 +75,10 @@ public class ApplicationConfiguration {
         jsonObject.put("behaviorWithNaggingPassengers", vehicleConfigurationMemento.behaviorWithNaggingPassengers.toString());
         jsonObject.put("musicDuringDrive", vehicleConfigurationMemento.musicDuringDrive.toString());
 
+        jsonObject.put("engineType", engine.toString());
+        jsonObject.put("cameraType", camera.toString());
+        jsonObject.put("lidarType", lidar.toString());
+
         try {
             // Write the JSON object to a file
             FileUtils.writeStringToFile(new File(pathToConfigFile), jsonObject.toString(4), "UTF-8");
