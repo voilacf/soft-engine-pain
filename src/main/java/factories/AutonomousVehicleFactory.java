@@ -24,6 +24,10 @@ public class AutonomousVehicleFactory {
         return new AutonomousVehicle.Builder()
                 .chassis(new Chassis())
                 .engine(ComponentFactory.buildEngine(config.getEngine()))
+                // The task is not clear about the battery count.
+                // In S02 Builder it says that both amazon zoox and auto x should have 1 battery.
+                // But in S03 Composite it says 8 batteries for amazon zoox.
+                // Because these two are contradictory, the first specification was chosen.
                 .battery(ComponentFactory.buildBattery())
                 .headlights(arr(Object.class, ComponentFactory::buildLED, 4))
                 .brakeLights(arr(Object.class, ComponentFactory::buildBrakeLight, 4))
@@ -47,6 +51,10 @@ public class AutonomousVehicleFactory {
         return new AutonomousVehicle.Builder()
                 .chassis(new Chassis())
                 .engine(ComponentFactory.buildEngine(config.getEngine()))
+                // The task is not clear about the battery count.
+                // In S02 Builder it says that both amazon zoox and auto x should have 1 battery.
+                // But in S03 Composite it says 4 batteries for auto x.
+                // Because these two are contradictory, the first specification was chosen.
                 .battery(ComponentFactory.buildBattery())
                 .headlights(arr(Object.class, ComponentFactory::buildLED, 2))
                 .brakeLights(arr(Object.class, ComponentFactory::buildBrakeLight, 2))
