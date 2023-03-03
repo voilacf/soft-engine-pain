@@ -24,7 +24,7 @@ public class GPS {
         this.frequency = frequency;
     }
 
-    //TODO: add visitor
+    //TODO: add visitor (s07)
     //public void innerVisit(IComponentVisitor visitor){}
 
     public class Port implements IGPS {

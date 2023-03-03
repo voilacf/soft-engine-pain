@@ -23,7 +23,7 @@ public class Brake {
             innerSetBrake(percentage);
         }
 
-        //TODO: add IComponentVisitor and logic
+        //TODO: add IComponentVisitor and logic (s07)
         /*public void visit(IComponentVisitor visitor){
             innerVisit(visitor);
         }

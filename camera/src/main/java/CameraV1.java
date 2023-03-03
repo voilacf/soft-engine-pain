@@ -30,7 +30,7 @@ public class CameraV1 {
             innerOff();
         }
 
-        //TODO: add IComponentVisitor and logic
+        //TODO: add IComponentVisitor and logic (s07)
         /*public void visit(IComponentVisitor visitor){
             innerVisit(visitor);
         }

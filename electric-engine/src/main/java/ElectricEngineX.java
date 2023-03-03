@@ -22,7 +22,7 @@ public class ElectricEngineX {
 
     private void innerIncreaseRPM(int deltaRPM, int seconds) {
         rpm += deltaRPM;
-        //TODO: implement seconds
+        //TODO: implement seconds (s02)
     }
 
     private void innerDecreaseRPM(int deltaRPM, int seconds) {
