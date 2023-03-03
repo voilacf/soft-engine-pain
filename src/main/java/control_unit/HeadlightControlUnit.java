@@ -12,7 +12,6 @@ public class HeadlightControlUnit extends Subscriber {
         this.leds = leds;
     }
 
-    //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventLEDOn event) {
         for (Object ledPort : leds) {

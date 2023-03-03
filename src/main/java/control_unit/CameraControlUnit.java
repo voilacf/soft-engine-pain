@@ -12,7 +12,6 @@ public class CameraControlUnit extends Subscriber {
         this.cameras = cameras;
     }
 
-    //TODO: remove event as parameter, or add getState to events?
     @Subscribe
     public void receive(EventCameraOn event) {
         for (Object camera : cameras) {

@@ -14,7 +14,6 @@ public class EngineControlUnit extends Subscriber {
         this.engine = engine;
     }
 
-    //TODO: remove event as parameter from first two methods, or add getState to events?
     @Subscribe
     public void receive(EventEngineOn event) {
         Object result = ComponentUtils.invokeMethod(engine, "on");

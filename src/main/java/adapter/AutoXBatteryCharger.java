@@ -2,6 +2,6 @@ package adapter;
 
 public class AutoXBatteryCharger {
     public void plugIn3Pin() {
-        // TODO: implement
+        // TODO: implement (s02)
     }
 }
