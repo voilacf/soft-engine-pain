@@ -2,16 +2,16 @@ package s01components.camera;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import s01components.ComponentFactory;
 import s01components.application.CameraComponentType;
-import s01components.control_units.CameraControlUnit;
 
+import java.lang.reflect.Method;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CameraStepdefs {
     private final Object[] cameraPort = new Object[2];
-    private CameraControlUnit controlUnit;
 
     @Given("My autonomous vehicle contains a camera")
     public void myVehicleContainsABrakeLight() {
@@ -21,35 +21,38 @@ public class CameraStepdefs {
 
     @Then("The camera component should not be null")
     public void brakeLightComponentShouldNotBeNull() {
-        assertNotNull(cameraPort[0]);
-        assertNotNull(cameraPort[1]);
+        for (int i = 0; i < 2; i++) {
+            assertNotNull(cameraPort[i]);
+        }
     }
 
-    @Given("I have a camera component and its control unit")
-    public void iHaveABrakeLightAndItsControlUnit() {
-        cameraPort[0] = ComponentFactory.buildCamera(CameraComponentType.CAMERA_V1);
-        cameraPort[1] = ComponentFactory.buildCamera(CameraComponentType.CAMERA_V2);
-        controlUnit = new CameraControlUnit(cameraPort);
+    @Then("The camera turns on when using on-method")
+    public void cameraTurnsOn() {
+        for (Object camera : cameraPort
+        ) {
+            try {
+                Method start = camera.getClass().getDeclaredMethod("on");
+                Method getState = camera.getClass().getDeclaredMethod("getState");
+                start.invoke(camera);
+                assertEquals("on", getState.invoke(camera));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    //TODO: finish
-    @When("The camera control unit receives an on event")
-    public void brakeLightControlUnitReceivesAnOnEvent() {
-
-    }
-
-    @Then("The camera turned on")
-    public void brakeLightTurnedOn() {
-        //assertEquals();
-    }
-
-    @When("The camera control unit receives an off event")
-    public void controlUnitReceivesAnOffEvent() {
-
-    }
-
-    @Then("The camera turned off")
-    public void brakeLightTurnedOff() {
-        //assertEquals();
+    @Then("The camera turns off when using off-method")
+    public void cameraTurnsOff() {
+        for (Object camera : cameraPort
+        ) {
+            try {
+                Method start = camera.getClass().getDeclaredMethod("off");
+                Method getState = camera.getClass().getDeclaredMethod("getState");
+                start.invoke(camera);
+                assertEquals("off", getState.invoke(camera));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 }
