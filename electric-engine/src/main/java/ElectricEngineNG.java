@@ -36,11 +36,20 @@ public class ElectricEngineNG {
         return this.state;
     }
 
+    private int innerGetRPM() {
+        return rpm;
+    }
+
     private int innerComputePowerDrawPerSecond() {
         return 3 * rpm;
     }
 
     public class Port implements IElectricEngine {
+        @Override
+        public int getRPM(){
+            return innerGetRPM();
+        }
+
         @Override
         public String getState(){
             return innerGetState().toString().toLowerCase();
