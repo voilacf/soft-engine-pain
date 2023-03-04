@@ -1,16 +1,14 @@
 Feature: lidar
 
-  Scenario: Test component
+  Scenario: Test lidar component
     Given My autonomous vehicle contains a lidar
     Then The lidar component should not be null
 
-  Scenario: Test on event
-    Given I have a lidar component and its control unit
-    When The lidar control unit receives an on event
-    Then The lidar turned on
+  Scenario: Test lidar on event
+    Given My autonomous vehicle contains a lidar
+    Then The lidar turns on when using on-method
 
-  Scenario: Test off event
-    Given I have a lidar component and its control unit
-    When The lidar control unit receives an off event
-    Then The lidar turned off
+  Scenario: Test lidar off Event
+    Given My autonomous vehicle contains a lidar
+    Then The lidar turns off when using off-method
 

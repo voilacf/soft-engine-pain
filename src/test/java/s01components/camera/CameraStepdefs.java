@@ -14,13 +14,13 @@ public class CameraStepdefs {
     private final Object[] cameraPort = new Object[2];
 
     @Given("My autonomous vehicle contains a camera")
-    public void myVehicleContainsABrakeLight() {
+    public void myVehicleContainsACamera() {
         cameraPort[0] = ComponentFactory.buildCamera(CameraComponentType.CAMERA_V1);
         cameraPort[1] = ComponentFactory.buildCamera(CameraComponentType.CAMERA_V2);
     }
 
     @Then("The camera component should not be null")
-    public void brakeLightComponentShouldNotBeNull() {
+    public void cameraComponentShouldNotBeNull() {
         for (int i = 0; i < 2; i++) {
             assertNotNull(cameraPort[i]);
         }
