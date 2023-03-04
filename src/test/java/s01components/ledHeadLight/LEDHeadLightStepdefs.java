@@ -2,70 +2,88 @@ package s01components.ledHeadLight;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import s01components.ComponentFactory;
-import s01components.control_units.HeadlightControlUnit;
 
+import java.lang.reflect.Method;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class LEDHeadLightStepdefs {
-    private final Object[] ledPort = new Object[1]; //TODO: change to two?
-    private HeadlightControlUnit controlUnit;
+    private final Object[] ledPort = new Object[2];
 
     @Given("My autonomous vehicle contains a led component")
     public void myVehicleContainsALedHeadLight() {
-        ledPort[0] = ComponentFactory.buildLED();
+        for (int i = 0; i < 2; i++) {
+            ledPort[i] = ComponentFactory.buildLED();
+        }
     }
 
     @Then("The led component should not be null")
     public void ledHeadLightComponentShouldNotBeNull() {
-        assertNotNull(ledPort[0]);
+        for (int i = 0; i < 2; i++) {
+            assertNotNull(ledPort[i]);
+        }
     }
 
-    @Given("I have a led component and its control unit")
-    public void iHaveALedHeadLightAndItsControlUnit() {
-        ledPort[0] = ComponentFactory.buildLED();
-        controlUnit = new HeadlightControlUnit(ledPort);
+
+    @Then("The led turns on when using on-method")
+    public void ledTurnsOn() {
+        for (Object led : ledPort
+        ) {
+            try {
+                Method start = led.getClass().getDeclaredMethod("on");
+                Method getState = led.getClass().getDeclaredMethod("getState");
+                start.invoke(led);
+                assertEquals("on", getState.invoke(led));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    //TODO: finish
-    @When("The led control unit receives an on event")
-    public void ledControlUnitReceivesAnOnEvent() {
-
+    @Then("The led turns off when using off-method")
+    public void ledTurnsOff() {
+        for (Object led : ledPort
+        ) {
+            try {
+                Method start = led.getClass().getDeclaredMethod("off");
+                Method getState = led.getClass().getDeclaredMethod("getState");
+                start.invoke(led);
+                assertEquals("off", getState.invoke(led));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    @Then("The led turned on")
-    public void ledTurnedOn() {
-        //assertEquals();
-    }
-
-    @When("The led control unit receives an off event")
-    public void ledControlUnitReceivesAnOffEvent() {
-
-    }
-
-    @Then("The led turned off")
-    public void ledTurnedOff() {
-        //assertEquals();
-    }
-
-    @When("The led control unit receives a high beam event")
-    public void ledControlUnitReceivesAHighBeamEvent() {
-
-    }
-
-    @Then("The led activated its high beam")
+    @Then("The led activated its high beam when using beam-method")
     public void ledActivatedHighBeam() {
-        //assertEquals();
+        for (Object led : ledPort
+        ) {
+            try {
+                Method start = led.getClass().getDeclaredMethod("beam");
+                Method getState = led.getClass().getDeclaredMethod("getState");
+                start.invoke(led);
+                assertEquals("highbeam", getState.invoke(led));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    @When("The led control unit receives a dimm event")
-    public void ledControlUnitReceivesADimmEvent() {
-
-    }
-
-    @Then("The led light is dimmed")
+    @Then("The led is dimmed when using dimm-method")
     public void ledIsDimmed() {
-        //assertEquals();
+        for (Object led : ledPort
+        ) {
+            try {
+                Method start = led.getClass().getDeclaredMethod("dimm");
+                Method getState = led.getClass().getDeclaredMethod("getState");
+                start.invoke(led);
+                assertEquals("dimmed", getState.invoke(led));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 }

@@ -4,22 +4,18 @@ Feature: ledHeadLight
     Given My autonomous vehicle contains a led component
     Then The led component should not be null
 
-  Scenario: Test on event
-    Given I have a led component and its control unit
-    When The led control unit receives an on event
-    Then The led turned on
+  Scenario: Test led on event
+    Given My autonomous vehicle contains a led component
+    Then The led turns on when using on-method
 
-  Scenario: Test off event
-    Given I have a led component and its control unit
-    When The led control unit receives an off event
-    Then The led turned off
+  Scenario: Test led off Event
+    Given My autonomous vehicle contains a led component
+    Then The led turns off when using off-method
 
-  Scenario: Test high beam event
-    Given I have a led component and its control unit
-    When The led control unit receives a high beam event
-    Then The led activated its high beam
+  Scenario: Test led high beam event
+    Given My autonomous vehicle contains a led component
+    Then The led activated its high beam when using beam-method
 
-  Scenario: Test dimm event
-    Given I have a led component and its control unit
-    When The led control unit receives a dimm event
-    Then The led light is dimmed
+  Scenario: Test led dimm event
+    Given My autonomous vehicle contains a led component
+    Then The led is dimmed when using dimm-method
