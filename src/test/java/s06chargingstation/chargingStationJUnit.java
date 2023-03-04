@@ -2,6 +2,7 @@ package s06chargingstation;
 
 import org.junit.jupiter.api.*;
 import s01components.application.ApplicationConfiguration;
+import s06chargingstation.*;
 import s02builder.AutonomousVehicle;
 import s02builder.AutonomousVehicleFactory;
 import s05servicecenter.ServiceCenter;
