@@ -6,6 +6,8 @@ import events.EventEngineIncreaseRPM;
 import events.EventEngineOff;
 import events.EventEngineOn;
 
+import java.lang.reflect.Method;
+
 public class EngineControlUnit extends Subscriber {
     private final Object engine;
 
@@ -16,14 +18,26 @@ public class EngineControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventEngineOn event) {
-        Object result = ComponentUtils.invokeMethod(engine, "on");
-        System.out.println("receive -> electric-engine | state : on");
+        try {
+            Method onMethod = engine.getClass().getDeclaredMethod("on");
+            onMethod.invoke(engine);
+            String result = (String) engine.getClass().getDeclaredMethod("getState").invoke(engine);
+            System.out.println("receive -> electric engine  | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(EventEngineOff event) {
-        Object result = ComponentUtils.invokeMethod(engine, "off");
-        System.out.println("receive -> electric-engine | state : off");
+        try {
+            Method onMethod = engine.getClass().getDeclaredMethod("off");
+            onMethod.invoke(engine);
+            String result = (String) engine.getClass().getDeclaredMethod("getState").invoke(engine);
+            System.out.println("receive -> electric engine  | state : " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe

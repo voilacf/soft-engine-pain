@@ -33,7 +33,15 @@ public class ElectricEngineX {
         return 3 * rpm;
     }
 
+    private ElectricEngineState innerGetState(){
+        return this.state;
+    }
+
     public class Port implements IElectricEngine {
+        @Override
+        public String getState(){
+            return innerGetState().toString().toLowerCase();
+        }
 
         @Override
         public void on() {

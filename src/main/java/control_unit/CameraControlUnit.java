@@ -4,6 +4,8 @@ import com.google.common.eventbus.Subscribe;
 import events.EventCameraOff;
 import events.EventCameraOn;
 
+import java.lang.reflect.Method;
+
 public class CameraControlUnit extends Subscriber {
     private final Object[] cameras;
 
@@ -14,17 +16,31 @@ public class CameraControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventCameraOn event) {
-        for (Object camera : cameras) {
-            Object result = ComponentUtils.invokeMethod(camera, "on");
-            System.out.println("receive -> camera | state : on");
+        for (Object camera:cameras
+             ) {
+            try {
+                Method onMethod = camera.getClass().getDeclaredMethod("on");
+                onMethod.invoke(camera);
+                String result = (String) camera.getClass().getDeclaredMethod("getState").invoke(camera);
+                System.out.println("receive -> camera  | state : " + result);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
     @Subscribe
     public void receive(EventCameraOff event) {
-        for (Object camera : cameras) {
-            Object result = ComponentUtils.invokeMethod(camera, "off");
-            System.out.println("receive -> camera | state : off");
+        for (Object camera: cameras
+             ) {
+            try {
+                Method onMethod = camera.getClass().getDeclaredMethod("off");
+                onMethod.invoke(camera);
+                String result = (String) camera.getClass().getDeclaredMethod("getState").invoke(camera);
+                System.out.println("receive -> camera  | state : " + result);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 

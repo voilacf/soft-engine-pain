@@ -5,6 +5,8 @@ import events.EventGPSConnectSatellite;
 import events.EventGPSOff;
 import events.EventGPSOn;
 
+import java.lang.reflect.Method;
+
 public class GPSControlUnit extends Subscriber {
     private final Object[] gps;
 
@@ -15,17 +17,31 @@ public class GPSControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventGPSOn event) {
-        for (Object gpsPort : gps) {
-            Object result = ComponentUtils.invokeMethod(gpsPort, "on");
-            System.out.println("receive -> gps | state : on");
+        for (Object o :gps
+             ) {
+            try {
+                Method onMethod = o.getClass().getDeclaredMethod("on");
+                onMethod.invoke(o);
+                String result = (String) o.getClass().getDeclaredMethod("getState").invoke(o);
+                System.out.println("receive -> gps  | state : " + result);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
     @Subscribe
     public void receive(EventGPSOff event) {
-        for (Object gpsPort : gps) {
-            Object result = ComponentUtils.invokeMethod(gpsPort, "off");
-            System.out.println("receive -> gps | state : off");
+        for (Object o:gps
+             ) {
+            try {
+                Method onMethod = o.getClass().getDeclaredMethod("off");
+                onMethod.invoke(o);
+                String result = (String) o.getClass().getDeclaredMethod("getState").invoke(o);
+                System.out.println("receive -> gps  | state : " + result);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 

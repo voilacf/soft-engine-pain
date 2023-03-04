@@ -3,7 +3,7 @@ public class LED {
     public Port port;
     private LEDState state;
 
-    public LED() {
+    private LED() {
         port = new Port();
     }
 
@@ -11,36 +11,49 @@ public class LED {
         return instance;
     }
 
-    public void innerOn() {
+    private void innerOn() {
         state = LEDState.ON;
     }
 
-    public void innerOff() {
+    private void innerOff() {
         state = LEDState.OFF;
     }
 
-    public void innerDimm() {
+    private void innerDimm() {
         state = LEDState.DIMMED;
     }
 
-    public void innerBeam() {
+    private void innerBeam() {
         state = LEDState.HIGHBEAM;
     }
 
-    public class Port implements ILED {
+    private LEDState innerGetState(){
+        return state;
+    }
 
+
+    public class Port implements ILED {
+        @Override
+        public String getState(){
+            return innerGetState().toString().toLowerCase();
+        }
+
+        @Override
         public void on() {
             innerOn();
         }
 
+        @Override
         public void off() {
             innerOff();
         }
 
+        @Override
         public void dimm() {
             innerDimm();
         }
 
+        @Override
         public void beam() {
             innerBeam();
         }

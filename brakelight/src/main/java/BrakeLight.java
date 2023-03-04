@@ -11,12 +11,16 @@ public class BrakeLight {
         return instance;
     }
 
-    public void innerOn() {
+    private void innerOn() {
         state = BrakeLightState.ON;
     }
 
-    public void innerOff() {
+    private void innerOff() {
         state = BrakeLightState.OFF;
+    }
+
+    private BrakeLightState innerGetState(){
+        return state;
     }
 
     //public void visit(IComponentVisitor visitor){}
@@ -29,6 +33,10 @@ public class BrakeLight {
 
         public void off() {
             innerOff();
+        }
+
+        public String getState(){
+            return innerGetState().toString().toLowerCase();
         }
 
         /*public void visit(IComponentVisitor visitor){

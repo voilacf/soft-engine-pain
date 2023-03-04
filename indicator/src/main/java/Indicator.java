@@ -46,9 +46,16 @@ public class Indicator {
         }
     }
 
+    private IndicatorState innerGetState(){
+        return state;
+    }
+
     //public void innerVisit(IComponentVisitor visitor){}
 
     public class Port implements IIndicator {
+        public String getState(){
+            return innerGetState().toString().toLowerCase();
+        }
 
         public void on(int sideEnumValue) {
             on(IndicatorSide.values()[sideEnumValue]);

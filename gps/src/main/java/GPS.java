@@ -4,7 +4,7 @@ public class GPS {
     private GPSState state;
     private String frequency;
 
-    public GPS() {
+    private GPS() {
         port = new Port();
     }
 
@@ -12,16 +12,20 @@ public class GPS {
         return instance;
     }
 
-    public void innerOn() {
+    private void innerOn() {
         state = GPSState.ON;
     }
 
-    public void innerOff() {
+    private void innerOff() {
         state = GPSState.OFF;
     }
 
-    public void innerConnectSatellite(String frequency) {
+    private void innerConnectSatellite(String frequency) {
         this.frequency = frequency;
+    }
+
+    private GPSState innerGetState(){
+        return state;
     }
 
     //TODO: add visitor (s07)
@@ -39,6 +43,10 @@ public class GPS {
 
         public void connectSatellite(String frequency) {
             innerConnectSatellite(frequency);
+        }
+
+        public String getState() {
+            return innerGetState().toString().toLowerCase();
         }
 
         /*public void visit(IComponentVisitor visitor){

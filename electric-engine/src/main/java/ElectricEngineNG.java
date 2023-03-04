@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class ElectricEngineNG {
     private static final ElectricEngineNG instance = new ElectricEngineNG();
     public Port port;
@@ -30,11 +32,20 @@ public class ElectricEngineNG {
         //TODO: implement seconds (s02)
     }
 
+    private ElectricEngineState innerGetState(){
+        return this.state;
+    }
+
     private int innerComputePowerDrawPerSecond() {
         return 3 * rpm;
     }
 
     public class Port implements IElectricEngine {
+        @Override
+        public String getState(){
+            return innerGetState().toString().toLowerCase();
+        }
+
         @Override
         public void on() {
             innerOn();

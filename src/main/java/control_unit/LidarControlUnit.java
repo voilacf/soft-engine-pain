@@ -4,6 +4,8 @@ import com.google.common.eventbus.Subscribe;
 import events.EventLidarOff;
 import events.EventLidarOn;
 
+import java.lang.reflect.Method;
+
 public class LidarControlUnit extends Subscriber {
     private final Object[] lidars;
 
@@ -14,17 +16,31 @@ public class LidarControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLidarOn event) {
-        for (Object lidar : lidars) {
-            ComponentUtils.invokeMethod(lidar, "on");
-            System.out.println("receive -> lidar | state : on");
+        for (Object lidar:lidars
+             ) {
+            try {
+                Method onMethod = lidar.getClass().getDeclaredMethod("on");
+                onMethod.invoke(lidar);
+                String result = (String) lidar.getClass().getDeclaredMethod("getState").invoke(lidar);
+                System.out.println("receive -> lidar  | state : " + result);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
     @Subscribe
     public void receive(EventLidarOff event) {
-        for (Object lidar : lidars) {
-            ComponentUtils.invokeMethod(lidar, "off");
-            System.out.println("receive -> lidar | state : off");
+        for (Object lidar:lidars
+             ) {
+            try {
+                Method onMethod = lidar.getClass().getDeclaredMethod("off");
+                onMethod.invoke(lidar);
+                String result = (String) lidar.getClass().getDeclaredMethod("getState").invoke(lidar);
+                System.out.println("receive -> lidar  | state : " + result);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }

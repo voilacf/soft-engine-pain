@@ -8,4 +8,6 @@ public interface IElectricEngine {
     void decreaseRPM(int deltaRPM, int seconds);
 
     int computePowerDrawPerSecond();
+
+    String getState();
 }

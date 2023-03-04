@@ -3,7 +3,7 @@ public class LidarNG {
     public Port port;
     private LidarState state;
 
-    public LidarNG() {
+    private LidarNG() {
         port = new Port();
     }
 
@@ -11,22 +11,32 @@ public class LidarNG {
         return instance;
     }
 
-    public void innerOn() {
+    private void innerOn() {
         state = LidarState.ON;
     }
 
-    public void innerOff() {
+    private void innerOff() {
         state = LidarState.OFF;
+    }
+
+    private LidarState innerGetState() {
+        return state;
     }
 
     //public void innerVisit(IComponentVisitor visitor){}
 
     public class Port implements ILidar {
+        @Override
+        public String getState() {
+            return innerGetState().toString().toLowerCase();
+        }
 
+        @Override
         public void on() {
             innerOn();
         }
 
+        @Override
         public void off() {
             innerOff();
         }
