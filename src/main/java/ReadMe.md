@@ -1,7 +1,7 @@
 # TODOS:
 
-* rename packages according to S01, S02, etc.
-* Matrikelnummern zu Readme.txt im Hauptverzeichnis hinzufügen
+~~* rename packages according to S01, S02, etc.~~
+~~* Matrikelnummern zu Readme.txt im Hauptverzeichnis hinzufügen~~
 
 S01:
 
@@ -17,12 +17,17 @@ S01:
 S02:
 ~~- construct Amazon Zoox or AutoX vehicle in application.Application.main() Method. Use builder to construct it and get
 components from factories.~~
+
 - revisit increase-/decreaseRPM in engine
+- implement adapter
+- implement bridge
 
 S05:
+
 - do your job???
 
 s07:
+
 - everything is still missing
 
     
