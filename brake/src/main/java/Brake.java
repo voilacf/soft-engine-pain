@@ -15,17 +15,17 @@ public class Brake {
         this.percentage = percentage;
     }
 
-    /*private double innerGetPercentage(){
+    private double innerGetPercentage(){
         return this.percentage;
-    }*/
+    }
 
     //public void innerVisit(IComponentVisitor visitor){}
 
     public class Port implements IBrake {
-        /*@Override
+        @Override
         public double getPercentage(){
             return innerGetPercentage();
-        }*/
+        }
 
         @Override
         public void setBrake(double percentage) {

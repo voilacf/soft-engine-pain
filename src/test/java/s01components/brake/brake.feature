@@ -8,5 +8,3 @@ Feature: brake
     Given I have a brake component and its control unit
     When The brake control unit receives a BrakeSetEvent
     Then The brake percentage has changed
-
-

@@ -1,5 +1,5 @@
 public interface IBrake {
     void setBrake(double percentage);
-    //double getPercentage(); TODO: delete?
+    double getPercentage();
     //void visit(IComponentVisitor visitor);
 }
