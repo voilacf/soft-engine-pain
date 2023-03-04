@@ -10,7 +10,7 @@ S01:
 - ~~going over control unit~~
 - Fix NoSuchMethodExceptions caused by method invocations to Indicator.off() etc.
 - revisit increase-/decreaseRPM in engine
-- finish tests
+- finish bdd tests
 
 S02:
 ~~- construct Amazon Zoox or AutoX vehicle in application.Application.main() Method. Use builder to construct it and get
