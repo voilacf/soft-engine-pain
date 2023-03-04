@@ -3,6 +3,10 @@ package s01components.control_units;
 import com.google.common.eventbus.Subscribe;
 import s01components.events.EventLEDOff;
 import s01components.events.EventLEDOn;
+import s01components.events.EventLedHighBeam;
+import s01components.events.EventLEDDimmed;
+
+import java.lang.reflect.Method;
 
 public class HeadlightControlUnit extends Subscriber {
     private final Object[] leds;
