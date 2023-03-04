@@ -27,7 +27,6 @@ public class BrakeStepdefs {
         assertNotNull(brakePort[0]);
     }
 
-    //TODO: finish
     @Given("I have a brake component and its control unit")
     public void iHaveBrakeAndItsControlUnit() {
         brakePort[0] = ComponentFactory.buildBrake();
