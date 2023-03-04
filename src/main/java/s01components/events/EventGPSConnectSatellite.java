@@ -1,7 +1,7 @@
 package s01components.events;
 
 public class EventGPSConnectSatellite {
-    private String frequency;
+    private final String frequency;
 
     public EventGPSConnectSatellite(String frequency) {
         this.frequency = frequency;

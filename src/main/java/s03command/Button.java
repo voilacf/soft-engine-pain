@@ -1,6 +1,5 @@
 package s03command;
 
-import s03command.ICommand;
 import s04observer.IButtonPressedListener;
 
 import java.util.ArrayList;

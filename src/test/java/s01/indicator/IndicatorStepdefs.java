@@ -1,31 +1,31 @@
 package s01.indicator;
 
-import s01components.control_units.IndicatorControlUnit;
-import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import s01components.ComponentFactory;
+import s01components.control_units.IndicatorControlUnit;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class IndicatorStepdefs {
-    private Object[] indicatorPort = new Object[2]; //TODO: change to four??
+    private final Object[] indicatorPort = new Object[2]; //TODO: change to four??
     private IndicatorControlUnit controlUnit;
 
     @Given("My autonomous vehicle contains two indicators")
-    public void myVehicleContainsAnIndicator(){
+    public void myVehicleContainsAnIndicator() {
         indicatorPort[0] = ComponentFactory.buildIndicator();
         indicatorPort[1] = ComponentFactory.buildIndicator();
     }
 
     @Then("The indicator components should not be null")
-    public void indicatorComponentShouldNotBeNull(){
+    public void indicatorComponentShouldNotBeNull() {
         assertNotNull(indicatorPort[0]);
         assertNotNull(indicatorPort[1]);
     }
 
     @Given("I have an indicator component and its control unit")
-    public void iHaveAIndicatorAndItsControlUnit(){
+    public void iHaveAIndicatorAndItsControlUnit() {
         indicatorPort[0] = ComponentFactory.buildIndicator();
         controlUnit = new IndicatorControlUnit(indicatorPort);
     }

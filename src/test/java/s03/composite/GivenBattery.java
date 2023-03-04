@@ -2,8 +2,8 @@ package s03.composite;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
-import s01components.control_units.ComponentUtils;
 import s01components.ComponentFactory;
+import s01components.control_units.ComponentUtils;
 
 import java.util.List;
 

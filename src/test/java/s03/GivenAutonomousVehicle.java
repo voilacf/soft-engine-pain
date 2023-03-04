@@ -1,14 +1,14 @@
 package s03;
 
-import s01components.application.ApplicationConfiguration;
-import s02builder.AutonomousVehicle;
 import com.google.common.eventbus.Subscribe;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import s01components.application.ApplicationConfiguration;
+import s01components.control_units.Subscriber;
+import s02builder.AutonomousVehicle;
+import s02builder.AutonomousVehicleFactory;
 import s03command.VehicleKey;
 import s03command.VehicleKeyReceiverModule;
-import s01components.control_units.Subscriber;
-import s02builder.AutonomousVehicleFactory;
 import s03facade.VehicleControlUnit;
 import s05servicecenter.ServiceCenter;
 

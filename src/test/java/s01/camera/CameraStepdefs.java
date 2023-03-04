@@ -1,32 +1,32 @@
 package s01.camera;
 
-import s01components.application.CameraComponentType;
-import s01components.control_units.CameraControlUnit;
-import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import s01components.ComponentFactory;
+import s01components.application.CameraComponentType;
+import s01components.control_units.CameraControlUnit;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CameraStepdefs {
-    private Object[] cameraPort = new Object[2];
+    private final Object[] cameraPort = new Object[2];
     private CameraControlUnit controlUnit;
 
     @Given("My autonomous vehicle contains a camera")
-    public void myVehicleContainsABrakeLight(){
+    public void myVehicleContainsABrakeLight() {
         cameraPort[0] = ComponentFactory.buildCamera(CameraComponentType.CAMERA_V1);
         cameraPort[1] = ComponentFactory.buildCamera(CameraComponentType.CAMERA_V2);
     }
 
     @Then("The camera component should not be null")
-    public void brakeLightComponentShouldNotBeNull(){
+    public void brakeLightComponentShouldNotBeNull() {
         assertNotNull(cameraPort[0]);
         assertNotNull(cameraPort[1]);
     }
 
     @Given("I have a camera component and its control unit")
-    public void iHaveABrakeLightAndItsControlUnit(){
+    public void iHaveABrakeLightAndItsControlUnit() {
         cameraPort[0] = ComponentFactory.buildCamera(CameraComponentType.CAMERA_V1);
         cameraPort[1] = ComponentFactory.buildCamera(CameraComponentType.CAMERA_V2);
         controlUnit = new CameraControlUnit(cameraPort);

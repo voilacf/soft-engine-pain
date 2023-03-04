@@ -1,9 +1,8 @@
 package s03.command;
 
-import s02builder.AutonomousVehicle;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import s02builder.AutonomousVehicle;
 import s03command.VehicleKey;
 
 public class WhenCommand extends Stage<WhenCommand> {

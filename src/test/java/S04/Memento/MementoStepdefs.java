@@ -1,9 +1,9 @@
 package S04.Memento;
 
-import s01components.application.ApplicationConfiguration;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import s01components.application.ApplicationConfiguration;
 import s04memento.DriveMusic;
 import s04memento.NaggingPassengersBehavior;
 import s04memento.VehicleConfiguration;

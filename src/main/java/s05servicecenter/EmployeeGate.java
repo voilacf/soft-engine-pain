@@ -8,10 +8,7 @@ public class EmployeeGate {
     public void open() {
     }
 
-    ;
-
     public void close() {
     }
 
-    ;
 }

@@ -1,9 +1,9 @@
 package s02builder;
 
-import s03command.Door;
-import s04observer.UltraSonicSensor;
-import s03facade.VehicleControlUnit;
 import s01components.control_units.*;
+import s03command.Door;
+import s03facade.VehicleControlUnit;
+import s04observer.UltraSonicSensor;
 
 public class AutonomousVehicle {
     private final Chassis chassis;

@@ -1,29 +1,29 @@
 package s01.ledHeadLight;
 
-import s01components.control_units.HeadlightControlUnit;
-import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import s01components.ComponentFactory;
+import s01components.control_units.HeadlightControlUnit;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class LEDHeadLightStepdefs {
-    private Object[] ledPort = new Object[1]; //TODO: change to two?
+    private final Object[] ledPort = new Object[1]; //TODO: change to two?
     private HeadlightControlUnit controlUnit;
 
     @Given("My autonomous vehicle contains a led component")
-    public void myVehicleContainsALedHeadLight(){
+    public void myVehicleContainsALedHeadLight() {
         ledPort[0] = ComponentFactory.buildLED();
     }
 
     @Then("The led component should not be null")
-    public void ledHeadLightComponentShouldNotBeNull(){
+    public void ledHeadLightComponentShouldNotBeNull() {
         assertNotNull(ledPort[0]);
     }
 
     @Given("I have a led component and its control unit")
-    public void iHaveALedHeadLightAndItsControlUnit(){
+    public void iHaveALedHeadLightAndItsControlUnit() {
         ledPort[0] = ComponentFactory.buildLED();
         controlUnit = new HeadlightControlUnit(ledPort);
     }

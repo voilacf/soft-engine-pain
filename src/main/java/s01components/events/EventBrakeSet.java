@@ -1,7 +1,7 @@
 package s01components.events;
 
 public class EventBrakeSet {
-    private double percentage;
+    private final double percentage;
 
     public EventBrakeSet(double percentage) {
         this.percentage = percentage;

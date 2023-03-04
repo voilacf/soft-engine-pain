@@ -1,9 +1,9 @@
 package s03command;
 
 import s04observer.IButtonPressedListener;
-import s05servicecenter.ServiceCenter;
 import s04state.DoorStateClosed;
 import s04state.IDoorState;
+import s05servicecenter.ServiceCenter;
 
 public class Door implements IButtonPressedListener {
     private final Button emergencyButton;

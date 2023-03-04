@@ -4,9 +4,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import s03command.Door;
-import s05servicecenter.ServiceCenter;
 import s04state.DoorStateClosed;
 import s04state.DoorStateOpened;
+import s05servicecenter.ServiceCenter;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

@@ -1,8 +1,8 @@
 package s01components.control_units;
 
-import s06chargingstation.EventCharging;
 import com.google.common.eventbus.Subscribe;
 import s01components.ComponentFactory;
+import s06chargingstation.EventCharging;
 
 public class BatteryControlUnit extends Subscriber {
     private final Object batteryPort;

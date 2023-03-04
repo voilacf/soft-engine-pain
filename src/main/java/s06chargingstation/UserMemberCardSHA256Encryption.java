@@ -34,12 +34,12 @@ public class UserMemberCardSHA256Encryption implements IUserMemberCardEncryption
     @Override
     public String decryptCredits(String encryptedData) {
         String decrypedData = "";
-        double expectedDouble = Math.round(5000*100.0)/100.0;
+        double expectedDouble = Math.round(5000 * 100.0) / 100.0;
         String expectedString = "";
         while (!encryptedData.equals(decrypedData)) {
             expectedString = String.valueOf(expectedDouble);
             decrypedData = encrypt(expectedString);
-            expectedDouble =Math.round((expectedDouble-0.01)*100.0)/100.0;
+            expectedDouble = Math.round((expectedDouble - 0.01) * 100.0) / 100.0;
         }
         return expectedString;
     }

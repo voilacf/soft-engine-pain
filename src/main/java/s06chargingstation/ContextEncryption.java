@@ -14,6 +14,7 @@ public class ContextEncryption {
     public String executeDecryptionStrategyLoyaltyPoints(String encryptedData) {
         return getStrategy().decryptLoyaltyPoints(encryptedData);
     }
+
     public String executeDecryptionStrategyCredits(String encryptedData) {
         return getStrategy().decryptCredits(encryptedData);
     }

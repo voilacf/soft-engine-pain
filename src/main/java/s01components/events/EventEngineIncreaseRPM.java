@@ -1,8 +1,8 @@
 package s01components.events;
 
 public class EventEngineIncreaseRPM {
-    private int deltaRPM;
-    private int seconds;
+    private final int deltaRPM;
+    private final int seconds;
 
     public EventEngineIncreaseRPM(int deltaRPM, int seconds) {
         this.deltaRPM = deltaRPM;

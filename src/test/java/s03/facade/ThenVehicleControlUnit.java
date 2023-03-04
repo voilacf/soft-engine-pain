@@ -2,8 +2,8 @@ package s03.facade;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import s03facade.VehicleControlUnit;
 import s03.GivenAutonomousVehicle;
+import s03facade.VehicleControlUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

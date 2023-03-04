@@ -1,19 +1,19 @@
 package s01components.application;
 
 import s02builder.AutonomousVehicle;
+import s02builder.AutonomousVehicleFactory;
+import s03command.Door;
 import s03command.VehicleKey;
 import s03command.VehicleKeyReceiverModule;
-import s02builder.AutonomousVehicleFactory;
-import s04memento.VehicleConfigurationMemento;
-import s03command.Door;
-import s04observer.UltraSonicSensor;
 import s03facade.VehicleControlUnit;
+import s04memento.VehicleConfigurationMemento;
+import s04observer.UltraSonicSensor;
 import s05servicecenter.ServiceCenter;
 
 public class Application {
     public static void main(String[] args) {
         String configPath;
-        if(args.length >= 2 && args[0].equals("-config")) {
+        if (args.length >= 2 && args[0].equals("-config")) {
             configPath = args[1];
         } else {
             System.out.println("Using default configuration file: config.json");

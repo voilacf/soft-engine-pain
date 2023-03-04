@@ -1,8 +1,8 @@
 package s06;
 
-import s06chargingstation.User;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import s06chargingstation.User;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

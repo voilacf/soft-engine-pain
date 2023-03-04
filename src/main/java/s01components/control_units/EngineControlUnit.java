@@ -28,13 +28,13 @@ public class EngineControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventEngineIncreaseRPM event) {
-        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "increaseRPM", new Class[]{int.class,int.class}, event.getDeltaRPM(),event.getSeconds());
+        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "increaseRPM", new Class[]{int.class, int.class}, event.getDeltaRPM(), event.getSeconds());
         System.out.println("receive -> electric-engine | rpm : " + event.getDeltaRPM());
     }
 
     @Subscribe
     public void receive(EventEngineDecreaseRPM event) {
-        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "decreaseRPM", new Class[]{int.class,int.class}, event.getDeltaRPM(),event.getSeconds());
+        Integer result = (Integer) ComponentUtils.invokeMethod(engine, "decreaseRPM", new Class[]{int.class, int.class}, event.getDeltaRPM(), event.getSeconds());
         System.out.println("receive -> electric-engine | rpm : " + event.getDeltaRPM());
     }
 }

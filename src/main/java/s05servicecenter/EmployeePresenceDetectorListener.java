@@ -1,7 +1,7 @@
 package s05servicecenter;
 
 public interface EmployeePresenceDetectorListener {
-    public void employeeAfterFirstDoor();
+    void employeeAfterFirstDoor();
 
-    public void employeeAfterSecondDoor();
+    void employeeAfterSecondDoor();
 }

@@ -22,7 +22,7 @@ public class IndicatorControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventLeftIndicatorOff event) {
         for (Object indicator : indicators) {
-             ComponentUtils.invokeMethod(indicator, "off", new Class[]{int.class}, IndicatorSide.LEFT.ordinal());
+            ComponentUtils.invokeMethod(indicator, "off", new Class[]{int.class}, IndicatorSide.LEFT.ordinal());
             System.out.println("receive -> indicator | state : indicator off");
         }
     }
@@ -30,7 +30,7 @@ public class IndicatorControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventRightIndicatorOn event) {
         for (Object indicator : indicators) {
-             ComponentUtils.invokeMethod(indicator, "on", new Class[]{int.class}, IndicatorSide.RIGHT.ordinal());
+            ComponentUtils.invokeMethod(indicator, "on", new Class[]{int.class}, IndicatorSide.RIGHT.ordinal());
             System.out.println("receive -> indicator | state : right on");
         }
     }
@@ -38,7 +38,7 @@ public class IndicatorControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventRightIndicatorOff event) {
         for (Object indicator : indicators) {
-             ComponentUtils.invokeMethod(indicator, "off", new Class[]{int.class}, IndicatorSide.RIGHT.ordinal());
+            ComponentUtils.invokeMethod(indicator, "off", new Class[]{int.class}, IndicatorSide.RIGHT.ordinal());
             System.out.println("receive -> indicator | state : right off");
         }
     }
@@ -46,7 +46,7 @@ public class IndicatorControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventHazardWarningOn event) {
         for (Object indicator : indicators) {
-             ComponentUtils.invokeMethod(indicator, "on", new Class[]{int.class}, IndicatorSide.HAZARD.ordinal());
+            ComponentUtils.invokeMethod(indicator, "on", new Class[]{int.class}, IndicatorSide.HAZARD.ordinal());
             System.out.println("receive -> indicator | state : hazard on");
         }
     }
@@ -54,7 +54,7 @@ public class IndicatorControlUnit extends Subscriber {
     @Subscribe
     public void receive(EventHazardWarningOff event) {
         for (Object indicator : indicators) {
-             ComponentUtils.invokeMethod(indicator, "off", new Class[]{int.class}, IndicatorSide.HAZARD.ordinal());
+            ComponentUtils.invokeMethod(indicator, "off", new Class[]{int.class}, IndicatorSide.HAZARD.ordinal());
             System.out.println("receive -> indicator | state : hazard off");
         }
     }
