@@ -1,12 +1,13 @@
 package S04.Observer;
 
-import control_unit.ComponentUtils;
-import factories.ComponentFactory;
+import s01components.control_units.ComponentUtils;
+import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import observer_S04.*;
-import service_center.ServiceCenter;
+import s03command.Door;
+import s04observer.*;
+import s05servicecenter.ServiceCenter;
 
 import java.util.List;
 

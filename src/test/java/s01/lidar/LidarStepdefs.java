@@ -1,8 +1,8 @@
 package s01.lidar;
 
-import application.LidarComponentType;
-import control_unit.LidarControlUnit;
-import factories.ComponentFactory;
+import s01components.application.LidarComponentType;
+import s01components.control_units.LidarControlUnit;
+import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

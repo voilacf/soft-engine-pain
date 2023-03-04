@@ -1,6 +1,6 @@
 package s01.battery;
 
-import factories.ComponentFactory;
+import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 

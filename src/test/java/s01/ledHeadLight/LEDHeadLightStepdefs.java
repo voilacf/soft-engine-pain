@@ -1,7 +1,7 @@
 package s01.ledHeadLight;
 
-import control_unit.HeadlightControlUnit;
-import factories.ComponentFactory;
+import s01components.control_units.HeadlightControlUnit;
+import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

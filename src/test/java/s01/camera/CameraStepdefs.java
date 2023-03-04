@@ -1,8 +1,8 @@
 package s01.camera;
 
-import application.CameraComponentType;
-import control_unit.CameraControlUnit;
-import factories.ComponentFactory;
+import s01components.application.CameraComponentType;
+import s01components.control_units.CameraControlUnit;
+import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

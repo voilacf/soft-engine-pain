@@ -1,8 +1,8 @@
 package s01.electricEngine;
 
-import application.EngineComponentType;
-import control_unit.EngineControlUnit;
-import factories.ComponentFactory;
+import s01components.application.EngineComponentType;
+import s01components.control_units.EngineControlUnit;
+import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

@@ -1,13 +1,13 @@
 package S04.Memento;
 
-import application.ApplicationConfiguration;
+import s01components.application.ApplicationConfiguration;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import memento_S04.DriveMusic;
-import memento_S04.NaggingPassengersBehavior;
-import memento_S04.VehicleConfiguration;
-import memento_S04.VehicleConfigurationMemento;
+import s04memento.DriveMusic;
+import s04memento.NaggingPassengersBehavior;
+import s04memento.VehicleConfiguration;
+import s04memento.VehicleConfigurationMemento;
 
 import static org.junit.jupiter.api.Assertions.*;
 

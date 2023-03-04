@@ -2,7 +2,7 @@ package s03.composite;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import control_unit.ComponentUtils;
+import s01components.control_units.ComponentUtils;
 
 public class WhenBattery extends Stage<WhenBattery> {
     @ExpectedScenarioState

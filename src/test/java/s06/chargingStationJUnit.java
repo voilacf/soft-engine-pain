@@ -1,11 +1,11 @@
 package s06;
 
-import application.ApplicationConfiguration;
-import builder.AutonomousVehicle;
-import charging_station.*;
-import factories.AutonomousVehicleFactory;
+import s01components.application.ApplicationConfiguration;
+import s02builder.AutonomousVehicle;
+import s06chargingstation.*;
+import s02builder.AutonomousVehicleFactory;
 import org.junit.jupiter.api.*;
-import service_center.ServiceCenter;
+import s05servicecenter.ServiceCenter;
 
 import java.util.UUID;
 

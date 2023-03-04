@@ -1,6 +1,6 @@
 package s06;
 
-import charging_station.User;
+import s06chargingstation.User;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 

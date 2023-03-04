@@ -1,11 +1,11 @@
 package s03.command;
 
-import builder.AutonomousVehicle;
+import s02builder.AutonomousVehicle;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
-import service_center.ServiceCenter;
-import state_S04.DoorStateClosed;
-import state_S04.DoorStateOpened;
+import s05servicecenter.ServiceCenter;
+import s04state.DoorStateClosed;
+import s04state.DoorStateOpened;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

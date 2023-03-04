@@ -1,7 +1,7 @@
 package s01.gps;
 
-import control_unit.GPSControlUnit;
-import factories.ComponentFactory;
+import s01components.control_units.GPSControlUnit;
+import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

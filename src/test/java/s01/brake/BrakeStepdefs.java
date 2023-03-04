@@ -1,7 +1,7 @@
 package s01.brake;
 
-import control_unit.BrakeControlUnit;
-import factories.ComponentFactory;
+import s01components.control_units.BrakeControlUnit;
+import s01components.ComponentFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;

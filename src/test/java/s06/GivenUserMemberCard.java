@@ -1,8 +1,8 @@
 package s06;
 
-import charging_station.User;
-import charging_station.UserMemberCardAESEncryption;
-import charging_station.UserMemberCardSHA256Encryption;
+import s06chargingstation.User;
+import s06chargingstation.UserMemberCardAESEncryption;
+import s06chargingstation.UserMemberCardSHA256Encryption;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 

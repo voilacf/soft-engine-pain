@@ -1,8 +1,8 @@
 package s03.facade;
 
 import com.tngtech.jgiven.junit5.ScenarioTest;
-import events.*;
 import org.junit.jupiter.api.Test;
+import s01components.events.*;
 import s03.GivenAutonomousVehicle;
 
 public class TestVehicleControlUnit extends ScenarioTest<GivenAutonomousVehicle, WhenVehicleControlUnit, ThenVehicleControlUnit> {
