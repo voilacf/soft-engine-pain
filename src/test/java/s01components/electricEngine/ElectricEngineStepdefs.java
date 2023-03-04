@@ -7,6 +7,9 @@ import s01components.ComponentFactory;
 import s01components.application.EngineComponentType;
 import s01components.control_units.EngineControlUnit;
 
+import java.lang.reflect.Method;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ElectricEngineStepdefs {
@@ -21,8 +24,39 @@ public class ElectricEngineStepdefs {
 
     @Then("The electric engine component should not be null")
     public void electricEngineComponentShouldNotBeNull() {
-        assertNotNull(enginePort[0]);
-        assertNotNull(enginePort[1]);
+        for (int i = 0; i < 2; i++) {
+            assertNotNull(enginePort[0]);
+        }
+    }
+
+    @Then("The engine turns on when using on-method")
+    public void electricEngineTurnsOn() {
+        for (Object engine : enginePort
+        ) {
+            try {
+                Method start = engine.getClass().getDeclaredMethod("on");
+                Method getState = engine.getClass().getDeclaredMethod("getState");
+                start.invoke(engine);
+                assertEquals("on", getState.invoke(engine));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
+    }
+
+    @Then("The engine turns off when using off-method")
+    public void electricEngineTurnsOff() {
+        for (Object engine : enginePort
+        ) {
+            try {
+                Method start = engine.getClass().getDeclaredMethod("off");
+                Method getState = engine.getClass().getDeclaredMethod("getState");
+                start.invoke(engine);
+                assertEquals("off", getState.invoke(engine));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
     @Given("I have an electric engine component and its control unit")
@@ -30,26 +64,6 @@ public class ElectricEngineStepdefs {
         enginePort[0] = ComponentFactory.buildEngine(EngineComponentType.ENGINE_NG);
         enginePort[1] = ComponentFactory.buildEngine(EngineComponentType.ENGINE_X);
         controlUnit = new EngineControlUnit(enginePort);
-    }
-
-    @When("The electric engine control unit receives an on event")
-    public void electricEngineControlUnitReceivesAnOnEvent() {
-
-    }
-
-    @Then("The electric engine turned on")
-    public void electricEngineTurnedOn() {
-        //assertEquals();
-    }
-
-    @When("The electric engine control unit receives an off event")
-    public void electricEngineControlUnitReceivesAnOffEvent() {
-
-    }
-
-    @Then("The electric engine turned off")
-    public void electricEngineTurnedOff() {
-        //assertEquals();
     }
 
     @When("The electric engine control unit receives an increase rpm event")

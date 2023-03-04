@@ -4,22 +4,20 @@ Feature: electricEngine
     Given My autonomous vehicle contains an electric engine
     Then The electric engine component should not be null
 
-  Scenario: Test on Event
-    Given I have an electric engine component and its control unit
-    When The electric engine control unit receives an on event
-    Then The electric engine turned on
+  Scenario: Test engine on event
+    Given My autonomous vehicle contains an electric engine
+    Then The engine turns on when using on-method
 
-  Scenario: Test off Event
-    Given I have an electric engine component and its control unit
-    When The electric engine control unit receives an off event
-    Then The electric engine turned off
+  Scenario: Test engine off Event
+    Given My autonomous vehicle contains an electric engine
+    Then The engine turns off when using off-method
 
-  Scenario: Test increase RPM Event
+  Scenario: Test engine increase RPM Event
     Given I have an electric engine component and its control unit
     When The electric engine control unit receives an increase rpm event
     Then The electric engine rpm has increased
 
-  Scenario: Test decrease RPM Event
+  Scenario: Test engine decrease RPM Event
     Given I have an electric engine component and its control unit
     When The electric engine control unit receives a decrease rpm event
     Then The electric engine rpm has decreased
