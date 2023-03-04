@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Button class that can be pressed to execute a command (Command pattern) or notify listeners (Observer pattern).
  */
 public class Button {
-    private final ICommand command;
+    private ICommand command;
     private final ArrayList<IButtonPressedListener> listeners = new ArrayList<>();
 
     public Button(ICommand command) {
@@ -37,5 +37,9 @@ public class Button {
 
     public void removeListener(IButtonPressedListener listener) {
         listeners.remove(listener);
+    }
+
+    public void setCommand(ICommand cmd) {
+        this.command = cmd;
     }
 }

@@ -1,0 +1,10 @@
+{
+    "stopByPoliceRequest": false,
+    "allowDriveByNight": false,
+    "engineType": "ENGINE_X",
+    "musicDuringDrive": "HELENE_FISCHER",
+    "rejectDrunkenPassengers": false,
+    "behaviorWithNaggingPassengers": "DO_NOTHING",
+    "cameraType": "CAMERA_V2",
+    "lidarType": "LIDAR_NG"
+}

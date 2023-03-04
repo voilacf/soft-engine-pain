@@ -132,19 +132,4 @@ public class ComponentFactory {
             return build("LidarXT");
         }
     }
-
-    public static void main(String... args) {
-        Object port = buildGPS();
-        System.out.println("port   | " + port.hashCode());
-
-        try {
-            Method onMethod = port.getClass().getMethod("on");
-            System.out.println(onMethod);
-
-            /*BatteryState result = (BatteryState) onMethod.invoke(port);
-            System.out.println("result | " + result);*/
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }
