@@ -40,6 +40,7 @@ public class ComponentFactory {
         Object port = null;
         try {
             URL url = jarPaths.get(classname);
+            // TODO: re-add before submission
             /*if(!verify(url.getPath())){
                 throw new RuntimeException("Jar not verified");
             }*/
