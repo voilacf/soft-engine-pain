@@ -24,4 +24,8 @@ public class LiftingPlatform {
 
         System.out.println("Vehicle " + vehicle + " is done with maintenance and drives off a lifting platform");
     }
+
+    public LiftingPlatformSensor getSensor() {
+        return sensor;
+    }
 }

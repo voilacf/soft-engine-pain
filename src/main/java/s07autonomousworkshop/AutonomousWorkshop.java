@@ -13,6 +13,10 @@ public class AutonomousWorkshop implements ILiftingPlatformSensorListener {
 
     private final Queue<AutonomousVehicle> autoXQueue = new ArrayDeque<>();
 
+    public AutonomousWorkshop() {
+        liftingPlatform.getSensor().addListener(this);
+    }
+
     public void vehicleRegistered(AutonomousVehicle vehicle) {
         System.out.println("Vehicle " + vehicle + " drove successfully onto a lifting platform");
     }
