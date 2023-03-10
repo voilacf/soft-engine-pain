@@ -1,3 +1,5 @@
+import java.lang.reflect.InvocationTargetException;
+
 public class BrakeLight {
     private static final BrakeLight instance = new BrakeLight();
     public Port port;
@@ -23,8 +25,6 @@ public class BrakeLight {
         return state;
     }
 
-    //public void visit(IComponentVisitor visitor){}
-
     public class Port implements IBrakeLight {
 
         public void on() {
@@ -39,9 +39,13 @@ public class BrakeLight {
             return innerGetState().toString().toLowerCase();
         }
 
-        /*public void visit(IComponentVisitor visitor){
-            innerVisit(visitor);
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitBrakeLight", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
-        * */
     }
 }

@@ -1,3 +1,5 @@
+import java.lang.reflect.InvocationTargetException;
+
 public class LED {
     private static final LED instance = new LED();
     public Port port;
@@ -56,6 +58,15 @@ public class LED {
         @Override
         public void beam() {
             innerBeam();
+        }
+
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitLed", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

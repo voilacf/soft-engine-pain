@@ -2,5 +2,5 @@ public interface ICamera {
     void on();
     void off();
     String getState();
-    //void visit(IComponentVisitor visitor);
+    void accept(Object visitor);
 }

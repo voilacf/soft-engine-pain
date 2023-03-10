@@ -4,8 +4,11 @@ import s01components.control_units.*;
 import s03command.Door;
 import s03facade.VehicleControlUnit;
 import s04observer.UltraSonicSensor;
+import s07autonomousworkshop.LiftingPlatform;
 
 public class AutonomousVehicle {
+    private static int idCounter = 1;
+    private final int id;
     private final Chassis chassis;
     private final Object engine;
     private final Object battery; //IBattery
@@ -34,6 +37,7 @@ public class AutonomousVehicle {
     private final LidarControlUnit lidarControlUnit;
 
     private AutonomousVehicle(Builder builder) {
+        id = idCounter++;
         chassis = builder.chassis;
         engine = builder.engine;
         battery = builder.battery;
@@ -90,6 +94,46 @@ public class AutonomousVehicle {
 
     public Object getBattery() {
         return battery;
+    }
+
+    public Object[] getHeadlights() {
+        return headlights;
+    }
+
+    public Object[] getIndicators() {
+        return indicators;
+    }
+
+    public Object[] getBrakeLights() {
+        return brakeLights;
+    }
+
+    public Object[] getBrakes() {
+        return brakes;
+    }
+
+    public Object[] getGps() {
+        return gps;
+    }
+
+    public Object[] getLidars() {
+        return lidars;
+    }
+
+    public Object[] getCameras() {
+        return cameras;
+    }
+
+    public void driveOntoLiftingPlatform(LiftingPlatform liftingPlatform) {
+        liftingPlatform.driveOnTo(this);
+    }
+
+    @Override
+    public String toString() {
+        if (type == VehicleType.AUTOX)
+            return "AutoX " + id;
+        else
+            return "Amazon Zoox " + id;
     }
 
     public static class Builder {

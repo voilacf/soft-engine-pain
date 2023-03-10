@@ -9,6 +9,7 @@ import s03facade.VehicleControlUnit;
 import s04memento.VehicleConfigurationMemento;
 import s04observer.UltraSonicSensor;
 import s05servicecenter.ServiceCenter;
+import s07autonomousworkshop.AutonomousWorkshop;
 
 public class Application {
     public static void main(String[] args) {
@@ -28,6 +29,7 @@ public class Application {
 
         testVehicle(zoox);
         testVehicle(autox);
+        testWorkshop(serviceCenter, configuration);
     }
 
     private static void testVehicle(AutonomousVehicle vehicle) {
@@ -61,5 +63,20 @@ public class Application {
         }
 
         key.disableVehicle();
+    }
+
+    private static void testWorkshop(ServiceCenter serviceCenter,ApplicationConfiguration configuration) {
+        System.out.println("\n\n\nTesting workshop:\n");
+
+        AutonomousWorkshop workshop = new AutonomousWorkshop();
+        // 2x autox and 3x zoox
+        for (int i = 0; i < 2; i++) {
+            workshop.addVehicleToQueue(AutonomousVehicleFactory.buildAutoX(null, configuration));
+        }
+        for (int i = 0; i < 3; i++) {
+            workshop.addVehicleToQueue(AutonomousVehicleFactory.buildAmazonZoox(null, configuration));
+        }
+
+        workshop.doAllVehicles();
     }
 }

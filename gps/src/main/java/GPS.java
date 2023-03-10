@@ -1,3 +1,5 @@
+import java.lang.reflect.InvocationTargetException;
+
 public class GPS {
     private static final GPS instance = new GPS();
     public Port port;
@@ -28,9 +30,6 @@ public class GPS {
         return state;
     }
 
-    //TODO: add visitor (s07)
-    //public void innerVisit(IComponentVisitor visitor){}
-
     public class Port implements IGPS {
 
         public void on() {
@@ -49,9 +48,13 @@ public class GPS {
             return innerGetState().toString().toLowerCase();
         }
 
-        /*public void visit(IComponentVisitor visitor){
-            innerVisit(visitor);
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitGps", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
-        * */
     }
 }

@@ -1,3 +1,5 @@
+import java.lang.reflect.InvocationTargetException;
+
 public class LidarNG {
     private static final LidarNG instance = new LidarNG();
     public Port port;
@@ -23,8 +25,6 @@ public class LidarNG {
         return state;
     }
 
-    //public void innerVisit(IComponentVisitor visitor){}
-
     public class Port implements ILidar {
         @Override
         public String getState() {
@@ -41,9 +41,13 @@ public class LidarNG {
             innerOff();
         }
 
-        /*public void visit(IComponentVisitor visitor){
-            innerVisit(visitor);
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitLidar", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
-        * */
     }
 }

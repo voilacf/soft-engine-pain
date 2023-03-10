@@ -2,5 +2,5 @@ public interface IBrakeLight {
     void on();
     void off();
     String getState();
-    //void visit(IComponentVisitor visitor);
+    void accept(Object visitor);
 }

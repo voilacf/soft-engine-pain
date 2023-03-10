@@ -1,4 +1,5 @@
 import javax.naming.InitialContext;
+import java.lang.reflect.InvocationTargetException;
 
 public class Indicator {
     private static final Indicator instance = new Indicator();
@@ -50,8 +51,6 @@ public class Indicator {
         return state;
     }
 
-    //public void innerVisit(IComponentVisitor visitor){}
-
     public class Port implements IIndicator {
         public String getState(){
             return innerGetState().toString().toLowerCase();
@@ -73,10 +72,14 @@ public class Indicator {
             innerOff(side);
         }
 
-        /*public void visit(IComponentVisitor visitor){
-            innerVisit(visitor);
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitIndicator", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
-        * */
     }
 
 }

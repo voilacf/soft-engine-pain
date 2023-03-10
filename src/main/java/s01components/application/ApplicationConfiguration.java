@@ -14,6 +14,7 @@ public class ApplicationConfiguration {
     private CameraComponentType camera;
     private LidarComponentType lidar;
     private VehicleConfigurationMemento vehicleConfigurationMemento = new VehicleConfigurationMemento();
+    private static ApplicationConfiguration instance;
 
     public ApplicationConfiguration() {
     }
@@ -62,7 +63,7 @@ public class ApplicationConfiguration {
             jsonObject.put("cameraType", "CAMERA_V1");
             jsonObject.put("lidarType", "LIDAR_NG");
         }
-        return new ApplicationConfiguration(jsonObject);
+        return instance = new ApplicationConfiguration(jsonObject);
     }
 
     //For Config application.Application
@@ -106,5 +107,9 @@ public class ApplicationConfiguration {
 
     public LidarComponentType getLidar() {
         return lidar;
+    }
+    
+    public static ApplicationConfiguration getInstance() {
+        return instance;
     }
 }

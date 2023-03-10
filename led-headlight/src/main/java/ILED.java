@@ -4,4 +4,6 @@ public interface ILED {
     void dimm();
     void beam();
     String getState();
+
+    void accept(Object visitor);
 }
