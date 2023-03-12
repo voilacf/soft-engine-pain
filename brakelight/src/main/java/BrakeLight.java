@@ -21,7 +21,7 @@ public class BrakeLight {
         state = BrakeLightState.OFF;
     }
 
-    private BrakeLightState innerGetState(){
+    private BrakeLightState innerGetState() {
         return state;
     }
 
@@ -37,7 +37,7 @@ public class BrakeLight {
         }
 
         @Override
-        public String getState(){
+        public String getState() {
             return innerGetState().toString().toLowerCase();
         }
 

@@ -17,8 +17,8 @@ public class GPSControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventGPSOn event) {
-        for (Object o :gps
-             ) {
+        for (Object o : gps
+        ) {
             try {
                 Method onMethod = o.getClass().getDeclaredMethod("on");
                 onMethod.invoke(o);
@@ -32,8 +32,8 @@ public class GPSControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventGPSOff event) {
-        for (Object o:gps
-             ) {
+        for (Object o : gps
+        ) {
             try {
                 Method onMethod = o.getClass().getDeclaredMethod("off");
                 onMethod.invoke(o);

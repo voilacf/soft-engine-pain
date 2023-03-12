@@ -4,7 +4,7 @@ import com.tngtech.jgiven.junit5.ScenarioTest;
 import org.junit.jupiter.api.Test;
 import s01components.application.EngineComponentType;
 
-public class TestBridge extends ScenarioTest<GivenBridge, WhenBridge, ThenBridge>{
+public class TestBridge extends ScenarioTest<GivenBridge, WhenBridge, ThenBridge> {
     @Test
     public void engineX() {
         given().aEngineWithBridgeAndBattery(EngineComponentType.ENGINE_X);

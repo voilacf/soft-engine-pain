@@ -1,10 +1,10 @@
 package s01components.control_units;
 
 import com.google.common.eventbus.Subscribe;
+import s01components.events.EventLEDDimmed;
 import s01components.events.EventLEDOff;
 import s01components.events.EventLEDOn;
 import s01components.events.EventLedHighBeam;
-import s01components.events.EventLEDDimmed;
 
 import java.lang.reflect.Method;
 
@@ -18,8 +18,8 @@ public class HeadlightControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLEDOn event) {
-        for (Object led:leds
-             ) {
+        for (Object led : leds
+        ) {
             try {
                 Method onMethod = led.getClass().getDeclaredMethod("on");
                 onMethod.invoke(led);
@@ -33,8 +33,8 @@ public class HeadlightControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLEDOff event) {
-        for (Object led:leds
-             ) {
+        for (Object led : leds
+        ) {
             try {
                 Method onMethod = led.getClass().getDeclaredMethod("off");
                 onMethod.invoke(led);
@@ -48,7 +48,7 @@ public class HeadlightControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLedHighBeam event) {
-        for (Object led:leds
+        for (Object led : leds
         ) {
             try {
                 Method onMethod = led.getClass().getDeclaredMethod("beam");
@@ -63,7 +63,7 @@ public class HeadlightControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLEDDimmed event) {
-        for (Object led:leds
+        for (Object led : leds
         ) {
             try {
                 Method onMethod = led.getClass().getDeclaredMethod("dimm");

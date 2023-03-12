@@ -1,4 +1,3 @@
-import javax.naming.InitialContext;
 import java.lang.reflect.InvocationTargetException;
 
 public class Indicator {
@@ -47,13 +46,13 @@ public class Indicator {
         }
     }
 
-    private IndicatorState innerGetState(){
+    private IndicatorState innerGetState() {
         return state;
     }
 
     public class Port implements IIndicator {
         @Override
-        public String getState(){
+        public String getState() {
             return innerGetState().toString().toLowerCase();
         }
 

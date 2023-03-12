@@ -163,7 +163,7 @@ public class WorkshopRoboter implements IComponentVisitor {
 
             ComponentStorage stor = componentStorages[ComponentType.CAMERA.ordinal()];
             if (isLeft) {
-                if(vehicle.getType() == VehicleType.AMAZON_ZOOX) {
+                if (vehicle.getType() == VehicleType.AMAZON_ZOOX) {
                     stor.addDefectiveComponent(vehicle.getCameras()[0]);
                     vehicle.getCameras()[0] = stor.getNewComponent();
                     stor.addDefectiveComponent(vehicle.getCameras()[1]);
@@ -173,7 +173,7 @@ public class WorkshopRoboter implements IComponentVisitor {
                     vehicle.getCameras()[0] = stor.getNewComponent();
                 }
             } else {
-                if(vehicle.getType() == VehicleType.AMAZON_ZOOX) {
+                if (vehicle.getType() == VehicleType.AMAZON_ZOOX) {
                     stor.addDefectiveComponent(vehicle.getCameras()[2]);
                     vehicle.getCameras()[2] = stor.getNewComponent();
                     stor.addDefectiveComponent(vehicle.getCameras()[3]);

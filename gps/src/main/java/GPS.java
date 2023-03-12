@@ -26,7 +26,7 @@ public class GPS {
         this.frequency = frequency;
     }
 
-    private GPSState innerGetState(){
+    private GPSState innerGetState() {
         return state;
     }
 

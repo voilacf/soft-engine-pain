@@ -29,14 +29,14 @@ public class LED {
         state = LEDState.HIGHBEAM;
     }
 
-    private LEDState innerGetState(){
+    private LEDState innerGetState() {
         return state;
     }
 
 
     public class Port implements ILED {
         @Override
-        public String getState(){
+        public String getState() {
             return innerGetState().toString().toLowerCase();
         }
 

@@ -1,15 +1,14 @@
 package s07autonomousworkshop.Visitor;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import s01components.application.ApplicationConfiguration;
 import s02builder.AutonomousVehicle;
 import s02builder.AutonomousVehicleFactory;
 import s05servicecenter.ServiceCenter;
 import s07autonomousworkshop.WorkshopRoboter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -38,33 +37,33 @@ public class visitorStepdefs {
     @Then("components are functional")
     public void componentsAreFunctional() {
         Object[] indicators = vehicle.getIndicators();
-        for (Object indicator:indicators
+        for (Object indicator : indicators
         ) {
             assertNotNull(indicators);
         }
         Object[] lidars = vehicle.getLidars();
-        for (Object lidar:lidars
-             ) {
+        for (Object lidar : lidars
+        ) {
             assertNotNull(lidar);
         }
         Object[] brakes = vehicle.getBrakes();
-        for (Object brake:brakes
-             ) {
+        for (Object brake : brakes
+        ) {
             assertNotNull(brake);
         }
         Object[] leds = vehicle.getHeadlights();
-        for (Object led:leds
-             ) {
+        for (Object led : leds
+        ) {
             assertNotNull(led);
         }
         Object[] gps = vehicle.getGps();
-        for (Object g:gps
-             ) {
+        for (Object g : gps
+        ) {
             assertNotNull(g);
         }
         Object[] cameras = vehicle.getCameras();
-        for (Object camera:cameras
-             ) {
+        for (Object camera : cameras
+        ) {
             assertNotNull(camera);
         }
     }

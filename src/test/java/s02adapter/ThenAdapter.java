@@ -2,9 +2,10 @@ package s02adapter;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import static org.junit.jupiter.api.Assertions.*;
 
-public class ThenAdapter extends Stage<ThenAdapter>{
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class ThenAdapter extends Stage<ThenAdapter> {
     @ExpectedScenarioState
     public AmazonZooxBatteryCharger chargerZoox;
     @ExpectedScenarioState

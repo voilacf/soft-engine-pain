@@ -1,7 +1,5 @@
 package s05servicecenter;
 
-import java.util.ArrayList;
-
 abstract public class ServiceUnit {
 
     abstract public EmployeeState getState();

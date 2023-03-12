@@ -78,7 +78,7 @@ public class AutonomousVehicle {
         controlUnit.addSubscriber(lidarControlUnit);
 
         enginePowerProvider = new EnginePowerProvider(engine, battery);
-        ComponentUtils.invokeMethod(engine,"setPowerProvider", new Class[] {Object.class}, enginePowerProvider);
+        ComponentUtils.invokeMethod(engine, "setPowerProvider", new Class[]{Object.class}, enginePowerProvider);
     }
 
     public VehicleType getType() {
@@ -140,6 +140,7 @@ public class AutonomousVehicle {
     public Object[] getCameras() {
         return cameras;
     }
+
     public Wheel[] getWheels() {
         return wheels;
     }

@@ -2,14 +2,14 @@ package s02bridge;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import s01components.control_units.ComponentUtils;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ThenBridge extends Stage<ThenBridge> {
+    private static final int BATTERY_INITIAL_ENERGY = 250000;
     @ExpectedScenarioState
     public Object battery;
-    private static final int BATTERY_INITIAL_ENERGY = 250000;
 
     public ThenBridge shouldHaveUsedEnergy(int energyCount) {
         int batteryCharge = (int) ComponentUtils.invokeMethod(battery, "getEnergy");

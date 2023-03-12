@@ -12,7 +12,7 @@ public class EncryptionMD5 implements IEncryptionStrategy {
 
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
-            byte [] dataBytes = Arrays.deepToString(data).getBytes(StandardCharsets.UTF_8);
+            byte[] dataBytes = Arrays.deepToString(data).getBytes(StandardCharsets.UTF_8);
             byte[] hash = digest.digest(dataBytes);
             return Base64.getEncoder().encodeToString(hash);
 

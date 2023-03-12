@@ -1,15 +1,16 @@
 package s05servicecenter;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class ServiceEmployee extends ServiceUnit {
 
     public final EmployeeMagnetCard employeeMagnetCard;
+    public final char[][] iris;
+    public final char[][] fingerprint;
     private final EmployeeResponsibility responsibility;
     private final ArrayList<ServiceUnit> subUnits;
     private EmployeeState state;
-    public final char[][] iris;
-    public final char[][] fingerprint;
 
     public ServiceEmployee(EmployeeResponsibility responsibility) {
         this.responsibility = responsibility;
@@ -36,8 +37,8 @@ public class ServiceEmployee extends ServiceUnit {
         String chars = ".:*+";
         Random rd = new Random();
         char[][] bodyFeature = new char[10][10];
-        for (int i = 0; i<= 9; i++){
-            for(int j = 0; j<= 9; j++){
+        for (int i = 0; i <= 9; i++) {
+            for (int j = 0; j <= 9; j++) {
                 bodyFeature[i][j] = chars.charAt(rd.nextInt(chars.length()));
             }
         }

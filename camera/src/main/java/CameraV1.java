@@ -21,7 +21,7 @@ public class CameraV1 {
         state = CameraState.OFF;
     }
 
-    private CameraState innerGetState(){
+    private CameraState innerGetState() {
         return state;
     }
 
@@ -37,7 +37,7 @@ public class CameraV1 {
         }
 
         @Override
-        public String getState(){
+        public String getState() {
             return innerGetState().toString().toLowerCase();
         }
 

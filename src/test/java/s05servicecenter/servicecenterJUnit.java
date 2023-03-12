@@ -5,9 +5,7 @@ import s01components.application.ApplicationConfiguration;
 import s02builder.AutonomousVehicle;
 import s02builder.AutonomousVehicleFactory;
 
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -15,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class servicecenterJUnit {
     private AutonomousVehicle autox;
     private AutonomousVehicle zoox;
-   private ServiceCenter serviceCenter;
+    private ServiceCenter serviceCenter;
 
 
     @BeforeEach
@@ -68,7 +66,7 @@ public class servicecenterJUnit {
         //Check if authentication works
         GateAuthenicator gate = new GateAuthenicator();
         ServiceEmployee employee = new ServiceEmployee(EmployeeResponsibility.MAINTANCE);
-       assertTrue(gate.authenticateEmployee(employee, employee.employeeMagnetCard));
+        assertTrue(gate.authenticateEmployee(employee, employee.employeeMagnetCard));
     }
 
     @Test

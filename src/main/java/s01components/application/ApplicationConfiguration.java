@@ -10,11 +10,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class ApplicationConfiguration {
+    private static ApplicationConfiguration instance;
     private EngineComponentType engine;
     private CameraComponentType camera;
     private LidarComponentType lidar;
     private VehicleConfigurationMemento vehicleConfigurationMemento = new VehicleConfigurationMemento();
-    private static ApplicationConfiguration instance;
 
     public ApplicationConfiguration() {
         engine = EngineComponentType.ENGINE_X;
@@ -69,6 +69,10 @@ public class ApplicationConfiguration {
         return instance = new ApplicationConfiguration(jsonObject);
     }
 
+    public static ApplicationConfiguration getInstance() {
+        return instance;
+    }
+
     //For Config application.Application
     public void saveJSONConfig(String pathToConfigFile) {
         JSONObject jsonObject = new JSONObject();
@@ -110,9 +114,5 @@ public class ApplicationConfiguration {
 
     public LidarComponentType getLidar() {
         return lidar;
-    }
-    
-    public static ApplicationConfiguration getInstance() {
-        return instance;
     }
 }

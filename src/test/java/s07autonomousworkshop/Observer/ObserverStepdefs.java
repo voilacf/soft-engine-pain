@@ -5,11 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import s01components.application.ApplicationConfiguration;
 import s02builder.AutonomousVehicle;
-import s02builder.*;
+import s02builder.AutonomousVehicleFactory;
 import s05servicecenter.ServiceCenter;
-import s07autonomousworkshop.*;
+import s07autonomousworkshop.AutonomousWorkshop;
+import s07autonomousworkshop.CommandDriveToLiftingPlatform;
+import s07autonomousworkshop.LiftingPlatform;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ObserverStepdefs {
     ApplicationConfiguration configuration = ApplicationConfiguration.loadJSONConfig("");
@@ -23,7 +25,7 @@ public class ObserverStepdefs {
         listener = new AutonomousWorkshop();
         vehicle = AutonomousVehicleFactory.buildAmazonZoox(new ServiceCenter(), configuration);
         liftingPlatform = listener.getLiftingPlatform();
-        command = new CommandDriveToLiftingPlatform(vehicle,liftingPlatform);
+        command = new CommandDriveToLiftingPlatform(vehicle, liftingPlatform);
     }
 
     @When("vehicle is correct on the lifting platform")
@@ -32,7 +34,7 @@ public class ObserverStepdefs {
     }
 
     @Then("activate lifting platform")
-    public void activateLiftingPlatform(){
+    public void activateLiftingPlatform() {
         assertTrue(listener.getSuccessful());
     }
 }

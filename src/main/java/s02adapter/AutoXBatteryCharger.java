@@ -1,6 +1,6 @@
 package s02adapter;
 
-public class AutoXBatteryCharger{
+public class AutoXBatteryCharger {
     private boolean pluggedIn = false;
 
     public void plugIn3Pin() {

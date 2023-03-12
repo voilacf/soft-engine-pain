@@ -3,9 +3,9 @@ package s07autonomousworkshop;
 import s02builder.AutonomousVehicle;
 
 public class LiftingPlatform {
-    private AutonomousVehicle vehicle;
     private final LiftingPlatformSensor sensor = new LiftingPlatformSensor();
     private final WorkshopRoboter[] roboters = new WorkshopRoboter[2];
+    private AutonomousVehicle vehicle;
 
     public LiftingPlatform() {
         for (int i = 0; i < roboters.length; i++) {

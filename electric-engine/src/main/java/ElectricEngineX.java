@@ -31,7 +31,7 @@ public class ElectricEngineX {
         if (powerProvider == null)
             return;
         try {
-            for(int i = 0; i < seconds; i++){
+            for (int i = 0; i < seconds; i++) {
                 Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
                 m.invoke(powerProvider, rpm);
             }
@@ -46,7 +46,7 @@ public class ElectricEngineX {
         if (powerProvider == null)
             return;
         try {
-            for(int i = 0; i < seconds; i++){
+            for (int i = 0; i < seconds; i++) {
                 Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
                 m.invoke(powerProvider, rpm);
             }
@@ -55,7 +55,7 @@ public class ElectricEngineX {
         }
     }
 
-    private ElectricEngineState innerGetState(){
+    private ElectricEngineState innerGetState() {
         return this.state;
     }
 
@@ -73,12 +73,12 @@ public class ElectricEngineX {
 
     public class Port implements IElectricEngine {
         @Override
-        public int getRPM(){
+        public int getRPM() {
             return innerGetRPM();
         }
 
         @Override
-        public String getState(){
+        public String getState() {
             return innerGetState().toString().toLowerCase();
         }
 
@@ -108,7 +108,7 @@ public class ElectricEngineX {
         }
 
         @Override
-        public void setPowerProvider(Object powerProvider){
+        public void setPowerProvider(Object powerProvider) {
             innerSetPowerProvider(powerProvider);
         }
     }

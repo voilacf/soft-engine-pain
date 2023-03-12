@@ -24,8 +24,8 @@ public class AutonomousWorkshop implements ILiftingPlatformSensorListener {
         successful = true;
     }
 
-    public void addVehicleToQueue(AutonomousVehicle vehicle){
-        if(vehicle.getType() == VehicleType.AUTOX) {
+    public void addVehicleToQueue(AutonomousVehicle vehicle) {
+        if (vehicle.getType() == VehicleType.AUTOX) {
             autoXQueue.add(vehicle);
         } else {
             zooxQueue.add(vehicle);
@@ -33,7 +33,7 @@ public class AutonomousWorkshop implements ILiftingPlatformSensorListener {
     }
 
     public void doNextVehicle() {
-        if(!hasNextVehicle()) {
+        if (!hasNextVehicle()) {
             return;
         }
 

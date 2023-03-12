@@ -16,8 +16,8 @@ public class LidarControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLidarOn event) {
-        for (Object lidar:lidars
-             ) {
+        for (Object lidar : lidars
+        ) {
             try {
                 Method onMethod = lidar.getClass().getDeclaredMethod("on");
                 onMethod.invoke(lidar);
@@ -31,8 +31,8 @@ public class LidarControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventLidarOff event) {
-        for (Object lidar:lidars
-             ) {
+        for (Object lidar : lidars
+        ) {
             try {
                 Method onMethod = lidar.getClass().getDeclaredMethod("off");
                 onMethod.invoke(lidar);

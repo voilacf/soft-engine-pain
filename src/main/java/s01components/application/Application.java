@@ -65,7 +65,7 @@ public class Application {
         key.disableVehicle();
     }
 
-    private static void testWorkshop(ServiceCenter serviceCenter,ApplicationConfiguration configuration) {
+    private static void testWorkshop(ServiceCenter serviceCenter, ApplicationConfiguration configuration) {
         System.out.println("\n\n\nTesting workshop:\n");
 
         AutonomousWorkshop workshop = new AutonomousWorkshop();

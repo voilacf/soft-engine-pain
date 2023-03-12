@@ -6,7 +6,7 @@ public class ServiceCenter {
 
     public ServiceCenter() {
         this.teams = new CompanyServiceTeam[]{new CompanyServiceTeam(VehicleDivision.AUTO_X),
-            new CompanyServiceTeam(VehicleDivision.ZOOX)};
+                new CompanyServiceTeam(VehicleDivision.ZOOX)};
         this.supervisor = new ServiceEmployee(EmployeeResponsibility.SUPERVISOR, this.teams);
     }
 
@@ -20,10 +20,9 @@ public class ServiceCenter {
         System.out.println("Service center received emergency call");
         EmployeeResponsibility emergencyType = EmployeeResponsibility.EMERGENCY;
         VehicleDivision vehicleType = VehicleDivision.AUTO_X;
-        if(supervisor.handleEmergency(emergencyType, vehicleType)){
+        if (supervisor.handleEmergency(emergencyType, vehicleType)) {
             System.out.println("Emergency is being handled");
-        }
-        else{
+        } else {
             System.out.println("Service Center not available");
         }
     }

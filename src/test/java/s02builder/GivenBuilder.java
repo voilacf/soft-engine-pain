@@ -3,7 +3,6 @@ package s02builder;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import s01components.application.ApplicationConfiguration;
-import s04memento.VehicleConfiguration;
 import s05servicecenter.ServiceCenter;
 
 public class GivenBuilder extends Stage<GivenBuilder> {

@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class ComponentFactory {
         Object port = null;
         try {
             String path = jarPaths.get(classname);
-            if(!verify(path)){
+            if (!verify(path)) {
                 throw new RuntimeException("Jar not verified");
             }
             URL[] urls = {new File(path).toURI().toURL()};
@@ -56,8 +55,8 @@ public class ComponentFactory {
         return port;
     }
 
-    private static boolean verify(String pathToJar)   {
-        if(verifiedJars.contains(pathToJar)){
+    private static boolean verify(String pathToJar) {
+        if (verifiedJars.contains(pathToJar)) {
             return true;
         }
 
@@ -88,7 +87,7 @@ public class ComponentFactory {
             return isVerified;
         }
 
-        if(isVerified){
+        if (isVerified) {
             verifiedJars.add(pathToJar);
         }
 

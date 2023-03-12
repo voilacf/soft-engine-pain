@@ -1,8 +1,8 @@
 package s07autonomousworkshop.Command;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import s01components.application.ApplicationConfiguration;
 import s02builder.AutonomousVehicle;
 import s02builder.AutonomousVehicleFactory;
@@ -26,12 +26,12 @@ public class CommandStepdefs {
 
     @When("Executing the drive to lifting platform command")
     public void executeCommand() {
-        command = new CommandDriveToLiftingPlatform(zoox,liftingPlatform);
+        command = new CommandDriveToLiftingPlatform(zoox, liftingPlatform);
         command.execute();
     }
 
     @Then("The vehicle is on the lifting platform")
     public void vehicleIsOnLiftingPlatform() {
-        assertEquals(zoox,liftingPlatform.getVehicle());
+        assertEquals(zoox, liftingPlatform.getVehicle());
     }
 }

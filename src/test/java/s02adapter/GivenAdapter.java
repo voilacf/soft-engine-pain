@@ -3,7 +3,7 @@ package s02adapter;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 
-public class GivenAdapter extends Stage<GivenAdapter>{
+public class GivenAdapter extends Stage<GivenAdapter> {
     @ProvidedScenarioState
     public AmazonZooxBatteryCharger chargerZoox;
     @ProvidedScenarioState

@@ -11,7 +11,7 @@ public class EncryptionSHA256 implements IEncryptionStrategy {
 
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte [] dataBytes = Arrays.deepToString(data).getBytes(StandardCharsets.UTF_8);
+            byte[] dataBytes = Arrays.deepToString(data).getBytes(StandardCharsets.UTF_8);
             byte[] hash = digest.digest(dataBytes);
             return Base64.getEncoder().encodeToString(hash);
 

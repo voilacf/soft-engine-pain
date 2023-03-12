@@ -16,8 +16,8 @@ public class BrakeLightControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventBrakeLightOn event) {
-        for (Object brakelight:brakeLights
-             ) {
+        for (Object brakelight : brakeLights
+        ) {
             try {
                 Method onMethod = brakelight.getClass().getDeclaredMethod("on");
                 onMethod.invoke(brakelight);
@@ -31,8 +31,8 @@ public class BrakeLightControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventBrakeLightOff event) {
-        for (Object brakeLight:brakeLights
-             ) {
+        for (Object brakeLight : brakeLights
+        ) {
             try {
                 Method onMethod = brakeLight.getClass().getDeclaredMethod("off");
                 onMethod.invoke(brakeLight);

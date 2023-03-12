@@ -17,13 +17,13 @@ public class Brake {
         this.percentage = percentage;
     }
 
-    private double innerGetPercentage(){
+    private double innerGetPercentage() {
         return this.percentage;
     }
 
     public class Port implements IBrake {
         @Override
-        public double getPercentage(){
+        public double getPercentage() {
             return innerGetPercentage();
         }
 

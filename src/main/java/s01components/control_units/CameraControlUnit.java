@@ -16,8 +16,8 @@ public class CameraControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventCameraOn event) {
-        for (Object camera:cameras
-             ) {
+        for (Object camera : cameras
+        ) {
             try {
                 Method onMethod = camera.getClass().getDeclaredMethod("on");
                 onMethod.invoke(camera);
@@ -31,8 +31,8 @@ public class CameraControlUnit extends Subscriber {
 
     @Subscribe
     public void receive(EventCameraOff event) {
-        for (Object camera: cameras
-             ) {
+        for (Object camera : cameras
+        ) {
             try {
                 Method onMethod = camera.getClass().getDeclaredMethod("off");
                 onMethod.invoke(camera);

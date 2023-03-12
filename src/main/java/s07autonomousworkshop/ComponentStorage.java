@@ -20,7 +20,7 @@ public class ComponentStorage {
                 case LED -> ComponentFactory.buildLED();
                 case INDICATOR -> ComponentFactory.buildIndicator();
                 case BRAKELIGHT -> ComponentFactory.buildBrakeLight();
-                case BRAKE ->  ComponentFactory.buildBrake();
+                case BRAKE -> ComponentFactory.buildBrake();
                 case GPS -> ComponentFactory.buildGPS();
                 case LIDAR -> ComponentFactory.buildLidar(ApplicationConfiguration.getInstance().getLidar());
                 case CAMERA -> ComponentFactory.buildCamera(ApplicationConfiguration.getInstance().getCamera());
@@ -34,7 +34,7 @@ public class ComponentStorage {
     }
 
     public Object getNewComponent() {
-        if(components.isEmpty()) {
+        if (components.isEmpty()) {
             return null;
         }
         System.out.println("New component of type " + type + " was taken from storage");

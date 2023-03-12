@@ -1,8 +1,8 @@
 package s07autonomousworkshop.mediator;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import s01components.application.ApplicationConfiguration;
 import s02builder.AutonomousVehicle;
 import s02builder.AutonomousVehicleFactory;
@@ -11,9 +11,7 @@ import s07autonomousworkshop.AutonomousWorkshop;
 
 import java.util.Queue;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class MediatorStepdefs {
 
@@ -36,8 +34,8 @@ public class MediatorStepdefs {
     @Then("add to Queue zooxQueue")
     public void addToCorrectQueue() {
         Queue<AutonomousVehicle> test = workshop.getZooxQueue();
-        for (Object o:test
-             ) {
+        for (Object o : test
+        ) {
             assertNotNull(o);
         }
     }

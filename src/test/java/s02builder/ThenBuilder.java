@@ -4,8 +4,6 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import s03command.Door;
 
-import java.util.BitSet;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ThenBuilder extends Stage<ThenBuilder> {
