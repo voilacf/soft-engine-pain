@@ -1,9 +1,9 @@
 package s05servicecenter;
 
 public interface IEmployeeGateMediator {
-    void setFirstGate(EmployeeGate gate);
+    void setFirstGate();
 
-    void setSecondGate(EmployeeGate gate);
+    void setSecondGate();
 
     void openGate();
 

@@ -6,13 +6,13 @@ public class EmployeeGateMediator implements IEmployeeGateMediator, EmployeePres
     private EmployeeGate secondGate;
 
     @Override
-    public void setFirstGate(EmployeeGate gate) {
-
+    public void setFirstGate() {
+        new EmployeeGate(this);
     }
 
     @Override
-    public void setSecondGate(EmployeeGate gate) {
-
+    public void setSecondGate() {
+        new EmployeeGate(this);
     }
 
     @Override

@@ -1,21 +1,47 @@
 package s05servicecenter;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class ServiceEmployee extends ServiceUnit {
 
-    private final EmployeeMagnetCard employeeMagnetCard;
-    private EmployeeResponsibility responsibility;
+    public final EmployeeMagnetCard employeeMagnetCard;
+    private final EmployeeResponsibility responsibility;
+    private final ArrayList<ServiceUnit> subUnits;
     private EmployeeState state;
+    public final char[][] iris;
+    public final char[][] fingerprint;
 
     public ServiceEmployee(EmployeeResponsibility responsibility) {
         this.responsibility = responsibility;
-        employeeMagnetCard = new EmployeeMagnetCard();
+        this.state = EmployeeState.AVAILABLE;
+        this.iris = getBodyFeature();
+        this.fingerprint = getBodyFeature();
+        EncryptionSHA256 enc = new EncryptionSHA256();
+        employeeMagnetCard = new EmployeeMagnetCard(enc.encrypt(iris), enc.encrypt(fingerprint));
+        this.subUnits = new ArrayList<ServiceUnit>();
     }
 
     public ServiceEmployee(EmployeeResponsibility responsibility, CompanyServiceTeam[] teams) {
         this.responsibility = responsibility;
-        employeeMagnetCard = new EmployeeMagnetCard();
+        this.iris = getBodyFeature();
+        this.fingerprint = getBodyFeature();
+        EncryptionSHA256 enc = new EncryptionSHA256();
+        employeeMagnetCard = new EmployeeMagnetCard(enc.encrypt(iris), enc.encrypt(fingerprint));
+        this.subUnits = new ArrayList<ServiceUnit>();
         this.subUnits.add(teams[0]);
         this.subUnits.add(teams[1]);
+    }
+
+    private char[][] getBodyFeature() {
+        String chars = ".:*+";
+        Random rd = new Random();
+        char[][] bodyFeature = new char[10][10];
+        for (int i = 0; i<= 9; i++){
+            for(int j = 0; j<= 9; j++){
+                bodyFeature[i][j] = chars.charAt(rd.nextInt(chars.length()));
+            }
+        }
+        return bodyFeature;
     }
 
     @Override
@@ -46,8 +72,7 @@ public class ServiceEmployee extends ServiceUnit {
                     return subunit.handleEmergency(emergencyType, vehicleType);
                 }
             }
-        }
-        else {
+        } else {
             this.state = EmployeeState.BUSY;
             return true;
         }

@@ -10,6 +10,12 @@ public class ServiceCenter {
         this.supervisor = new ServiceEmployee(EmployeeResponsibility.SUPERVISOR, this.teams);
     }
 
+    //Separate test class for different scenarios
+    public boolean handleSpecificEmergency(EmployeeResponsibility emergencyType, VehicleDivision vehicleType) {
+        System.out.println("Service center received emergency call");
+        return (supervisor.handleEmergency(emergencyType, vehicleType));
+    }
+
     //TODO Get emergency info from S03
     public void handleEmergency() {
         System.out.println("Service center received emergency call");

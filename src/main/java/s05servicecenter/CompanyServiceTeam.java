@@ -1,10 +1,14 @@
 package s05servicecenter;
 
+import java.util.ArrayList;
+
 public class CompanyServiceTeam extends ServiceUnit {
-    private VehicleDivision division;
+    private final VehicleDivision division;
+    private final ArrayList<ServiceUnit> subUnits;
 
     public CompanyServiceTeam(VehicleDivision division) {
         this.division = division;
+        this.subUnits = new ArrayList<ServiceUnit>();
         this.subUnits.add(new ServiceEmployee(EmployeeResponsibility.EMERGENCY));
         this.subUnits.add(new ServiceEmployee(EmployeeResponsibility.MAINTANCE));
         this.subUnits.add(new ServiceEmployee(EmployeeResponsibility.MAINTANCE));

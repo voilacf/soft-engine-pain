@@ -3,8 +3,6 @@ package s05servicecenter;
 import java.util.ArrayList;
 
 abstract public class ServiceUnit {
-    private ServiceUnit parentUnit;
-    protected ArrayList<ServiceUnit> subUnits;
 
     abstract public EmployeeState getState();
 

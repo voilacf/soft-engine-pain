@@ -1,14 +1,21 @@
 package s05servicecenter;
 
 public class EmployeeGate {
-    private EmployeeState state;
-    private IEmployeeGateMediator gateMediator;
-    private EmployeePresenceDetector detector;
+    private EmployeeGateState state;
+    private final IEmployeeGateMediator gateMediator;
+    private final EmployeePresenceDetector detector;
+
+    public EmployeeGate(IEmployeeGateMediator gateMediator){
+        this.gateMediator = gateMediator;
+        this.detector = new EmployeePresenceDetector();
+    }
 
     public void open() {
+        this.state = EmployeeGateState.OPEN;
     }
 
     public void close() {
+        this.state = EmployeeGateState.CLOSED;
     }
 
 }
