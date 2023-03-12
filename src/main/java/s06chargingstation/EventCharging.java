@@ -1,6 +1,5 @@
 package s06chargingstation;
 
-//TODO where to add in InteliJ + where to add in VPP (currently in s06)?
 public class EventCharging {
     private final int amountOfEnergy;
 
