@@ -6,4 +6,6 @@ public interface IElectricEngine {
     int computePowerDrawPerSecond();
     int getRPM();
     String getState();
+    int getPowerDrawPerRotation();
+    void setPowerProvider(Object powerProvider);
 }

@@ -5,6 +5,7 @@ public class ElectricEngineNG {
     public Port port;
     private ElectricEngineState state;
     private int rpm = 0;
+    private Object powerProvider; // bridge object to battery
 
     private ElectricEngineNG() {
         port = new Port();
@@ -24,12 +25,32 @@ public class ElectricEngineNG {
 
     private void innerIncreaseRPM(int deltaRPM, int seconds) {
         rpm += deltaRPM;
-        //TODO: implement seconds (s02)
+
+        if (powerProvider == null)
+            return;
+        try {
+            for(int i = 0; i <= seconds; i++){
+                Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
+                m.invoke(powerProvider, rpm);
+            }
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     private void innerDecreaseRPM(int deltaRPM, int seconds) {
         rpm -= deltaRPM;
-        //TODO: implement seconds (s02)
+
+        if (powerProvider == null)
+            return;
+        try {
+            for(int i = 0; i <= seconds; i++){
+                Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
+                m.invoke(powerProvider, rpm);
+            }
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     private ElectricEngineState innerGetState(){
@@ -76,8 +97,8 @@ public class ElectricEngineNG {
         }
 
         @Override
-        public int computePowerDrawPerSecond() {
-            return innerComputePowerDrawPerSecond();
+        public void setPowerProvider(Object powerProvider){
+            innerSetPowerProvider(powerProvider);
         }
     }
 }
