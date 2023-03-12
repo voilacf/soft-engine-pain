@@ -97,6 +97,18 @@ public class AutonomousVehicle {
         return controlUnit;
     }
 
+    public Chassis getChassis() {
+        return chassis;
+    }
+
+    public Object getEngine() {
+        return engine;
+    }
+
+    public ISittable[] getSeats() {
+        return seats;
+    }
+
     public Object getBattery() {
         return battery;
     }
@@ -127,6 +139,9 @@ public class AutonomousVehicle {
 
     public Object[] getCameras() {
         return cameras;
+    }
+    public Wheel[] getWheels() {
+        return wheels;
     }
 
     public void driveOntoLiftingPlatform(LiftingPlatform liftingPlatform) {

@@ -17,6 +17,9 @@ public class ApplicationConfiguration {
     private static ApplicationConfiguration instance;
 
     public ApplicationConfiguration() {
+        engine = EngineComponentType.ENGINE_X;
+        camera = CameraComponentType.CAMERA_V1;
+        lidar = LidarComponentType.LIDAR_NG;
     }
 
     public ApplicationConfiguration(JSONObject jsonObject) {
