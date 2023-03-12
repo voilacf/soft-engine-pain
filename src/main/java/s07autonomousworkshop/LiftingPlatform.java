@@ -28,4 +28,8 @@ public class LiftingPlatform {
     public LiftingPlatformSensor getSensor() {
         return sensor;
     }
+
+    public AutonomousVehicle getVehicle() {
+        return vehicle;
+    }
 }
