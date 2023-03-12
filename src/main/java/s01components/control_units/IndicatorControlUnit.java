@@ -23,7 +23,7 @@ public class IndicatorControlUnit extends Subscriber {
     public void receive(EventLeftIndicatorOff event) {
         for (Object indicator : indicators) {
             ComponentUtils.invokeMethod(indicator, "off", new Class[]{int.class}, IndicatorSide.LEFT.ordinal());
-            System.out.println("receive -> indicator | state : indicator off");
+            System.out.println("receive -> indicator | state : left off");
         }
     }
 

@@ -5,23 +5,25 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import s01components.ComponentFactory;
 import s01components.control_units.IndicatorControlUnit;
+import s01components.events.*;
 
+import java.lang.reflect.Method;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class IndicatorStepdefs {
-    private final Object[] indicatorPort = new Object[2]; //TODO: change to four??
+    private final Object[] indicatorPort = new Object[1];
     private IndicatorControlUnit controlUnit;
 
-    @Given("My autonomous vehicle contains two indicators")
+    @Given("My autonomous vehicle contains an indicator")
     public void myVehicleContainsAnIndicator() {
         indicatorPort[0] = ComponentFactory.buildIndicator();
-        indicatorPort[1] = ComponentFactory.buildIndicator();
     }
 
     @Then("The indicator components should not be null")
     public void indicatorComponentShouldNotBeNull() {
         assertNotNull(indicatorPort[0]);
-        assertNotNull(indicatorPort[1]);
     }
 
     @Given("I have an indicator component and its control unit")
@@ -30,64 +32,111 @@ public class IndicatorStepdefs {
         controlUnit = new IndicatorControlUnit(indicatorPort);
     }
 
-    //TODO: finish
-    @When("The indicator control unit receives an left indicator on event")
-    public void indicatorControlUnitReceivesAnLeftIndicatorOnEvent() {
-
+    @When("The control unit receives an Left-Indicator On Event")
+    public void controlUnitReceivesLeftOnEvent() {
+        controlUnit.receive(new EventLeftIndicatorOn());
     }
 
-    @Then("The left indicator is turned on")
+    @Then("The left indicator turns on")
     public void leftIndicatorIsTurnedOn() {
-        //assertEquals();
+        for (Object indicator : indicatorPort
+        ) {
+            try {
+                Method getState = indicator.getClass().getDeclaredMethod("getState");
+                assertEquals("left_on", getState.invoke(indicator));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    @When("The indicator control unit receives an left indicator off event")
-    public void indicatorControlUnitReceivesAnLeftIndicatorOffEvent() {
-
+    @When("The control unit receives an Left-Indicator Off Event")
+    public void controlUnitReceivesLeftOffEvent() {
+        controlUnit.receive(new EventLeftIndicatorOff());
     }
 
-    @Then("The left indicator is turned off")
+    @Then("The left indicator turns off")
     public void leftIndicatorIsTurnedOff() {
-        //assertEquals();
+        for (Object indicator : indicatorPort
+        ) {
+            try {
+                Method getState = indicator.getClass().getDeclaredMethod("getState");
+                assertEquals("left_off", getState.invoke(indicator));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    @When("The indicator control unit receives an right indicator on event")
-    public void indicatorControlUnitReceivesAnRightIndicatorOnEvent() {
-
+    @When("The control unit receives an Right-Indicator On Event")
+    public void controlUnitReceivesRightOnEvent() {
+        controlUnit.receive(new EventRightIndicatorOn());
     }
 
-    @Then("The right indicator is turned on")
+    @Then("The right indicator turns on")
     public void rightIndicatorIsTurnedOn() {
-        //assertEquals();
+        for (Object indicator : indicatorPort
+        ) {
+            try {
+                Method getState = indicator.getClass().getDeclaredMethod("getState");
+                assertEquals("right_on", getState.invoke(indicator));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    @When("The indicator control unit receives an right indicator off event")
-    public void indicatorControlUnitReceivesAnRightIndicatorOffEvent() {
-
+    @When("The control unit receives an Right-Indicator Off Event")
+    public void controlUnitReceivesRightOffEvent() {
+        controlUnit.receive(new EventRightIndicatorOff());
     }
 
-    @Then("The right indicator is turned off")
+    @Then("The right indicator turns off")
     public void rightIndicatorIsTurnedOff() {
-        //assertEquals();
+        for (Object indicator : indicatorPort
+        ) {
+            try {
+                Method getState = indicator.getClass().getDeclaredMethod("getState");
+                assertEquals("right_off", getState.invoke(indicator));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    @When("The indicator control unit receives an hazard on event")
-    public void indicatorControlUnitReceivesAnHazardOnEvent() {
-
+    @When("The control unit receives an Hazard On Event")
+    public void controlUnitReceivesHazardOnEvent() {
+        controlUnit.receive(new EventHazardWarningOn());
     }
 
-    @Then("The indicator hazard is turned on")
+    @Then("The hazard turns on")
     public void indicatorHazardIsOn() {
-        //assertEquals();
+        for (Object indicator : indicatorPort
+        ) {
+            try {
+                Method getState = indicator.getClass().getDeclaredMethod("getState");
+                assertEquals("on", getState.invoke(indicator));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 
-    @When("The indicator control unit receives an hazard off event")
-    public void indicatorControlUnitReceivesAnHazardOffEvent() {
-
+    @When("The control unit receives an Hazard Off Event")
+    public void controlUnitReceivesHazardOffEvent() {
+        controlUnit.receive(new EventHazardWarningOff());
     }
 
-    @Then("The indicator hazard is turned off")
+    @Then("The hazard turns off")
     public void indicatorHazardIsOff() {
-        //assertEquals();
+        for (Object indicator : indicatorPort
+        ) {
+            try {
+                Method getState = indicator.getClass().getDeclaredMethod("getState");
+                assertEquals("off", getState.invoke(indicator));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 }
