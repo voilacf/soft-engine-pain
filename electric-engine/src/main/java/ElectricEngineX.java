@@ -1,8 +1,13 @@
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class ElectricEngineX {
     private static final ElectricEngineX instance = new ElectricEngineX();
     public Port port;
     private ElectricEngineState state;
     private int rpm = 0;
+    private Object powerProvider; // bridge object to battery
+
 
     private ElectricEngineX() {
         port = new Port();
@@ -22,12 +27,32 @@ public class ElectricEngineX {
 
     private void innerIncreaseRPM(int deltaRPM, int seconds) {
         rpm += deltaRPM;
-        //TODO: implement seconds (s02)
+
+        if (powerProvider == null)
+            return;
+        try {
+            for(int i = 0; i <= seconds; i++){
+                Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
+                m.invoke(powerProvider, rpm);
+            }
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     private void innerDecreaseRPM(int deltaRPM, int seconds) {
         rpm -= deltaRPM;
-        //TODO: implement seconds (s02)
+
+        if (powerProvider == null)
+            return;
+        try {
+            for(int i = 0; i <= seconds; i++){
+                Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
+                m.invoke(powerProvider, rpm);
+            }
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     private int innerComputePowerDrawPerSecond() {
@@ -36,6 +61,14 @@ public class ElectricEngineX {
 
     private ElectricEngineState innerGetState(){
         return this.state;
+    }
+
+    private int innergetPowerDrawPerRotation() {
+        return 3;
+    }
+
+    private void innerSetPowerProvider(Object powerProvider) {
+        this.powerProvider = powerProvider;
     }
 
     private int innerGetRPM() {
@@ -74,8 +107,8 @@ public class ElectricEngineX {
         }
 
         @Override
-        public int computePowerDrawPerSecond() {
-            return innerComputePowerDrawPerSecond();
+        public void setPowerProvider(Object powerProvider){
+            innerSetPowerProvider(powerProvider);
         }
     }
 }
