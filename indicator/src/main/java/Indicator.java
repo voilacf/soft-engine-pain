@@ -52,6 +52,7 @@ public class Indicator {
     }
 
     public class Port implements IIndicator {
+        @Override
         public String getState(){
             return innerGetState().toString().toLowerCase();
         }
@@ -64,10 +65,12 @@ public class Indicator {
             off(IndicatorSide.values()[sideEnumValue]);
         }
 
+        @Override
         public void on(IndicatorSide side) {
             innerOn(side);
         }
 
+        @Override
         public void off(IndicatorSide side) {
             innerOff(side);
         }

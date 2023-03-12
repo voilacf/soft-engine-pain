@@ -56,7 +56,7 @@ public class ElectricEngineX {
     }
 
     private int innerComputePowerDrawPerSecond() {
-        return 3 * rpm;
+        return 4 * rpm;
     }
 
     private ElectricEngineState innerGetState(){
