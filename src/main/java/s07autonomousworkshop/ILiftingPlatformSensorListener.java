@@ -4,4 +4,5 @@ import s02builder.AutonomousVehicle;
 
 public interface ILiftingPlatformSensorListener {
     public void vehicleRegistered(AutonomousVehicle vehicle);
+    boolean getSuccessful();
 }

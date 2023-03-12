@@ -3,7 +3,7 @@ package s06chargingstation;
 import com.tngtech.jgiven.junit5.ScenarioTest;
 import org.junit.jupiter.api.Test;
 
-public class chargingStationJGiven extends ScenarioTest<GivenUserMemberCard, WhenUserMemberCard, ThenUserMemberCard> {
+public class ChargingStationJGiven extends ScenarioTest<GivenUserMemberCard, WhenUserMemberCard, ThenUserMemberCard> {
     @Test
     public void checkAESEncryption() {
         int loyaltyPoints = 555;
