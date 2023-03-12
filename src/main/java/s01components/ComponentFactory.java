@@ -78,7 +78,7 @@ public class ComponentFactory {
             BufferedReader bR = new BufferedReader(iSR);
             String line;
             while ((line = bR.readLine()) != null) {
-                if (line.contains("verified")) {
+                if (line.contains("verified") || line.contains("verifiziert")) {
                     isVerified = true;
                 }
             }
