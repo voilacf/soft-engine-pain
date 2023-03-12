@@ -1,7 +1,14 @@
 package s02adapter;
 
-public class AutoXBatteryCharger {
+public class AutoXBatteryCharger{
+    private boolean pluggedIn = false;
+
     public void plugIn3Pin() {
-        // TODO: implement (s02)
+        System.out.println("AutoX Battery charges");
+        pluggedIn = true;
+    }
+
+    public boolean isPluggedIn() {
+        return pluggedIn;
     }
 }

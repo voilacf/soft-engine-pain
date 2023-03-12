@@ -25,7 +25,7 @@ public class TestVehicleControlUnit extends ScenarioTest<GivenAutonomousVehicle,
     @Test
     public void move() {
         given().aAmazonZoox().with().aControlBusListener();
-        when().moveIsCalled(100, 10);
+        when().moveIsCalled(100, 1);
         then().controlBusHasReceivedEvents(new Class[]{
                 EventLeftIndicatorOff.class,
                 EventRightIndicatorOff.class,
@@ -39,7 +39,7 @@ public class TestVehicleControlUnit extends ScenarioTest<GivenAutonomousVehicle,
     @Test
     public void leftTurn() {
         given().aAmazonZoox().with().aControlBusListener();
-        when().leftTurnIsCalled(100, 10);
+        when().leftTurnIsCalled(10, 1);
         then().controlBusHasReceivedEvents(new Class[]{
                 EventLeftIndicatorOn.class,
                 EventEngineDecreaseRPM.class,
@@ -51,7 +51,7 @@ public class TestVehicleControlUnit extends ScenarioTest<GivenAutonomousVehicle,
     @Test
     public void rightTurn() {
         given().aAmazonZoox().with().aControlBusListener();
-        when().right_turn_is_called(100, 10);
+        when().right_turn_is_called(10, 1);
         then().controlBusHasReceivedEvents(new Class[]{
                 EventRightIndicatorOn.class,
                 EventEngineDecreaseRPM.class,

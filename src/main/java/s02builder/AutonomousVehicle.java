@@ -1,6 +1,7 @@
 package s02builder;
 
 import s01components.control_units.*;
+import s02bridge.EnginePowerProvider;
 import s03command.Door;
 import s03facade.VehicleControlUnit;
 import s04observer.UltraSonicSensor;
@@ -35,6 +36,7 @@ public class AutonomousVehicle {
     private final IndicatorControlUnit indicatorControlUnit;
     private final HeadlightControlUnit headlightControlUnit;
     private final LidarControlUnit lidarControlUnit;
+    private final EnginePowerProvider enginePowerProvider;
 
     private AutonomousVehicle(Builder builder) {
         id = idCounter++;
@@ -74,6 +76,9 @@ public class AutonomousVehicle {
         controlUnit.addSubscriber(indicatorControlUnit);
         controlUnit.addSubscriber(headlightControlUnit);
         controlUnit.addSubscriber(lidarControlUnit);
+
+        enginePowerProvider = new EnginePowerProvider(engine, battery);
+        ComponentUtils.invokeMethod(engine,"setPowerProvider", new Class[] {Object.class}, enginePowerProvider);
     }
 
     public VehicleType getType() {
@@ -90,6 +95,18 @@ public class AutonomousVehicle {
 
     public VehicleControlUnit getControlUnit() {
         return controlUnit;
+    }
+
+    public Chassis getChassis() {
+        return chassis;
+    }
+
+    public Object getEngine() {
+        return engine;
+    }
+
+    public ISittable[] getSeats() {
+        return seats;
     }
 
     public Object getBattery() {
@@ -122,6 +139,9 @@ public class AutonomousVehicle {
 
     public Object[] getCameras() {
         return cameras;
+    }
+    public Wheel[] getWheels() {
+        return wheels;
     }
 
     public void driveOntoLiftingPlatform(LiftingPlatform liftingPlatform) {

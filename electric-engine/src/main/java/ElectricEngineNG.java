@@ -1,10 +1,12 @@
-import java.util.Locale;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ElectricEngineNG {
     private static final ElectricEngineNG instance = new ElectricEngineNG();
     public Port port;
     private ElectricEngineState state;
     private int rpm = 0;
+    private Object powerProvider; // bridge object to battery
 
     private ElectricEngineNG() {
         port = new Port();
@@ -24,12 +26,32 @@ public class ElectricEngineNG {
 
     private void innerIncreaseRPM(int deltaRPM, int seconds) {
         rpm += deltaRPM;
-        //TODO: implement seconds (s02)
+
+        if (powerProvider == null)
+            return;
+        try {
+            for(int i = 0; i < seconds; i++){
+                Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
+                m.invoke(powerProvider, rpm);
+            }
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     private void innerDecreaseRPM(int deltaRPM, int seconds) {
         rpm -= deltaRPM;
-        //TODO: implement seconds (s02)
+
+        if (powerProvider == null)
+            return;
+        try {
+            for(int i = 0; i < seconds; i++){
+                Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
+                m.invoke(powerProvider, rpm);
+            }
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     private ElectricEngineState innerGetState(){
@@ -40,8 +62,12 @@ public class ElectricEngineNG {
         return rpm;
     }
 
-    private int innerComputePowerDrawPerSecond() {
-        return 3 * rpm;
+    private int innergetPowerDrawPerRotation() {
+        return 3;
+    }
+
+    private void innerSetPowerProvider(Object powerProvider) {
+        this.powerProvider = powerProvider;
     }
 
     public class Port implements IElectricEngine {
@@ -76,8 +102,13 @@ public class ElectricEngineNG {
         }
 
         @Override
-        public int computePowerDrawPerSecond() {
-            return innerComputePowerDrawPerSecond();
+        public int getPowerDrawPerRotation() {
+            return innergetPowerDrawPerRotation();
+        }
+
+        @Override
+        public void setPowerProvider(Object powerProvider){
+            innerSetPowerProvider(powerProvider);
         }
     }
 }
