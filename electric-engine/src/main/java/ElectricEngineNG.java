@@ -30,7 +30,7 @@ public class ElectricEngineNG {
         if (powerProvider == null)
             return;
         try {
-            for(int i = 0; i <= seconds; i++){
+            for(int i = 0; i < seconds; i++){
                 Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
                 m.invoke(powerProvider, rpm);
             }
@@ -45,7 +45,7 @@ public class ElectricEngineNG {
         if (powerProvider == null)
             return;
         try {
-            for(int i = 0; i <= seconds; i++){
+            for(int i = 0; i < seconds; i++){
                 Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
                 m.invoke(powerProvider, rpm);
             }

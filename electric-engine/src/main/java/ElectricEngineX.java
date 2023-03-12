@@ -31,7 +31,7 @@ public class ElectricEngineX {
         if (powerProvider == null)
             return;
         try {
-            for(int i = 0; i <= seconds; i++){
+            for(int i = 0; i < seconds; i++){
                 Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
                 m.invoke(powerProvider, rpm);
             }
@@ -46,7 +46,7 @@ public class ElectricEngineX {
         if (powerProvider == null)
             return;
         try {
-            for(int i = 0; i <= seconds; i++){
+            for(int i = 0; i < seconds; i++){
                 Method m = powerProvider.getClass().getMethod("simulateEnergyUsageSecond", int.class);
                 m.invoke(powerProvider, rpm);
             }
@@ -55,16 +55,12 @@ public class ElectricEngineX {
         }
     }
 
-    private int innerComputePowerDrawPerSecond() {
-        return 4 * rpm;
-    }
-
     private ElectricEngineState innerGetState(){
         return this.state;
     }
 
     private int innergetPowerDrawPerRotation() {
-        return 3;
+        return 4;
     }
 
     private void innerSetPowerProvider(Object powerProvider) {
