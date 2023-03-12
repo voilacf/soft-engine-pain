@@ -16,7 +16,6 @@ public class ServiceCenter {
         return (supervisor.handleEmergency(emergencyType, vehicleType));
     }
 
-    //TODO Get emergency info from S03
     public void handleEmergency() {
         System.out.println("Service center received emergency call");
         EmployeeResponsibility emergencyType = EmployeeResponsibility.EMERGENCY;

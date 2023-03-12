@@ -46,7 +46,6 @@ public class HeadlightControlUnit extends Subscriber {
         }
     }
 
-    //TODO: add methods to diagram
     @Subscribe
     public void receive(EventLedHighBeam event) {
         for (Object led:leds

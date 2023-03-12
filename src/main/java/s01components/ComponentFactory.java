@@ -11,26 +11,28 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ComponentFactory {
-    private static final HashMap<String, URL> jarPaths;
+    private static final HashMap<String, String> jarPaths;
+    private static final ArrayList<String> verifiedJars = new ArrayList<>();
 
     static {
         jarPaths = new HashMap<>();
         try {
-            jarPaths.put("Battery", new File(Configuration.INSTANCE.pathToBatteryJavaArchive + "battery.jar").toURI().toURL());
-            jarPaths.put("Brake", new File(Configuration.INSTANCE.pathToBrakeJavaArchive + "brake.jar").toURI().toURL());
-            jarPaths.put("BrakeLight", new File(Configuration.INSTANCE.pathToBrakeLightJavaArchive + "brakelight.jar").toURI().toURL());
-            jarPaths.put("CameraV1", new File(Configuration.INSTANCE.pathToCameraJavaArchive + "camera.jar").toURI().toURL());
-            jarPaths.put("CameraV2", new File(Configuration.INSTANCE.pathToCameraJavaArchive + "camera.jar").toURI().toURL());
-            jarPaths.put("ElectricEngineNG", new File(Configuration.INSTANCE.pathToElectricEngineJavaArchive + "electric-engine.jar").toURI().toURL());
-            jarPaths.put("ElectricEngineX", new File(Configuration.INSTANCE.pathToElectricEngineJavaArchive + "electric-engine.jar").toURI().toURL());
-            jarPaths.put("GPS", new File(Configuration.INSTANCE.pathToGPSJavaArchive + "gps.jar").toURI().toURL());
-            jarPaths.put("Indicator", new File(Configuration.INSTANCE.pathToIndicatorJavaArchive + "indicator.jar").toURI().toURL());
-            jarPaths.put("LED", new File(Configuration.INSTANCE.pathToLedHeadlightJavaArchive + "led-headlight.jar").toURI().toURL());
-            jarPaths.put("LidarNG", new File(Configuration.INSTANCE.pathToLidarJavaArchive + "lidar.jar").toURI().toURL());
-            jarPaths.put("LidarXT", new File(Configuration.INSTANCE.pathToLidarJavaArchive + "lidar.jar").toURI().toURL());
+            jarPaths.put("Battery", Configuration.INSTANCE.pathToBatteryJavaArchive + "battery.jar");
+            jarPaths.put("Brake", Configuration.INSTANCE.pathToBrakeJavaArchive + "brake.jar");
+            jarPaths.put("BrakeLight", Configuration.INSTANCE.pathToBrakeLightJavaArchive + "brakelight.jar");
+            jarPaths.put("CameraV1", Configuration.INSTANCE.pathToCameraJavaArchive + "camera.jar");
+            jarPaths.put("CameraV2", Configuration.INSTANCE.pathToCameraJavaArchive + "camera.jar");
+            jarPaths.put("ElectricEngineNG", Configuration.INSTANCE.pathToElectricEngineJavaArchive + "electric-engine.jar");
+            jarPaths.put("ElectricEngineX", Configuration.INSTANCE.pathToElectricEngineJavaArchive + "electric-engine.jar");
+            jarPaths.put("GPS", Configuration.INSTANCE.pathToGPSJavaArchive + "gps.jar");
+            jarPaths.put("Indicator", Configuration.INSTANCE.pathToIndicatorJavaArchive + "indicator.jar");
+            jarPaths.put("LED", Configuration.INSTANCE.pathToLedHeadlightJavaArchive + "led-headlight.jar");
+            jarPaths.put("LidarNG", Configuration.INSTANCE.pathToLidarJavaArchive + "lidar.jar");
+            jarPaths.put("LidarXT", Configuration.INSTANCE.pathToLidarJavaArchive + "lidar.jar");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,12 +41,11 @@ public class ComponentFactory {
     private static Object build(String classname) {
         Object port = null;
         try {
-            URL url = jarPaths.get(classname);
-            // TODO: re-add before submission
-            /*if(!verify(url.getPath())){
+            String path = jarPaths.get(classname);
+            if(!verify(path)){
                 throw new RuntimeException("Jar not verified");
-            }*/
-            URL[] urls = {url};
+            }
+            URL[] urls = {new File(path).toURI().toURL()};
             URLClassLoader urlClassLoader = new URLClassLoader(urls, ComponentFactory.class.getClassLoader());
             Class<?> brakeClass = Class.forName(classname, true, urlClassLoader);
             Object brakeInstance = brakeClass.getMethod("getInstance").invoke(null);
@@ -55,18 +56,21 @@ public class ComponentFactory {
         return port;
     }
 
-    private static boolean verify(String pathToJar) {
+    private static boolean verify(String pathToJar)   {
+        if(verifiedJars.contains(pathToJar)){
+            return true;
+        }
+
         String curOs = System.getProperty("os.name");
         boolean isVerified = false;
         ProcessBuilder pb = null;
         // call the jarsigner depending on the operating system
-        if (curOs.startsWith("Linux")) {
-            pb = new ProcessBuilder("jarsigner", "-verify", pathToJar);
-        } else if (curOs.startsWith("Windows")) {
+        if (curOs.startsWith("Windows")) {
             pb = new ProcessBuilder("C:\\Program Files\\Java\\jdk-17.0.5\\bin\\jarsigner", "-verify", pathToJar);
         } else {
-            return isVerified;
+            pb = new ProcessBuilder("jarsigner", "-verify", pathToJar);
         }
+
         // go through the output of the jarsigner command and return true if the "verify" is in any of the lines
         try {
             Process p = pb.start();
@@ -83,6 +87,11 @@ public class ComponentFactory {
             e.printStackTrace();
             return isVerified;
         }
+
+        if(isVerified){
+            verifiedJars.add(pathToJar);
+        }
+
         return isVerified;
     }
 

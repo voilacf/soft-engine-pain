@@ -9,15 +9,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/battery" />
-            <option value="$PROJECT_DIR$/brake" />
-            <option value="$PROJECT_DIR$/brakelight" />
-            <option value="$PROJECT_DIR$/camera" />
-            <option value="$PROJECT_DIR$/electric-engine" />
-            <option value="$PROJECT_DIR$/gps" />
-            <option value="$PROJECT_DIR$/indicator" />
-            <option value="$PROJECT_DIR$/led-headlight" />
-            <option value="$PROJECT_DIR$/lidar" />
           </set>
         </option>
       </GradleProjectSettings>
