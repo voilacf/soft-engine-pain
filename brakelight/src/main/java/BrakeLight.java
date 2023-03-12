@@ -26,15 +26,17 @@ public class BrakeLight {
     }
 
     public class Port implements IBrakeLight {
-
+        @Override
         public void on() {
             innerOn();
         }
 
+        @Override
         public void off() {
             innerOff();
         }
 
+        @Override
         public String getState(){
             return innerGetState().toString().toLowerCase();
         }
