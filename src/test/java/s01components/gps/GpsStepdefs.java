@@ -57,7 +57,6 @@ public class GpsStepdefs {
         }
     }
 
-    //TODO: finish
     @Given("I have a gps component and its control unit")
     public void gpsAndItsControlUnit() {
         gpsPort[0] = ComponentFactory.buildGPS();
@@ -72,6 +71,15 @@ public class GpsStepdefs {
 
     @Then("The gps connected with a satellite")
     public void gpsIsConnectedWithSatellite() {
-        //assertEquals();
+        for (Object gps : gpsPort
+        ) {
+            try {
+                Method getFrequency = gps.getClass().getDeclaredMethod("getFrequency");
+                getFrequency.invoke(gps);
+                assertEquals("test", getFrequency.invoke(gps));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
     }
 }

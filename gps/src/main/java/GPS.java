@@ -30,22 +30,34 @@ public class GPS {
         return state;
     }
 
-    public class Port implements IGPS {
+    private String innerGetFrequency() {
+        return frequency;
+    }
 
+    public class Port implements IGPS {
+        @Override
         public void on() {
             innerOn();
         }
 
+        @Override
         public void off() {
             innerOff();
         }
 
+        @Override
         public void connectSatellite(String frequency) {
             innerConnectSatellite(frequency);
         }
 
+        @Override
         public String getState() {
             return innerGetState().toString().toLowerCase();
+        }
+
+        @Override
+        public String getFrequency() {
+            return innerGetFrequency();
         }
 
         @Override
