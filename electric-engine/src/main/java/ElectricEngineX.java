@@ -107,6 +107,11 @@ public class ElectricEngineX {
         }
 
         @Override
+        public int getPowerDrawPerRotation() {
+            return innergetPowerDrawPerRotation();
+        }
+
+        @Override
         public void setPowerProvider(Object powerProvider){
             innerSetPowerProvider(powerProvider);
         }

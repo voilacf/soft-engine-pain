@@ -38,7 +38,7 @@ public class Application {
         key.enableVehicle();
 
         controlUnit.startup();
-        controlUnit.move(100, 5);
+        controlUnit.move(2000, 5);
         controlUnit.leftTurn(100, 5);
         controlUnit.rightTurn(100, 5);
         controlUnit.stop();

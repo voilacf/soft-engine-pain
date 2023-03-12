@@ -1,4 +1,5 @@
-import java.util.Locale;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ElectricEngineNG {
     private static final ElectricEngineNG instance = new ElectricEngineNG();
@@ -61,8 +62,12 @@ public class ElectricEngineNG {
         return rpm;
     }
 
-    private int innerComputePowerDrawPerSecond() {
-        return 3 * rpm;
+    private int innergetPowerDrawPerRotation() {
+        return 3;
+    }
+
+    private void innerSetPowerProvider(Object powerProvider) {
+        this.powerProvider = powerProvider;
     }
 
     public class Port implements IElectricEngine {
@@ -94,6 +99,11 @@ public class ElectricEngineNG {
         @Override
         public void decreaseRPM(int deltaRPM, int seconds) {
             innerDecreaseRPM(deltaRPM, seconds);
+        }
+
+        @Override
+        public int getPowerDrawPerRotation() {
+            return innergetPowerDrawPerRotation();
         }
 
         @Override

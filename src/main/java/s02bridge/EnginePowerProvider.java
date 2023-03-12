@@ -1,8 +1,10 @@
 package s02bridge;
 
+import s01components.control_units.ComponentUtils;
+
 public class EnginePowerProvider {
-    private Object engine;
-    private Object battery;
+    private final Object engine;
+    private final Object battery;
 
     public EnginePowerProvider(Object engine, Object battery){
         this.engine = engine;
