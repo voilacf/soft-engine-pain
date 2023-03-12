@@ -2,7 +2,6 @@ package s06chargingstation;
 
 import org.junit.jupiter.api.*;
 import s01components.application.ApplicationConfiguration;
-import s06chargingstation.*;
 import s02builder.AutonomousVehicle;
 import s02builder.AutonomousVehicleFactory;
 import s05servicecenter.ServiceCenter;
@@ -13,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class chargingStationJUnit {
+public class ChargingStationJUnit {
     protected static final int MINIMUM_FOR_SILVER = 500;
     protected static final int MINIMUM_FOR_GOLD = 2000;
     protected static final int MINIMUM_FOR_PLATIN = 10000;
