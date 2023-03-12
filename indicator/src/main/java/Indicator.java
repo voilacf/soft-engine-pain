@@ -1,3 +1,6 @@
+import javax.naming.InitialContext;
+import java.lang.reflect.InvocationTargetException;
+
 public class Indicator {
     private static final Indicator instance = new Indicator();
     public Port port;
@@ -44,22 +47,42 @@ public class Indicator {
         }
     }
 
-    //public void innerVisit(IComponentVisitor visitor){}
+    private IndicatorState innerGetState(){
+        return state;
+    }
 
     public class Port implements IIndicator {
+        @Override
+        public String getState(){
+            return innerGetState().toString().toLowerCase();
+        }
 
+        public void on(int sideEnumValue) {
+            on(IndicatorSide.values()[sideEnumValue]);
+        }
+
+        public void off(int sideEnumValue) {
+            off(IndicatorSide.values()[sideEnumValue]);
+        }
+
+        @Override
         public void on(IndicatorSide side) {
             innerOn(side);
         }
 
+        @Override
         public void off(IndicatorSide side) {
             innerOff(side);
         }
 
-        /*public void visit(IComponentVisitor visitor){
-            innerVisit(visitor);
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitIndicator", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
-        * */
     }
 
 }

@@ -1,0 +1,85 @@
+package s01components.gps;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import s01components.ComponentFactory;
+import s01components.control_units.GPSControlUnit;
+import s01components.events.EventGPSConnectSatellite;
+
+import java.lang.reflect.Method;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+public class GpsStepdefs {
+    private final Object[] gpsPort = new Object[1];
+    private GPSControlUnit controlUnit;
+    private EventGPSConnectSatellite event;
+
+    @Given("My autonomous vehicle contains a gps")
+    public void myVehicleContainsAGPS() {
+        gpsPort[0] = ComponentFactory.buildGPS();
+    }
+
+    @Then("The gps component should not be null")
+    public void gpsComponentShouldNotBeNull() {
+        assertNotNull(gpsPort[0]);
+    }
+
+    @Then("The gps turns on when using on-method")
+    public void gpsTurnedOn() {
+        for (Object gps : gpsPort
+        ) {
+            try {
+                Method start = gps.getClass().getDeclaredMethod("on");
+                Method getState = gps.getClass().getDeclaredMethod("getState");
+                start.invoke(gps);
+                assertEquals("on", getState.invoke(gps));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
+    }
+
+    @Then("The gps turns off when using off-method")
+    public void gpsTurnedOff() {
+        for (Object gps : gpsPort
+        ) {
+            try {
+                Method start = gps.getClass().getDeclaredMethod("off");
+                Method getState = gps.getClass().getDeclaredMethod("getState");
+                start.invoke(gps);
+                assertEquals("off", getState.invoke(gps));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
+    }
+
+    @Given("I have a gps component and its control unit")
+    public void gpsAndItsControlUnit() {
+        gpsPort[0] = ComponentFactory.buildGPS();
+        controlUnit = new GPSControlUnit(gpsPort);
+    }
+
+    @When("The control unit receives a connect with satellite event")
+    public void gpsControlUnitReceivesAnConnectWithSatelliteEvent() {
+        event = new EventGPSConnectSatellite("test");
+        controlUnit.receive(event);
+    }
+
+    @Then("The gps connected with a satellite")
+    public void gpsIsConnectedWithSatellite() {
+        for (Object gps : gpsPort
+        ) {
+            try {
+                Method getFrequency = gps.getClass().getDeclaredMethod("getFrequency");
+                getFrequency.invoke(gps);
+                assertEquals("test", getFrequency.invoke(gps));
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
+    }
+}

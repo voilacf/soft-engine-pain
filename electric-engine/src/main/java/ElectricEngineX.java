@@ -2,7 +2,7 @@ public class ElectricEngineX {
     private static final ElectricEngineX instance = new ElectricEngineX();
     public Port port;
     private ElectricEngineState state;
-    private int rpm;
+    private int rpm = 0;
 
     private ElectricEngineX() {
         port = new Port();
@@ -22,18 +22,36 @@ public class ElectricEngineX {
 
     private void innerIncreaseRPM(int deltaRPM, int seconds) {
         rpm += deltaRPM;
-        //TODO: implement seconds
+        //TODO: implement seconds (s02)
     }
 
     private void innerDecreaseRPM(int deltaRPM, int seconds) {
         rpm -= deltaRPM;
+        //TODO: implement seconds (s02)
     }
 
     private int innerComputePowerDrawPerSecond() {
-        return 3 * rpm;
+        return 4 * rpm;
+    }
+
+    private ElectricEngineState innerGetState(){
+        return this.state;
+    }
+
+    private int innerGetRPM() {
+        return rpm;
     }
 
     public class Port implements IElectricEngine {
+        @Override
+        public int getRPM(){
+            return innerGetRPM();
+        }
+
+        @Override
+        public String getState(){
+            return innerGetState().toString().toLowerCase();
+        }
 
         @Override
         public void on() {

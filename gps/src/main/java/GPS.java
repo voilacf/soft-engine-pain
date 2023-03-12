@@ -1,10 +1,12 @@
+import java.lang.reflect.InvocationTargetException;
+
 public class GPS {
     private static final GPS instance = new GPS();
     public Port port;
     private GPSState state;
     private String frequency;
 
-    public GPS() {
+    private GPS() {
         port = new Port();
     }
 
@@ -12,38 +14,59 @@ public class GPS {
         return instance;
     }
 
-    public void innerOn() {
+    private void innerOn() {
         state = GPSState.ON;
     }
 
-    public void innerOff() {
+    private void innerOff() {
         state = GPSState.OFF;
     }
 
-    public void innerConnectSatellite(String frequency) {
+    private void innerConnectSatellite(String frequency) {
         this.frequency = frequency;
     }
 
-    //TODO: add visitor
-    //public void innerVisit(IComponentVisitor visitor){}
+    private GPSState innerGetState(){
+        return state;
+    }
+
+    private String innerGetFrequency() {
+        return frequency;
+    }
 
     public class Port implements IGPS {
-
+        @Override
         public void on() {
             innerOn();
         }
 
+        @Override
         public void off() {
             innerOff();
         }
 
+        @Override
         public void connectSatellite(String frequency) {
             innerConnectSatellite(frequency);
         }
 
-        /*public void visit(IComponentVisitor visitor){
-            innerVisit(visitor);
+        @Override
+        public String getState() {
+            return innerGetState().toString().toLowerCase();
         }
-        * */
+
+        @Override
+        public String getFrequency() {
+            return innerGetFrequency();
+        }
+
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitGps", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

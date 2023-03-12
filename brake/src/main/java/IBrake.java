@@ -1,4 +1,5 @@
 public interface IBrake {
     void setBrake(double percentage);
-    //void visit(IComponentVisitor visitor);
+    double getPercentage();
+    void accept(Object visitor);
 }

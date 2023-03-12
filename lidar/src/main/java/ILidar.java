@@ -1,6 +1,6 @@
 public interface ILidar {
     void on();
-
     void off();
-    //void visit(IComponentVisitor visitor);
+    String getState();
+    void accept(Object visitor);
 }

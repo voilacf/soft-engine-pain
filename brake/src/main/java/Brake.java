@@ -1,3 +1,5 @@
+import java.lang.reflect.InvocationTargetException;
+
 public class Brake {
     private static final Brake instance = new Brake();
     public Port port;
@@ -11,22 +13,32 @@ public class Brake {
         return instance;
     }
 
-    public void innerSetBrake(double percentage) {
+    private void innerSetBrake(double percentage) {
         this.percentage = percentage;
     }
 
-    //public void innerVisit(IComponentVisitor visitor){}
+    private double innerGetPercentage(){
+        return this.percentage;
+    }
 
     public class Port implements IBrake {
+        @Override
+        public double getPercentage(){
+            return innerGetPercentage();
+        }
 
+        @Override
         public void setBrake(double percentage) {
             innerSetBrake(percentage);
         }
 
-        //TODO: add IComponentVisitor and logic
-        /*public void visit(IComponentVisitor visitor){
-            innerVisit(visitor);
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitBrake", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
-        * */
     }
 }

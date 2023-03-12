@@ -1,8 +1,8 @@
 public interface IGPS {
     void on();
-
     void off();
-
     void connectSatellite(String frequency);
-    //void visit(IComponentVisitor visitor);
+    String getState();
+    String getFrequency();
+    void accept(Object visitor);
 }

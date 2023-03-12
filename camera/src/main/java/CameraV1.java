@@ -1,9 +1,11 @@
+import java.lang.reflect.InvocationTargetException;
+
 public class CameraV1 {
     private static final CameraV1 instance = new CameraV1();
     public Port port;
     private CameraState state;
 
-    public CameraV1() {
+    private CameraV1() {
         port = new Port();
     }
 
@@ -11,29 +13,41 @@ public class CameraV1 {
         return instance;
     }
 
-    public void innerOn() {
+    private void innerOn() {
         state = CameraState.ON;
     }
 
-    public void innerOff() {
+    private void innerOff() {
         state = CameraState.OFF;
     }
 
-    //public void innerVisit(IComponentVisitor visitor){}
+    private CameraState innerGetState(){
+        return state;
+    }
 
     public class Port implements ICamera {
+        @Override
         public void on() {
             innerOn();
         }
 
+        @Override
         public void off() {
             innerOff();
         }
 
-        //TODO: add IComponentVisitor and logic
-        /*public void visit(IComponentVisitor visitor){
-            innerVisit(visitor);
+        @Override
+        public String getState(){
+            return innerGetState().toString().toLowerCase();
         }
-        * */
+
+        @Override
+        public void accept(Object visitor) {
+            try {
+                visitor.getClass().getMethod("visitCamera", Object.class).invoke(visitor, this);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
