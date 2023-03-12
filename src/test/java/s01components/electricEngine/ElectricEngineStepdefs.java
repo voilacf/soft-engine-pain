@@ -76,7 +76,7 @@ public class ElectricEngineStepdefs {
     public void electricEngineControlUnitReceivesIncreaseRPMEvent() {
         eventIncreaseRPM = new EventEngineIncreaseRPM(23,100);
         controlUnit.receive(eventIncreaseRPM);
-    }
+    };
 
     @Then("The electric engine rpm has increased")
     public void electricEngineRPMIncreased() {
@@ -93,7 +93,7 @@ public class ElectricEngineStepdefs {
 
     @When("The electric engine control unit receives a decrease rpm event")
     public void electricEngineControlUnitReceivesDecreaseRPMEvent() {
-        eventDecreaseRPM = new EventEngineDecreaseRPM(23,100);
+        eventDecreaseRPM = new EventEngineDecreaseRPM(0,100);
         controlUnit.receive(eventDecreaseRPM);
     }
 

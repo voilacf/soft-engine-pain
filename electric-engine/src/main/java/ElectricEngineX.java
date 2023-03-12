@@ -2,7 +2,7 @@ public class ElectricEngineX {
     private static final ElectricEngineX instance = new ElectricEngineX();
     public Port port;
     private ElectricEngineState state;
-    private int rpm;
+    private int rpm = 0;
 
     private ElectricEngineX() {
         port = new Port();
@@ -27,6 +27,7 @@ public class ElectricEngineX {
 
     private void innerDecreaseRPM(int deltaRPM, int seconds) {
         rpm -= deltaRPM;
+        //TODO: implement seconds (s02)
     }
 
     private int innerComputePowerDrawPerSecond() {

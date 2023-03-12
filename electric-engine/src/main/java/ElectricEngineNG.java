@@ -4,7 +4,7 @@ public class ElectricEngineNG {
     private static final ElectricEngineNG instance = new ElectricEngineNG();
     public Port port;
     private ElectricEngineState state;
-    private int rpm;
+    private int rpm = 0;
 
     private ElectricEngineNG() {
         port = new Port();
