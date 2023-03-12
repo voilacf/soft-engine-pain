@@ -20,4 +20,8 @@ public class LiftingPlatformSensor {
             listener.vehicleRegistered(vehicle);
         }
     }
+
+    public ILiftingPlatformSensorListener getListenerAt(int index) {
+        return listeners.get(index);
+    }
 }
