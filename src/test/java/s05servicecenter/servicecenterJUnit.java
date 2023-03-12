@@ -54,6 +54,7 @@ public class servicecenterJUnit {
     @Test
     @Order(5)
     public void noServiceEmployeeAvailable() {
+        //check what happens if service center is at max capacity
         serviceCenter.handleSpecificEmergency(EmployeeResponsibility.MAINTANCE, VehicleDivision.ZOOX);
         serviceCenter.handleSpecificEmergency(EmployeeResponsibility.MAINTANCE, VehicleDivision.ZOOX);
 
@@ -63,7 +64,8 @@ public class servicecenterJUnit {
 
     @Test
     @Order(6)
-    public void authenticatenWorks() {
+    public void authenticationWorks() {
+        //Check if authentication works
         GateAuthenicator gate = new GateAuthenicator();
         ServiceEmployee employee = new ServiceEmployee(EmployeeResponsibility.MAINTANCE);
        assertTrue(gate.authenticateEmployee(employee, employee.employeeMagnetCard));
@@ -72,7 +74,7 @@ public class servicecenterJUnit {
     @Test
     @Order(7)
     public void checkIfAuthenticationIsSecure() {
-        //Check if authetication returns false if the wrong card is used
+        //Check if authentication returns false if the wrong card is used
         GateAuthenicator gate = new GateAuthenicator();
         ServiceEmployee employee1 = new ServiceEmployee(EmployeeResponsibility.MAINTANCE);
         ServiceEmployee employee2 = new ServiceEmployee(EmployeeResponsibility.EMERGENCY);
